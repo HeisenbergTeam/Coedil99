@@ -1,0 +1,58 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Faculty of informatics, Burapha University 01
+ * License Type: Purchased
+ */
+package modello_di_dominio;
+
+import org.hibernate.Criteria;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+import org.orm.criteria.*;
+
+public class RigaDistintaCriteria extends AbstractORMCriteria {
+	public final IntegerExpression ID;
+	
+	public RigaDistintaCriteria(Criteria criteria) {
+		super(criteria);
+		ID = new IntegerExpression("ID", this);
+	}
+	
+	public RigaDistintaCriteria(PersistentSession session) {
+		this(session.createCriteria(RigaDistinta.class));
+	}
+	
+	public RigaDistintaCriteria() throws PersistentException {
+		this(modello_di_dominio.Coedil99PersistentManager.instance().getSession());
+	}
+	
+	public PezzoCriteria createPezzoCriteria() {
+		return new PezzoCriteria(createCriteria("pezzo"));
+	}
+	
+	public DistintaCriteria createDistintaCriteria() {
+		return new DistintaCriteria(createCriteria("distinta"));
+	}
+	
+	public LavorazionePezzoCriteria createLavorazionePezzoCriteria() {
+		return new LavorazionePezzoCriteria(createCriteria("lavorazionePezzo"));
+	}
+	
+	public RigaDistinta uniqueRigaDistinta() {
+		return (RigaDistinta) super.uniqueResult();
+	}
+	
+	public RigaDistinta[] listRigaDistinta() {
+		java.util.List list = super.list();
+		return (RigaDistinta[]) list.toArray(new RigaDistinta[list.size()]);
+	}
+}
+

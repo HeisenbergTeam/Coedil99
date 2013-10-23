@@ -1,0 +1,44 @@
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="body">
+	<top>
+		<Label text="Page Title" />
+		<MenuBar>
+			<menus>
+				<Menu text="File">
+					<items>
+						<MenuItem text="Open" />
+						<MenuItem text="Save" />
+						<MenuItem text="Exit" />
+					</items>
+				</Menu>
+				<Menu text="Edit">
+					<items>
+						<MenuItem text="Copy" />
+						<MenuItem text="Paste" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+	</top>
+	<left>
+		<VBox ><Label text="Ciao" />
+		<Label text="Ciao" />
+		<Label text="Ciao" />
+		<Label text="Ciao" /></VBox>
+	</left>
+	<center>
+		<Label text="Some data here" />
+	</center>
+
+	<stylesheets>
+		<URL value="@layout_pagina.css" />
+	</stylesheets>
+</BorderPane>

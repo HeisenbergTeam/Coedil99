@@ -18,7 +18,7 @@ public class VisualizzaOrdine extends Application {
     public void start(Stage stage) {
     	Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource("visualizza_ordine.fxml"));
+			root = FXMLLoader.load(getClass().getResource("layout_pagina.fxml"));
 			Scene scene = new Scene(root, 300, 275);
 			 stage.setTitle("FXML Welcome");
 			 stage.setScene(scene);

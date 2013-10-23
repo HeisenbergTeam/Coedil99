@@ -5,6 +5,9 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.control.TreeItem?>
 
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="body">
@@ -29,13 +32,21 @@
 		</MenuBar>
 	</top>
 	<left>
-		<VBox ><Label text="Ciao" />
-		<Label text="Ciao" />
-		<Label text="Ciao" />
-		<Label text="Ciao" /></VBox>
+<TreeView fx:id="treeview" layoutX="69.0" layoutY="204.0" prefHeight="200.0" prefWidth="200.0" >
+	<TreeItem >Beat a te!</TreeItem>
+</TreeView>
 	</left>
 	<center>
-		<Label text="Some data here" />
+		<TableView fx:id="tableView">
+			<columns>
+				<TableColumn text="First Name">
+				</TableColumn>
+				<TableColumn text="Last Name">
+				</TableColumn>
+				<TableColumn text="Email Address">
+				</TableColumn>
+			</columns>
+		</TableView>
 	</center>
 
 	<stylesheets>

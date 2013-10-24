@@ -12,7 +12,7 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
  
-public class VisualizzaOrdine extends Application {
+public class VisualizzaDistinta extends Application {
     public static void start(String[] args) {
         launch(args);
     }
@@ -23,10 +23,17 @@ public class VisualizzaOrdine extends Application {
 		try {
 			root = (BorderPane) FXMLLoader.load(getClass().getResource("layout_pagina.fxml"));
 			
-			Scene scene = new Scene(root, 300, 275);
+			Scene scene = new Scene(root, 640, 480);
 			
 			TreeView<String> treeViewOrdini = (TreeView<String>) root.lookup("#treeview_ordini");
 			System.out.println(treeViewOrdini.getClass().toString());
+			
+			TreeItem<String> rootItem = new TreeItem<String>("Ciao");
+			rootItem.getChildren().add(new TreeItem<String>("Francesco"));
+			rootItem.getChildren().add(new TreeItem<String>("Igor"));
+			rootItem.getChildren().add(new TreeItem<String>("Fabiano"));
+			rootItem.getChildren().add(new TreeItem<String>("Filippo"));
+			treeViewOrdini.setRoot(rootItem);
 			
 			
 			stage.setTitle("FXML Welcome");

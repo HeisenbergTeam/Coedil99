@@ -10,7 +10,8 @@
 <?import javafx.scene.control.TreeItem?>
 
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="body" fx:id="ciao">
+<BorderPane fx:controller="controller.VisualizzaDistintaController" 
+	xmlns:fx="http://javafx.com/fxml" styleClass="body" fx:id="ciao">
 	<top>
 		<Label text="Page Title" />
 		<MenuBar>
@@ -38,11 +39,11 @@
 	<center>
 		<TableView fx:id="tableView">
 			<columns>
-				<TableColumn text="First Name">
+				<TableColumn text="Id">
 				</TableColumn>
-				<TableColumn text="Last Name">
+				<TableColumn text="Stato">
 				</TableColumn>
-				<TableColumn text="Email Address">
+				<TableColumn text="">
 				</TableColumn>
 			</columns>
 		</TableView>

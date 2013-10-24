@@ -3,8 +3,45 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TableView?>
 
-<GridPane fx:controller="controller.VisualizzaOrdineController" 
+<BorderPane fx:controller="controller.VisualizzaOrdiniController"
+	styleClass="root" xmlns:fx="http://javafx.com/fxml">
+	<top>
+		<MenuBar>
+			<menus>
+				<Menu text="File">
+					<items>
+						<MenuItem text="Open" />
+						<MenuItem text="Save" />
+						<MenuItem text="Exit" />
+					</items>
+				</Menu>
+				<Menu text="Edit">
+					<items>
+						<MenuItem text="Copy" />
+						<MenuItem text="Paste" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+	</top>
+	<center>
+		<TableView >
+			<columns>
+				<TableColumn text="Id">
+				</TableColumn>
+				<TableColumn text="Stato">
+				</TableColumn>
+				<TableColumn text="">
+				</TableColumn>
+			</columns>
+		</TableView>
+	</center>
+</BorderPane>
+
+<!-- GridPane fx:controller="controller.VisualizzaOrdiniController" 
     xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" 
     styleClass="root">
   <padding><Insets top="25" right="25" bottom="10" left="25" /></padding>
@@ -35,7 +72,7 @@
       GridPane.columnIndex="1" GridPane.rowIndex="6" />
   
   <stylesheets>
-    <URL value="@visualizza_ordine.css" />
+    <URL value="@visualizza_ordini.css" />
   </stylesheets>
   
-</GridPane>
+</GridPane-->

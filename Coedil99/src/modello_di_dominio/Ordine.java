@@ -79,7 +79,6 @@ public class Ordine {
 		this.commesse.add(DAOFactory.getDAOFactory().getCommessaDAO()
 				.createCommessa());
 		return this.commesse.toArray()[commesse.size()-1];
-//		throw new UnsupportedOperationException();
 	}
 
 	public CommessaSetCollection getCommesse() {

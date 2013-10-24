@@ -119,7 +119,6 @@ public class Commessa {
 		this.distinta = DAOFactory.getDAOFactory().getDistintaDAO()
 				.createDistinta();
 		return this.distinta;
-//		throw new UnsupportedOperationException();
 	}
 
 	public String toString() {

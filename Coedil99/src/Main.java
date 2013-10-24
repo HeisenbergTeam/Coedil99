@@ -7,8 +7,6 @@ import modello_di_dominio.Ordine;
 
 import org.orm.PersistentException;
 
-import ui.VisualizzaOrdini;
-
 public class Main {
 
 	@SuppressWarnings("deprecation")

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.TreeItem?>
 
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="body">
+<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="body" fx:id="ciao">
 	<top>
 		<Label text="Page Title" />
 		<MenuBar>
@@ -32,8 +32,7 @@
 		</MenuBar>
 	</top>
 	<left>
-<TreeView fx:id="treeview" layoutX="69.0" layoutY="204.0" prefHeight="200.0" prefWidth="200.0" >
-	<TreeItem >Beat a te!</TreeItem>
+<TreeView fx:id="treeview_ordini" layoutX="69.0" layoutY="204.0" prefHeight="200.0" prefWidth="200.0" >
 </TreeView>
 	</left>
 	<center>

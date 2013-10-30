@@ -95,5 +95,12 @@ public class Distinta {
 	public String toString() {
 		return String.valueOf(getID());
 	}
+	
+	public int creaRigaDistinta(Pezzo pezzo, LavorazionePezzo lavorazione) {
+		RigaDistinta riga = new RigaDistinta();
+		riga.setPezzo(pezzo);
+		riga.setLavorazionePezzo(lavorazione);
+		return riga.getID();
+	}
 
 }

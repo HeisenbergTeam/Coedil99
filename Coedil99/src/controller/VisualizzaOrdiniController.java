@@ -28,6 +28,8 @@ public class VisualizzaOrdiniController implements Initializable{
 	@FXML private TableColumn<Ordine,Boolean> tableOrdiniId;
 	@FXML private TableColumn<Ordine,String> tableOrdiniData;
 	
+	
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -50,6 +52,14 @@ public class VisualizzaOrdiniController implements Initializable{
 					CellDataFeatures<Ordine, String> arg0) {
 				// TODO Auto-generated method stub
 				SimpleStringProperty s = new SimpleStringProperty();
+				//s.set(arg0.getValue().getDataCreazione().toString());
+				
+				//s.set(arg0.getValue().getClass().toString());
+				if(arg0.getValue() == null){
+					System.out.println("null");
+				}else{
+					s.set(arg0.getValue().getDataCreazione().toString());
+				}
 				s.set("ciao");
 				return s;
 			}
@@ -68,7 +78,20 @@ public class VisualizzaOrdiniController implements Initializable{
 		
 		tableOrdini.setItems(FXCollections.observableList(ordini));
 		
-		tableOrdini.getSelectionModel().selectFirst();
+		tableOrdini.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Object> arg0,
+					Object arg1, Object arg2) {
+				// TODO Auto-generated method stub
+				System.out.println("ciao");
+				
+			}
+		});
+		
+		
+		
+		
 	}
 	
 	

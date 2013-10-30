@@ -18,7 +18,8 @@ public class VisualizzaOrdini extends Application{
 		
 		Parent root =  FXMLLoader.load(getClass().getResource("visualizza_ordini.fxml"));
 		TableView table = (TableView) root.lookup("tabella_ordini");
-		//table.
+		//table.setItems();
+		
 		
 		Scene scene = new Scene(root, 640, 480);
 		

@@ -30,7 +30,7 @@
 	<center>
 		<TableView >
 			<columns>
-				<TableColumn text="Id">
+				<TableColumn text="Id" >
 				</TableColumn>
 				<TableColumn text="Stato">
 				</TableColumn>

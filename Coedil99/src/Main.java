@@ -15,9 +15,7 @@ public class Main {
 	public static void main(String args[]){
 		System.out.println("Start");
 		
-		VisualizzaOrdini.start(args);
-
-		VisualizzaOrdini.start(args);
+		
 
 		Date date = new Date();
 		Ordine ordine = new Ordine();
@@ -29,7 +27,8 @@ public class Main {
 		commessa.creaDistinta();
 		Distinta distinta = commessa.getDistinta();
 		distinta.setDataInizio(date);
-
+		
+		
 		try {
 			DAOFactory.getDAOFactory().getOrdineDAO().save(ordine);
 		} catch (PersistentException e) {
@@ -63,7 +62,9 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		VisualizzaOrdini.start(args);
+		
 	}
 	
 }

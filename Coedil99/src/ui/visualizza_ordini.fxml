@@ -11,10 +11,10 @@
 
 <BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.VisualizzaOrdiniController">
   <center>
-    <TableView>
+    <TableView fx:id="tableCommesse">
       <columns>
-        <TableColumn text="Id" />
-        <TableColumn text="Stato" />
+        <TableColumn text="Id" fx:id="tableCommesseId"/>
+        <TableColumn text="Stato" fx:id="tableCommesseStato"/>
         <TableColumn text="" />
       </columns>
     </TableView>

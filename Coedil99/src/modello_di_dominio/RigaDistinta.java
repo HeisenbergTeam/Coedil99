@@ -102,4 +102,8 @@ public class RigaDistinta {
 		return String.valueOf(getID());
 	}
 	
+	public void cambiaStatoPezzo(String stato) {
+		this.pezzo.setStato(stato);
+	}
+	
 }

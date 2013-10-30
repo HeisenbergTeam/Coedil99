@@ -27,6 +27,8 @@ public class Pezzo {
 	
 	private modello_di_dominio.DescrizionePezzo descrizionePezzo;
 	
+	private String stato;
+	
 	private void setID(int value) {
 		this.ID = value;
 	}
@@ -65,6 +67,14 @@ public class Pezzo {
 	
 	public String toString() {
 		return String.valueOf(getID());
+	}
+	
+	public String getStato() {
+		return this.stato;
+	}
+	
+	public void setStato(String stato) {
+		this.stato = stato;
 	}
 	
 }

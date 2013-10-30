@@ -12,7 +12,7 @@ public class Sessione {
 
 	public Commessa commessaAttuale;
 	
-	public Distinta ditintaAttuale;
+	public Distinta distintaAttuale;
 	
 	public static Sessione getInstance() {
 		return _instance;
@@ -34,12 +34,12 @@ public class Sessione {
 		this.commessaAttuale = commessaAttuale;
 	}
 
-	public Distinta getDitintaAttuale() {
-		return ditintaAttuale;
+	public Distinta getdistintaAttuale() {
+		return distintaAttuale;
 	}
 
-	public void setDitintaAttuale(Distinta ditintaAttuale) {
-		this.ditintaAttuale = ditintaAttuale;
+	public void setdistintaAttuale(Distinta distintaAttuale) {
+		this.distintaAttuale = distintaAttuale;
 	}
 	
 }

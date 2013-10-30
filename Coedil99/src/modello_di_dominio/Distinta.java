@@ -15,6 +15,10 @@ package modello_di_dominio;
 
 import java.util.Date;
 
+import org.orm.PersistentException;
+
+import modello_di_dominio.dao.RigaDistintaDAO;
+
 public class Distinta {
 	public Distinta() {
 	}
@@ -95,11 +99,17 @@ public class Distinta {
 	public String toString() {
 		return String.valueOf(getID());
 	}
-	
+
 	public int creaRigaDistinta(Pezzo pezzo, LavorazionePezzo lavorazione) {
 		RigaDistinta riga = new RigaDistinta();
 		riga.setPezzo(pezzo);
 		riga.setLavorazionePezzo(lavorazione);
+		try {
+			DAOFactory.getDAOFactory().getRigaDistintaDAO().save(riga);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return riga.getID();
 	}
 

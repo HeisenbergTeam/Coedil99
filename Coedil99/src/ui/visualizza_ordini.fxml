@@ -1,78 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:controller="controller.VisualizzaOrdiniController"
-	styleClass="root" xmlns:fx="http://javafx.com/fxml">
-	<top>
-		<MenuBar>
-			<menus>
-				<Menu text="File">
-					<items>
-						<MenuItem text="Open" />
-						<MenuItem text="Save" />
-						<MenuItem text="Exit" />
-					</items>
-				</Menu>
-				<Menu text="Edit">
-					<items>
-						<MenuItem text="Copy" />
-						<MenuItem text="Paste" />
-					</items>
-				</Menu>
-			</menus>
-		</MenuBar>
-	</top>
-	<center>
-		<TableView >
-			<columns>
-				<TableColumn text="Id" >
-				</TableColumn>
-				<TableColumn text="Stato">
-				</TableColumn>
-				<TableColumn text="">
-				</TableColumn>
-			</columns>
-		</TableView>
-	</center>
+<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.VisualizzaOrdiniController">
+  <center>
+    <TableView>
+      <columns>
+        <TableColumn text="Id" />
+        <TableColumn text="Stato" />
+        <TableColumn text="" />
+      </columns>
+    </TableView>
+  </center>
+  <left>
+    <TableView fx:id="tableOrdini">
+      <columns>
+        <TableColumn text="Id" fx:id="tableOrdiniId" />
+        <TableColumn text="Data" fx:id="tableOrdiniData" />
+      </columns>
+    </TableView>
+  </left>
+  <top>
+    <MenuBar>
+      <menus>
+        <Menu text="File">
+          <items>
+            <MenuItem text="Open" />
+            <MenuItem text="Save" />
+            <MenuItem text="Exit" />
+          </items>
+        </Menu>
+        <Menu text="Edit">
+          <items>
+            <MenuItem text="Copy" />
+            <MenuItem text="Paste" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </top>
 </BorderPane>
-
-<!-- GridPane fx:controller="controller.VisualizzaOrdiniController" 
-    xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10" 
-    styleClass="root">
-  <padding><Insets top="25" right="25" bottom="10" left="25" /></padding>
-  
-  <Text id="welcome-text" text="Welcome" 
-      GridPane.columnIndex="0" GridPane.rowIndex="0" 
-      GridPane.columnSpan="2"/>
-  
-  <Label text="User Name:" 
-      GridPane.columnIndex="0" GridPane.rowIndex="1" />
-  
-  <TextField 
-      GridPane.columnIndex="1" GridPane.rowIndex="1" />
-  
-  <Label text="Password:" 
-      GridPane.columnIndex="0" GridPane.rowIndex="2" />
-  
-  <PasswordField fx:id="passwordField" 
-      GridPane.columnIndex="1" GridPane.rowIndex="2" />
-  
-  <HBox spacing="10" alignment="bottom_right" 
-      GridPane.columnIndex="1" GridPane.rowIndex="4">
-      <Button text="Sign In" 
-       onAction="#handleSubmitButtonAction" />
-  </HBox>
-  
-  <Text fx:id="actiontarget" 
-      GridPane.columnIndex="1" GridPane.rowIndex="6" />
-  
-  <stylesheets>
-    <URL value="@visualizza_ordini.css" />
-  </stylesheets>
-  
-</GridPane-->

@@ -1,9 +1,15 @@
 package ui;
 
+import java.util.Date;
+import java.util.Iterator;
+
+import modello_di_dominio.Ordine;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
@@ -19,6 +25,15 @@ public class VisualizzaOrdini extends Application{
 		Parent root =  FXMLLoader.load(getClass().getResource("visualizza_ordini.fxml"));
 		TableView table = (TableView) root.lookup("tabella_ordini");
 		//table.setItems();
+		
+		//ObservableList<TableColumn<S, T>> = table.getColumns().iterator();
+		
+		//ObservableList<Ordine> data = table.getItems();
+		
+		Ordine o = new Ordine();
+		o.setDataCreazione(new Date());
+		
+		//data.add(o);
 		
 		
 		Scene scene = new Scene(root, 640, 480);

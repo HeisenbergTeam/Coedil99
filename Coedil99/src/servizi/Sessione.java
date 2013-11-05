@@ -4,7 +4,7 @@ import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
 
-public class Sessione {
+public class Sessione implements Servizio {
 	
 	public static Sessione _instance = new Sessione();
 

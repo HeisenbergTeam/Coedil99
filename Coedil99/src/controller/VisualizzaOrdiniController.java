@@ -25,6 +25,10 @@ import modello_di_dominio.Ordine;
 
 import org.orm.PersistentException;
 
+import servizi.GestoreServizi;
+import servizi.impl.GestoreServiziPrototipo;
+import edu.emory.mathcs.backport.java.util.Arrays;
+
 public class VisualizzaOrdiniController implements Initializable{
 	
 	
@@ -34,16 +38,64 @@ public class VisualizzaOrdiniController implements Initializable{
 	
 	@FXML private TableView<Commessa> tableCommesse;
 	@FXML private TableColumn<Commessa,String> tableCommesseId;
-	@FXML private TableColumn<Commessa,String> tableCommesseStato;
+	@FXML private TableColumn<Commessa,String> tableCommessePriorita;
 	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		GestoreServiziPrototipo gsp = GestoreServiziPrototipo.getGestoreServiziPrototipo();
+		gsp.getServizio("Sessione");
+		
 		/**************************************************
 		 *            TABELLA ORDINI
 		 *************************************************/
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		
+		try {
+			Ordine[] ordini2 = DAOFactory.getDAOFactory().getOrdineDAO().listOrdineByQuery(null, null);
+//			ordini.add(o);
+//			ordini.add(o);
+//			ordini.add(o);
+			ordini = new ArrayList<Ordine>(Arrays.asList(ordini2));
+			
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+		this.loadOrdiniTable(ordini);
+		
+		tableOrdini.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Object> arg0,
+					Object arg1, Object arg2) {
+				
+				Ordine ao;
+				System.out.println(arg2);
+				try {
+					System.out.println((int) arg2);
+					ao = DAOFactory.getDAOFactory().getOrdineDAO().getOrdineByORMID(1);
+					VisualizzaOrdiniController.this.loadCommessaTable(Arrays.asList(ao.getCommesse().toArray()));
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+				}
+				
+				
+			}
+		});
+		
+	}
+	
+	protected void initOrdinitTable(){
+		
+	}
+	
+	protected void loadOrdiniTable(List<Ordine> ordini){
 		
 		// TODO Auto-generated method stub
 		 tableOrdiniId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine,String>, ObservableValue<String>>() {
@@ -76,32 +128,14 @@ public class VisualizzaOrdiniController implements Initializable{
 				return s;
 			}
 		});
-		 
-		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
-		Ordine ao = new Ordine();
-		try {
-			Ordine o = DAOFactory.getDAOFactory().getOrdineDAO().getOrdineByORMID(1);
-			ordini.add(o);
-			ordini.add(o);
-			ordini.add(o);
-			ao = o;
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		tableOrdini.setItems(FXCollections.observableList(ordini));
 		
-		tableOrdini.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Object> arg0,
-					Object arg1, Object arg2) {
-				// TODO Auto-generated method stub
-				System.out.println(arg1);
-				
-			}
-		});
+	}
+	
+	
+	protected void loadCommessaTable(List<Commessa> commesse){
+		
 		
 		/**************************************************
 		 *            TABELLA DISTINTE
@@ -113,11 +147,12 @@ public class VisualizzaOrdiniController implements Initializable{
 			public ObservableValue<String> call(
 					CellDataFeatures<Commessa, String> arg0) {
 				// TODO Auto-generated method stub
-				return null;
+				SimpleStringProperty s = new SimpleStringProperty(((Integer) arg0.getValue().getID()).toString());
+				return s;
 			}
 		});
 		
-		tableCommesseStato.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Commessa,String>, ObservableValue<String>>() {
+		tableCommessePriorita.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Commessa,String>, ObservableValue<String>>() {
 
 					@Override
 					public ObservableValue<String> call(
@@ -127,21 +162,7 @@ public class VisualizzaOrdiniController implements Initializable{
 					}
 		});;
 		
-		ArrayList<Commessa> commesse = new ArrayList<Commessa>();
-		Commessa[] comm = ao.getCommesse().toArray();
-		
-		for(Commessa c : comm){
-			commesse.add(c);
-		}
-		
 		tableCommesse.setItems(FXCollections.observableList(commesse));
-		
-	}
-	
-	protected void loadCommessaTable(List<Commessa> distinte){
-		
-		
-		
 		
 		
 	}

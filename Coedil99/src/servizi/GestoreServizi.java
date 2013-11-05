@@ -2,6 +2,7 @@ package servizi;
 
 public interface GestoreServizi {
 	
-	public Servizio getServizio();
+	public Servizio getServizio(String classname);
+	
 
 }

@@ -14,8 +14,8 @@
     <TableView fx:id="tableCommesse">
       <columns>
         <TableColumn text="Id" fx:id="tableCommesseId"/>
-        <TableColumn text="Stato" fx:id="tableCommesseStato"/>
-        <TableColumn text="" />
+        <TableColumn text="Stato" fx:id="tableCommessePriorita"/>
+        <TableColumn text="Data Creazione" fx:id="tableCommesseDataCreazione" />
       </columns>
     </TableView>
   </center>

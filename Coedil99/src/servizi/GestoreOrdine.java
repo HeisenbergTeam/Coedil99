@@ -6,7 +6,7 @@ public interface GestoreOrdine extends Servizio{
 	
 	public Ordine creaOrdine();
 	
-	public Ordine cancellaOrdine(int ID);
+	public void cancellaOrdine(int ID);
 	
 	public Ordine[] getOrdini();
 

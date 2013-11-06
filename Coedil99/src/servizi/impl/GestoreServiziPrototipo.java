@@ -17,7 +17,7 @@ public class GestoreServiziPrototipo implements GestoreServizi {
 	private HashMap<Class, Servizio> Servizi = new HashMap<Class, Servizio>();
 	
 	public GestoreServiziPrototipo(){
-		caricaServizi();
+		//caricaServizi();
 	}
 	
 	public static GestoreServiziPrototipo getGestoreServiziPrototipo() {
@@ -36,17 +36,23 @@ public class GestoreServiziPrototipo implements GestoreServizi {
 	public Servizio getServizio(String classname) {
 		Class c;
 		try {
-			c = Class.forName("servizi."+classname);
-			//ClassLoader cl = new URLClassLoader(URL[]{new URL(".")});
-			return null;
+			c = Class.forName("servizi.impl."+classname);
+			
+			return (Servizio) c.newInstance();
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return null;
 	}
-	
+	/*
 	public void caricaServizi(){
 		URL directoryURL = Thread.currentThread().getContextClassLoader().getResource(serviziPackage);
 		
@@ -80,5 +86,6 @@ public class GestoreServiziPrototipo implements GestoreServizi {
 		//URL directoryURL = Thread.currentThread().getContextClassLoader().getResource(serviziPackage);
 		
 	}
+	*/
 
 }

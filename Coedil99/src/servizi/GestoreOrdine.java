@@ -1,5 +1,7 @@
 package servizi;
 
+import java.util.List;
+
 import modello_di_dominio.Ordine;
 
 public interface GestoreOrdine extends Servizio{
@@ -8,7 +10,7 @@ public interface GestoreOrdine extends Servizio{
 	
 	public void cancellaOrdine(int ID);
 	
-	public Ordine[] getOrdini();
+	public List<Ordine> getOrdini();
 
 	public void cancellaOrdine(Ordine ordine);
 	

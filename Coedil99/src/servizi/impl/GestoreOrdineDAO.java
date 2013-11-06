@@ -1,11 +1,15 @@
 package servizi.impl;
 
-import org.orm.PersistentException;
+import java.util.List;
 
 import modello_di_dominio.DAOFactory;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.dao.OrdineDAO;
+
+import org.orm.PersistentException;
+
 import servizi.GestoreOrdine;
+import edu.emory.mathcs.backport.java.util.Arrays;
 
 public class GestoreOrdineDAO implements GestoreOrdine {
 
@@ -35,9 +39,9 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 	}
 
 	@Override
-	public Ordine[] getOrdini() {
+	public List<Ordine> getOrdini() {
 		try {
-			ordineDAO.listOrdineByQuery(null, null);
+			return Arrays.asList(ordineDAO.listOrdineByQuery(null, null));
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -8,24 +8,24 @@ import modello_di_dominio.dao.OrdineDAO;
 import servizi.GestoreOrdine;
 
 public class GestoreOrdineDAO implements GestoreOrdine {
-	
+
 	private OrdineDAO ordineDAO;
-	
-	public GestoreOrdineDAO(){
-		
+
+	public GestoreOrdineDAO() {
+
 		ordineDAO = DAOFactory.getDAOFactory().getOrdineDAO();
-		
+
 	}
-	
+
 	@Override
 	public Ordine creaOrdine() {
-		
+
 		return ordineDAO.createOrdine();
 	}
 
 	@Override
 	public void cancellaOrdine(Ordine ordine) {
-		
+
 		try {
 			ordineDAO.delete(ordine);
 		} catch (PersistentException e) {
@@ -36,14 +36,22 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 
 	@Override
 	public Ordine[] getOrdini() {
-		// TODO Auto-generated method stub
+		try {
+			ordineDAO.listOrdineByQuery(null, null);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
-	public Ordine cancellaOrdine(int ID) {
-		// TODO Auto-generated method stub
-		return null;
+	public void cancellaOrdine(int ID) {
+		try {
+			ordineDAO.delete(ordineDAO.getOrdineByORMID(ID));
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

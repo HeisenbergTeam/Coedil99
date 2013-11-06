@@ -4,7 +4,7 @@ import java.util.List;
 
 import modello_di_dominio.Pezzo;
 
-public interface GestorePezzi {
+public interface GestorePezzi extends Servizio{
 	
 	public Pezzo creaPezzo();
 	

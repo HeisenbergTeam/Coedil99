@@ -26,6 +26,7 @@ import modello_di_dominio.Ordine;
 import org.orm.PersistentException;
 
 import servizi.GestoreServizi;
+import servizi.impl.GestoreOrdineDAO;
 import servizi.impl.GestoreServiziPrototipo;
 import edu.emory.mathcs.backport.java.util.Arrays;
 
@@ -44,28 +45,18 @@ public class VisualizzaOrdiniController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		GestoreServiziPrototipo gsp = GestoreServiziPrototipo.getGestoreServiziPrototipo();
-		gsp.getServizio("Sessione");
+		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
+		GestoreOrdineDAO gestoreOrdineDAO = (GestoreOrdineDAO) gsp.getServizio("GestoreOrdineDAO");
 		
 		/**************************************************
 		 *            TABELLA ORDINI
 		 *************************************************/
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
-		
-		try {
-			Ordine[] ordini2 = DAOFactory.getDAOFactory().getOrdineDAO().listOrdineByQuery(null, null);
-//			ordini.add(o);
-//			ordini.add(o);
-//			ordini.add(o);
-			ordini = new ArrayList<Ordine>(Arrays.asList(ordini2));
-			
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			
-			e.printStackTrace();
-		}
+		ordini = new ArrayList<Ordine>(gestoreOrdineDAO.getOrdini());
 		
 		this.loadOrdiniTable(ordini);
+		
+		//Event click
 		
 		tableOrdini.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
 
@@ -74,9 +65,7 @@ public class VisualizzaOrdiniController implements Initializable{
 					Object arg1, Object arg2) {
 				
 				Ordine ao;
-				System.out.println(arg2);
 				try {
-					System.out.println((int) arg2);
 					ao = DAOFactory.getDAOFactory().getOrdineDAO().getOrdineByORMID(1);
 					VisualizzaOrdiniController.this.loadCommessaTable(Arrays.asList(ao.getCommesse().toArray()));
 				} catch (PersistentException e) {
@@ -89,12 +78,18 @@ public class VisualizzaOrdiniController implements Initializable{
 			}
 		});
 		
+		//tableCommesse.onMouseClickedProperty(
+		
 	}
 	
 	protected void initOrdinitTable(){
 		
 	}
 	
+	/**
+	 * 
+	 * @param ordini
+	 */
 	protected void loadOrdiniTable(List<Ordine> ordini){
 		
 		// TODO Auto-generated method stub
@@ -116,11 +111,8 @@ public class VisualizzaOrdiniController implements Initializable{
 					CellDataFeatures<Ordine, String> arg0) {
 				// TODO Auto-generated method stub
 				SimpleStringProperty s = new SimpleStringProperty();
-				//s.set(arg0.getValue().getDataCreazione().toString());
 				
-				//s.set(arg0.getValue().getClass().toString());
 				if(arg0.getValue() == null){
-					System.out.println("null");
 					s.set("ciao");
 				}else{
 					s.set(arg0.getValue().getDataCreazione().toString());
@@ -133,13 +125,11 @@ public class VisualizzaOrdiniController implements Initializable{
 		
 	}
 	
-	
+	/**
+	 * loadCommessaTable
+	 * @param commesse
+	 */
 	protected void loadCommessaTable(List<Commessa> commesse){
-		
-		
-		/**************************************************
-		 *            TABELLA DISTINTE
-		 *************************************************/
 		
 		tableCommesseId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Commessa,String>, ObservableValue<String>>() {
 

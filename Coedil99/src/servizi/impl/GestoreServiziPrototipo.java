@@ -8,25 +8,12 @@ import java.util.HashMap;
 import servizi.GestoreServizi;
 import servizi.Servizio;
 
-public class GestoreServiziPrototipo implements GestoreServizi {
+public class GestoreServiziPrototipo extends GestoreServizi {
 
 	private final static String serviziPackage = "servizi";
 	
-	private static GestoreServiziPrototipo _instance = new GestoreServiziPrototipo();
 
 	private HashMap<Class, Servizio> Servizi = new HashMap<Class, Servizio>();
-	
-	public GestoreServiziPrototipo(){
-		//caricaServizi();
-	}
-	
-	public static GestoreServiziPrototipo getGestoreServiziPrototipo() {
-		return _instance;
-	}
-
-	public HashMap<Class, Servizio> getServizi() {
-		return this.Servizi;
-	}
 
 	public Servizio getServizioDaNome(String nome) {
 		return this.Servizi.get(nome);

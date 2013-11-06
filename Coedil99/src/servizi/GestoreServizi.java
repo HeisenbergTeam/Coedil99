@@ -1,8 +1,20 @@
 package servizi;
 
-public interface GestoreServizi {
+import servizi.impl.GestoreServiziPrototipo;
+import modello_di_dominio.DAOFactory;
+import modello_di_dominio.DAOFactoryImpl;
+
+public abstract class GestoreServizi {
 	
-	public Servizio getServizio(String classname);
+	private static GestoreServizi _instance = new GestoreServiziPrototipo();
+	
+	public static GestoreServizi getGestoreServizi() {
+		return _instance;
+	}
+	
+	
+	public abstract Servizio getServizio(String classname);
+	
 	
 
 }

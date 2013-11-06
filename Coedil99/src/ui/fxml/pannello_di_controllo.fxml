@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="400.0000999999975" prefWidth="600.0">
+      <center>
+        <VBox alignment="TOP_LEFT" prefHeight="200.0" prefWidth="100.0">
+          <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+              <children>
+                <Button mnemonicParsing="false" text="+ Nuovo Ordine" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+              <children>
+                <Button mnemonicParsing="false" text="Gestisci Ordini" />
+              </children>
+            </HBox>
+          </children>
+          <BorderPane.margin>
+            <Insets top="20.0" fx:id="x1" />
+          </BorderPane.margin>
+        </VBox>
+      </center>
+      <right>
+        <FlowPane columnHalignment="LEFT" maxWidth="-1.0" minHeight="-1.0" minWidth="-Infinity" orientation="VERTICAL" prefHeight="332.0" prefWidth="180.0" prefWrapLength="400.0" rowValignment="CENTER" BorderPane.margin="$x1">
+          <children>
+            <Label text="Ultime attività">
+              <font>
+                <Font size="16.0" />
+              </font>
+            </Label>
+            <Separator prefWidth="109.0" />
+          </children>
+        </FlowPane>
+      </right>
+      <top>
+        <Label text="Pannello di controllo">
+          <font>
+            <Font name="System Bold" size="20.0" />
+          </font>
+          <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+          </BorderPane.margin>
+        </Label>
+      </top>
+    </BorderPane>
+  </children>
+</AnchorPane>

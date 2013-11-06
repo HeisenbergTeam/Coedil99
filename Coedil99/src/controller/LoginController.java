@@ -28,6 +28,8 @@ public class LoginController implements Initializable {
 		GestoreServizi gs = GestoreServizi.getGestoreServizi();
 		Autenticazione autenticazione = (Autenticazione) gs.getServizio("AutenticazionePrototipo");
 		
-		if(autenticazione.)
+		if(autenticazione.login(username.getText(),password.getText())){
+			System.out.println("ciao");
+		}
 	}
 }

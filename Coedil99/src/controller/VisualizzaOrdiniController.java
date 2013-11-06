@@ -5,22 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableIntegerValue;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.DAOFactory;
-import modello_di_dominio.Commessa;
 import modello_di_dominio.Ordine;
 
 import org.orm.PersistentException;
@@ -56,7 +55,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		
 		this.loadOrdiniTable(ordini);
 		
-		//Event click
+		//ListenerOrdini
 		
 		tableOrdini.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
 
@@ -78,7 +77,20 @@ public class VisualizzaOrdiniController implements Initializable{
 			}
 		});
 		
-		//tableCommesse.onMouseClickedProperty(
+		//Listener commesse
+		
+		tableCommesse.setOnMouseClicked((new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+		        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+		            if(mouseEvent.getClickCount() == 2){
+		                System.out.println("Double clicked");
+		            }
+		        }
+				
+			}
+		}));
 		
 	}
 	

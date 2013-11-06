@@ -1,13 +1,14 @@
-import ui.VisualizzaOrdini;
-
 import java.util.Date;
-
-import org.orm.PersistentException;
 
 import modello_di_dominio.Commessa;
 import modello_di_dominio.DAOFactory;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
+
+import org.orm.PersistentException;
+
+import ui.Login;
+import ui.VisualizzaOrdini;
 
 
 public class Main {
@@ -63,7 +64,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		VisualizzaOrdini.start(args);
+		Login.start(args);
 		
 	}
 	

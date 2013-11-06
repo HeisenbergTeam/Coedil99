@@ -23,19 +23,6 @@ public class VisualizzaOrdini extends Application{
 	public void start(Stage stage) throws Exception {
 		
 		Parent root =  FXMLLoader.load(getClass().getResource("visualizza_ordini.fxml"));
-		TableView table = (TableView) root.lookup("tabella_ordini");
-		//table.setItems();
-		
-		//ObservableList<TableColumn<S, T>> = table.getColumns().iterator();
-		
-		//ObservableList<Ordine> data = table.getItems();
-		
-		Ordine o = new Ordine();
-		o.setDataCreazione(new Date());
-		
-		//data.add(o);
-		
-		
 		Scene scene = new Scene(root, 640, 480);
 		
 		stage.setTitle("FXML Welcome");

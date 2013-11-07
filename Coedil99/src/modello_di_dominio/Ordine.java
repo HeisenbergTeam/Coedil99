@@ -14,6 +14,11 @@
 package modello_di_dominio;
 
 import java.util.Date;
+import java.util.List;
+
+import org.orm.PersistentException;
+
+import edu.emory.mathcs.backport.java.util.Arrays;
 
 public class Ordine {
 	public Ordine() {
@@ -78,11 +83,22 @@ public class Ordine {
 		// TODO: Implement Method
 		this.commesse.add(DAOFactory.getDAOFactory().getCommessaDAO()
 				.createCommessa());
-		return this.commesse.toArray()[commesse.size()-1];
+		return this.commesse.toArray()[commesse.size() - 1];
 	}
 
 	public CommessaSetCollection getCommesse() {
 		return this.commesse;
+	}
+
+	public Commessa getCommessaDaID(int id) {
+		try {
+			return DAOFactory.getDAOFactory().getCommessaDAO()
+					.getCommessaByORMID(id);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public String toString() {

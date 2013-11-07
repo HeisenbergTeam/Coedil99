@@ -21,6 +21,8 @@ public class PannelloControlloController {
 	
 	@FXML protected void creaOrdine(ActionEvent action){
 		
+		MainApplication.getInstance().goBack();
+		
 	}
 	
 }

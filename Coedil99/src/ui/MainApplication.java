@@ -40,8 +40,6 @@ public class MainApplication extends Application {
 	@Override
 	public void start(Stage stage) {
 		
-
-		
 		this.mainStage = stage;
 		MainApplication.instance = this;
 		
@@ -53,6 +51,7 @@ public class MainApplication extends Application {
 	public void goBack() {
 		
 		this.mainStage.setScene(this.history.pop());
+		this.mainStage.show();
 		
 	}
 	
@@ -62,12 +61,12 @@ public class MainApplication extends Application {
 		try {
 			
 			root = FXMLLoader.load(getClass().getResource("fxml/"+name+".fxml"));
-			Scene scene = new Scene(root, 600, 400);
+			Scene scene = new Scene(root, 800, 600);
 			
 			//Save history
-			this.history.add(this.mainStage.getScene());
+			this.history.push(this.mainStage.getScene());
 			
-			this.mainStage.setTitle("Coedil99 Login");
+			this.mainStage.setTitle("Coedil99");
 			this.mainStage.setScene(scene);
 			this.mainStage.show();
 			

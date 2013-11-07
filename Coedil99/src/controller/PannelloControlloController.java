@@ -1,16 +1,14 @@
 package controller;
 
-import java.io.IOException;
-
-import ui.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-
+import ui.MainApplication;
+/**
+ * PannelloControlloController
+ * @author mw
+ *
+ */
 public class PannelloControlloController {
 	
 	@FXML protected BorderPane container;
@@ -18,6 +16,10 @@ public class PannelloControlloController {
 	@FXML protected void visualizzaOrdini(ActionEvent action){
 		
 		MainApplication.getInstance().loadPage("visualizza_ordini");
+		
+	}
+	
+	@FXML protected void creaOrdine(ActionEvent action){
 		
 	}
 	

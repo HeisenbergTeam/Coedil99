@@ -23,7 +23,7 @@ public class MainApplication extends Application {
  * main
  * @param args
  */
-	private LinkedList<Parent> history = new LinkedList<Parent>();
+	private LinkedList<Scene> history = new LinkedList<Scene>();
 	
 	private Stage mainStage;
 	
@@ -52,6 +52,8 @@ public class MainApplication extends Application {
 	
 	public void goBack() {
 		
+		this.mainStage.setScene(this.history.pop());
+		
 	}
 	
 	public void loadPage(String name){
@@ -61,6 +63,9 @@ public class MainApplication extends Application {
 			
 			root = FXMLLoader.load(getClass().getResource("fxml/"+name+".fxml"));
 			Scene scene = new Scene(root, 600, 400);
+			
+			//Save history
+			this.history.add(this.mainStage.getScene());
 			
 			this.mainStage.setTitle("Coedil99 Login");
 			this.mainStage.setScene(scene);

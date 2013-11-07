@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javax.persistence.metamodel.ListAttribute;
 
 import modello_di_dominio.Ordine;
+import modello_di_dominio.RigaDistinta;
 import servizi.GestoreOrdine;
 import servizi.GestoreServizi;
 import servizi.impl.GestoreOrdineDAO;
@@ -28,10 +29,14 @@ public class VisualizzaDistintaController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdine");
+		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
 		
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
+		//TODO: modifica a getCommessaID(id)
+		RigaDistinta[] righeDistinta = ordine.getCommesse().toArray()[1].getDistinta().righeDistinta.toArray();
+		
+		//listaPezzi.add(righeDistinta[1].getIndicazione());
 		//this.loadOrdiniTable(ordini);
 		
 		listPezziDistinta.setItems(listaPezzi);

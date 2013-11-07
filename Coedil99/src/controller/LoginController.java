@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import servizi.Autenticazione;
 import servizi.GestoreServizi;
+import ui.MainApplication;
 
 public class LoginController implements Initializable {
 	
@@ -34,23 +35,8 @@ public class LoginController implements Initializable {
 		Autenticazione autenticazione = (Autenticazione) gs.getServizio("AutenticazionePrototipo");
 		
 		if(autenticazione.login(username.getText(),password.getText())){
-			Stage stage = (Stage) username.getScene().getWindow();
-			stage.close();
 			
-			Parent root = null;
-			try {
-				root = FXMLLoader.load(getClass().getResource("../ui/fxml/pannello_di_controllo.fxml"));
-				Scene scene = new Scene(root, 640, 480);
-				
-				Stage s = new Stage();
-				s.setTitle("FXML Welcome");
-				s.setScene(scene);
-				s.show();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			MainApplication.getInstance().loadPage("pannello_di_controllo");
 			
 		}
 	}

@@ -46,6 +46,8 @@ public class Distinta {
 
 	private java.util.Set ORM_righeDistinta = new java.util.HashSet();
 
+	private String indicazione;
+
 	private void setID(int value) {
 		this.ID = value;
 	}
@@ -111,6 +113,14 @@ public class Distinta {
 			e.printStackTrace();
 		}
 		return riga.getID();
+	}
+
+	public String getIndicazione() {
+		return indicazione;
+	}
+
+	public void setIndicazione(String indicazione) {
+		this.indicazione = indicazione;
 	}
 
 }

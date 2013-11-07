@@ -48,6 +48,17 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		}
 		return null;
 	}
+	
+	@Override
+	public Ordine getOrdine(int ID) {
+		try {
+			return ordineDAO.getOrdineByORMID(ID);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	@Override
 	public void cancellaOrdine(int ID) {

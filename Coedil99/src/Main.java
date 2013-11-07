@@ -8,6 +8,7 @@ import modello_di_dominio.Ordine;
 import org.orm.PersistentException;
 
 import ui.Login;
+import ui.VisualizzaDistinta;
 import ui.VisualizzaOrdini;
 
 
@@ -65,6 +66,7 @@ public class Main {
 		}
 		
 		Login.start(args);
+		//VisualizzaDistinta.start(args);
 		
 	}
 	

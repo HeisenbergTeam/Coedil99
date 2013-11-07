@@ -11,6 +11,8 @@ public interface GestoreOrdine extends Servizio{
 	public void cancellaOrdine(int ID);
 	
 	public List<Ordine> getOrdini();
+	
+	public Ordine getOrdine(int ID);
 
 	public void cancellaOrdine(Ordine ordine);
 	

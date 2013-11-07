@@ -25,25 +25,10 @@ public class VisualizzaDistinta extends Application {
 			
 			Scene scene = new Scene(root, 640, 480);
 			
-			TreeView<String> treeViewOrdini = (TreeView<String>) root.lookup("#treeview_ordini");
-			System.out.println(treeViewOrdini.getClass().toString());
-			
-			TreeItem<String> rootItem = new TreeItem<String>("Ciao");
-			rootItem.getChildren().add(new TreeItem<String>("Francesco"));
-			rootItem.getChildren().add(new TreeItem<String>("Igor"));
-			rootItem.getChildren().add(new TreeItem<String>("Fabiano"));
-			rootItem.getChildren().add(new TreeItem<String>("Filippo"));
-			treeViewOrdini.setRoot(rootItem);
-			
-			
-			stage.setTitle("FXML Welcome");
+			stage.setTitle("Distinta");
 			stage.setScene(scene);
 			stage.show();
-			
-			if(scene.lookup("#treeview_ordini") == null){
-				System.out.println("i");
-			}
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

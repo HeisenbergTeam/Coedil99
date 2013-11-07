@@ -95,10 +95,10 @@
           <items>
             <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="188.0" text="Lista pezzi">
               <content>
-                <ListView maxHeight="10000.0" prefHeight="10000.0" prefWidth="200.0" />
+                <ListView fx:id="listPezziDistinta" maxHeight="10000.0" prefHeight="10000.0" prefWidth="200.0" />
               </content>
             </TitledPane>
-            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="10000.0" prefWidth="10000.0" />
           </items>
         </SplitPane>
       </children>

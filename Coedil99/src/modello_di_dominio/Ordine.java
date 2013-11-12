@@ -45,6 +45,66 @@ public class Ordine {
 
 	private java.util.Set ORM_commesse = new java.util.HashSet();
 
+	private int tipo;
+
+	private String fornitore;
+
+	private Date consegnaPrevista;
+
+	private Date consegnaEffettiva;
+
+	private int giorniRitardo;
+
+	private String note;
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getFornitore() {
+		return fornitore;
+	}
+
+	public void setFornitore(String fornitore) {
+		this.fornitore = fornitore;
+	}
+
+	public Date getConsegnaPrevista() {
+		return consegnaPrevista;
+	}
+
+	public void setConsegnaPrevista(Date consegnaPrevista) {
+		this.consegnaPrevista = consegnaPrevista;
+	}
+
+	public Date getConsegnaEffettiva() {
+		return consegnaEffettiva;
+	}
+
+	public void setConsegnaEffettiva(Date consegnaEffettiva) {
+		this.consegnaEffettiva = consegnaEffettiva;
+	}
+
+	public int getGiorniRitardo() {
+		return giorniRitardo;
+	}
+
+	public void setGiorniRitardo(int giorniRitardo) {
+		this.giorniRitardo = giorniRitardo;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
 	public final modello_di_dominio.CommessaSetCollection commesse = new modello_di_dominio.CommessaSetCollection(
 			this, _ormAdapter,
 			modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE,

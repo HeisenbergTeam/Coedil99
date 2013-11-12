@@ -40,13 +40,71 @@ public class Distinta {
 
 	private int ID;
 
-	private Date DataInizio;
+	private Date dataInizio;
 
 	private modello_di_dominio.Commessa commessa;
 
 	private java.util.Set ORM_righeDistinta = new java.util.HashSet();
 
-	private String indicazione;
+	private String modello;
+
+	private String revisione;
+
+	private String cliente;
+
+	private String destinazione;
+
+	private String elementoStrutturale;
+
+	public String getModello() {
+		return modello;
+	}
+
+	public void setModello(String modello) {
+		this.modello = modello;
+	}
+
+	public String getRevisione() {
+		return revisione;
+	}
+
+	public void setRevisione(String revisione) {
+		this.revisione = revisione;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
+
+	public String getDestinazione() {
+		return destinazione;
+	}
+
+	public void setDestinazione(String destinazione) {
+		this.destinazione = destinazione;
+	}
+
+	public String getElementoStrutturale() {
+		return elementoStrutturale;
+	}
+
+	public void setElementoStrutturale(String elementoStrutturale) {
+		this.elementoStrutturale = elementoStrutturale;
+	}
+
+	public String getCartellino() {
+		return cartellino;
+	}
+
+	public void setCartellino(String cartellino) {
+		this.cartellino = cartellino;
+	}
+
+	private String cartellino;
 
 	private void setID(int value) {
 		this.ID = value;
@@ -61,11 +119,11 @@ public class Distinta {
 	}
 
 	public void setDataInizio(Date value) {
-		this.DataInizio = value;
+		this.dataInizio = value;
 	}
 
 	public Date getDataInizio() {
-		return DataInizio;
+		return dataInizio;
 	}
 
 	public void setCommessa(modello_di_dominio.Commessa value) {
@@ -113,14 +171,6 @@ public class Distinta {
 			e.printStackTrace();
 		}
 		return riga.getID();
-	}
-
-	public String getIndicazione() {
-		return indicazione;
-	}
-
-	public void setIndicazione(String indicazione) {
-		this.indicazione = indicazione;
 	}
 
 }

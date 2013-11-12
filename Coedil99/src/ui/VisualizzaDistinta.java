@@ -21,7 +21,8 @@ public class VisualizzaDistinta extends Application {
     public void start(Stage stage) {
     	Parent root;
 		try {
-			root = (BorderPane) FXMLLoader.load(getClass().getResource("visualizza_distinta.fxml"));
+			root = (BorderPane) FXMLLoader.load(getClass().getResource("/ui/fxml/visualizza_distinta.fxml"));
+			
 			
 			Scene scene = new Scene(root, 640, 480);
 			

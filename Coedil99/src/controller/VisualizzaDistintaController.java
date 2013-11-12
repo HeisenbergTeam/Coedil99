@@ -34,10 +34,11 @@ public class VisualizzaDistintaController implements Initializable {
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
 		//TODO: modifica a getCommessaID(id)
-		RigaDistinta[] righeDistinta = ordine.getCommesse().toArray()[1].getDistinta().righeDistinta.toArray();
+		RigaDistinta[] righeDistinta = ordine.getCommessaDaID(1).getDistinta().righeDistinta.toArray();
 		
-		//listaPezzi.add(righeDistinta[1].getIndicazione());
-		//this.loadOrdiniTable(ordini);
+		for (int i=0; righeDistinta.length>i; i++) {
+			listaPezzi.add(righeDistinta[i].getID()+"");
+		}
 		
 		listPezziDistinta.setItems(listaPezzi);
 		

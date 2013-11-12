@@ -112,7 +112,7 @@
     </GridPane>
   </center>
   <stylesheets>
-    <URL value="@visualizza_distinta.css" />
+    <URL value="@../css/visualizza_distinta.css" />
   </stylesheets>
   <top>
     <MenuBar>

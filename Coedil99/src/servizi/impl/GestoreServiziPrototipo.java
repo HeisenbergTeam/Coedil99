@@ -6,25 +6,38 @@ import servizi.GestoreServizi;
 import servizi.Servizio;
 
 public class GestoreServiziPrototipo extends GestoreServizi {
-
-	private final static String serviziPackage = "servizi";
+/**
+ * 
+ */
+	private final static String serviziPackage = "servizi.impl.";
+/**
+ * 
+ */
+	private HashMap<String, Servizio> servizi = new HashMap<String, Servizio>();
 	
-
-	private HashMap<Class, Servizio> Servizi = new HashMap<Class, Servizio>();
-
-	public Servizio getServizioDaNome(String nome) {
-		return this.Servizi.get(nome);
-	}
-
 	@Override
 	public Servizio getServizio(String classname) {
-		Class c;
+		
+		String classpath = serviziPackage+classname;
+		
+		Servizio inst = servizi.get(classpath);
+		if(inst!= null){
+			return inst;
+		}
+		
+		Class c = null;
+		
+		
 		try {
 			
 			//TODO: aggiungere un sistema per instanziare un servizio una sola volta
-			c = Class.forName("servizi.impl."+classname);
+			c = Class.forName(classpath);
+			inst = (Servizio) c.newInstance();
 			
-			return (Servizio) c.newInstance();
+			servizi.put(classpath, inst);
+			
+			return inst;
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

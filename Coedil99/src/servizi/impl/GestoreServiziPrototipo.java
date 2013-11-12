@@ -1,8 +1,5 @@
 package servizi.impl;
 
-import java.io.File;
-import java.net.URL;
-import java.security.Provider.Service;
 import java.util.HashMap;
 
 import servizi.GestoreServizi;
@@ -23,6 +20,8 @@ public class GestoreServiziPrototipo extends GestoreServizi {
 	public Servizio getServizio(String classname) {
 		Class c;
 		try {
+			
+			//TODO: aggiungere un sistema per instanziare un servizio una sola volta
 			c = Class.forName("servizi.impl."+classname);
 			
 			return (Servizio) c.newInstance();
@@ -38,6 +37,11 @@ public class GestoreServiziPrototipo extends GestoreServizi {
 		}
 		
 		return null;
+	}
+	
+	private Servizio caricaServizio(String classname){
+		return null;
+		
 	}
 	/*
 	public void caricaServizi(){

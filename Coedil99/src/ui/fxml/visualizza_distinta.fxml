@@ -118,7 +118,7 @@
   <top>
     <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;">
       <children>
-        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="">
+        <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;" text="">
           <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

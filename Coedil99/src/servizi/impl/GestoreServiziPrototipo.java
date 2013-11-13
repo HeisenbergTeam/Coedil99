@@ -1,9 +1,13 @@
 package servizi.impl;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import servizi.GestoreServizi;
 import servizi.Servizio;
+import servizi.annotation.injected;
 
 public class GestoreServiziPrototipo extends GestoreServizi {
 /**
@@ -14,6 +18,10 @@ public class GestoreServiziPrototipo extends GestoreServizi {
  * 
  */
 	private HashMap<String, Servizio> servizi = new HashMap<String, Servizio>();
+
+	public GestoreServiziPrototipo(){
+		
+	}
 	
 	@Override
 	public Servizio getServizio(String classname) {
@@ -33,6 +41,25 @@ public class GestoreServiziPrototipo extends GestoreServizi {
 			//TODO: aggiungere un sistema per instanziare un servizio una sola volta
 			c = Class.forName(classpath);
 			inst = (Servizio) c.newInstance();
+			//System.out.println(inst.getClass());
+			
+			/*
+			Field[] fields = c.getDeclaredFields();
+			
+			for (Field field : fields) {
+				
+				injected annot = field.getAnnotation(injected.class);
+				if(annot != null){
+					Servizio s = this.getServizio(annot.serviceImplementation());
+					System.out.println(c.toString());
+					SessionePrototipo st = new SessionePrototipo();
+					field.set(inst, st );
+					System.out.println("ciao");
+				}
+				
+				
+			}
+			*/
 			
 			servizi.put(classpath, inst);
 			
@@ -51,45 +78,5 @@ public class GestoreServiziPrototipo extends GestoreServizi {
 		
 		return null;
 	}
-	
-	private Servizio caricaServizio(String classname){
-		return null;
-		
-	}
-	/*
-	public void caricaServizi(){
-		URL directoryURL = Thread.currentThread().getContextClassLoader().getResource(serviziPackage);
-		
-		if(directoryURL == null){
-			System.out.println("errore");
-			return ;
-		}
-		
-		File directory = new File(directoryURL.getFile());
-		
-		String[] files = directory.list();
-		for (String file : files) {
-			if (file.endsWith(".class")) {  
-                // Remove the .class extension  
-                file = file.substring(0, file.length() - 6);  
-                try {  
-                    Servizi.put(Class.forName("servizi" + "." + file),null);
-                    Class c = Class.forName("servizi" + "." + file);
-                    if(Servizio.class.isAssignableFrom(c)){
-                    	System.out.println("la implementa");
-                    }
-                    System.out.println(file);
-                } catch (ClassNotFoundException e) {  
-                	System.out.println("Asino");
-                }
- 
-			}
-			
-		}
-		
-		//URL directoryURL = Thread.currentThread().getContextClassLoader().getResource(serviziPackage);
-		
-	}
-	*/
 
 }

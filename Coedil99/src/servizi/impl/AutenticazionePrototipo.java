@@ -3,6 +3,8 @@ package servizi.impl;
 import org.hibernate.classic.Session;
 
 import servizi.Autenticazione;
+import servizi.GestoreServizi;
+import servizi.Log;
 import servizi.annotation.injected;
 /**
  * AutenticazionePrototipo
@@ -11,10 +13,19 @@ import servizi.annotation.injected;
  */
 public class AutenticazionePrototipo implements Autenticazione {
 	
-	@injected(serviceImplementation = "SessionePrototipo")
-	private Session session;
+	protected Session session;
+	
+	protected Log log;
+	
+	public AutenticazionePrototipo(){
+		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
+		session = (Session) GestoreServizi.getGestoreServizi().getServizio("session");
+	}
 	
 	public boolean login(String username, String password) {
+		
+		log.i("Username loggato" + username);
+		
 		return true;
 	}
 

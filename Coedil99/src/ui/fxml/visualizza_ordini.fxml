@@ -5,6 +5,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.*?>
@@ -28,11 +29,19 @@
     </TableView>
   </left>
   <top>
-    <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #C8CFD7;&#10;-fx-border-color: #BBC2CC;">
+    <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;&#10;-fx-border-color: #BBC2CC;&#10;-fx-text-fill: #292929;" styleClass=".menu .label">
       <children>
-        <Button cancelButton="false" defaultButton="false" disable="false" mnemonicParsing="false" style="-fx-graphic: url('vaffanculo');" text="Indietro" />
+        <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;" text="">
+          <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../icons/back.png" />
+              </image>
+            </ImageView>
+          </graphic>
+        </Button>
         <Separator orientation="VERTICAL" prefHeight="-1.0" />
-        <MenuBar style="-fx-background-color: #C8CFD7;&#10;-fx-text-fill: #292929;" useSystemMenuBar="false">
+        <MenuBar style="-fx-background-color: #292929;&#10;-fx-text-fill: #292929;" useSystemMenuBar="false">
           <menus>
             <Menu style="-fx-text-fill: #292929;" text="File">
               <items>

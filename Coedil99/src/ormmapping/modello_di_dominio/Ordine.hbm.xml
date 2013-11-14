@@ -11,6 +11,8 @@ License Type: Purchased
 			</generator>
 		</id>
 		<property name="dataCreazione" column="DataCreazione" type="date" not-null="false" lazy="false"/>
+		<many-to-one name="destinazione" column="DestinazioneID" class="modello_di_dominio.Destinazione" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
 		<set name="ORM_Commesse" lazy="true" cascade="all-delete-orphan" inverse="true">
 			<key column="OrdineID" not-null="false"/>
 			<one-to-many class="modello_di_dominio.Commessa"/>

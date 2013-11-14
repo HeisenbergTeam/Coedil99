@@ -29,5 +29,7 @@ public abstract class DAOFactory {
 	public abstract DescrizionePezzoDAO getDescrizionePezzoDAO();
 	public abstract RigaDistintaDAO getRigaDistintaDAO();
 	public abstract LavorazionePezzoDAO getLavorazionePezzoDAO();
+	public abstract DestinazioneDAO getDestinazioneDAO();
+	public abstract SagomaDAO getSagomaDAO();
 }
 

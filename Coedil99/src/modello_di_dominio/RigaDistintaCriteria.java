@@ -20,10 +20,12 @@ import org.orm.criteria.*;
 
 public class RigaDistintaCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final StringExpression indicazione;
 	
 	public RigaDistintaCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		indicazione = new StringExpression("indicazione", this);
 	}
 	
 	public RigaDistintaCriteria(PersistentSession session) {

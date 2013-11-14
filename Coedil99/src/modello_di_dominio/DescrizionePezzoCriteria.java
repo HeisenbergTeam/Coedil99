@@ -22,12 +22,16 @@ public class DescrizionePezzoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
 	public final StringExpression nome;
 	public final StringExpression fornitore;
+	public final FloatExpression diametro;
+	public final FloatExpression peso;
 	
 	public DescrizionePezzoCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
 		nome = new StringExpression("nome", this);
 		fornitore = new StringExpression("fornitore", this);
+		diametro = new FloatExpression("diametro", this);
+		peso = new FloatExpression("peso", this);
 	}
 	
 	public DescrizionePezzoCriteria(PersistentSession session) {

@@ -18,37 +18,35 @@ import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-public class OrdineCriteria extends AbstractORMCriteria {
+public class DestinazioneCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final StringExpression via;
 	
-	public OrdineCriteria(Criteria criteria) {
+	public DestinazioneCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		via = new StringExpression("via", this);
 	}
 	
-	public OrdineCriteria(PersistentSession session) {
-		this(session.createCriteria(Ordine.class));
+	public DestinazioneCriteria(PersistentSession session) {
+		this(session.createCriteria(Destinazione.class));
 	}
 	
-	public OrdineCriteria() throws PersistentException {
+	public DestinazioneCriteria() throws PersistentException {
 		this(modello_di_dominio.Coedil99PersistentManager.instance().getSession());
 	}
 	
-	public DestinazioneCriteria createDestinazioneCriteria() {
-		return new DestinazioneCriteria(createCriteria("destinazione"));
+	public OrdineCriteria createOrdineCriteria() {
+		return new OrdineCriteria(createCriteria("ordine"));
 	}
 	
-	public modello_di_dominio.CommessaCriteria createCommesseCriteria() {
-		return new modello_di_dominio.CommessaCriteria(createCriteria("ORM_Commesse"));
+	public Destinazione uniqueDestinazione() {
+		return (Destinazione) super.uniqueResult();
 	}
 	
-	public Ordine uniqueOrdine() {
-		return (Ordine) super.uniqueResult();
-	}
-	
-	public Ordine[] listOrdine() {
+	public Destinazione[] listDestinazione() {
 		java.util.List list = super.list();
-		return (Ordine[]) list.toArray(new Ordine[list.size()]);
+		return (Destinazione[]) list.toArray(new Destinazione[list.size()]);
 	}
 }
 

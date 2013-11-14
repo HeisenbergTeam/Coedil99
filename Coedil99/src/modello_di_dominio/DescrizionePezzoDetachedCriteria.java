@@ -22,12 +22,16 @@ public class DescrizionePezzoDetachedCriteria extends AbstractORMDetachedCriteri
 	public final IntegerExpression ID;
 	public final StringExpression nome;
 	public final StringExpression fornitore;
+	public final FloatExpression diametro;
+	public final FloatExpression peso;
 	
 	public DescrizionePezzoDetachedCriteria() {
 		super(modello_di_dominio.DescrizionePezzo.class, modello_di_dominio.DescrizionePezzoCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		fornitore = new StringExpression("fornitore", this.getDetachedCriteria());
+		diametro = new FloatExpression("diametro", this.getDetachedCriteria());
+		peso = new FloatExpression("peso", this.getDetachedCriteria());
 	}
 	
 	public DescrizionePezzoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -35,6 +39,8 @@ public class DescrizionePezzoDetachedCriteria extends AbstractORMDetachedCriteri
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		fornitore = new StringExpression("fornitore", this.getDetachedCriteria());
+		diametro = new FloatExpression("diametro", this.getDetachedCriteria());
+		peso = new FloatExpression("peso", this.getDetachedCriteria());
 	}
 	
 	public modello_di_dominio.LavorazionePezzoDetachedCriteria createLavorazionePezzoCriteria() {

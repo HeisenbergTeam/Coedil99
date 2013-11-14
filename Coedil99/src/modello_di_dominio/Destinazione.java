@@ -13,17 +13,23 @@
  */
 package modello_di_dominio;
 
-public class Pezzo {
-	public Pezzo() {
+public class Destinazione {
+	public Destinazione() {
 	}
 	
 	private int ID;
 	
-	private date dataArrivo;
+	private String via;
 	
-	private int quantita;
+	private modello_di_dominio.Ordine ordine;
 	
-	private modello_di_dominio.DescrizionePezzo descrizionePezzo;
+	public void setVia(String value) {
+		this.via = value;
+	}
+	
+	public String getVia() {
+		return via;
+	}
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -37,28 +43,21 @@ public class Pezzo {
 		return getID();
 	}
 	
-	public void setDataArrivo(date value) {
-		this.dataArrivo = value;
+	public void setOrdine(modello_di_dominio.Ordine value) {
+		if (this.ordine != value) {
+			modello_di_dominio.Ordine lordine = this.ordine;
+			this.ordine = value;
+			if (value != null) {
+				ordine.setDestinazione(this);
+			}
+			else {
+				lordine.setDestinazione(null);
+			}
+		}
 	}
 	
-	public date getDataArrivo() {
-		return dataArrivo;
-	}
-	
-	public void setQuantita(int value) {
-		this.quantita = value;
-	}
-	
-	public int getQuantita() {
-		return quantita;
-	}
-	
-	public void setDescrizionePezzo(modello_di_dominio.DescrizionePezzo value) {
-		this.descrizionePezzo = value;
-	}
-	
-	public modello_di_dominio.DescrizionePezzo getDescrizionePezzo() {
-		return descrizionePezzo;
+	public modello_di_dominio.Ordine getOrdine() {
+		return ordine;
 	}
 	
 	public String toString() {

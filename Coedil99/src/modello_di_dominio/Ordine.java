@@ -13,156 +13,87 @@
  */
 package modello_di_dominio;
 
-import java.util.Date;
-import java.util.List;
-
-import org.orm.PersistentException;
-
-import edu.emory.mathcs.backport.java.util.Arrays;
-
 public class Ordine {
 	public Ordine() {
 	}
-
-	private java.util.Set this_getSet(int key) {
+	
+	private java.util.Set this_getSet (int key) {
 		if (key == modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE) {
 			return ORM_commesse;
 		}
-
+		
 		return null;
 	}
-
+	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
 		public java.util.Set getSet(int key) {
 			return this_getSet(key);
 		}
-
+		
 	};
-
+	
 	private int ID;
-
-	private Date dataCreazione;
-
+	
+	private date dataCreazione;
+	
+	private modello_di_dominio.Destinazione destinazione;
+	
 	private java.util.Set ORM_commesse = new java.util.HashSet();
-
-	private int tipo;
-
-	private String fornitore;
-
-	private Date consegnaPrevista;
-
-	private Date consegnaEffettiva;
-
-	private int giorniRitardo;
-
-	private String note;
-
-	public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getFornitore() {
-		return fornitore;
-	}
-
-	public void setFornitore(String fornitore) {
-		this.fornitore = fornitore;
-	}
-
-	public Date getConsegnaPrevista() {
-		return consegnaPrevista;
-	}
-
-	public void setConsegnaPrevista(Date consegnaPrevista) {
-		this.consegnaPrevista = consegnaPrevista;
-	}
-
-	public Date getConsegnaEffettiva() {
-		return consegnaEffettiva;
-	}
-
-	public void setConsegnaEffettiva(Date consegnaEffettiva) {
-		this.consegnaEffettiva = consegnaEffettiva;
-	}
-
-	public int getGiorniRitardo() {
-		return giorniRitardo;
-	}
-
-	public void setGiorniRitardo(int giorniRitardo) {
-		this.giorniRitardo = giorniRitardo;
-	}
-
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	public final modello_di_dominio.CommessaSetCollection commesse = new modello_di_dominio.CommessaSetCollection(
-			this, _ormAdapter,
-			modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE,
-			modello_di_dominio.ORMConstants.KEY_COMMESSA_ORDINE,
-			modello_di_dominio.ORMConstants.KEY_MUL_ONE_TO_MANY);
-
+	
 	private void setID(int value) {
 		this.ID = value;
 	}
-
+	
 	public int getID() {
 		return ID;
 	}
-
+	
 	public int getORMID() {
 		return getID();
 	}
-
-	public void setDataCreazione(Date value) {
+	
+	public void setDataCreazione(date value) {
 		this.dataCreazione = value;
 	}
-
-	public Date getDataCreazione() {
+	
+	public date getDataCreazione() {
 		return dataCreazione;
 	}
-
+	
+	public void setDestinazione(modello_di_dominio.Destinazione value) {
+		if (this.destinazione != value) {
+			modello_di_dominio.Destinazione ldestinazione = this.destinazione;
+			this.destinazione = value;
+			if (value != null) {
+				destinazione.setOrdine(this);
+			}
+			else {
+				ldestinazione.setOrdine(null);
+			}
+		}
+	}
+	
+	public modello_di_dominio.Destinazione getDestinazione() {
+		return destinazione;
+	}
+	
 	private void setORM_Commesse(java.util.Set value) {
 		this.ORM_commesse = value;
 	}
-
+	
 	private java.util.Set getORM_Commesse() {
 		return ORM_commesse;
 	}
-
+	
+	public final modello_di_dominio.CommessaSetCollection commesse = new modello_di_dominio.CommessaSetCollection(this, _ormAdapter, modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE, modello_di_dominio.ORMConstants.KEY_COMMESSA_ORDINE, modello_di_dominio.ORMConstants.KEY_MUL_ONE_TO_MANY);
+	
 	public modello_di_dominio.Commessa creaCommessa() {
-		// TODO: Implement Method
-		this.commesse.add(DAOFactory.getDAOFactory().getCommessaDAO()
-				.createCommessa());
-		return this.commesse.toArray()[commesse.size() - 1];
+		//TODO: Implement Method
+		throw new UnsupportedOperationException();
 	}
-
-	public CommessaSetCollection getCommesse() {
-		return this.commesse;
-	}
-
-	public Commessa getCommessaDaID(int id) {
-		try {
-			return DAOFactory.getDAOFactory().getCommessaDAO()
-					.getCommessaByORMID(id);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
+	
 	public String toString() {
 		return String.valueOf(getID());
 	}
-
+	
 }

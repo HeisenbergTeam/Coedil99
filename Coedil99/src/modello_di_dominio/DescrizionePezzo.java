@@ -38,6 +38,10 @@ public class DescrizionePezzo {
 	
 	private String fornitore;
 	
+	private float diametro;
+	
+	private float peso;
+	
 	private java.util.Set ORM_lavorazionePezzo = new java.util.HashSet();
 	
 	private void setID(int value) {
@@ -66,6 +70,22 @@ public class DescrizionePezzo {
 	
 	public String getFornitore() {
 		return fornitore;
+	}
+	
+	public void setDiametro(float value) {
+		this.diametro = value;
+	}
+	
+	public float getDiametro() {
+		return diametro;
+	}
+	
+	public void setPeso(float value) {
+		this.peso = value;
+	}
+	
+	public float getPeso() {
+		return peso;
 	}
 	
 	private void setORM_LavorazionePezzo(java.util.Set value) {

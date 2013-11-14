@@ -20,11 +20,17 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	
 	final int KEY_DESCRIZIONEPEZZO_LAVORAZIONEPEZZO = -977283980;
 	
+	final int KEY_DESTINAZIONE_ORDINE = -1476124511;
+	
 	final int KEY_DISTINTA_COMMESSA = -1291335729;
 	
 	final int KEY_DISTINTA_RIGHEDISTINTA = -1717201090;
 	
+	final int KEY_LAVORAZIONEPEZZO_SAGOMA = 273925865;
+	
 	final int KEY_ORDINE_COMMESSE = -549420212;
+	
+	final int KEY_ORDINE_DESTINAZIONE = -243794467;
 	
 	final int KEY_PEZZO_DESCRIZIONEPEZZO = 118745520;
 	
@@ -33,5 +39,7 @@ public interface ORMConstants extends org.orm.util.ORMBaseConstants {
 	final int KEY_RIGADISTINTA_LAVORAZIONEPEZZO = 444202454;
 	
 	final int KEY_RIGADISTINTA_PEZZO = 1183962340;
+	
+	final int KEY_SAGOMA_LAVORAZIONEPEZZO = -916473451;
 	
 }

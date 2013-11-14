@@ -19,10 +19,12 @@ License Type: Purchased
 		<!-- mapping files -->
 		<mapping resource="ormmapping/modello_di_dominio/Commessa.hbm.xml" />
 		<mapping resource="ormmapping/modello_di_dominio/DescrizionePezzo.hbm.xml" />
+		<mapping resource="ormmapping/modello_di_dominio/Destinazione.hbm.xml" />
 		<mapping resource="ormmapping/modello_di_dominio/Distinta.hbm.xml" />
 		<mapping resource="ormmapping/modello_di_dominio/LavorazionePezzo.hbm.xml" />
 		<mapping resource="ormmapping/modello_di_dominio/Ordine.hbm.xml" />
 		<mapping resource="ormmapping/modello_di_dominio/Pezzo.hbm.xml" />
 		<mapping resource="ormmapping/modello_di_dominio/RigaDistinta.hbm.xml" />
+		<mapping resource="ormmapping/modello_di_dominio/Sagoma.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

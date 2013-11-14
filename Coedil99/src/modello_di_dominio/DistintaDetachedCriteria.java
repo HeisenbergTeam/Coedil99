@@ -20,15 +20,24 @@ import org.orm.criteria.*;
 
 public class DistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression revisione;
+	public final StringExpression modello;
+	public final StringExpression elementoStrutturale;
 	
 	public DistintaDetachedCriteria() {
 		super(modello_di_dominio.Distinta.class, modello_di_dominio.DistintaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		revisione = new IntegerExpression("revisione", this.getDetachedCriteria());
+		modello = new StringExpression("modello", this.getDetachedCriteria());
+		elementoStrutturale = new StringExpression("elementoStrutturale", this.getDetachedCriteria());
 	}
 	
 	public DistintaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, modello_di_dominio.DistintaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		revisione = new IntegerExpression("revisione", this.getDetachedCriteria());
+		modello = new StringExpression("modello", this.getDetachedCriteria());
+		elementoStrutturale = new StringExpression("elementoStrutturale", this.getDetachedCriteria());
 	}
 	
 	public CommessaDetachedCriteria createCommessaCriteria() {

@@ -12,6 +12,8 @@ License Type: Purchased
 		</id>
 		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="fornitore" column="Fornitore" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="diametro" column="Diametro" type="float" not-null="true" lazy="false"/>
+		<property name="peso" column="Peso" type="float" not-null="true" lazy="false"/>
 		<set name="ORM_LavorazionePezzo" table="DescrizionePezzo_LavorazionePezzo" lazy="true" cascade="save-update,lock">
 			<key column="DescrizionePezzoID" not-null="true"/>
 			<many-to-many column="LavorazionePezzoID" class="modello_di_dominio.LavorazionePezzo">

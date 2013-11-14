@@ -21,17 +21,27 @@ import org.orm.criteria.*;
 public class LavorazionePezzoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
 	public final StringExpression descrizione;
+	public final FloatExpression misuraDiTaglio;
+	public final FloatExpression peso;
 	
 	public LavorazionePezzoDetachedCriteria() {
 		super(modello_di_dominio.LavorazionePezzo.class, modello_di_dominio.LavorazionePezzoCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		descrizione = new StringExpression("descrizione", this.getDetachedCriteria());
+		misuraDiTaglio = new FloatExpression("misuraDiTaglio", this.getDetachedCriteria());
+		peso = new FloatExpression("peso", this.getDetachedCriteria());
 	}
 	
 	public LavorazionePezzoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, modello_di_dominio.LavorazionePezzoCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		descrizione = new StringExpression("descrizione", this.getDetachedCriteria());
+		misuraDiTaglio = new FloatExpression("misuraDiTaglio", this.getDetachedCriteria());
+		peso = new FloatExpression("peso", this.getDetachedCriteria());
+	}
+	
+	public SagomaDetachedCriteria createSagomaCriteria() {
+		return new SagomaDetachedCriteria(createCriteria("sagoma"));
 	}
 	
 	public LavorazionePezzo uniqueLavorazionePezzo(PersistentSession session) {

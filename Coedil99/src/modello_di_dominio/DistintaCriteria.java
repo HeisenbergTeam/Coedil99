@@ -20,10 +20,16 @@ import org.orm.criteria.*;
 
 public class DistintaCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression revisione;
+	public final StringExpression modello;
+	public final StringExpression elementoStrutturale;
 	
 	public DistintaCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		revisione = new IntegerExpression("revisione", this);
+		modello = new StringExpression("modello", this);
+		elementoStrutturale = new StringExpression("elementoStrutturale", this);
 	}
 	
 	public DistintaCriteria(PersistentSession session) {

@@ -11,5 +11,9 @@ License Type: Purchased
 			</generator>
 		</id>
 		<property name="descrizione" column="Descrizione" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="misuraDiTaglio" column="MisuraDiTaglio" type="float" not-null="true" lazy="false"/>
+		<property name="peso" column="Peso" type="float" not-null="true" lazy="false"/>
+		<many-to-one name="sagoma" column="SagomaID" class="modello_di_dominio.Sagoma" cascade="save-update,lock" unique="true" not-null="false" lazy="no-proxy" access="field">
+		</many-to-one>
 	</class>
 </hibernate-mapping>

@@ -52,5 +52,15 @@ public class DAOFactoryImpl extends DAOFactory {
 		return _lavorazionePezzoDAO;
 	}
 	
+	private DestinazioneDAO _destinazioneDAO = new DestinazioneDAOImpl();
+	public DestinazioneDAO getDestinazioneDAO() {
+		return _destinazioneDAO;
+	}
+	
+	private SagomaDAO _sagomaDAO = new SagomaDAOImpl();
+	public SagomaDAO getSagomaDAO() {
+		return _sagomaDAO;
+	}
+	
 }
 

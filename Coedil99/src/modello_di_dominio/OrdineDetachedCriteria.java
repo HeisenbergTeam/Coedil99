@@ -31,6 +31,10 @@ public class OrdineDetachedCriteria extends AbstractORMDetachedCriteria {
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 	}
 	
+	public DestinazioneDetachedCriteria createDestinazioneCriteria() {
+		return new DestinazioneDetachedCriteria(createCriteria("destinazione"));
+	}
+	
 	public modello_di_dominio.CommessaDetachedCriteria createCommesseCriteria() {
 		return new modello_di_dominio.CommessaDetachedCriteria(createCriteria("ORM_Commesse"));
 	}

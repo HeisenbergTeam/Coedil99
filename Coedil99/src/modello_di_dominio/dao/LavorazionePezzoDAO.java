@@ -40,6 +40,8 @@ public interface LavorazionePezzoDAO {
 	public LavorazionePezzo createLavorazionePezzo();
 	public boolean save(modello_di_dominio.LavorazionePezzo lavorazionePezzo) throws PersistentException;
 	public boolean delete(modello_di_dominio.LavorazionePezzo lavorazionePezzo) throws PersistentException;
+	public boolean deleteAndDissociate(modello_di_dominio.LavorazionePezzo lavorazionePezzo) throws PersistentException;
+	public boolean deleteAndDissociate(modello_di_dominio.LavorazionePezzo lavorazionePezzo, org.orm.PersistentSession session) throws PersistentException;
 	public boolean refresh(modello_di_dominio.LavorazionePezzo lavorazionePezzo) throws PersistentException;
 	public boolean evict(modello_di_dominio.LavorazionePezzo lavorazionePezzo) throws PersistentException;
 	public LavorazionePezzo loadLavorazionePezzoByCriteria(LavorazionePezzoCriteria lavorazionePezzoCriteria);

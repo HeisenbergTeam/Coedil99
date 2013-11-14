@@ -20,15 +20,18 @@ import org.orm.criteria.*;
 
 public class RigaDistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
+	public final StringExpression indicazione;
 	
 	public RigaDistintaDetachedCriteria() {
 		super(modello_di_dominio.RigaDistinta.class, modello_di_dominio.RigaDistintaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		indicazione = new StringExpression("indicazione", this.getDetachedCriteria());
 	}
 	
 	public RigaDistintaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, modello_di_dominio.RigaDistintaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		indicazione = new StringExpression("indicazione", this.getDetachedCriteria());
 	}
 	
 	public PezzoDetachedCriteria createPezzoCriteria() {

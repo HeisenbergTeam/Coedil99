@@ -321,6 +321,39 @@ public class LavorazionePezzoDAOImpl implements modello_di_dominio.dao.Lavorazio
 		}
 	}
 	
+	public boolean deleteAndDissociate(modello_di_dominio.LavorazionePezzo lavorazionePezzo)throws PersistentException {
+		try {
+			if(lavorazionePezzo.getSagoma() != null) {
+				lavorazionePezzo.getSagoma().setLavorazionePezzo(null);
+			}
+			
+			return delete(lavorazionePezzo);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
+	public boolean deleteAndDissociate(modello_di_dominio.LavorazionePezzo lavorazionePezzo, org.orm.PersistentSession session)throws PersistentException {
+		try {
+			if(lavorazionePezzo.getSagoma() != null) {
+				lavorazionePezzo.getSagoma().setLavorazionePezzo(null);
+			}
+			
+			try {
+				session.delete(lavorazionePezzo);
+				return true;
+			} catch (Exception e) {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			throw new PersistentException(e);
+		}
+	}
+	
 	public boolean refresh(modello_di_dominio.LavorazionePezzo lavorazionePezzo) throws PersistentException {
 		try {
 			modello_di_dominio.Coedil99PersistentManager.instance().getSession().refresh(lavorazionePezzo);

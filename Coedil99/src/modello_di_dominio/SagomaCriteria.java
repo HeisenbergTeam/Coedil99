@@ -18,37 +18,35 @@ import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-public class OrdineCriteria extends AbstractORMCriteria {
+public class SagomaCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final StringExpression img;
 	
-	public OrdineCriteria(Criteria criteria) {
+	public SagomaCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		img = new StringExpression("img", this);
 	}
 	
-	public OrdineCriteria(PersistentSession session) {
-		this(session.createCriteria(Ordine.class));
+	public SagomaCriteria(PersistentSession session) {
+		this(session.createCriteria(Sagoma.class));
 	}
 	
-	public OrdineCriteria() throws PersistentException {
+	public SagomaCriteria() throws PersistentException {
 		this(modello_di_dominio.Coedil99PersistentManager.instance().getSession());
 	}
 	
-	public DestinazioneCriteria createDestinazioneCriteria() {
-		return new DestinazioneCriteria(createCriteria("destinazione"));
+	public LavorazionePezzoCriteria createLavorazionePezzoCriteria() {
+		return new LavorazionePezzoCriteria(createCriteria("lavorazionePezzo"));
 	}
 	
-	public modello_di_dominio.CommessaCriteria createCommesseCriteria() {
-		return new modello_di_dominio.CommessaCriteria(createCriteria("ORM_Commesse"));
+	public Sagoma uniqueSagoma() {
+		return (Sagoma) super.uniqueResult();
 	}
 	
-	public Ordine uniqueOrdine() {
-		return (Ordine) super.uniqueResult();
-	}
-	
-	public Ordine[] listOrdine() {
+	public Sagoma[] listSagoma() {
 		java.util.List list = super.list();
-		return (Ordine[]) list.toArray(new Ordine[list.size()]);
+		return (Sagoma[]) list.toArray(new Sagoma[list.size()]);
 	}
 }
 

@@ -21,11 +21,15 @@ import org.orm.criteria.*;
 public class LavorazionePezzoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
 	public final StringExpression descrizione;
+	public final FloatExpression misuraDiTaglio;
+	public final FloatExpression peso;
 	
 	public LavorazionePezzoCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
 		descrizione = new StringExpression("descrizione", this);
+		misuraDiTaglio = new FloatExpression("misuraDiTaglio", this);
+		peso = new FloatExpression("peso", this);
 	}
 	
 	public LavorazionePezzoCriteria(PersistentSession session) {
@@ -34,6 +38,10 @@ public class LavorazionePezzoCriteria extends AbstractORMCriteria {
 	
 	public LavorazionePezzoCriteria() throws PersistentException {
 		this(modello_di_dominio.Coedil99PersistentManager.instance().getSession());
+	}
+	
+	public SagomaCriteria createSagomaCriteria() {
+		return new SagomaCriteria(createCriteria("sagoma"));
 	}
 	
 	public LavorazionePezzo uniqueLavorazionePezzo() {

@@ -323,6 +323,10 @@ public class OrdineDAOImpl implements modello_di_dominio.dao.OrdineDAO {
 	
 	public boolean deleteAndDissociate(modello_di_dominio.Ordine ordine)throws PersistentException {
 		try {
+			if(ordine.getDestinazione() != null) {
+				ordine.getDestinazione().setOrdine(null);
+			}
+			
 			modello_di_dominio.Commessa[] lCommesses = ordine.commesse.toArray();
 			for(int i = 0; i < lCommesses.length; i++) {
 				lCommesses[i].setOrdine(null);
@@ -337,6 +341,10 @@ public class OrdineDAOImpl implements modello_di_dominio.dao.OrdineDAO {
 	
 	public boolean deleteAndDissociate(modello_di_dominio.Ordine ordine, org.orm.PersistentSession session)throws PersistentException {
 		try {
+			if(ordine.getDestinazione() != null) {
+				ordine.getDestinazione().setOrdine(null);
+			}
+			
 			modello_di_dominio.Commessa[] lCommesses = ordine.commesse.toArray();
 			for(int i = 0; i < lCommesses.length; i++) {
 				lCommesses[i].setOrdine(null);

@@ -72,6 +72,8 @@ public class LavorazionePezzoSetCollection extends org.orm.util.ORMSet {
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>ID</li>
 	 * <li>descrizione</li>
+	 * <li>misuraDiTaglio</li>
+	 * <li>peso</li>
 	 * </ul>
 	 * @return The persistent objects sorted array
 	 */
@@ -84,6 +86,8 @@ public class LavorazionePezzoSetCollection extends org.orm.util.ORMSet {
 	 * @param propertyName Name of the property for sorting:<ul>
 	 * <li>ID</li>
 	 * <li>descrizione</li>
+	 * <li>misuraDiTaglio</li>
+	 * <li>peso</li>
 	 * </ul>
 	 * @param ascending true for ascending, false for descending
 	 * @return The persistent objects sorted array

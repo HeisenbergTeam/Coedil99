@@ -13,13 +13,15 @@
  */
 package modello_di_dominio;
 
+import java.util.Date;
+
 public class Pezzo {
 	public Pezzo() {
 	}
 	
 	private int ID;
 	
-	private date dataArrivo;
+	private Date dataArrivo;
 	
 	private int quantita;
 	
@@ -37,11 +39,11 @@ public class Pezzo {
 		return getID();
 	}
 	
-	public void setDataArrivo(date value) {
+	public void setDataArrivo(Date value) {
 		this.dataArrivo = value;
 	}
 	
-	public date getDataArrivo() {
+	public Date getDataArrivo() {
 		return dataArrivo;
 	}
 	

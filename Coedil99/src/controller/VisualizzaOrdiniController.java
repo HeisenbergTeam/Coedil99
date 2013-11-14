@@ -66,7 +66,7 @@ public class VisualizzaOrdiniController implements Initializable{
 				Ordine ao;
 				try {
 					ao = DAOFactory.getDAOFactory().getOrdineDAO().getOrdineByORMID(1);
-					VisualizzaOrdiniController.this.loadCommessaTable(Arrays.asList(ao.getCommesse().toArray()));
+					VisualizzaOrdiniController.this.loadCommessaTable(Arrays.asList(ao.commesse.toArray()));
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					System.out.println(e.getMessage());

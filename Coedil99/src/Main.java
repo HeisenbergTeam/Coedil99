@@ -20,7 +20,7 @@ public class Main {
 
 		ordine.setDataCreazione(date);
 		ordine.creaCommessa();
-		Commessa commessa = ordine.getCommesse().toArray()[0];
+		Commessa commessa = ordine.commesse.toArray()[0];
 		commessa.setDataCreazione(date);
 		commessa.creaDistinta();
 		Distinta distinta = commessa.getDistinta();

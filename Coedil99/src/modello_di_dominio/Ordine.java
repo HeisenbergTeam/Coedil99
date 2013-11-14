@@ -13,6 +13,8 @@
  */
 package modello_di_dominio;
 
+import java.util.Date;
+
 public class Ordine {
 	public Ordine() {
 	}
@@ -34,7 +36,7 @@ public class Ordine {
 	
 	private int ID;
 	
-	private date dataCreazione;
+	private Date dataCreazione;
 	
 	private modello_di_dominio.Destinazione destinazione;
 	
@@ -52,11 +54,11 @@ public class Ordine {
 		return getID();
 	}
 	
-	public void setDataCreazione(date value) {
+	public void setDataCreazione(Date value) {
 		this.dataCreazione = value;
 	}
 	
-	public date getDataCreazione() {
+	public Date getDataCreazione() {
 		return dataCreazione;
 	}
 	
@@ -89,7 +91,10 @@ public class Ordine {
 	
 	public modello_di_dominio.Commessa creaCommessa() {
 		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		
+		Commessa c = DAOFactory.getDAOFactory().getCommessaDAO().createCommessa();
+		 this.commesse.add(c);
+		 return c;
 	}
 	
 	public String toString() {

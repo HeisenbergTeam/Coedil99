@@ -13,6 +13,8 @@
  */
 package modello_di_dominio;
 
+import java.util.Date;
+
 public class Distinta {
 	public Distinta() {
 	}
@@ -34,7 +36,7 @@ public class Distinta {
 	
 	private int ID;
 	
-	private date dataInizio;
+	private Date dataInizio;
 	
 	private modello_di_dominio.Commessa commessa;
 	
@@ -58,11 +60,11 @@ public class Distinta {
 		return getID();
 	}
 	
-	public void setDataInizio(date value) {
+	public void setDataInizio(Date value) {
 		this.dataInizio = value;
 	}
 	
-	public date getDataInizio() {
+	public Date getDataInizio() {
 		return dataInizio;
 	}
 	

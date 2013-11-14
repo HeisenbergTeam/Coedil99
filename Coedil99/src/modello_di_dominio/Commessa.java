@@ -13,6 +13,8 @@
  */
 package modello_di_dominio;
 
+import java.util.Date;
+
 public class Commessa {
 	public Commessa() {
 	}
@@ -36,11 +38,11 @@ public class Commessa {
 	
 	private int ID;
 	
-	private Int priorita;
+	private int priorita;
 	
 	private modello_di_dominio.Ordine ordine;
 	
-	private date dataCreazione;
+	private Date dataCreazione;
 	
 	private modello_di_dominio.Distinta distinta;
 	
@@ -56,19 +58,19 @@ public class Commessa {
 		return getID();
 	}
 	
-	public void setPriorita(Int value) {
+	public void setPriorita(int value) {
 		this.priorita = value;
 	}
 	
-	public Int getPriorita() {
+	public int getPriorita() {
 		return priorita;
 	}
 	
-	public void setDataCreazione(date value) {
+	public void setDataCreazione(Date value) {
 		this.dataCreazione = value;
 	}
 	
-	public date getDataCreazione() {
+	public Date getDataCreazione() {
 		return dataCreazione;
 	}
 	
@@ -114,8 +116,9 @@ public class Commessa {
 	}
 	
 	public modello_di_dominio.Distinta creaDistinta() {
-		//TODO: Implement Method
-		throw new UnsupportedOperationException();
+		Distinta d = DAOFactory.getDAOFactory().getDistintaDAO().createDistinta();
+		this.distinta = d;
+		return d;
 	}
 	
 	public String toString() {

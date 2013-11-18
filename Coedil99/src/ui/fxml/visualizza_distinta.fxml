@@ -25,22 +25,22 @@
                   <children>
                     <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Modulo" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <content>
-                        <Label alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" wrapText="false" />
+                        <Label fx:id="lbl_modulo" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" wrapText="false" />
                       </content>
                     </TitledPane>
                     <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Revisione" GridPane.columnIndex="1" GridPane.rowIndex="0">
                       <content>
-                        <Label maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_revisione" />
+                        <Label fx:id="lbl_revisione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_revisione" />
                       </content>
                     </TitledPane>
                     <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Data" GridPane.columnIndex="2" GridPane.rowIndex="0">
                       <content>
-                        <Label maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
+                        <Label fx:id="lbl_data" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
                       </content>
                     </TitledPane>
                     <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Cliente/Impresa" GridPane.columnIndex="3" GridPane.rowIndex="0">
                       <content>
-                        <Label maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
+                        <Label fx:id="lbl_cliente" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
                       </content>
                     </TitledPane>
                   </children>
@@ -58,17 +58,17 @@
                   <children>
                     <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Destinazione materiale" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <content>
-                        <Label maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
+                        <Label fx:id="lbl_destinazione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
                       </content>
                     </TitledPane>
                     <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Elemento strutturale" GridPane.columnIndex="1" GridPane.rowIndex="0">
                       <content>
-                        <Label maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
+                        <Label fx:id="lbl_elemstrutturale" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
                       </content>
                     </TitledPane>
                     <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Cartellino" GridPane.columnIndex="2" GridPane.rowIndex="0">
                       <content>
-                        <Label maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
+                        <Label fx:id="lbl_cartellino" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
                       </content>
                     </TitledPane>
                   </children>

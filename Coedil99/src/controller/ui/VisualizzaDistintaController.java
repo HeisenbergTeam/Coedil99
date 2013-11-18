@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javax.persistence.metamodel.ListAttribute;
 
 import modello_di_dominio.Commessa;
+import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.RigaDistinta;
 import servizi.GestoreOrdine;
@@ -18,11 +19,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 public class VisualizzaDistintaController implements Initializable {
     @FXML private ListView<String> listPezziDistinta;
+    @FXML private Label lbl_modulo;
+    @FXML private Label lbl_revisione;
+    @FXML private Label lbl_data;
+    @FXML private Label lbl_cliente;
+    @FXML private Label lbl_destinazione;
+    @FXML private Label lbl_elemstrutturale;
+    @FXML private Label lbl_cartellino;
 
     final ObservableList<String> listaPezzi = FXCollections.observableArrayList();
     
@@ -43,13 +52,26 @@ public class VisualizzaDistintaController implements Initializable {
 			System.out.println(commesse[i].getID()+" "+commesse[i].getDistinta());
 		}
 		
-		RigaDistinta[] righeDistinta = commesse[0].getDistinta().righeDistinta.toArray();
+		Distinta distinta = commesse[0].getDistinta();
+		
+		RigaDistinta[] righeDistinta = distinta.righeDistinta.toArray();
 		
 		for (int i=0; righeDistinta.length>i; i++) {
 			listaPezzi.add(righeDistinta[i].getID()+"");
 		}
 		
 		listPezziDistinta.setItems(listaPezzi);
+		
+	    lbl_modulo.setText("PROSSIMA ITERAZIONE");
+	    lbl_revisione.setText("REV: "+distinta.getRevisione());
+	    lbl_data.setText(distinta.getDataInizio().toGMTString());
+	    lbl_cliente.setText("PROSSIMA ITERAZIONE");
+	    lbl_destinazione.setText(ordine.getDestinazione().getVia());
+	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
+	    lbl_cartellino.setText("PROSSIMA ITERAZIONE");
+		
+		
+		
 		
 		
 	}

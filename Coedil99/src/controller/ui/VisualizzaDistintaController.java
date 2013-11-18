@@ -1,4 +1,4 @@
-package controller;
+package controller.ui;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javax.persistence.metamodel.ListAttribute;
 
+import modello_di_dominio.Commessa;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.RigaDistinta;
 import servizi.GestoreOrdine;
@@ -33,8 +34,16 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
+		System.out.println(ordine.getID()+"");
+		
 		//TODO: modifica a getCommessaID(id)
-		RigaDistinta[] righeDistinta = ordine.commesse.toArray()[0].getDistinta().righeDistinta.toArray();
+		Commessa[] commesse = ordine.commesse.toArray();
+		
+		for (int i=0; i < commesse.length; i++) {
+			System.out.println(commesse[i].getID()+" "+commesse[i].getDistinta());
+		}
+		
+		RigaDistinta[] righeDistinta = commesse[0].getDistinta().righeDistinta.toArray();
 		
 		for (int i=0; righeDistinta.length>i; i++) {
 			listaPezzi.add(righeDistinta[i].getID()+"");

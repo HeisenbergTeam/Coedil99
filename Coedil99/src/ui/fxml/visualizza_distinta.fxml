@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="ciao" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.VisualizzaDistintaController">
+<BorderPane fx:id="ciao" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaDistintaController">
   <center>
     <GridPane gridLinesVisible="false" maxHeight="10000.0" maxWidth="10000.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
       <children>

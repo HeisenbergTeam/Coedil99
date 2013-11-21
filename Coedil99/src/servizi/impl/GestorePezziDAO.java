@@ -27,16 +27,14 @@ public class GestorePezziDAO implements GestorePezzi {
 		try {
 			pezzoDAO.delete(pezzo);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void cancellaPezzoDaID(int id) {
+	public void cancellaPezzoByID(int idPezzo) {
 		try {
-			pezzoDAO.delete(pezzoDAO.getPezzoByORMID(id));
+			cancellaPezzo(pezzoDAO.getPezzoByORMID(idPezzo));
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -45,17 +43,15 @@ public class GestorePezziDAO implements GestorePezzi {
 		try {
 			return Arrays.asList(pezzoDAO.listPezzoByQuery(null, null));
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	public boolean verificaDisponibilita(int id, int quantita) {
+	public boolean verificaDisponibilita(int idPezzo, int quantita) {
 		try {
-			return pezzoDAO.getPezzoByORMID(id).getQuantita() >= quantita;
+			return pezzoDAO.getPezzoByORMID(idPezzo).getQuantita() >= quantita;
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

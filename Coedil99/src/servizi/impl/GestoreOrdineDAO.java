@@ -44,7 +44,6 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		try {
 			return Arrays.asList(ordineDAO.listOrdineByQuery(null, null));
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -55,7 +54,6 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		try {
 			return ordineDAO.getOrdineByORMID(IdOrdine);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -67,7 +65,6 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		try {
 			ordineDAO.deleteAndDissociate(ordine);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -77,7 +74,6 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		try {
 			cancellaOrdine(ordineDAO.getOrdineByORMID(IdOrdine));
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -97,7 +93,6 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		try {
 			setDestinazioneOrdine(ordineDAO.getOrdineByORMID(IdOrdine),destinazione);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -107,7 +102,6 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		try {
 			setDataConsegnaOrdine(ordineDAO.getOrdineByORMID(IdOrdine),dataConsegna);
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -119,7 +113,6 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 					.asList(ordineDAO.getOrdineByORMID(ordine.getID()).commesse
 							.toArray());
 		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

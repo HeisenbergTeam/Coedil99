@@ -10,10 +10,10 @@ public interface GestorePezzi extends Servizio{
 	
 	public void cancellaPezzo(Pezzo pezzo);
 	
-	public void cancellaPezzoDaID(int id);
+	public void cancellaPezzoByID(int idPezzo);
 	
 	public List<Pezzo> getPezzi();
 	
-	public boolean verificaDisponibilita(int id, int quantita);
+	public boolean verificaDisponibilita(int idPezzo, int quantita);
 
 }

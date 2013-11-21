@@ -79,40 +79,59 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 	}
 
 	@Override
-	public void setDestinazioneOrdine(Ordine ordine, Destinazione destinazione) {
-		ordine.setDestinazione(destinazione);
-	}
-
-	@Override
-	public void setDataConsegnaOrdine(Ordine ordine, Date dataConsegna) {
-		ordine.setDataCreazione(dataConsegna);
-	}
-
-	@Override
-	public void setDestinazioneOrdineByID(int IdOrdine, Destinazione destinazione) {
-		try {
-			setDestinazioneOrdine(ordineDAO.getOrdineByORMID(IdOrdine),destinazione);
-		} catch (PersistentException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void setDataConsegnaOrdineByID(int IdOrdine, Date dataConsegna) {
-		try {
-			setDataConsegnaOrdine(ordineDAO.getOrdineByORMID(IdOrdine),dataConsegna);
-		} catch (PersistentException e) {
-			e.printStackTrace();
-		}
-	}
-
-	@Override
 	public List<Commessa> getCommesseDaOrdine(Ordine ordine) {
 		try {
 			return Arrays
 					.asList(ordineDAO.getOrdineByORMID(ordine.getID()).commesse
 							.toArray());
 		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Commessa> getCommesseDaOrdineByID(int IdOrdine) {
+		try {
+			getCommesseDaOrdine(ordineDAO.getOrdineByORMID(IdOrdine));
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Commessa creaCommessa(Ordine ordine) {
+		return ordine.creaCommessa();
+	}
+
+	@Override
+	public Commessa creaCommessaByID(int IdOrdine) {
+		try {
+			return ordineDAO.getOrdineByORMID(IdOrdine).creaCommessa();
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public Commessa creaCommessa(Ordine ordine, int priorita, Date dataCommessa) {
+		Commessa commessa = ordine.creaCommessa();
+		commessa.setPriorita(priorita);
+		commessa.setDataCreazione(dataCommessa);
+		return commessa;
+	}
+
+	@Override
+	public Commessa creaCommessaByID(int IdOrdine, int priorita,
+			Date dataCommessa) {
+		try {
+			creaCommessa(ordineDAO.getOrdineByORMID(IdOrdine),priorita,dataCommessa);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

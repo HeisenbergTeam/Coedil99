@@ -21,11 +21,6 @@ public class GestoreCommessaDAO implements GestoreCommessa {
 	}
 
 	@Override
-	public Commessa creaCommessa() {
-		return commessaDAO.createCommessa();
-	}
-
-	@Override
 	public void cancellaCommessa(Commessa commessa) {
 		try {
 			commessaDAO.delete(commessa);
@@ -43,18 +38,6 @@ public class GestoreCommessaDAO implements GestoreCommessa {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Commessa> getCommesse() {
-		try {
-			return Arrays.asList(commessaDAO.listCommessaByQuery(null, null));
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override

@@ -22,15 +22,17 @@ public interface GestoreOrdine extends Servizio {
 	public void cancellaOrdineByID(int IdOrdine);
 	
 	public void cancellaOrdine(Ordine ordine);
-
-	public void setDestinazioneOrdineByID(int IdOrdine, Destinazione destinazione);
 	
-	public void setDestinazioneOrdine(Ordine ordine, Destinazione destinazione);
-	
-	public void setDataConsegnaOrdineByID(int IdOrdine, Date dataConsegna);
-	
-	public void setDataConsegnaOrdine(Ordine ordine, Date dataConsegna);
+	public List<Commessa> getCommesseDaOrdineByID(int IdOrdine);
 
 	public List<Commessa> getCommesseDaOrdine(Ordine ordine);
+	
+	public Commessa creaCommessaByID(int IdOrdine);
+	
+	public Commessa creaCommessa(Ordine ordine);
+	
+	public Commessa creaCommessaByID(int IdOrdine, int priorita, Date dataCommessa);
+	
+	public Commessa creaCommessa(Ordine ordine, int priorita, Date dataCommessa);
 
 }

@@ -41,7 +41,7 @@ public class Main {
 		distinta.setCommessa(commessa);
 		distinta.setModello("H17DCH");
 		distinta.setRevisione(2);
-		distinta.setElementoStrutturale("Cardine porta");
+		distinta.setElementoStrutturale("Porta");
 		
 		DescrizionePezzo descrizionePezzo = new DescrizionePezzo();
 		descrizionePezzo.setNome("Tubo alluminio");

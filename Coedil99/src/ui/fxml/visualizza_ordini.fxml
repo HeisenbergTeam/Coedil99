@@ -31,7 +31,7 @@
   <top>
     <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;&#10;-fx-border-color: #BBC2CC;&#10;-fx-text-fill: #292929;" styleClass=".menu .label">
       <children>
-        <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;" text="">
+        <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;" text="">
           <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

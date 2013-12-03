@@ -27,6 +27,7 @@ import org.orm.PersistentException;
 import servizi.GestoreServizi;
 import servizi.impl.GestoreOrdineDAO;
 import servizi.impl.GestoreServiziPrototipo;
+import ui.MainApplication;
 import edu.emory.mathcs.backport.java.util.Arrays;
 
 public class VisualizzaOrdiniController implements Initializable{
@@ -168,5 +169,8 @@ public class VisualizzaOrdiniController implements Initializable{
 		
 	}
 	
+	@FXML protected void goBack(){
+		MainApplication.getInstance().goBack();
+	}
 	
 }

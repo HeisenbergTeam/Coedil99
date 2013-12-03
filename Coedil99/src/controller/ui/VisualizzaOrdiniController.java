@@ -50,8 +50,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		/**************************************************
 		 *            TABELLA ORDINI
 		 *************************************************/
-		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
-		ordini = new ArrayList<Ordine>(gestoreOrdineDAO.getOrdini());
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>(gestoreOrdineDAO.getOrdini());
 		
 		this.loadOrdiniTable(ordini);
 		

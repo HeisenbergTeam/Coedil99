@@ -10,18 +10,49 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.*?>
 
-<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaOrdiniController">
+<BorderPane prefHeight="444.0" prefWidth="604.0" styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaOrdiniController">
   <center>
-    <TableView fx:id="tableCommesse">
-      <columns>
-        <TableColumn text="Id" fx:id="tableCommesseId" />
-        <TableColumn text="Stato" fx:id="tableCommessePriorita" />
-        <TableColumn text="Data Creazione" fx:id="tableCommesseDataCreazione" />
-      </columns>
-    </TableView>
+    <SplitPane dividerPositions="0.5" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <FlowPane layoutX="25.0" layoutY="37.0" minWidth="204.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="204.0">
+              <children>
+                <Label prefWidth="200.0" text="Riepilogo Ordine">
+                  <font>
+                    <Font size="20.0" />
+                  </font>
+                  <FlowPane.margin>
+                    <Insets left="5.0" top="10.0" />
+                  </FlowPane.margin>
+                </Label>
+                <Label prefWidth="200.0" text="ID">
+                  <FlowPane.margin>
+                    <Insets left="5.0" top="5.0" fx:id="x1" />
+                  </FlowPane.margin>
+                </Label>
+                <Label prefWidth="200.0" text="DataCreazione" FlowPane.margin="$x1" />
+                <Label prefWidth="200.0" text="Destinazione" FlowPane.margin="$x1" />
+              </children>
+            </FlowPane>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <children>
+            <TableView fx:id="tableCommesse" layoutX="0.0" layoutY="-9.0" prefHeight="-1.0" prefWidth="354.0">
+              <columns>
+                <TableColumn text="Id" fx:id="tableCommesseId" />
+                <TableColumn text="Stato" fx:id="tableCommessePriorita" />
+                <TableColumn text="Data Creazione" fx:id="tableCommesseDataCreazione" />
+              </columns>
+            </TableView>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
   </center>
   <left>
-    <TableView fx:id="tableOrdini">
+    <TableView fx:id="tableOrdini" maxHeight="-1.0">
       <columns>
         <TableColumn text="Id" fx:id="tableOrdiniId" />
         <TableColumn text="Data" fx:id="tableOrdiniData" />

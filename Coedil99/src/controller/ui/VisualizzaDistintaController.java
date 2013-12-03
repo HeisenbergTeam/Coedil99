@@ -17,10 +17,12 @@ import servizi.impl.GestoreServiziPrototipo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class VisualizzaDistintaController implements Initializable {
@@ -32,8 +34,20 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Label lbl_destinazione;
     @FXML private Label lbl_elemstrutturale;
     @FXML private Label lbl_cartellino;
+    @FXML private Label lbl_n_pezzi;
+    @FXML private Label lbl_diametro;
+    @FXML private Label lbl_peso;
+    @FXML private Label lbl_misura_taglio;
+    @FXML private Label lbl_codice_pezzo;
+    @FXML private Label lbl_fornitore;
 
     final ObservableList<String> listaPezzi = FXCollections.observableArrayList();
+    
+    public void printSelectedItem(ListView listView) {
+        ObservableList<Integer> list = listView.getSelectionModel().getSelectedIndices();
+        System.out.println("The selectedIndices property contains: " + list.size() + " element(s):");
+        for(int i=0; i<list.size(); i++) { System.out.println(i + ")" + list.get(i)); }
+    }
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -54,10 +68,10 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		Distinta distinta = commesse[0].getDistinta();
 		
-		RigaDistinta[] righeDistinta = distinta.righeDistinta.toArray();
+		final RigaDistinta[] righeDistinta = distinta.righeDistinta.toArray();
 		
 		for (int i=0; righeDistinta.length>i; i++) {
-			listaPezzi.add(righeDistinta[i].getID()+"");
+			listaPezzi.add(righeDistinta[i].getIndicazione());
 		}
 		
 		listPezziDistinta.setItems(listaPezzi);
@@ -70,6 +84,23 @@ public class VisualizzaDistintaController implements Initializable {
 	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
 	    lbl_cartellino.setText("PROSSIMA ITERAZIONE");
 		
+	    
+	    
+	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+	        @Override
+	        public void handle(MouseEvent event) {
+	            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
+	            lbl_codice_pezzo.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getNome());
+	            lbl_fornitore.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getFornitore());
+	            lbl_n_pezzi.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getQuantita()+"");
+	            lbl_diametro.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getDiametro()+"");
+	            lbl_misura_taglio.setText("PROSSIMA ITERAZIONE");
+	            lbl_peso.setText("PROSSIMA ITERAZIONE");
+	            
+	            printSelectedItem(listPezziDistinta);
+	        }
+	    });
 		
 		
 		

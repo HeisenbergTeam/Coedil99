@@ -27,6 +27,7 @@ import modello_di_dominio.Ordine;
 import org.orm.PersistentException;
 
 import servizi.GestoreServizi;
+import servizi.Log;
 import servizi.impl.GestoreOrdineDAO;
 import servizi.impl.GestoreServiziPrototipo;
 import ui.MainApplication;
@@ -40,12 +41,15 @@ public class VisualizzaOrdiniController implements Initializable{
 	@FXML private TableColumn<Ordine,String> tableOrdiniData;
 	
 	@FXML private TabPane commesseTabPane;
+	
+	protected Log log;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdineDAO gestoreOrdineDAO = (GestoreOrdineDAO) gsp.getServizio("GestoreOrdineDAO");
+		log = (Log) gsp.getServizio("LogStdout");
 		
 		/**************************************************
 		 *            TABELLA ORDINI
@@ -65,7 +69,7 @@ public class VisualizzaOrdiniController implements Initializable{
 				Ordine ao;
 				try {
 					ao = DAOFactory.getDAOFactory().getOrdineDAO().getOrdineByORMID(1);
-					VisualizzaOrdiniController.this.loadCommessaTable(Arrays.asList(ao.commesse.toArray()));
+					//VisualizzaOrdiniController.this.loadCommessaTable(Arrays.asList(ao.commesse.toArray()));
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					System.out.println(e.getMessage());
@@ -136,41 +140,28 @@ public class VisualizzaOrdiniController implements Initializable{
 		tableOrdini.setItems(list);
 		
 	}
-	
-	/**
-	 * loadCommessaTable
-	 * @param commesse
-	 */
-	protected void loadCommessaTable(List<Commessa> commesse){
-		/*
-		tableCommesseId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Commessa,String>, ObservableValue<String>>() {
-
-			@Override
-			public ObservableValue<String> call(
-					CellDataFeatures<Commessa, String> arg0) {
-				// TODO Auto-generated method stub
-				SimpleStringProperty s = new SimpleStringProperty(((Integer) arg0.getValue().getID()).toString());
-				return s;
-			}
-		});
-		
-		tableCommessePriorita.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Commessa,String>, ObservableValue<String>>() {
-x
-					@Override
-					public ObservableValue<String> call(
-							CellDataFeatures<Commessa, String> arg0) {
-						// TODO Auto-generated method stub
-						return null;
-					}
-		});;
-		
-		tableCommesse.setItems(FXCollections.observableList(commesse));
-		*/
-		
-	}
-	
+/**
+ *  goBack Action
+ */
 	@FXML protected void goBack(){
 		MainApplication.getInstance().goBack();
 	}
 	
+	@FXML protected void onNewCommessa(){
+		log.i("nuova commessa");
+		
+		
+	}
+	
+	@FXML protected void onEditCommessa(){
+		log.i("modifica commessa");
+		
+		
+	}
+	
+	@FXML protected void onDeleteCommessa(){
+		log.i("delete commessa");
+		
+		
+	}
 }

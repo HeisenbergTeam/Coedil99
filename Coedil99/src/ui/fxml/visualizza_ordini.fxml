@@ -10,59 +10,105 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="444.0" prefWidth="604.0" styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaOrdiniController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.VisualizzaOrdiniController">
   <center>
-    <SplitPane dividerPositions="0.5" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
-      <items>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <VBox prefHeight="-1.0" prefWidth="-1.0" style="-fx-border-width: 0 0 0 2px;&#10;-fx-border-color: lightgray;&#10;-fx-background-color: #1d1d1d;;">
+      <children>
+        <TabPane maxWidth="1.7976931348623157E308" minHeight="500.0" prefHeight="-1.0" prefWidth="-1.0" style="" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab text="Commessa Id">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="598.0" style="-fx-background-color: #1d1d1d;;">
+                  <children>
+                    <GridPane layoutX="0.0" layoutY="0.0" prefWidth="450.0">
+                      <children>
+                        <Label text="Stato" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label text="Data Creazione" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                      </padding>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Commessa Id">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #1d1d1d;">
+                  <children>
+                    <GridPane layoutX="10.0" layoutY="10.0" prefWidth="450.0">
+                      <children>
+                        <Label text="Stato" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label text="Data Creazione" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                      </children>
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                    </GridPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+        <HBox alignment="BOTTOM_RIGHT" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #1d1d1d;">
           <children>
-            <FlowPane layoutX="25.0" layoutY="37.0" minWidth="204.0" orientation="VERTICAL" prefHeight="128.0" prefWidth="204.0">
-              <children>
-                <Label prefWidth="200.0" text="Riepilogo Ordine">
-                  <font>
-                    <Font size="20.0" />
-                  </font>
-                  <FlowPane.margin>
-                    <Insets left="5.0" top="10.0" />
-                  </FlowPane.margin>
-                </Label>
-                <Label prefWidth="200.0" text="ID">
-                  <FlowPane.margin>
-                    <Insets left="5.0" top="5.0" fx:id="x1" />
-                  </FlowPane.margin>
-                </Label>
-                <Label prefWidth="200.0" text="DataCreazione" FlowPane.margin="$x1" />
-                <Label prefWidth="200.0" text="Destinazione" FlowPane.margin="$x1" />
-              </children>
-            </FlowPane>
+            <Button mnemonicParsing="false" text="New">
+              <HBox.margin>
+                <Insets right="10.0" fx:id="x1" />
+              </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" text="Edit" HBox.margin="$x1" />
+            <Button mnemonicParsing="false" text="Delete" />
           </children>
-        </AnchorPane>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-          <children>
-            <TableView fx:id="tableCommesse" layoutX="0.0" layoutY="-9.0" prefHeight="-1.0" prefWidth="354.0">
-              <columns>
-                <TableColumn text="Id" fx:id="tableCommesseId" />
-                <TableColumn text="Stato" fx:id="tableCommessePriorita" />
-                <TableColumn text="Data Creazione" fx:id="tableCommesseDataCreazione" />
-              </columns>
-            </TableView>
-          </children>
-        </AnchorPane>
-      </items>
-    </SplitPane>
+          <padding>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+          </padding>
+        </HBox>
+      </children>
+    </VBox>
   </center>
   <left>
-    <TableView fx:id="tableOrdini" maxHeight="-1.0">
-      <columns>
-        <TableColumn text="Id" fx:id="tableOrdiniId" />
-        <TableColumn text="Data" fx:id="tableOrdiniData" />
-      </columns>
-    </TableView>
-  </left>
-  <top>
-    <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;&#10;-fx-border-color: #BBC2CC;&#10;-fx-text-fill: #292929;" styleClass=".menu .label">
+    <VBox prefHeight="-1.0" prefWidth="300.0" style="-fx-background-color: #1d1d1d;;">
       <children>
-        <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;" text="">
+        <Label style="-fx-background-color: transparent;" text="Ordini" wrapText="false">
+          <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+          </VBox.margin>
+        </Label>
+        <Separator prefWidth="200.0" />
+        <TableView id="tableOrdini">
+          <columns>
+            <TableColumn text="Id" />
+            <TableColumn text="Data" />
+          </columns>
+        </TableView>
+      </children>
+    </VBox>
+  </left>
+  <stylesheets>
+    <URL value="@../css/visualizza_ordini.css" />
+  </stylesheets>
+  <top>
+    <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-border-color: #BBC2CC;&#10;-fx-background-color: derive(#1d1d1d,20%);&#10;    -fx-selection-bar: derive(-fx-background,-7%);" styleClass=".menu .label">
+      <children>
+        <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: derive(#1d1d1d,20%);&#10;    -fx-selection-bar: derive(-fx-background,-7%);&#10; -fx-border-width: 0;" text="">
           <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>
@@ -72,7 +118,7 @@
           </graphic>
         </Button>
         <Separator orientation="VERTICAL" prefHeight="-1.0" />
-        <MenuBar style="-fx-background-color: #292929;&#10;-fx-text-fill: #292929;" useSystemMenuBar="false">
+        <MenuBar style="" useSystemMenuBar="false">
           <menus>
             <Menu style="-fx-text-fill: #292929;" text="File">
               <items>

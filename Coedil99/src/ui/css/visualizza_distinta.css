@@ -97,12 +97,11 @@
 }
 
 .grid-pane {
-	
-	 -fx-background-color: transparent;
+	 -fx-background-color: black;
 }
 
-.grid {
-	-fx-background-color: transparent;
+.grid-pane {
+	 -fx-background-color: black;
 }
 
 .menu-bar {
@@ -135,7 +134,6 @@
 .titled-pane .title {
   -fx-background-color: white,grey,linear-gradient(to bottom, derive(#1d1d1d, +50%), #1d1d1d);
   -fx-text-fill: white;
-  -fx-border-color: white;
 }
 
 .titled-pane {

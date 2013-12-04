@@ -15,7 +15,7 @@
 
 <BorderPane fx:id="ciao" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaDistintaController">
   <center>
-    <GridPane gridLinesVisible="false" maxHeight="10000.0" maxWidth="10000.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
+    <GridPane gridLinesVisible="false" maxHeight="-1.0" maxWidth="-1.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
       <children>
         <TitledPane animated="false" collapsible="false" expanded="true" prefHeight="110.0" prefWidth="640.0" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <content>

@@ -12,13 +12,17 @@ public interface GestoreDistinta extends Servizio {
 
 	public Distinta creaDistinta(Date dataInizio, Commessa commessa,
 			int revisione, String modello, String elementoStrutturale);
-	
+
+	public void modificaDistintaByID(int id, Date dataInizio,
+			Commessa commessa, int revisione, String modello,
+			String elementoStrutturale);
+
 	public List<Distinta> getDistinte();
-	
+
 	public Distinta getDistintaByID(int id);
-	
+
 	public void cancellaDistinta(Distinta distinta);
-	
+
 	public void cancellaDistintaByID(int id);
 
 }

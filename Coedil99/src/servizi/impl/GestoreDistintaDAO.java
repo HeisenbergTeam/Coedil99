@@ -35,6 +35,23 @@ public class GestoreDistintaDAO implements GestoreDistinta {
 		distinta.setElementoStrutturale(elementoStrutturale);
 		return distinta;
 	}
+	
+	public void modificaDistintaByID(int id, Date dataInizio,
+			Commessa commessa, int revisione, String modello,
+			String elementoStrutturale) {
+		try {
+			Distinta distinta = distintaDAO.getDistintaByORMID(id);
+			distinta.setDataInizio(dataInizio);
+			distinta.setCommessa(commessa);
+			distinta.setRevisione(revisione);
+			distinta.setModello(modello);
+			distinta.setElementoStrutturale(elementoStrutturale);
+			distintaDAO.save(distinta);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Distinta> getDistinte() {

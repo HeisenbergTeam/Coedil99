@@ -27,6 +27,7 @@ import org.orm.PersistentException;
 import servizi.GestoreServizi;
 import servizi.impl.GestoreOrdineDAO;
 import servizi.impl.GestoreServiziPrototipo;
+import ui.MainApplication;
 import edu.emory.mathcs.backport.java.util.Arrays;
 
 public class VisualizzaOrdiniController implements Initializable{
@@ -50,8 +51,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		/**************************************************
 		 *            TABELLA ORDINI
 		 *************************************************/
-		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
-		ordini = new ArrayList<Ordine>(gestoreOrdineDAO.getOrdini());
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>(gestoreOrdineDAO.getOrdini());
 		
 		this.loadOrdiniTable(ordini);
 		
@@ -169,5 +169,8 @@ public class VisualizzaOrdiniController implements Initializable{
 		
 	}
 	
+	@FXML protected void goBack(){
+		MainApplication.getInstance().goBack();
+	}
 	
 }

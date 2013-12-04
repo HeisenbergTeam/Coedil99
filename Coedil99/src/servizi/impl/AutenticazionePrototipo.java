@@ -12,16 +12,24 @@ import servizi.annotation.injected;
  *
  */
 public class AutenticazionePrototipo implements Autenticazione {
-	
+	/**
+	 * 
+	 */
 	protected Session session;
-	
+	/**
+	 * 
+	 */
 	protected Log log;
-	
+	/**
+	 * Costruttore
+	 */
 	public AutenticazionePrototipo(){
 		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
-		session = (Session) GestoreServizi.getGestoreServizi().getServizio("session");
+		//session = (Session) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
 	}
-	
+	/**
+	 * 
+	 */
 	public boolean login(String username, String password) {
 		
 		log.i("Username loggato" + username);

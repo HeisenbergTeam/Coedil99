@@ -13,22 +13,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="ciao" minHeight="480.0" minWidth="640.0" prefHeight="480.0" prefWidth="640.0" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaDistintaController">
+<BorderPane fx:id="ciao" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaDistintaController">
   <center>
     <GridPane gridLinesVisible="false" maxHeight="10000.0" maxWidth="10000.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
       <children>
-        <TitledPane animated="false" collapsible="false" expanded="true" prefHeight="110.0" prefWidth="640.0" text="Informazioni sulla distinta" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <TitledPane animated="false" collapsible="false" expanded="true" prefHeight="110.0" prefWidth="640.0" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <content>
-            <GridPane prefHeight="266.0" prefWidth="638.0">
+            <GridPane prefHeight="266.0" prefWidth="638.0" style="">
               <children>
-                <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <GridPane style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
                   <children>
-                    <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Modulo" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Modulo" textAlignment="LEFT" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_modulo" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" wrapText="false" />
                       </content>
                     </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Revisione" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="42.0" minHeight="42.0" prefHeight="42.0" text="Revisione" textFill="#d8d8d8" GridPane.columnIndex="1" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_revisione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_revisione" />
                       </content>
@@ -94,7 +94,7 @@
         </TitledPane>
         <TitledPane animated="false" collapsible="false" text="Righe distinta" GridPane.columnIndex="0" GridPane.rowIndex="1">
           <content>
-            <SplitPane dividerPositions="0.5" focusTraversable="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="-1.0">
+            <SplitPane dividerPositions="0.5006289308176101" focusTraversable="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="-1.0">
               <items>
                 <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="188.0" text="Lista pezzi">
                   <content>

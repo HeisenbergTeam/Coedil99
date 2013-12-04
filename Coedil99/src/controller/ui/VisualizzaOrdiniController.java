@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPaneBuilder;
@@ -21,6 +22,8 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.DAOFactory;
@@ -178,12 +181,32 @@ public class VisualizzaOrdiniController implements Initializable{
 	protected void loadTablePane(Ordine ordine){
 		Commessa[] commesse = ordine.commesse.toArray();
 		
+		commesseTabPane.getTabs().clear();
+		
 		for(Commessa c : commesse){
 			
-			Tab t = new Tab();
-			t.setText(String.valueOf(c.getID()));
-			commesseTabPane.getTabs().add(t);
+			
+			commesseTabPane.getTabs().add(createCommessaTab(c));
 			
 		}
+	}
+	
+	private Tab createCommessaTab(Commessa commessa){
+		Tab tab = new Tab();
+		GridPane gridPane = new GridPane();
+		
+		ColumnConstraints column1 = new ColumnConstraints();
+		column1.setPercentWidth(50);
+		ColumnConstraints column2 = new ColumnConstraints();
+		column2.setPercentWidth(50);
+		gridPane.getColumnConstraints().addAll(column1,column2);
+		
+		gridPane.add(new Label("Stato"),0,0);
+		gridPane.add(new Label("Data creazione"),0,1);
+		
+		tab.setContent(gridPane);
+		
+		return tab;
+		
 	}
 }

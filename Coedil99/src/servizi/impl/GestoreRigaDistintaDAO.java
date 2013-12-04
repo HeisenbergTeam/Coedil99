@@ -32,6 +32,8 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 		riga.setDistinta(distinta);
 		riga.setLavorazionePezzo(lavorazione);
 		riga.setIndicazione(indicazione);
+		
+		distinta.righeDistinta.add(riga);
 		return riga;
 	}
 
@@ -58,15 +60,6 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	public List<RigaDistinta> getRigheDistintaDaDistinta(Distinta distinta) {
-		List<RigaDistinta> righe = this.getRigheDistinta();
-		for(int i=0; i<righe.size(); i++) {
-			if(righe.get(i).getDistinta().getID()!=distinta.getID())
-				righe.remove(i);
-		}
-		return righe;
 	}
 
 	public RigaDistinta getRigaDistintaByID(int id) {
@@ -96,5 +89,6 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 			e.printStackTrace();
 		}
 	}
+
 
 }

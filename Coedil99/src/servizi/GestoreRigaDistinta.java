@@ -19,8 +19,6 @@ public interface GestoreRigaDistinta extends Servizio {
 	
 	public List<RigaDistinta> getRigheDistinta();
 
-	public List<RigaDistinta> getRigheDistintaDaDistinta(Distinta distinta);
-
 	public RigaDistinta getRigaDistintaByID(int id);
 
 	public void cancellaRigaDistinta(RigaDistinta riga);

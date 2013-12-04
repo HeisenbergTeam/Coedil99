@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPaneBuilder;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -150,6 +151,7 @@ public class VisualizzaOrdiniController implements Initializable{
 	@FXML protected void onNewCommessa(){
 		log.i("nuova commessa");
 		
+		TabPaneBuilder<TabPaneBuilder<B>>.create()
 		
 	}
 	

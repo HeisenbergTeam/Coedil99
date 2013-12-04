@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPaneBuilder;
 import javafx.scene.control.TableColumn;
@@ -70,7 +71,7 @@ public class VisualizzaOrdiniController implements Initializable{
 				Ordine ao;
 				try {
 					ao = DAOFactory.getDAOFactory().getOrdineDAO().getOrdineByORMID(1);
-					//VisualizzaOrdiniController.this.loadCommessaTable(Arrays.asList(ao.commesse.toArray()));
+					VisualizzaOrdiniController.this.loadTablePane(ao);
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					System.out.println(e.getMessage());
@@ -147,23 +148,42 @@ public class VisualizzaOrdiniController implements Initializable{
 	@FXML protected void goBack(){
 		MainApplication.getInstance().goBack();
 	}
-	
+/**
+ * 
+ */
 	@FXML protected void onNewCommessa(){
 		log.i("nuova commessa");
 		
-		TabPaneBuilder<TabPaneBuilder<B>>.create()
+		//TODO: Creare una nuova distinta
+		MainApplication.getInstance().loadPage("visualizza_distinta");
 		
 	}
-	
+/**
+ * onEditCommessa action
+ */
 	@FXML protected void onEditCommessa(){
 		log.i("modifica commessa");
 		
 		
 	}
-	
+/**
+ * onDeleteCommessa action
+ */
 	@FXML protected void onDeleteCommessa(){
 		log.i("delete commessa");
 		
 		
+	}
+	
+	protected void loadTablePane(Ordine ordine){
+		Commessa[] commesse = ordine.commesse.toArray();
+		
+		for(Commessa c : commesse){
+			
+			Tab t = new Tab();
+			t.setText(String.valueOf(c.getID()));
+			commesseTabPane.getTabs().add(t);
+			
+		}
 	}
 }

@@ -24,37 +24,59 @@ public class MainApplication extends Application {
  * @param args
  */
 	private LinkedList<Scene> history = new LinkedList<Scene>();
-	
+/**
+ * mainStage
+ */
 	private Stage mainStage;
-	
+/**
+ * instance
+ */
 	private static MainApplication instance;
-	
+/**
+ *  startpage
+ *  
+ *  This page is 
+ */
+	private final static String startpage = "login";
+/**
+ * getInstance	
+ * @return
+ */
 	public static MainApplication getInstance(){
 		return instance;
 	}
-	
+/**
+ * main	
+ * @param args
+ */
 	public static void main(String args[]){
 		MainApplication.launch(args);
 	}
-	
+/**
+ * 
+ */
 	@Override
 	public void start(Stage stage) {
 		
 		this.mainStage = stage;
 		MainApplication.instance = this;
 		
-		this.loadPage("login");
-		
+		this.loadPage(startpage);
 		
 	}
-	
+/**
+ * goBack
+ */
 	public void goBack() {
 		
 		this.mainStage.setScene(this.history.pop());
 		this.mainStage.show();
 		
 	}
-	
+/**
+ * loadPage
+ * @param name page to be loaded
+ */
 	public void loadPage(String name){
 		
 		Parent root;
@@ -76,12 +98,8 @@ public class MainApplication extends Application {
 		} finally {
 			
 		}
-		
-		
 
 	}
-	
-	
 	
 
 }

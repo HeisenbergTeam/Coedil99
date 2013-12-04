@@ -9,9 +9,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -37,10 +39,7 @@ public class VisualizzaOrdiniController implements Initializable{
 	@FXML private TableColumn<Ordine,String> tableOrdiniId;
 	@FXML private TableColumn<Ordine,String> tableOrdiniData;
 	
-	@FXML private TableView<Commessa> tableCommesse;
-	@FXML private TableColumn<Commessa,String> tableCommesseId;
-	@FXML private TableColumn<Commessa,String> tableCommessePriorita;
-	
+	@FXML private TabPane commesseTabPane;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -78,7 +77,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		});
 		
 		//Listener commesse
-		
+		/*
 		tableCommesse.setOnMouseClicked((new EventHandler<MouseEvent>() {
 
 			@Override
@@ -91,7 +90,7 @@ public class VisualizzaOrdiniController implements Initializable{
 				
 			}
 		}));
-		
+		*/
 	}
 	
 	protected void initOrdinitTable(){
@@ -105,7 +104,7 @@ public class VisualizzaOrdiniController implements Initializable{
 	protected void loadOrdiniTable(List<Ordine> ordini){
 		
 		// TODO Auto-generated method stub
-		 tableOrdiniId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine,String>, ObservableValue<String>>() {
+		tableOrdiniId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine,String>, ObservableValue<String>>() {
 			
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Ordine, String> arg0) {
@@ -116,7 +115,7 @@ public class VisualizzaOrdiniController implements Initializable{
 			}
 		});
 		 
-		 tableOrdiniData.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine,String>, ObservableValue<String>>() {
+		tableOrdiniData.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine,String>, ObservableValue<String>>() {
 
 			@Override
 			public ObservableValue<String> call(
@@ -133,7 +132,8 @@ public class VisualizzaOrdiniController implements Initializable{
 			}
 		});
 		
-		tableOrdini.setItems(FXCollections.observableList(ordini));
+		ObservableList<Ordine> list = FXCollections.observableList(ordini);
+		tableOrdini.setItems(list);
 		
 	}
 	
@@ -142,7 +142,7 @@ public class VisualizzaOrdiniController implements Initializable{
 	 * @param commesse
 	 */
 	protected void loadCommessaTable(List<Commessa> commesse){
-		
+		/*
 		tableCommesseId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Commessa,String>, ObservableValue<String>>() {
 
 			@Override
@@ -155,7 +155,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		});
 		
 		tableCommessePriorita.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Commessa,String>, ObservableValue<String>>() {
-
+x
 					@Override
 					public ObservableValue<String> call(
 							CellDataFeatures<Commessa, String> arg0) {
@@ -165,7 +165,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		});;
 		
 		tableCommesse.setItems(FXCollections.observableList(commesse));
-		
+		*/
 		
 	}
 	

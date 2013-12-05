@@ -4,56 +4,70 @@
 <?import java.util.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane layoutX="0.0" layoutY="0.0" prefHeight="400.0"
-	prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
-	fx:controller="controller.ui.PannelloControlloController" fx:id="container">
-	<center>
-		<VBox alignment="TOP_LEFT" prefHeight="200.0" prefWidth="100.0">
-			<children>
-				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-					<children>
-						<Button mnemonicParsing="false" text="+ Nuovo Ordine" onAction="#creaOrdine"/>
-					</children>
-				</HBox>
-				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-					<children>
-						<Button mnemonicParsing="false" text="Gestisci Ordini" onAction="#visualizzaOrdini"/>
-					</children>
-				</HBox>
-			</children>
-			<BorderPane.margin>
-				<Insets top="20.0" fx:id="x1" />
-			</BorderPane.margin>
-		</VBox>
-	</center>
-	<right>
-		<FlowPane columnHalignment="LEFT" maxWidth="-1.0" minHeight="-1.0"
-			minWidth="-Infinity" orientation="VERTICAL" prefHeight="332.0"
-			prefWidth="180.0" prefWrapLength="400.0" rowValignment="CENTER"
-			BorderPane.margin="$x1">
-			<children>
-				<Label text="Ultime attività">
-					<font>
-						<Font size="16.0" />
-					</font>
-				</Label>
-				<Separator prefWidth="109.0" />
-			</children>
-		</FlowPane>
-	</right>
-	<top>
-		<Label text="Pannello di controllo">
-			<font>
-				<Font name="System Bold" size="20.0" />
-			</font>
-			<BorderPane.margin>
-				<Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-			</BorderPane.margin>
-		</Label>
-	</top>
+<BorderPane fx:id="container" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.PannelloControlloController">
+  <left>
+    <VBox alignment="CENTER" prefHeight="354.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <children>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <Button mnemonicParsing="false" onAction="#creaOrdine" text="Nuovo Ordine">
+              <graphic>
+                <ImageView id="nuovo.png" fitHeight="100.0" fitWidth="236.0" preserveRatio="true" smooth="true">
+                  <image>
+                    <Image url="@../icons/nuovo.png" preserveRatio="true" smooth="true" />
+                  </image>
+                </ImageView>
+              </graphic>
+            </Button>
+          </children>
+          <padding>
+            <Insets bottom="10.0" top="10.0" fx:id="x2" />
+          </padding>
+        </HBox>
+        <HBox alignment="CENTER" padding="$x2" prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <Button mnemonicParsing="false" onAction="#visualizzaOrdini" prefWidth="224.0" text="Gestisci Ordini">
+              <graphic>
+                <ImageView id="gestisci.png" fitHeight="89.0" fitWidth="89.0" mouseTransparent="true" preserveRatio="true">
+                  <image>
+                    <Image url="@../icons/gestisci.png" preserveRatio="true" smooth="true" />
+                  </image>
+                </ImageView>
+              </graphic>
+            </Button>
+          </children>
+        </HBox>
+      </children>
+      <BorderPane.margin>
+        <Insets top="20.0" fx:id="x1" />
+      </BorderPane.margin>
+    </VBox>
+  </left>
+  <right>
+    <FlowPane columnHalignment="LEFT" maxWidth="-1.0" minHeight="-1.0" minWidth="-Infinity" orientation="VERTICAL" prefHeight="354.0" prefWidth="300.0" prefWrapLength="400.0" rowValignment="CENTER" BorderPane.margin="$x1">
+      <children>
+        <Label text="Ultime attività">
+          <font>
+            <Font size="16.0" />
+          </font>
+        </Label>
+        <Separator prefWidth="109.0" />
+      </children>
+    </FlowPane>
+  </right>
+  <top>
+    <Label text="Pannello di controllo">
+      <font>
+        <Font name="System Bold" size="20.0" />
+      </font>
+      <BorderPane.margin>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+      </BorderPane.margin>
+    </Label>
+  </top>
 </BorderPane>
-

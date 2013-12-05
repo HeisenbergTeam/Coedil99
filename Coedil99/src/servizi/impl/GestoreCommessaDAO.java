@@ -11,11 +11,19 @@ import org.orm.PersistentException;
 
 import servizi.GestoreCommessa;
 import edu.emory.mathcs.backport.java.util.Arrays;
-
+/**
+ * GestoreCommessaDAO
+ * @author mw
+ *
+ */
 public class GestoreCommessaDAO implements GestoreCommessa {
-
+/**
+ * CommessaDAO
+ */
 	private CommessaDAO commessaDAO;
-
+/**
+ * Costruttore
+ */
 	public GestoreCommessaDAO() {
 		commessaDAO = DAOFactory.getDAOFactory().getCommessaDAO();
 	}

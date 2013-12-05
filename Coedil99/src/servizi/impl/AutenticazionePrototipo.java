@@ -1,11 +1,10 @@
 package servizi.impl;
 
-import org.hibernate.classic.Session;
-
 import servizi.Autenticazione;
 import servizi.GestoreServizi;
 import servizi.Log;
 import servizi.annotation.injected;
+import servizi.Sessione;
 /**
  * AutenticazionePrototipo
  * @author mw
@@ -15,7 +14,7 @@ public class AutenticazionePrototipo implements Autenticazione {
 	/**
 	 * 
 	 */
-	protected Session session;
+	protected Sessione session;
 	/**
 	 * 
 	 */
@@ -25,7 +24,7 @@ public class AutenticazionePrototipo implements Autenticazione {
 	 */
 	public AutenticazionePrototipo(){
 		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
-		//session = (Session) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
+		session = (Sessione) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
 	}
 	/**
 	 * 

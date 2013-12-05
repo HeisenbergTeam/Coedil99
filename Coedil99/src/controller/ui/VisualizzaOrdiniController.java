@@ -10,18 +10,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TabPaneBuilder;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
@@ -36,7 +33,6 @@ import servizi.Log;
 import servizi.impl.GestoreOrdineDAO;
 import servizi.impl.GestoreServiziPrototipo;
 import ui.MainApplication;
-import edu.emory.mathcs.backport.java.util.Arrays;
 
 public class VisualizzaOrdiniController implements Initializable{
 	
@@ -106,10 +102,10 @@ public class VisualizzaOrdiniController implements Initializable{
 		
 	}
 	
-	/**
-	 * 
-	 * @param ordini
-	 */
+/**
+ * loadOrdiniTable
+ * @param ordini
+ */
 	protected void loadOrdiniTable(List<Ordine> ordini){
 		
 		// TODO Auto-generated method stub
@@ -152,7 +148,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		MainApplication.getInstance().goBack();
 	}
 /**
- * 
+ *  onNewCommessaAction
  */
 	@FXML protected void onNewCommessa(){
 		log.i("nuova commessa");
@@ -177,32 +173,45 @@ public class VisualizzaOrdiniController implements Initializable{
 		
 		
 	}
-	
+/**
+ * loadTablePane
+ * @param ordine
+ */
 	protected void loadTablePane(Ordine ordine){
 		Commessa[] commesse = ordine.commesse.toArray();
 		
 		commesseTabPane.getTabs().clear();
 		
 		for(Commessa c : commesse){
-			
-			
+		
 			commesseTabPane.getTabs().add(createCommessaTab(c));
 			
 		}
 	}
-	
+/**
+ * createCommessaTab
+ * @param commessa
+ * @return
+ */
 	private Tab createCommessaTab(Commessa commessa){
 		Tab tab = new Tab();
+		tab.setText(String.valueOf(commessa.getID()));
+		
 		GridPane gridPane = new GridPane();
 		
 		ColumnConstraints column1 = new ColumnConstraints();
 		column1.setPercentWidth(50);
 		ColumnConstraints column2 = new ColumnConstraints();
 		column2.setPercentWidth(50);
+		
 		gridPane.getColumnConstraints().addAll(column1,column2);
 		
 		gridPane.add(new Label("Stato"),0,0);
 		gridPane.add(new Label("Data creazione"),0,1);
+		
+		gridPane.add(new Label(commessa.getDataCreazione().toString()), 1, 1);
+		
+		gridPane.setPadding(new Insets(10,10,10,10));
 		
 		tab.setContent(gridPane);
 		

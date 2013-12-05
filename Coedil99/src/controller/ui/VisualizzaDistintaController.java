@@ -90,15 +90,17 @@ public class VisualizzaDistintaController implements Initializable {
 
 	        @Override
 	        public void handle(MouseEvent event) {
-	            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
-	            lbl_codice_pezzo.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getNome());
-	            lbl_fornitore.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getFornitore());
-	            lbl_n_pezzi.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getQuantita()+"");
-	            lbl_diametro.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getDiametro()+"");
-	            lbl_misura_taglio.setText("PROSSIMA ITERAZIONE");
-	            lbl_peso.setText("PROSSIMA ITERAZIONE");
-	            
-	            printSelectedItem(listPezziDistinta);
+	        	if (listPezziDistinta.getSelectionModel().getSelectedItem()!=null) {
+		            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
+		            lbl_codice_pezzo.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getNome());
+		            lbl_fornitore.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getFornitore());
+		            lbl_n_pezzi.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getQuantita()+"");
+		            lbl_diametro.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getDiametro()+"");
+		            lbl_misura_taglio.setText("PROSSIMA ITERAZIONE");
+		            lbl_peso.setText("PROSSIMA ITERAZIONE");
+		            
+		            printSelectedItem(listPezziDistinta);
+	        	}
 	        }
 	    });
 		

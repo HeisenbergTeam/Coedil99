@@ -17,28 +17,28 @@
   <center>
     <GridPane gridLinesVisible="false" maxHeight="-1.0" maxWidth="-1.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
       <children>
-        <TitledPane animated="false" collapsible="false" expanded="true" prefHeight="110.0" prefWidth="640.0" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="-1.0" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <content>
-            <GridPane prefHeight="266.0" prefWidth="638.0" style="">
+            <GridPane prefHeight="130.0" prefWidth="796.0" style="">
               <children>
                 <GridPane style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
                   <children>
-                    <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Modulo" textAlignment="LEFT" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="-1.0" text="Modulo" textAlignment="LEFT" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <content>
-                        <Label fx:id="lbl_modulo" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" wrapText="false" />
+                        <Label fx:id="lbl_modulo" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" translateX="0.0" translateY="0.0" wrapText="false" />
                       </content>
                     </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Revisione" textFill="#d8d8d8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Revisione" textFill="#d8d8d8" GridPane.columnIndex="1" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_revisione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_revisione" />
                       </content>
                     </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Data" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Data" GridPane.columnIndex="2" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_data" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
                       </content>
                     </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Cliente/Impresa" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Cliente/Impresa" GridPane.columnIndex="3" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_cliente" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
                       </content>
@@ -51,22 +51,22 @@
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
                   </columnConstraints>
                   <rowConstraints>
-                    <RowConstraints maxHeight="46.0" minHeight="46.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
                   </rowConstraints>
                 </GridPane>
                 <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
                   <children>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Destinazione materiale" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Destinazione materiale" GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_destinazione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
                       </content>
                     </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Elemento strutturale" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Elemento strutturale" GridPane.columnIndex="1" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_elemstrutturale" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
                       </content>
                     </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Cartellino" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Cartellino" GridPane.columnIndex="2" GridPane.rowIndex="0">
                       <content>
                         <Label fx:id="lbl_cartellino" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
                       </content>
@@ -78,7 +78,7 @@
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   </columnConstraints>
                   <rowConstraints>
-                    <RowConstraints maxHeight="46.0" minHeight="46.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
                   </rowConstraints>
                 </GridPane>
               </children>
@@ -86,8 +86,8 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="46.0" minHeight="46.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
           </content>
@@ -129,12 +129,12 @@
                   <children>
                     <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
                       <children>
-                        <TitledPane animated="false" collapsible="false" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Numero pezzi" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Numero pezzi" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <content>
                             <Label fx:id="lbl_n_pezzi" text="Nessuna riga selezionata" />
                           </content>
                         </TitledPane>
-                        <TitledPane animated="false" collapsible="false" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Diametro" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Diametro" GridPane.columnIndex="1" GridPane.rowIndex="0">
                           <content>
                             <Label fx:id="lbl_diametro" text="Nessuna riga selezionata" />
                           </content>
@@ -150,12 +150,12 @@
                     </GridPane>
                     <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">
                       <children>
-                        <TitledPane animated="false" collapsible="false" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Misura taglio" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Misura taglio" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <content>
                             <Label fx:id="lbl_misura_taglio" text="Nessuna riga selezionata" />
                           </content>
                         </TitledPane>
-                        <TitledPane animated="false" collapsible="false" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Peso (Kg)" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Peso (Kg)" GridPane.columnIndex="1" GridPane.rowIndex="0">
                           <content>
                             <Label fx:id="lbl_peso" text="Nessuna riga selezionata" />
                           </content>
@@ -172,12 +172,12 @@
                     <TitledPane animated="false" collapsible="false" content="$null" maxHeight="10000.0" minHeight="250.0" prefHeight="10000.0" text="Sagoma" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
                     <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
                       <children>
-                        <TitledPane animated="false" collapsible="false" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Codice pezzo" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Codice pezzo" GridPane.columnIndex="0" GridPane.rowIndex="0">
                           <content>
                             <Label fx:id="lbl_codice_pezzo" text="Nessuna riga selezionata" />
                           </content>
                         </TitledPane>
-                        <TitledPane animated="false" collapsible="false" maxHeight="46.0" minHeight="46.0" prefHeight="46.0" text="Fornitore" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Fornitore" GridPane.columnIndex="1" GridPane.rowIndex="0">
                           <content>
                             <Label fx:id="lbl_fornitore" text="Nessuna riga selezionata" />
                           </content>
@@ -196,9 +196,9 @@
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   </columnConstraints>
                   <rowConstraints>
-                    <RowConstraints maxHeight="46.0" minHeight="46.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="46.0" minHeight="46.0" prefHeight="46.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="46.0" minHeight="46.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   </rowConstraints>
                 </GridPane>
@@ -211,8 +211,8 @@
         <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="10000.0" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="109.0" minHeight="109.0" prefHeight="109.0" valignment="TOP" vgrow="ALWAYS" />
-        <RowConstraints maxHeight="10000.0" minHeight="10.0" prefHeight="200.0" valignment="TOP" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" valignment="TOP" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="10000.0" minHeight="10.0" prefHeight="420.0" valignment="TOP" vgrow="ALWAYS" />
       </rowConstraints>
     </GridPane>
   </center>

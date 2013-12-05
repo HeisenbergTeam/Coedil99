@@ -56,8 +56,13 @@
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: -fx-focus-color;
+      -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
 }
+
+.table-row-cell:filled:hover {
+	-fx-background-color: #0093ff;
+}
+
 
 .split-pane:horizontal > * > .split-pane-divider {
   -fx-border-color: transparent #1d1d1d transparent #1d1d1d;

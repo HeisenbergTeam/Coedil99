@@ -44,6 +44,7 @@ public class VisualizzaOrdiniController implements Initializable{
 	@FXML private TabPane commesseTabPane;
 	
 	protected Log log;
+	protected Ordine ordineCorrente = null;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -55,7 +56,7 @@ public class VisualizzaOrdiniController implements Initializable{
 		/**************************************************
 		 *            TABELLA ORDINI
 		 *************************************************/
-		ArrayList<Ordine> ordini = new ArrayList<Ordine>(gestoreOrdineDAO.getOrdini());
+		final ArrayList<Ordine> ordini = new ArrayList<Ordine>(gestoreOrdineDAO.getOrdini());
 		
 		this.loadOrdiniTable(ordini);
 		
@@ -67,15 +68,10 @@ public class VisualizzaOrdiniController implements Initializable{
 			public void changed(ObservableValue<? extends Object> arg0,
 					Object arg1, Object arg2) {
 				
-				Ordine ao;
-				try {
-					ao = DAOFactory.getDAOFactory().getOrdineDAO().getOrdineByORMID(1);
-					VisualizzaOrdiniController.this.loadTablePane(ao);
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
-					System.out.println(e.getMessage());
-					e.printStackTrace();
-				}
+				
+				Ordine ao = ordini.get((Integer) arg2);
+				
+				VisualizzaOrdiniController.this.loadTablePane(ao);
 				
 				
 			}

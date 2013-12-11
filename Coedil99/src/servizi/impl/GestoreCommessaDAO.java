@@ -1,7 +1,5 @@
 package servizi.impl;
 
-import java.util.List;
-
 import modello_di_dominio.Commessa;
 import modello_di_dominio.DAOFactory;
 import modello_di_dominio.Distinta;
@@ -10,20 +8,22 @@ import modello_di_dominio.dao.CommessaDAO;
 import org.orm.PersistentException;
 
 import servizi.GestoreCommessa;
-import edu.emory.mathcs.backport.java.util.Arrays;
+
 /**
  * GestoreCommessaDAO
+ * 
  * @author mw
- *
+ * 
  */
 public class GestoreCommessaDAO implements GestoreCommessa {
-/**
- * CommessaDAO
- */
+	/**
+	 * CommessaDAO
+	 */
 	private CommessaDAO commessaDAO;
-/**
- * Costruttore
- */
+
+	/**
+	 * Costruttore
+	 */
 	public GestoreCommessaDAO() {
 		commessaDAO = DAOFactory.getDAOFactory().getCommessaDAO();
 	}
@@ -46,6 +46,10 @@ public class GestoreCommessaDAO implements GestoreCommessa {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public Distinta creaDistinta(Commessa commessa) {
+		return commessa.creaDistinta();
 	}
 
 	@Override

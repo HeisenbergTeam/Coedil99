@@ -1,27 +1,36 @@
 package controller.ui;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.RigaDistinta;
 import servizi.GestoreOrdine;
+import servizi.GestorePezzi;
 import servizi.GestoreServizi;
 import servizi.Log;
 import servizi.impl.GestoreServiziPrototipo;
 
 public class VisualizzaDistintaController implements Initializable {
-    @FXML private ListView<String> listPezziDistinta;
+	
+    @FXML private ListView listPezziDistinta;
     @FXML private Label lbl_modulo;
     @FXML private Label lbl_revisione;
     @FXML private Label lbl_data;
@@ -35,6 +44,9 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Label lbl_misura_taglio;
     @FXML private Label lbl_codice_pezzo;
     @FXML private Label lbl_fornitore;
+    
+    @FXML private TitledPane righe_distinta;
+    @FXML private TitledPane informazioni_distinta;
 
     final ObservableList<String> listaPezzi = FXCollections.observableArrayList();
     
@@ -47,9 +59,11 @@ public class VisualizzaDistintaController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		Log log = (Log) gsp.getServizio("LogStdout");
+		final Log log = (Log) gsp.getServizio("LogStdout");
+		GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
 		
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
@@ -59,7 +73,7 @@ public class VisualizzaDistintaController implements Initializable {
 		Commessa[] commesse = ordine.commesse.toArray();
 		
 		for (int i=0; i < commesse.length; i++) {
-			System.out.println(commesse[i].getID()+" "+commesse[i].getDistinta());
+			log.i(commesse[i].getID()+" "+commesse[i].getDistinta());
 		}
 		
 		Distinta distinta = commesse[0].getDistinta();
@@ -79,17 +93,44 @@ public class VisualizzaDistintaController implements Initializable {
 	    lbl_destinazione.setText(ordine.getDestinazione().getVia());
 	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
 	    lbl_cartellino.setText("PROSSIMA ITERAZIONE");
+	    
+	    //lbl_modulo
+	    
+	    ArrayList<Label> labels = new ArrayList<Label>();
+	    labels.add(lbl_modulo);
+	    labels.add(lbl_revisione);
+	    labels.add(lbl_data);
+	    labels.add(lbl_cliente);
+	    labels.add(lbl_destinazione);
+	    labels.add(lbl_elemstrutturale);
+	    labels.add(lbl_cartellino);
+	    
+	    for(Label l : labels){
+	    	
+	    	l.setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+				@Override
+				public void handle(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+					log.i(String.valueOf(arg0.getClickCount()));
+					
+				}
+	    		
+	    	
+	    });
 		
-	    
-	    
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 	        @Override
 	        public void handle(MouseEvent event) {
+	        	
+	        	//listPezziDistinta.g
+	        	
 	        	if (listPezziDistinta.getSelectionModel().getSelectedItem()!=null) {
 		            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
 		            
-		            int selected = listPezziDistinta.getSelectionModel().getSelectedIndices().get(0);
+		            int selected = (int) listPezziDistinta.getSelectionModel().getSelectedIndices().get(0);
 		            
 		            //Aggiorno campi
 		            lbl_codice_pezzo.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getNome());
@@ -101,6 +142,7 @@ public class VisualizzaDistintaController implements Initializable {
 		            
 		            printSelectedItem(listPezziDistinta);
 	        	}
+	        	
 	        }
 	    });
 		
@@ -109,7 +151,28 @@ public class VisualizzaDistintaController implements Initializable {
 		
 	}
     
-    
-    
+	/*
+	protected List<Node> searchNodes(Parent parent,Class instance){
+		
+		if(parent instanceof TitledPane){
+			TitledPane titledPane = (TitledPane) parent;
+			Node content = titledPane.getContent();
+			
+			if(content instanceof Parent){
+				return searchNodes(content,selector);
+			}
+			
+		}else{
+			
+			
+			
+		}
+		
+		
+		return null;
+		
+		
+	}
+    */
 
-}
+}}

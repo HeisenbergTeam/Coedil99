@@ -155,7 +155,7 @@ public class VisualizzaOrdiniController implements Initializable {
 	@FXML
 	protected void onNewCommessa() {
 		log.i("nuova commessa");
-
+		/*
 		// TODO: Creare una nuova distinta
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp
@@ -165,7 +165,8 @@ public class VisualizzaOrdiniController implements Initializable {
 		GestoreCommessa gestoreCommessa = (GestoreCommessa) gsp
 				.getServizio("GestoreCommessaDAO");
 		gestoreCommessa.creaDistinta(nuovaCommessa);
-		MainApplication.getInstance().loadPage("visualizza_ordini");
+		*/
+		MainApplication.getInstance().loadPage("visualizza_distinta");
 
 	}
 

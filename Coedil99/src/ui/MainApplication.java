@@ -59,6 +59,8 @@ public class MainApplication extends Application {
 	public void start(Stage stage) {
 		
 		this.mainStage = stage;
+		this.mainStage.setMinWidth(800);
+		this.mainStage.setMinHeight(600);
 		MainApplication.instance = this;
 		
 		this.loadPage(startpage);
@@ -84,6 +86,7 @@ public class MainApplication extends Application {
 			
 			root = FXMLLoader.load(getClass().getResource("fxml/"+name+".fxml"));
 			Scene scene = new Scene(root, 800, 600);
+			
 			
 			//Save history
 			this.history.push(this.mainStage.getScene());

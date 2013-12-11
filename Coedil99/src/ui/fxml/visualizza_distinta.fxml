@@ -14,10 +14,20 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="ciao" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaDistintaController">
+  <bottom>
+    <HBox prefHeight="41.0" prefWidth="800.0">
+      <children>
+        <Button mnemonicParsing="false" text="Aggiungi" />
+        <Button mnemonicParsing="false" text="Modifica" />
+        <Button mnemonicParsing="false" text="Rimuovi" />
+        <Button mnemonicParsing="false" text="Salva" textAlignment="LEFT" />
+      </children>
+    </HBox>
+  </bottom>
   <center>
     <GridPane gridLinesVisible="false" maxHeight="-1.0" maxWidth="-1.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
       <children>
-        <TitledPane id="main-title" animated="false" collapsible="false" expanded="true" maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="-1.0" style="" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <TitledPane  id="main-title" fx:id="informazioni_distinta" animated="false" collapsible="false" expanded="true" maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="-1.0" style="" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <content>
             <GridPane prefHeight="130.0" prefWidth="796.0" style="">
               <children>
@@ -92,28 +102,15 @@
             </GridPane>
           </content>
         </TitledPane>
-        <TitledPane id="main-title" animated="false" collapsible="false" text="Righe distinta" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <TitledPane id="main-title" animated="false" collapsible="false" text="Righe distinta" GridPane.columnIndex="0" GridPane.rowIndex="1" fx:id="righe_distinta">
           <content>
-            <SplitPane dividerPositions="0.5006289308176101" focusTraversable="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="-1.0">
+            <SplitPane dividerPositions="0.5018867924528302" focusTraversable="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="-1.0">
               <items>
                 <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="188.0" text="Lista pezzi">
                   <content>
                     <GridPane minHeight="-1.0" prefHeight="-1.0">
                       <children>
                         <ListView fx:id="listPezziDistinta" maxHeight="10000.0" minHeight="-1.0" prefHeight="10000.0" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
-                          <children>
-                            <Button mnemonicParsing="false" text="Aggiungi riga distinta" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                            <Button mnemonicParsing="false" text="Rimuovi riga distinta selezionata" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                          </children>
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
                       </children>
                       <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -222,7 +219,7 @@
   <top>
     <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;">
       <children>
-        <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;&#10;-fx-border: 0px;&#10;" text="">
+        <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
           <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

@@ -17,7 +17,7 @@
   <center>
     <GridPane gridLinesVisible="false" maxHeight="-1.0" maxWidth="-1.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
       <children>
-        <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="-1.0" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <TitledPane id="main-title" animated="false" collapsible="false" expanded="true" maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="-1.0" style="" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <content>
             <GridPane prefHeight="130.0" prefWidth="796.0" style="">
               <children>
@@ -92,9 +92,9 @@
             </GridPane>
           </content>
         </TitledPane>
-        <TitledPane animated="false" collapsible="false" text="Righe distinta" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <TitledPane id="main-title" animated="false" collapsible="false" text="Righe distinta" GridPane.columnIndex="0" GridPane.rowIndex="1">
           <content>
-            <SplitPane dividerPositions="0.5" focusTraversable="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="-1.0">
+            <SplitPane dividerPositions="0.5006289308176101" focusTraversable="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="-1.0">
               <items>
                 <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="188.0" text="Lista pezzi">
                   <content>
@@ -222,7 +222,7 @@
   <top>
     <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;">
       <children>
-        <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;" text="">
+        <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;&#10;-fx-border: 0px;&#10;" text="">
           <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

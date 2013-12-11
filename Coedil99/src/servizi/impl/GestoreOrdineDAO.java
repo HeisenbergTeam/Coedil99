@@ -58,7 +58,7 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public void cancellaOrdine(Ordine ordine) {
 
@@ -78,6 +78,7 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Commessa> getCommesseDaOrdine(Ordine ordine) {
 		try {
@@ -116,7 +117,7 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Commessa creaCommessa(Ordine ordine, int priorita, Date dataCommessa) {
 		Commessa commessa = ordine.creaCommessa();
@@ -129,7 +130,8 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 	public Commessa creaCommessaByID(int IdOrdine, int priorita,
 			Date dataCommessa) {
 		try {
-			creaCommessa(ordineDAO.getOrdineByORMID(IdOrdine),priorita,dataCommessa);
+			creaCommessa(ordineDAO.getOrdineByORMID(IdOrdine), priorita,
+					dataCommessa);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

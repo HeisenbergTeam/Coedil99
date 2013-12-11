@@ -18,87 +18,91 @@ import java.util.Date;
 public class Ordine {
 	public Ordine() {
 	}
-	
-	private java.util.Set this_getSet (int key) {
+
+	private java.util.Set this_getSet(int key) {
 		if (key == modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE) {
 			return ORM_commesse;
 		}
-		
+
 		return null;
 	}
-	
+
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
 		public java.util.Set getSet(int key) {
 			return this_getSet(key);
 		}
-		
+
 	};
-	
+
 	private int ID;
-	
+
 	private Date dataCreazione;
-	
+
 	private modello_di_dominio.Destinazione destinazione;
-	
+
 	private java.util.Set ORM_commesse = new java.util.HashSet();
-	
+
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+
 	public int getID() {
 		return ID;
 	}
-	
+
 	public int getORMID() {
 		return getID();
 	}
-	
+
 	public void setDataCreazione(Date value) {
 		this.dataCreazione = value;
 	}
-	
+
 	public Date getDataCreazione() {
 		return dataCreazione;
 	}
-	
+
 	public void setDestinazione(modello_di_dominio.Destinazione value) {
 		if (this.destinazione != value) {
 			modello_di_dominio.Destinazione ldestinazione = this.destinazione;
 			this.destinazione = value;
 			if (value != null) {
 				destinazione.setOrdine(this);
-			}
-			else {
+			} else {
 				ldestinazione.setOrdine(null);
 			}
 		}
 	}
-	
+
 	public modello_di_dominio.Destinazione getDestinazione() {
 		return destinazione;
 	}
-	
+
 	private void setORM_Commesse(java.util.Set value) {
 		this.ORM_commesse = value;
 	}
-	
+
 	private java.util.Set getORM_Commesse() {
 		return ORM_commesse;
 	}
-	
-	public final modello_di_dominio.CommessaSetCollection commesse = new modello_di_dominio.CommessaSetCollection(this, _ormAdapter, modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE, modello_di_dominio.ORMConstants.KEY_COMMESSA_ORDINE, modello_di_dominio.ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
+
+	public final modello_di_dominio.CommessaSetCollection commesse = new modello_di_dominio.CommessaSetCollection(
+			this, _ormAdapter,
+			modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE,
+			modello_di_dominio.ORMConstants.KEY_COMMESSA_ORDINE,
+			modello_di_dominio.ORMConstants.KEY_MUL_ONE_TO_MANY);
+
 	public modello_di_dominio.Commessa creaCommessa() {
-		//TODO: Implement Method
-		
-		Commessa c = DAOFactory.getDAOFactory().getCommessaDAO().createCommessa();
-		 this.commesse.add(c);
-		 return c;
+		// TODO: Implement Method
+
+		Commessa c = DAOFactory.getDAOFactory().getCommessaDAO()
+				.createCommessa();
+		this.commesse.add(c);
+		return c;
 	}
-	
+
 	public String toString() {
 		return String.valueOf(getID());
 	}
-	
+
 }

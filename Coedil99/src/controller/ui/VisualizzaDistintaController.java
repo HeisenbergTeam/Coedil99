@@ -49,7 +49,7 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		Log log = (Log) gsp.getServizio("LogStdOut");
+		Log log = (Log) gsp.getServizio("LogStdout");
 		
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		

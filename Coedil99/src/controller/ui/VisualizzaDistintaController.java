@@ -1,29 +1,24 @@
 package controller.ui;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javax.persistence.metamodel.ListAttribute;
-
-import modello_di_dominio.Commessa;
-import modello_di_dominio.Distinta;
-import modello_di_dominio.Ordine;
-import modello_di_dominio.RigaDistinta;
-import servizi.GestoreOrdine;
-import servizi.GestoreServizi;
-import servizi.impl.GestoreOrdineDAO;
-import servizi.impl.GestoreServiziPrototipo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
+import modello_di_dominio.Commessa;
+import modello_di_dominio.Distinta;
+import modello_di_dominio.Ordine;
+import modello_di_dominio.RigaDistinta;
+import servizi.GestoreOrdine;
+import servizi.GestoreServizi;
+import servizi.Log;
+import servizi.impl.GestoreServiziPrototipo;
 
 public class VisualizzaDistintaController implements Initializable {
     @FXML private ListView<String> listPezziDistinta;
@@ -54,10 +49,11 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
+		Log log = (Log) gsp.getServizio("LogStdOut");
 		
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
-		System.out.println(ordine.getID()+"");
+		log.i(ordine.getID()+"");
 		
 		//TODO: modifica a getCommessaID(id)
 		Commessa[] commesse = ordine.commesse.toArray();
@@ -92,10 +88,14 @@ public class VisualizzaDistintaController implements Initializable {
 	        public void handle(MouseEvent event) {
 	        	if (listPezziDistinta.getSelectionModel().getSelectedItem()!=null) {
 		            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
-		            lbl_codice_pezzo.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getNome());
-		            lbl_fornitore.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getFornitore());
-		            lbl_n_pezzi.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getQuantita()+"");
-		            lbl_diametro.setText(righeDistinta[listPezziDistinta.getSelectionModel().getSelectedIndices().get(0)].getPezzo().getDescrizionePezzo().getDiametro()+"");
+		            
+		            int selected = listPezziDistinta.getSelectionModel().getSelectedIndices().get(0);
+		            
+		            //Aggiorno campi
+		            lbl_codice_pezzo.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getNome());
+		            lbl_fornitore.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getFornitore());
+		            lbl_n_pezzi.setText(righeDistinta[selected].getPezzo().getQuantita()+"");
+		            lbl_diametro.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getDiametro()+"");
 		            lbl_misura_taglio.setText("PROSSIMA ITERAZIONE");
 		            lbl_peso.setText("PROSSIMA ITERAZIONE");
 		            

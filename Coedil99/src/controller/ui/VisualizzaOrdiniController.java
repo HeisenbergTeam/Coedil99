@@ -68,9 +68,8 @@ public class VisualizzaOrdiniController implements Initializable{
 			public void changed(ObservableValue<? extends Object> arg0,
 					Object arg1, Object arg2) {
 				
-				
 				Ordine ao = ordini.get((Integer) arg2);
-				
+				VisualizzaOrdiniController.this.ordineCorrente = ao;
 				VisualizzaOrdiniController.this.loadTablePane(ao);
 				
 				

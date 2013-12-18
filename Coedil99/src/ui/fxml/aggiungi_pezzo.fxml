@@ -39,6 +39,6 @@
         </Menu>
       </menus>
     </MenuBar>
-    <TextField layoutX="14.0" layoutY="45.0" prefHeight="31.0" prefWidth="572.0" promptText="Cerca..." />
+    <TextField fx:id="cercaPezzo" layoutX="14.0" layoutY="45.0" prefHeight="31.0" prefWidth="572.0" promptText="Cerca..." />
   </children>
 </AnchorPane>

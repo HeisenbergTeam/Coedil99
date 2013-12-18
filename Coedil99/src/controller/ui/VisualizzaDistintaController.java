@@ -2,22 +2,20 @@ package controller.ui;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
@@ -105,7 +103,7 @@ public class VisualizzaDistintaController implements Initializable {
 	    labels.add(lbl_elemstrutturale);
 	    labels.add(lbl_cartellino);
 	    
-	    for(Label l : labels){
+	    for(final Label l : labels){
 	    	
 	    	l.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
@@ -113,7 +111,18 @@ public class VisualizzaDistintaController implements Initializable {
 				public void handle(MouseEvent arg0) {
 					// TODO Auto-generated method stub
 					
-					//arg0.getTarget()
+					//Se non e' un doppio click esco
+					if(arg0.getClickCount() != 2){
+						return;
+					}
+					
+					Parent p = l.getParent();
+					TextField tf = new TextField();
+					tf.setText(l.getText());
+					Pane tps = (Pane) p;
+					tps.getChildren().remove(l);
+					tps.getChildren().add(tf);
+					//log.i(p.getClass().toString());
 					
 				}
 	    		

@@ -113,7 +113,7 @@ public class VisualizzaDistintaController implements Initializable {
 				public void handle(MouseEvent arg0) {
 					// TODO Auto-generated method stub
 					
-					log.i(String.valueOf(arg0.getClickCount()));
+					//arg0.getTarget()
 					
 				}
 	    		

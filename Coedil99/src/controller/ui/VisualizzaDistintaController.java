@@ -3,7 +3,11 @@ package controller.ui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -24,6 +29,7 @@ import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.RigaDistinta;
+import servizi.GestoreDistinta;
 import servizi.GestoreOrdine;
 import servizi.GestorePezzi;
 import servizi.GestoreServizi;
@@ -47,13 +53,19 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Label lbl_codice_pezzo;
     @FXML private Label lbl_fornitore;
     
+    @FXML private Button modificaButton;
+    
     @FXML private TitledPane righe_distinta;
     @FXML private TitledPane informazioni_distinta;
     
-    private ArrayList<Label> distintaLabels;
-    private ArrayList<TextField> distintaTextFields;
+    private Map<String,Label> distintaLabels;
+    private Map<String,TextField> distintaTextFields;
     private ArrayList<Node> rigaDistintaNodes;
+    
+    private GestoreDistinta gestoreDistinta;
     private Log log;
+    
+    private Boolean modificandoDistinta = false;
 
     final ObservableList<String> listaPezzi = FXCollections.observableArrayList();
     
@@ -103,40 +115,16 @@ public class VisualizzaDistintaController implements Initializable {
 	    
 	    //lbl_modulo
 	    
-	    distintaLabels = new ArrayList<Label>();
-	    distintaLabels.add(lbl_modulo);
-	    distintaLabels.add(lbl_revisione);
-	    distintaLabels.add(lbl_data);
-	    distintaLabels.add(lbl_cliente);
-	    distintaLabels.add(lbl_destinazione);
-	    distintaLabels.add(lbl_elemstrutturale);
-	    distintaLabels.add(lbl_cartellino);
+	    distintaLabels = new HashMap<String,Label>();
+	    distintaLabels.put("modulo",lbl_modulo);
+	    distintaLabels.put("revisione",lbl_revisione);
+	    distintaLabels.put("data",lbl_data);
+	    distintaLabels.put("cliente",lbl_cliente);
+	    distintaLabels.put("destinazione",lbl_destinazione);
+	    distintaLabels.put("elemstrutturale",lbl_elemstrutturale);
+	    distintaLabels.put("cartellino",lbl_cartellino);
 	    
-	    for(final Label l : distintaLabels){
-	    	
-	    	l.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
-				@Override
-				public void handle(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-					
-					//Se non e' un doppio click esco
-					if(arg0.getClickCount() != 2){
-						return;
-					}
-					
-					Parent p = l.getParent();
-					TextField tf = new TextField();
-					tf.setText(l.getText());
-					Pane tps = (Pane) p;
-					tps.getChildren().remove(l);
-					tps.getChildren().add(tf);
-					//log.i(p.getClass().toString());
-					
-				}
-	    		
-	    	
-	    });
+	    
 		
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -168,22 +156,38 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		
 	}
-	}
 	
 	@FXML
 	protected void modificaDatiDistinta(){
 		
 		log.i("Modifica dei dati della distinta");
 		
-		for(Label l : distintaLabels){
-			
-			Parent p = l.getParent();
-			TextField tf = new TextField();
-			tf.setText(l.getText());
-			Pane tps = (Pane) p;
-			tps.getChildren().remove(l);
-			tps.getChildren().add(tf);
+		//Check
+		if(modificandoDistinta != false){
+			return;
 		}
+		
+		Set<Map.Entry<String, Label>> insieme = distintaLabels.entrySet(); 
+		Iterator<Map.Entry<String, Label>> iterator = insieme.iterator();
+		
+		distintaTextFields = new HashMap<String, TextField>();
+		
+		while(iterator.hasNext() != false){
+			
+			Map.Entry<String, Label> entry = iterator.next();
+			
+			Parent p = entry.getValue().getParent();
+			TextField tf = new TextField();
+			tf.setText(entry.getValue().getText());
+			Pane tps = (Pane) p;
+			tps.getChildren().remove(entry.getValue());
+			tps.getChildren().add(tf);
+			
+			distintaTextFields.put(entry.getKey(), tf);
+		}
+		
+		modificandoDistinta = true;
+		
 	}
 	    
 	@FXML
@@ -195,6 +199,34 @@ public class VisualizzaDistintaController implements Initializable {
 	
 	@FXML 
 	protected void salvaDatiDistinta(){
+		
+		log.i("Salvataggio dati distinta");
+		
+		
+		if(modificandoDistinta != true){
+			return;
+		}
+		
+		Set<Map.Entry<String, TextField>> insieme = distintaTextFields.entrySet(); 
+		Iterator<Map.Entry<String, TextField>> iterator = insieme.iterator();
+		
+		while(iterator.hasNext()){
+			
+			Map.Entry<String, TextField> entry = iterator.next();
+			Parent p = entry.getValue().getParent();
+			
+			Pane tps = (Pane) p;
+			tps.getChildren().remove(entry.getValue());
+			distintaLabels.get(entry.getKey()).setText(entry.getValue().getText());
+			
+			
+			tps.getChildren().add(distintaLabels.get(entry.getKey()));
+			
+			
+		}
+		
+		modificandoDistinta = false;
+		modificaButton.setDisable(true);
 		
 	}
 	

@@ -24,8 +24,8 @@
                 <Insets left="10.0" right="10.0" fx:id="x1" />
               </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica" HBox.margin="$x1" />
-            <Button mnemonicParsing="false" text="Rimuovi" HBox.margin="$x1" />
+            <Button fx:id="modificaPezzoButton" mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica" HBox.margin="$x1" />
+            <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" text="Rimuovi" HBox.margin="$x1" />
           </children>
         </HBox>
         <HBox alignment="CENTER_RIGHT" fillHeight="true" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0">

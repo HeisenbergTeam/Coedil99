@@ -56,9 +56,13 @@ public class VisualizzaDistintaController implements Initializable {
     
     @FXML private Button modificaDistButton;
     @FXML private Button salvaDistButton;
+    @FXML private Button modificaPezzoButton;
+    @FXML private Button rimuoviPezzoButton;
     
     @FXML private TitledPane righe_distinta;
     @FXML private TitledPane informazioni_distinta;
+    
+    
     
     private Map<String,Label> distintaLabels;
     private Map<String,TextField> distintaTextFields;
@@ -81,6 +85,8 @@ public class VisualizzaDistintaController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		salvaDistButton.setDisable(true);
+		modificaPezzoButton.setDisable(true);
+		rimuoviPezzoButton.setDisable(true);
 		
 		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
@@ -131,10 +137,12 @@ public class VisualizzaDistintaController implements Initializable {
 	    
 	    //rigaDistinta nodes
 	    
+	    rigaDistintaNodes = new HashMap<String,Object>();
 	    rigaDistintaNodes.put("n_pezzi", lbl_n_pezzi);
 	    rigaDistintaNodes.put("diametro", lbl_diametro);
 	    rigaDistintaNodes.put("peso", lbl_peso);
 	    rigaDistintaNodes.put("misura_taglio", lbl_misura_taglio);
+	    rigaDistintaNodes.put("fornitore", lbl_n_pezzi);
 		
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -264,7 +272,7 @@ public class VisualizzaDistintaController implements Initializable {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../../ui/fxml/aggiungi_pezzo.fxml"));
 			popup.getContent().addAll(root);
-			popup.show(distintaLabels.get(0).getScene().getWindow());
+			popup.show(((Node) distintaLabels.values().toArray()[0]).getScene().getWindow());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

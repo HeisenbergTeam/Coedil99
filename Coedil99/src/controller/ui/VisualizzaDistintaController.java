@@ -46,6 +46,7 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Label lbl_destinazione;
     @FXML private Label lbl_elemstrutturale;
     @FXML private Label lbl_cartellino;
+    
     @FXML private Label lbl_n_pezzi;
     @FXML private Label lbl_diametro;
     @FXML private Label lbl_peso;
@@ -53,14 +54,15 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Label lbl_codice_pezzo;
     @FXML private Label lbl_fornitore;
     
-    @FXML private Button modificaButton;
+    @FXML private Button modificaDistButton;
+    @FXML private Button salvaDistButton;
     
     @FXML private TitledPane righe_distinta;
     @FXML private TitledPane informazioni_distinta;
     
     private Map<String,Label> distintaLabels;
     private Map<String,TextField> distintaTextFields;
-    private ArrayList<Node> rigaDistintaNodes;
+    private Map<String,Object> rigaDistintaNodes;
     
     private GestoreDistinta gestoreDistinta;
     private Log log;
@@ -78,6 +80,8 @@ public class VisualizzaDistintaController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		salvaDistButton.setDisable(true);
+		
 		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
@@ -87,6 +91,7 @@ public class VisualizzaDistintaController implements Initializable {
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
 		log.i(ordine.getID()+"");
+		
 		
 		//TODO: modifica a getCommessaID(id)
 		Commessa[] commesse = ordine.commesse.toArray();
@@ -113,7 +118,7 @@ public class VisualizzaDistintaController implements Initializable {
 	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
 	    lbl_cartellino.setText("PROSSIMA ITERAZIONE");
 	    
-	    //lbl_modulo
+	    //distinta labels
 	    
 	    distintaLabels = new HashMap<String,Label>();
 	    distintaLabels.put("modulo",lbl_modulo);
@@ -124,14 +129,19 @@ public class VisualizzaDistintaController implements Initializable {
 	    distintaLabels.put("elemstrutturale",lbl_elemstrutturale);
 	    distintaLabels.put("cartellino",lbl_cartellino);
 	    
+	    //rigaDistinta nodes
 	    
+	    rigaDistintaNodes.put("n_pezzi", lbl_n_pezzi);
+	    rigaDistintaNodes.put("diametro", lbl_diametro);
+	    rigaDistintaNodes.put("peso", lbl_peso);
+	    rigaDistintaNodes.put("misura_taglio", lbl_misura_taglio);
 		
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 	        @Override
 	        public void handle(MouseEvent event) {
 	        	
-	        	//listPezziDistinta.g
+	        	
 	        	
 	        	if (listPezziDistinta.getSelectionModel().getSelectedItem()!=null) {
 		            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
@@ -156,7 +166,9 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		
 	}
-	
+/**
+ * modificaDatiDistinta
+ */
 	@FXML
 	protected void modificaDatiDistinta(){
 		
@@ -186,10 +198,16 @@ public class VisualizzaDistintaController implements Initializable {
 			distintaTextFields.put(entry.getKey(), tf);
 		}
 		
+		//Flag
 		modificandoDistinta = true;
-		
+		//Disabilito le modifiche
+		modificaDistButton.setDisable(true);
+		//Abilito il salvataggio
+		salvaDistButton.setDisable(false);
 	}
-	    
+/**
+ * 
+ */
 	@FXML
 	protected void modificaRigaDistinta(){
 		
@@ -226,10 +244,14 @@ public class VisualizzaDistintaController implements Initializable {
 		}
 		
 		modificandoDistinta = false;
-		modificaButton.setDisable(true);
+		modificaDistButton.setDisable(false);
+		salvaDistButton.setDisable(true);
+		
 		
 	}
-	
+/**
+ *  aggiungiPezzo
+ */
 	@FXML 
 	protected void aggiungiPezzo(){
 		
@@ -250,28 +272,5 @@ public class VisualizzaDistintaController implements Initializable {
 		
 	}
     
-	/*
-	protected List<Node> searchNodes(Parent parent,Class instance){
-		
-		if(parent instanceof TitledPane){
-			TitledPane titledPane = (TitledPane) parent;
-			Node content = titledPane.getContent();
-			
-			if(content instanceof Parent){
-				return searchNodes(content,selector);
-			}
-			
-		}else{
-			
-			
-			
-		}
-		
-		
-		return null;
-		
-		
-	}
-    */
 
 }

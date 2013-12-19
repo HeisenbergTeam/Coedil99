@@ -30,8 +30,8 @@
         </HBox>
         <HBox alignment="CENTER_RIGHT" fillHeight="true" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0">
           <children>
-            <Button fx:id="modificaButton" mnemonicParsing="false" onAction="#modificaDatiDistinta" text="Modifica" />
-            <Button mnemonicParsing="false" onAction="#salvaDatiDistinta" text="Salva" textAlignment="LEFT" HBox.margin="$x1" />
+            <Button fx:id="modificaDistButton" mnemonicParsing="false" onAction="#modificaDatiDistinta" text="Modifica" />
+            <Button fx:id="salvaDistButton" mnemonicParsing="false" onAction="#salvaDatiDistinta" text="Salva" textAlignment="LEFT" HBox.margin="$x1" />
           </children>
         </HBox>
       </children>

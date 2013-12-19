@@ -1,5 +1,6 @@
 package controller.ui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -8,7 +9,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -16,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Popup;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
@@ -45,6 +49,11 @@ public class VisualizzaDistintaController implements Initializable {
     
     @FXML private TitledPane righe_distinta;
     @FXML private TitledPane informazioni_distinta;
+    
+    private ArrayList<Label> distintaLabels;
+    private ArrayList<TextField> distintaTextFields;
+    private ArrayList<Node> rigaDistintaNodes;
+    private Log log;
 
     final ObservableList<String> listaPezzi = FXCollections.observableArrayList();
     
@@ -60,7 +69,7 @@ public class VisualizzaDistintaController implements Initializable {
 		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		final Log log = (Log) gsp.getServizio("LogStdout");
+		log = (Log) gsp.getServizio("LogStdout");
 		GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
 		
 		Ordine ordine = gestoreOrdine.getOrdine(1);
@@ -94,16 +103,16 @@ public class VisualizzaDistintaController implements Initializable {
 	    
 	    //lbl_modulo
 	    
-	    ArrayList<Label> labels = new ArrayList<Label>();
-	    labels.add(lbl_modulo);
-	    labels.add(lbl_revisione);
-	    labels.add(lbl_data);
-	    labels.add(lbl_cliente);
-	    labels.add(lbl_destinazione);
-	    labels.add(lbl_elemstrutturale);
-	    labels.add(lbl_cartellino);
+	    distintaLabels = new ArrayList<Label>();
+	    distintaLabels.add(lbl_modulo);
+	    distintaLabels.add(lbl_revisione);
+	    distintaLabels.add(lbl_data);
+	    distintaLabels.add(lbl_cliente);
+	    distintaLabels.add(lbl_destinazione);
+	    distintaLabels.add(lbl_elemstrutturale);
+	    distintaLabels.add(lbl_cartellino);
 	    
-	    for(final Label l : labels){
+	    for(final Label l : distintaLabels){
 	    	
 	    	l.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
@@ -159,6 +168,55 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		
 	}
+	}
+	
+	@FXML
+	protected void modificaDatiDistinta(){
+		
+		log.i("Modifica dei dati della distinta");
+		
+		for(Label l : distintaLabels){
+			
+			Parent p = l.getParent();
+			TextField tf = new TextField();
+			tf.setText(l.getText());
+			Pane tps = (Pane) p;
+			tps.getChildren().remove(l);
+			tps.getChildren().add(tf);
+		}
+	}
+	    
+	@FXML
+	protected void modificaRigaDistinta(){
+		
+		log.i("Modifica della riga distinta");
+		
+	}
+	
+	@FXML 
+	protected void salvaDatiDistinta(){
+		
+	}
+	
+	@FXML 
+	protected void aggiungiPezzo(){
+		
+		log.i("Aggiungi pezzo");
+
+
+		final Popup popup = new Popup();
+		popup.setAutoFix(false);
+		popup.setHideOnEscape(true);
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../../ui/fxml/aggiungi_pezzo.fxml"));
+			popup.getContent().addAll(root);
+			popup.show(distintaLabels.get(0).getScene().getWindow());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
     
 	/*
 	protected List<Node> searchNodes(Parent parent,Class instance){
@@ -184,4 +242,4 @@ public class VisualizzaDistintaController implements Initializable {
 	}
     */
 
-}}
+}

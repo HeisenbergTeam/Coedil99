@@ -19,18 +19,19 @@
       <children>
         <HBox alignment="CENTER_LEFT" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0">
           <children>
-            <Button mnemonicParsing="false" text="Aggiungi">
+            <Button mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi">
               <HBox.margin>
                 <Insets left="10.0" right="10.0" fx:id="x1" />
               </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Modifica" HBox.margin="$x1" />
+            <Button mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica" HBox.margin="$x1" />
             <Button mnemonicParsing="false" text="Rimuovi" HBox.margin="$x1" />
           </children>
         </HBox>
         <HBox alignment="CENTER_RIGHT" fillHeight="true" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0">
           <children>
-            <Button mnemonicParsing="false" text="Salva" textAlignment="LEFT" HBox.margin="$x1" />
+            <Button fx:id="modificaButton" mnemonicParsing="false" onAction="#modificaDatiDistinta" text="Modifica" />
+            <Button mnemonicParsing="false" onAction="#salvaDatiDistinta" text="Salva" textAlignment="LEFT" HBox.margin="$x1" />
           </children>
         </HBox>
       </children>

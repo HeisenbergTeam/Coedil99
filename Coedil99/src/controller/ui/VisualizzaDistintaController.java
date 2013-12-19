@@ -144,6 +144,8 @@ public class VisualizzaDistintaController implements Initializable {
 	    rigaDistintaNodes.put("misura_taglio", lbl_misura_taglio);
 	    rigaDistintaNodes.put("fornitore", lbl_n_pezzi);
 		
+	    //Listener
+	    
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 	        @Override
@@ -163,6 +165,9 @@ public class VisualizzaDistintaController implements Initializable {
 		            lbl_diametro.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getDiametro()+"");
 		            lbl_misura_taglio.setText("PROSSIMA ITERAZIONE");
 		            lbl_peso.setText("PROSSIMA ITERAZIONE");
+		            
+		            modificaPezzoButton.setDisable(false);
+		            rimuoviPezzoButton.setDisable(false);
 		            
 		            printSelectedItem(listPezziDistinta);
 	        	}
@@ -221,8 +226,27 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		log.i("Modifica della riga distinta");
 		
+		Set<Map.Entry<String, Object>> insieme = rigaDistintaNodes.entrySet();
+		Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
+		
+		while(iterator.hasNext()){
+			
+			Map.Entry<String, Object> entry = iterator.next();
+			Parent p = ((Node) entry.getValue()).getParent();
+			
+			Pane tps = (Pane) p;
+			tps.getChildren().removeAll();
+			
+			TextField tf = new TextField();
+			tf.setText( ((Label) entry.getValue()).getText());
+			
+			tps.getChildren().add(tf);
+		}
+		
 	}
-	
+/**
+ * 
+ */
 	@FXML 
 	protected void salvaDatiDistinta(){
 		
@@ -280,5 +304,12 @@ public class VisualizzaDistintaController implements Initializable {
 		
 	}
     
-
+	@FXML
+	protected void rimuoviPezzo(){
+		
+		log.i("Rimuovi pezzo");
+		
+	}
+	
+	
 }

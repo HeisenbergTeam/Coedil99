@@ -13,11 +13,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import modello_di_dominio.Pezzo;
 import servizi.GestorePezzi;
 import servizi.GestoreServizi;
 import servizi.Log;
+import servizi.Sessione;
 
 public class AggiungiPezzoController implements Initializable {
 
@@ -25,12 +27,15 @@ public class AggiungiPezzoController implements Initializable {
 	@FXML private TextField cercaPezzo;
 	
 	private Log log;
+	private Sessione sessione;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
 		GestorePezzi gestorePezzi = (GestorePezzi) GestoreServizi.getGestoreServizi().getServizio("GestorePezziDAO");
+		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
+		sessione = (Sessione) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
 		
 		List<Pezzo> pezzi = gestorePezzi.getPezzi();
 		ObservableList<Pezzo> obsPezzi = FXCollections.observableArrayList(pezzi);
@@ -39,14 +44,14 @@ public class AggiungiPezzoController implements Initializable {
 		
 		listPezzi.setItems(obsPezzi);
 		
-		 listPezzi.setCellFactory(new Callback<ListView<Pezzo>, 
-		            ListCell<Pezzo>>() {
-		                @Override 
-		                public ListCell<Pezzo> call(ListView<Pezzo> list) {
-		                    return new ColorRectCell();
-		                }
-		            }
-		        );
+		listPezzi.setCellFactory(new Callback<ListView<Pezzo>, 
+	            ListCell<Pezzo>>() {
+	                @Override 
+	                public ListCell<Pezzo> call(ListView<Pezzo> list) {
+	                    return new ColorRectCell();
+	                }
+	            }
+	        );
 		
 		
 		
@@ -56,6 +61,10 @@ public class AggiungiPezzoController implements Initializable {
 	public void onAggiungiPezzo(){
 		
 		log.i("pezzo aggiunto");
+		
+		sessione.set("pezzo_aggiunto",null);
+		
+		((Stage) cercaPezzo.getScene().getWindow()).close();
 		
 	}
 	

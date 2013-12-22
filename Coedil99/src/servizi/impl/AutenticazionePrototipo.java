@@ -12,11 +12,11 @@ import servizi.Sessione;
  */
 public class AutenticazionePrototipo implements Autenticazione {
 	/**
-	 * 
+	 * Session service
 	 */
 	protected Sessione session;
 	/**
-	 * 
+	 * Log service
 	 */
 	protected Log log;
 	/**

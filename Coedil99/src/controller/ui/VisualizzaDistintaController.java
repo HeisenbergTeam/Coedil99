@@ -1,8 +1,6 @@
 package controller.ui;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,7 +13,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,20 +23,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
+import modello_di_dominio.Pezzo;
 import modello_di_dominio.RigaDistinta;
 import servizi.GestoreDistinta;
 import servizi.GestoreOrdine;
 import servizi.GestorePezzi;
 import servizi.GestoreServizi;
 import servizi.Log;
+import servizi.Sessione;
 import servizi.impl.GestoreServiziPrototipo;
 
 public class VisualizzaDistintaController implements Initializable {
@@ -68,14 +64,13 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private TitledPane righe_distinta;
     @FXML private TitledPane informazioni_distinta;
     
-    
-    
     private Map<String,Label> distintaLabels;
     private Map<String,TextField> distintaTextFields;
     private Map<String,Object> rigaDistintaNodes;
     
     private GestoreDistinta gestoreDistinta;
     private Log log;
+    private Sessione session;
     
     private Boolean modificandoDistinta = false;
 
@@ -99,6 +94,7 @@ public class VisualizzaDistintaController implements Initializable {
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
 		log = (Log) gsp.getServizio("LogStdout");
 		GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
+		session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
@@ -151,7 +147,6 @@ public class VisualizzaDistintaController implements Initializable {
 	    rigaDistintaNodes.put("fornitore", lbl_n_pezzi);
 		
 	    //Listener
-	    
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 	        @Override
@@ -294,20 +289,7 @@ public class VisualizzaDistintaController implements Initializable {
 	protected void aggiungiPezzo(){
 		
 		log.i("Aggiungi pezzo");
-
-		/*
-		final Popup popup = new Popup();
-		popup.setAutoFix(false);
-		popup.setHideOnEscape(true);
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../../ui/fxml/aggiungi_pezzo.fxml"));
-			popup.getContent().addAll(root);
-			popup.show(((Node) distintaLabels.values().toArray()[0]).getScene().getWindow());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+		
 		
 		Stage popupStage = new Stage();
 		popupStage.initModality(Modality.APPLICATION_MODAL);
@@ -325,7 +307,12 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		Scene scene = new Scene(root);
 		popupStage.setScene(scene);
+		
+		//blocking
 		popupStage.showAndWait();
+		
+		Pezzo p = (Pezzo) session.get("pezzo_aggiunto");
+		listaPezzi.add("Pezzo");
 		
 	}
     
@@ -333,6 +320,9 @@ public class VisualizzaDistintaController implements Initializable {
 	protected void rimuoviPezzo(){
 		
 		log.i("Rimuovi pezzo");
+		
+		String s = (String) listPezziDistinta.getSelectionModel().getSelectedItem();
+		listaPezzi.remove(s);
 		
 	}
 	

@@ -3,7 +3,11 @@ package servizi.impl;
 import java.util.HashMap;
 
 import servizi.Sessione;
-
+/**
+ * 
+ * @author mw
+ *
+ */
 public class SessionePrototipo extends HashMap<String,Object> implements Sessione{
 
 	@Override
@@ -15,7 +19,7 @@ public class SessionePrototipo extends HashMap<String,Object> implements Session
 	@Override
 	public Object get(String objName) {
 		// TODO Auto-generated method stub
-		return this.get(objName);
+		return super.get(objName);
 	}	
 	
 	

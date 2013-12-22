@@ -32,7 +32,7 @@
       <children>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
           <children>
-            <Button mnemonicParsing="false" onAction="#onAggiungiPezzo" text="Aggiungi" />
+            <Button fx:id="aggiungiPezzo" mnemonicParsing="false" onAction="#onAggiungiPezzo" text="Aggiungi" />
           </children>
         </HBox>
         <ListView id="listPezziDistinta" fx:id="listPezzi" maxHeight="10000.0" minHeight="-1.0" prefHeight="294.9999000000025" prefWidth="600.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />

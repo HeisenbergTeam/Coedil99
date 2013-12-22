@@ -15,8 +15,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -24,7 +26,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
+import javafx.stage.Stage;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
@@ -289,7 +295,7 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		log.i("Aggiungi pezzo");
 
-
+		/*
 		final Popup popup = new Popup();
 		popup.setAutoFix(false);
 		popup.setHideOnEscape(true);
@@ -301,6 +307,25 @@ public class VisualizzaDistintaController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
+		
+		Stage popupStage = new Stage();
+		popupStage.initModality(Modality.APPLICATION_MODAL);
+		
+		//popupStage.setScene(new Scene(new Group(new Text(10,10, "my second window"))));
+		
+		
+		Parent root = null;
+		try {
+			root = FXMLLoader.load(getClass().getResource("../../ui/fxml/aggiungi_pezzo.fxml"));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		Scene scene = new Scene(root);
+		popupStage.setScene(scene);
+		popupStage.showAndWait();
 		
 	}
     

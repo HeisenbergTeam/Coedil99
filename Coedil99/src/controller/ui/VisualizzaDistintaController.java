@@ -73,6 +73,7 @@ public class VisualizzaDistintaController implements Initializable {
     private Sessione session;
     
     private Boolean modificandoDistinta = false;
+    private Boolean modificandoRigaDistinta = false;
 
     final ObservableList<String> listaPezzi = FXCollections.observableArrayList();
     
@@ -227,21 +228,35 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		log.i("Modifica della riga distinta");
 		
-		Set<Map.Entry<String, Object>> insieme = rigaDistintaNodes.entrySet();
-		Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
+		if(modificandoRigaDistinta != true){
 		
-		while(iterator.hasNext()){
+			Set<Map.Entry<String, Object>> insieme = rigaDistintaNodes.entrySet();
+			Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
 			
-			Map.Entry<String, Object> entry = iterator.next();
-			Parent p = ((Node) entry.getValue()).getParent();
+			while(iterator.hasNext()){
+				
+				Map.Entry<String, Object> entry = iterator.next();
+				Parent p = ((Node) entry.getValue()).getParent();
+				
+				Pane tps = (Pane) p;
+				tps.getChildren().removeAll();
+				
+				TextField tf = new TextField();
+				tf.setText( ((Label) entry.getValue()).getText());
+				
+				tps.getChildren().add(tf);
+				
+			}
 			
-			Pane tps = (Pane) p;
-			tps.getChildren().removeAll();
+			modificaPezzoButton.setText("Salva");
+			modificandoRigaDistinta = true;
 			
-			TextField tf = new TextField();
-			tf.setText( ((Label) entry.getValue()).getText());
+		}else{
 			
-			tps.getChildren().add(tf);
+			
+			
+			modificaPezzoButton.setText("Modifica");
+			modificandoRigaDistinta = false;
 		}
 		
 	}
@@ -270,9 +285,7 @@ public class VisualizzaDistintaController implements Initializable {
 			tps.getChildren().remove(entry.getValue());
 			distintaLabels.get(entry.getKey()).setText(entry.getValue().getText());
 			
-			
 			tps.getChildren().add(distintaLabels.get(entry.getKey()));
-			
 			
 		}
 		

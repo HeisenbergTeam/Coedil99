@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
@@ -25,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
@@ -32,7 +34,6 @@ import modello_di_dominio.Pezzo;
 import modello_di_dominio.RigaDistinta;
 import servizi.GestoreDistinta;
 import servizi.GestoreOrdine;
-import servizi.GestorePezzi;
 import servizi.GestoreServizi;
 import servizi.Log;
 import servizi.Sessione;
@@ -150,6 +151,16 @@ public class VisualizzaDistintaController implements Initializable {
 	    rigaDistintaNodes.put("misura_taglio", lbl_misura_taglio);
 	    rigaDistintaNodes.put("fornitore", lbl_n_pezzi);
 		
+	    //CellFactory
+	    listPezziDistinta.setCellFactory(new Callback<ListView<RigaDistinta>, 
+	            ListCell<RigaDistinta>>() {
+	                @Override 
+	                public ListCell<RigaDistinta> call(ListView<RigaDistinta> list) {
+	                    return new RigaDistCell();
+	                }
+	            }
+	        );
+	    
 	    //Listener
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -368,6 +379,17 @@ public class VisualizzaDistintaController implements Initializable {
 		listaPezzi.remove(riga);
 		
 	}
+	
+	static class RigaDistCell extends ListCell<RigaDistinta> {
+		@Override
+		public void updateItem(RigaDistinta item, boolean empty) {
+            super.updateItem(item, empty);
+            if(item != null){
+            	Label l = new Label(item.getIndicazione());
+            	setGraphic(l);
+            }
+        }
+    }
 	
 	
 }

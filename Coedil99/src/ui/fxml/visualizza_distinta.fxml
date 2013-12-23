@@ -19,7 +19,7 @@
       <children>
         <HBox alignment="CENTER_LEFT" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0">
           <children>
-            <Button mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi">
+            <Button mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi" fx:id="aggiungiPezzoButton">
               <HBox.margin>
                 <Insets left="10.0" right="10.0" fx:id="x1" />
               </HBox.margin>

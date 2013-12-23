@@ -12,17 +12,25 @@ import org.orm.PersistentException;
 import servizi.GestorePezzi;
 
 public class GestorePezziDAO implements GestorePezzi {
-	
+/**
+ * 
+ */
 	private PezzoDAO pezzoDAO;
-	
+/**
+ * 
+ */
 	public GestorePezziDAO() {
 		pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
 	}
-
+/**
+ * 
+ */
 	public Pezzo creaPezzo() {
 		return pezzoDAO.createPezzo();
 	}
-
+/**
+ * 
+ */
 	public void cancellaPezzo(Pezzo pezzo) {
 		try {
 			pezzoDAO.delete(pezzo);

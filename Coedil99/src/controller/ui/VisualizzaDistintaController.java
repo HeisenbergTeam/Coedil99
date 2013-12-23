@@ -58,6 +58,7 @@ public class VisualizzaDistintaController implements Initializable {
     
     @FXML private Button modificaDistButton;
     @FXML private Button salvaDistButton;
+    @FXML private Button aggiungiPezzoButton;
     @FXML private Button modificaPezzoButton;
     @FXML private Button rimuoviPezzoButton;
     
@@ -67,6 +68,7 @@ public class VisualizzaDistintaController implements Initializable {
     private Map<String,Label> distintaLabels;
     private Map<String,TextField> distintaTextFields;
     private Map<String,Object> rigaDistintaNodes;
+    private Map<String,Object> rigaDistintaTextFields;
     
     private GestoreDistinta gestoreDistinta;
     private Log log;
@@ -233,6 +235,8 @@ public class VisualizzaDistintaController implements Initializable {
 			Set<Map.Entry<String, Object>> insieme = rigaDistintaNodes.entrySet();
 			Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
 			
+			rigaDistintaTextFields = new HashMap<String,Object>();
+			
 			while(iterator.hasNext()){
 				
 				Map.Entry<String, Object> entry = iterator.next();
@@ -244,18 +248,39 @@ public class VisualizzaDistintaController implements Initializable {
 				TextField tf = new TextField();
 				tf.setText( ((Label) entry.getValue()).getText());
 				
+				rigaDistintaTextFields.put(entry.getKey(),tf);
+				
 				tps.getChildren().add(tf);
 				
 			}
 			
+			aggiungiPezzoButton.setDisable(true);
 			modificaPezzoButton.setText("Salva");
+			rimuoviPezzoButton.setDisable(true);
+			
 			modificandoRigaDistinta = true;
 			
 		}else{
 			
+			Set<Map.Entry<String, Object>> insieme = rigaDistintaTextFields.entrySet();
+			Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
 			
+			while(iterator.hasNext()){
+				
+				Map.Entry<String, Object> entry = iterator.next();
+				Parent p = ((Node) entry.getValue()).getParent();
+				
+				Pane tps = (Pane) p;
+				tps.getChildren().removeAll();
+				tps.getChildren().retainAll();
+				
+				tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
+				
+			}
 			
+			aggiungiPezzoButton.setDisable(false);
 			modificaPezzoButton.setText("Modifica");
+			rimuoviPezzoButton.setDisable(false);
 			modificandoRigaDistinta = false;
 		}
 		

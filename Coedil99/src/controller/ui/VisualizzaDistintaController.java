@@ -40,7 +40,7 @@ import servizi.impl.GestoreServiziPrototipo;
 
 public class VisualizzaDistintaController implements Initializable {
 	
-    @FXML private ListView listPezziDistinta;
+    @FXML private ListView<RigaDistinta> listPezziDistinta;
     @FXML private Label lbl_modulo;
     @FXML private Label lbl_revisione;
     @FXML private Label lbl_data;
@@ -77,7 +77,7 @@ public class VisualizzaDistintaController implements Initializable {
     private Boolean modificandoDistinta = false;
     private Boolean modificandoRigaDistinta = false;
 
-    final ObservableList<String> listaPezzi = FXCollections.observableArrayList();
+    final ObservableList<RigaDistinta> listaPezzi = FXCollections.observableArrayList();
     
     public void printSelectedItem(ListView listView) {
         ObservableList<Integer> list = listView.getSelectionModel().getSelectedIndices();
@@ -96,12 +96,13 @@ public class VisualizzaDistintaController implements Initializable {
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
 		log = (Log) gsp.getServizio("LogStdout");
-		GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
+		gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
+		//Prendo il primo ordine per ora
 		Ordine ordine = gestoreOrdine.getOrdine(1);
 		
-		log.i(ordine.getID()+"");
+		log.i(String.valueOf(ordine.getID()));
 		
 		
 		//TODO: modifica a getCommessaID(id)
@@ -116,7 +117,7 @@ public class VisualizzaDistintaController implements Initializable {
 		final RigaDistinta[] righeDistinta = distinta.righeDistinta.toArray();
 		
 		for (int i=0; righeDistinta.length>i; i++) {
-			listaPezzi.add(righeDistinta[i].getIndicazione());
+			listaPezzi.addAll(righeDistinta);
 		}
 		
 		listPezziDistinta.setItems(listaPezzi);
@@ -160,13 +161,13 @@ public class VisualizzaDistintaController implements Initializable {
 	        	if (listPezziDistinta.getSelectionModel().getSelectedItem()!=null) {
 		            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
 		            
-		            int selected = (int) listPezziDistinta.getSelectionModel().getSelectedIndices().get(0);
+		            RigaDistinta riga = listPezziDistinta.getSelectionModel().getSelectedItem();
 		            
 		            //Aggiorno campi
-		            lbl_codice_pezzo.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getNome());
-		            lbl_fornitore.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getFornitore());
-		            lbl_n_pezzi.setText(righeDistinta[selected].getPezzo().getQuantita()+"");
-		            lbl_diametro.setText(righeDistinta[selected].getPezzo().getDescrizionePezzo().getDiametro()+"");
+		            lbl_codice_pezzo.setText(riga.getPezzo().getDescrizionePezzo().getNome());
+		            lbl_fornitore.setText(riga.getPezzo().getDescrizionePezzo().getFornitore());
+		            lbl_n_pezzi.setText(riga.getPezzo().getQuantita()+"");
+		            lbl_diametro.setText(riga.getPezzo().getDescrizionePezzo().getDiametro()+"");
 		            lbl_misura_taglio.setText("PROSSIMA ITERAZIONE");
 		            lbl_peso.setText("PROSSIMA ITERAZIONE");
 		            
@@ -293,6 +294,8 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		log.i("Salvataggio dati distinta");
 		
+		listPezziDistinta.getSelectionModel().getSelectedItem();
+		
 		
 		if(modificandoDistinta != true){
 			return;
@@ -313,6 +316,7 @@ public class VisualizzaDistintaController implements Initializable {
 			tps.getChildren().add(distintaLabels.get(entry.getKey()));
 			
 		}
+		
 		
 		modificandoDistinta = false;
 		modificaDistButton.setDisable(false);
@@ -350,7 +354,8 @@ public class VisualizzaDistintaController implements Initializable {
 		popupStage.showAndWait();
 		
 		Pezzo p = (Pezzo) session.get("pezzo_aggiunto");
-		listaPezzi.add("Pezzo");
+		RigaDistinta riga = new RigaDistinta();
+		listaPezzi.add(riga);
 		
 	}
     
@@ -359,8 +364,8 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		log.i("Rimuovi pezzo");
 		
-		String s = (String) listPezziDistinta.getSelectionModel().getSelectedItem();
-		listaPezzi.remove(s);
+		RigaDistinta riga = listPezziDistinta.getSelectionModel().getSelectedItem();
+		listaPezzi.remove(riga);
 		
 	}
 	

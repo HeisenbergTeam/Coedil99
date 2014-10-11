@@ -25,7 +25,8 @@ public class VisualizzaDistinta extends Application {
 			
 			
 			Scene scene = new Scene(root, 1024, 768);
-			
+			stage.setMinWidth(1024);
+			stage.setMinHeight(768);
 			stage.setTitle("Distinta");
 			stage.setScene(scene);
 			stage.show();

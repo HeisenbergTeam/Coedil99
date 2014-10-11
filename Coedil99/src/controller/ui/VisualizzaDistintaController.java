@@ -32,6 +32,7 @@ import modello_di_dominio.Distinta;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.Pezzo;
 import modello_di_dominio.RigaDistinta;
+import servizi.GestoreCommessa;
 import servizi.GestoreDistinta;
 import servizi.GestoreOrdine;
 import servizi.GestoreServizi;
@@ -72,8 +73,15 @@ public class VisualizzaDistintaController implements Initializable {
     private Map<String,Object> rigaDistintaTextFields;
     
     private GestoreDistinta gestoreDistinta;
+    private GestoreOrdine gestoreOrdine;
+    private GestoreCommessa gestoreCommessa;
     private Log log;
     private Sessione session;
+    
+    Ordine ordine;
+    Commessa[] commesse;
+    Distinta distinta;
+    RigaDistinta[] righeDistinta;
     
     private Boolean modificandoDistinta = false;
     private Boolean modificandoRigaDistinta = false;
@@ -95,27 +103,28 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		log = (Log) gsp.getServizio("LogStdout");
+		gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
+		gestoreCommessa = (GestoreCommessa) gsp.getServizio("GestoreCommessaDAO");
 		gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
+		log = (Log) gsp.getServizio("LogStdout");
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
 		//Prendo il primo ordine per ora
-		Ordine ordine = gestoreOrdine.getOrdine(1);
+		ordine = gestoreOrdine.getOrdine(1);
 		
 		log.i(String.valueOf(ordine.getID()));
 		
 		
 		//TODO: modifica a getCommessaID(id)
-		Commessa[] commesse = ordine.commesse.toArray();
+		commesse = ordine.commesse.toArray();
 		
 		for (int i=0; i < commesse.length; i++) {
 			log.i(commesse[i].getID()+" "+commesse[i].getDistinta());
 		}
 		
-		Distinta distinta = commesse[0].getDistinta();
+		distinta = commesse[0].getDistinta();
 		
-		final RigaDistinta[] righeDistinta = distinta.righeDistinta.toArray();
+		righeDistinta = distinta.righeDistinta.toArray();
 		
 		for (int i=0; righeDistinta.length>i; i++) {
 			listaPezzi.addAll(righeDistinta);
@@ -134,13 +143,13 @@ public class VisualizzaDistintaController implements Initializable {
 	    //distinta labels
 	    
 	    distintaLabels = new HashMap<String,Label>();
-	    distintaLabels.put("modulo",lbl_modulo);
-	    distintaLabels.put("revisione",lbl_revisione);
-	    distintaLabels.put("data",lbl_data);
-	    distintaLabels.put("cliente",lbl_cliente);
-	    distintaLabels.put("destinazione",lbl_destinazione);
+	    //distintaLabels.put("modulo",lbl_modulo);
+	    //distintaLabels.put("revisione",lbl_revisione);
+	    //distintaLabels.put("data",lbl_data);
+	    //distintaLabels.put("cliente",lbl_cliente);
+	    //distintaLabels.put("destinazione",lbl_destinazione);
 	    distintaLabels.put("elemstrutturale",lbl_elemstrutturale);
-	    distintaLabels.put("cartellino",lbl_cartellino);
+	    //distintaLabels.put("cartellino",lbl_cartellino);
 	    
 	    //rigaDistinta nodes
 	    
@@ -226,7 +235,7 @@ public class VisualizzaDistintaController implements Initializable {
 			
 			distintaTextFields.put(entry.getKey(), tf);
 		}
-		
+
 		//Flag
 		modificandoDistinta = true;
 		//Disabilito le modifiche
@@ -283,6 +292,7 @@ public class VisualizzaDistintaController implements Initializable {
 				Parent p = ((Node) entry.getValue()).getParent();
 				
 				Pane tps = (Pane) p;
+				//TODO: fix Null pointer
 				tps.getChildren().removeAll();
 				tps.getChildren().retainAll();
 				
@@ -306,8 +316,7 @@ public class VisualizzaDistintaController implements Initializable {
 		log.i("Salvataggio dati distinta");
 		
 		listPezziDistinta.getSelectionModel().getSelectedItem();
-		
-		
+				
 		if(modificandoDistinta != true){
 			return;
 		}
@@ -327,7 +336,22 @@ public class VisualizzaDistintaController implements Initializable {
 			tps.getChildren().add(distintaLabels.get(entry.getKey()));
 			
 		}
+		/*
+	    @FXML private Label lbl_modulo;
+	    @FXML private Label lbl_revisione;
+	    @FXML private Label lbl_data;
+	    @FXML private Label lbl_cliente;
+	    @FXML private Label lbl_destinazione;
+	    @FXML private Label lbl_elemstrutturale;
+	    @FXML private Label lbl_cartellino;
 		
+		distinta.setDataInizio(lbl_data.getText());
+		distinta.setElementoStrutturale(lbl_elemstrutturale.getText());
+		distinta.setModello(value);
+		distinta.setRevisione(lbl_revisione.getText());
+		*/
+		gestoreDistinta.modificaDistintaByID(distinta.getID(), distinta.getDataInizio(), distinta.getCommessa(), getNumber(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
+		//distinta.setElementoStrutturale(lbl_elemstrutturale.getText());
 		
 		modificandoDistinta = false;
 		modificaDistButton.setDisable(false);
@@ -335,6 +359,13 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		
 	}
+	
+	//TODO: classe di utilità
+	public int getNumber(final String str){
+	    final String onlyNumbers = str.replaceAll("[^0-9]", "");
+	    return (onlyNumbers.length() > 0 ? onlyNumbers.charAt(0) - '0' : -1);
+	}
+	
 /**
  *  aggiungiPezzo
  */

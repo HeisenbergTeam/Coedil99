@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.geometry.*?>
@@ -13,22 +14,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="body" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="controller.ui.VisualizzaDistintaController">
+<BorderPane minHeight="768.0" minWidth="1024.0" prefHeight="965.0" prefWidth="1131.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ui.VisualizzaDistintaController">
   <bottom>
-    <HBox prefHeight="41.0" prefWidth="800.0">
+    <HBox>
       <children>
-        <HBox alignment="CENTER_LEFT" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0">
-          <children>
-            <Button mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi" fx:id="aggiungiPezzoButton">
-              <HBox.margin>
-                <Insets left="10.0" right="10.0" fx:id="x1" />
-              </HBox.margin>
-            </Button>
-            <Button fx:id="modificaPezzoButton" mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica" HBox.margin="$x1" />
-            <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" text="Rimuovi" HBox.margin="$x1" onAction="#rimuoviPezzo" />
-          </children>
-        </HBox>
-        <HBox alignment="CENTER_RIGHT" fillHeight="true" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0">
+        <HBox alignment="CENTER_RIGHT" fillHeight="true" prefHeight="-1.0" prefWidth="-1.0">
           <children>
             <Button fx:id="modificaDistButton" mnemonicParsing="false" onAction="#modificaDatiDistinta" text="Modifica" />
             <Button fx:id="salvaDistButton" mnemonicParsing="false" onAction="#salvaDatiDistinta" text="Salva" textAlignment="LEFT" HBox.margin="$x1" />
@@ -40,189 +30,273 @@
   <center>
     <GridPane gridLinesVisible="false" maxHeight="-1.0" maxWidth="-1.0" opacity="1.0" snapToPixel="true" BorderPane.alignment="TOP_LEFT">
       <children>
-        <TitledPane id="main-title" fx:id="informazioni_distinta" animated="false" collapsible="false" expanded="true" maxHeight="150.0" minHeight="150.0" prefHeight="150.0" prefWidth="-1.0" style="" text="Informazioni sulla distinta" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
-          <content>
-            <GridPane prefHeight="130.0" prefWidth="796.0" style="">
-              <children>
-                <GridPane style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                  <children>
-                    <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="-1.0" text="Modulo" textAlignment="LEFT" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                      <content>
-                        <Label fx:id="lbl_modulo" alignment="CENTER_LEFT" contentDisplay="LEFT" graphicTextGap="4.0" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" translateX="0.0" translateY="0.0" wrapText="false" />
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Revisione" textFill="#d8d8d8" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                      <content>
-                        <Label fx:id="lbl_revisione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_revisione" />
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Data" GridPane.columnIndex="2" GridPane.rowIndex="0">
-                      <content>
-                        <Label fx:id="lbl_data" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Cliente/Impresa" GridPane.columnIndex="3" GridPane.rowIndex="0">
-                      <content>
-                        <Label fx:id="lbl_cliente" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
-                      </content>
-                    </TitledPane>
-                  </children>
-                  <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                </GridPane>
-                <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
-                  <children>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Destinazione materiale" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                      <content>
-                        <Label fx:id="lbl_destinazione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Elemento strutturale" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                      <content>
-                        <Label fx:id="lbl_elemstrutturale" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
-                      </content>
-                    </TitledPane>
-                    <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Cartellino" GridPane.columnIndex="2" GridPane.rowIndex="0">
-                      <content>
-                        <Label fx:id="lbl_cartellino" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
-                      </content>
-                    </TitledPane>
-                  </children>
-                  <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                </GridPane>
-              </children>
+            <GridPane>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints valignment="TOP" vgrow="NEVER" />
               </rowConstraints>
+               <children>
+              <TitledPane id="main-title" fx:id="informazioni_distinta" animated="false" collapsible="false" expanded="true" prefWidth="-1.0" style="" text="Informazioni sulla distinta" textFill="WHITE">
+                <content>
+                  <GridPane style="">
+                    <children>
+                      <GridPane style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <children>
+                          <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" prefWidth="-1.0" text="Modulo" textAlignment="LEFT" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <content>
+                                          <Label fx:id="lbl_modulo" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" />
+                                       </content>
+                          </TitledPane>
+                          <TitledPane animated="false" collapsible="false" expanded="true" text="Revisione" textFill="#d8d8d8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <content>
+                              <Label fx:id="lbl_revisione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_revisione" />
+                            </content>
+                          </TitledPane>
+                          <TitledPane animated="false" collapsible="false" expanded="true" text="Data" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <content>
+                              <Label fx:id="lbl_data" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
+                            </content>
+                          </TitledPane>
+                          <TitledPane animated="false" collapsible="false" expanded="true" text="Cliente/Impresa" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                            <content>
+                              <Label fx:id="lbl_cliente" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
+                            </content>
+                          </TitledPane>
+                        </children>
+                        <columnConstraints>
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                          <RowConstraints vgrow="SOMETIMES" />
+                        </rowConstraints>
+                      </GridPane>
+                      <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <children>
+                          <TitledPane animated="false" collapsible="false" expanded="true" text="Destinazione materiale" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <content>
+                              <Label fx:id="lbl_destinazione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
+                            </content>
+                          </TitledPane>
+                          <TitledPane animated="false" collapsible="false" expanded="true" text="Elemento strutturale" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <content>
+                              <Label fx:id="lbl_elemstrutturale" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
+                            </content>
+                          </TitledPane>
+                          <TitledPane animated="false" collapsible="false" expanded="true" text="Cartellino" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <content>
+                              <Label fx:id="lbl_cartellino" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
+                            </content>
+                          </TitledPane>
+                        </children>
+                        <columnConstraints>
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                          <RowConstraints vgrow="SOMETIMES" />
+                        </rowConstraints>
+                      </GridPane>
+                              <Separator prefWidth="200.0" GridPane.rowIndex="2" />
+                    </children>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                      <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+                </content>
+              </TitledPane>
+               </children>
             </GridPane>
-          </content>
-        </TitledPane>
-        <TitledPane id="main-title" fx:id="righe_distinta" animated="false" collapsible="false" text="Righe distinta" GridPane.columnIndex="0" GridPane.rowIndex="1">
-          <content>
-            <SplitPane dividerPositions="0.5018867924528302" focusTraversable="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="-1.0">
-              <items>
-                <TitledPane animated="false" collapsible="false" expanded="true" maxHeight="10000.0" prefHeight="10000.0" prefWidth="188.0" text="Lista pezzi">
-                  <content>
-                    <GridPane minHeight="-1.0" prefHeight="-1.0">
-                      <children>
-                        <ListView fx:id="listPezziDistinta" maxHeight="10000.0" minHeight="-1.0" prefHeight="10000.0" prefWidth="-1.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                      </children>
-                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                        <RowConstraints maxHeight="10000.0" minHeight="10.0" prefHeight="366.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                    </GridPane>
-                  </content>
-                </TitledPane>
-                <GridPane>
-                  <children>
-                    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
-                      <children>
-                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Numero pezzi" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                          <content>
-                            <Label fx:id="lbl_n_pezzi" text="Nessuna riga selezionata" />
-                          </content>
-                        </TitledPane>
-                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Diametro" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                          <content>
-                            <Label fx:id="lbl_diametro" text="Nessuna riga selezionata" />
-                          </content>
-                        </TitledPane>
-                      </children>
-                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                    </GridPane>
-                    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">
-                      <children>
-                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Misura taglio" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                          <content>
-                            <Label fx:id="lbl_misura_taglio" text="Nessuna riga selezionata" />
-                          </content>
-                        </TitledPane>
-                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Peso (Kg)" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                          <content>
-                            <Label fx:id="lbl_peso" text="Nessuna riga selezionata" />
-                          </content>
-                        </TitledPane>
-                      </children>
-                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                    </GridPane>
-                    <TitledPane animated="false" collapsible="false" content="$null" maxHeight="10000.0" minHeight="250.0" prefHeight="10000.0" text="Sagoma" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
-                      <children>
-                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Codice pezzo" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                          <content>
-                            <Label fx:id="lbl_codice_pezzo" text="Nessuna riga selezionata" />
-                          </content>
-                        </TitledPane>
-                        <TitledPane animated="false" collapsible="false" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" text="Fornitore" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                          <content>
-                            <Label fx:id="lbl_fornitore" text="Nessuna riga selezionata" />
-                          </content>
-                        </TitledPane>
-                      </children>
-                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                    </GridPane>
-                  </children>
-                  <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                </GridPane>
-              </items>
-            </SplitPane>
-          </content>
-        </TitledPane>
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+              </rowConstraints>
+               <children>
+              <TitledPane id="main-title" fx:id="righe_distinta" animated="false" collapsible="false" text="Righe distinta" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                     <content>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                              <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                          </rowConstraints>
+                           <children>
+                        <SplitPane dividerPositions="0.33" focusTraversable="true" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                          <items>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                                      </rowConstraints>
+                                       <children>
+                                  <TitledPane id="main-title" animated="false" collapsible="false" expanded="true" text="Lista pezzi">
+                                    <content>
+                                      <GridPane minHeight="-1.0" prefHeight="-1.0">
+                                        <children>
+                                          <ListView fx:id="listPezziDistinta" minHeight="-1.0" />
+                                                  <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" GridPane.rowIndex="1">
+                                                    <children>
+                                                      <Button fx:id="aggiungiPezzoButton" mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi">
+                                                        <HBox.margin>
+                                                          <Insets left="10.0" right="10.0" fx:id="x1" />
+                                                        </HBox.margin>
+                                                      </Button>
+                                                      <Button fx:id="modificaPezzoButton" mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica" HBox.margin="$x1" />
+                                                      <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" onAction="#rimuoviPezzo" text="Rimuovi" HBox.margin="$x1" />
+                                                    </children>
+                                                  </HBox>
+                                        </children>
+                                        <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                                      <RowConstraints vgrow="SOMETIMES" />
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                        </rowConstraints>
+                                      </GridPane>
+                                    </content>
+                                  </TitledPane>
+                                       </children>
+                                    </GridPane>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TitledPane id="main-title" animated="false" collapsible="false" text="Informazioni pezzo">
+                                             <content>
+                                        <GridPane>
+                                          <children>
+                                            <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                              <children>
+                                                <TitledPane animated="false" collapsible="false" text="Numero pezzi" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                                  <content>
+                                                    <Label fx:id="lbl_n_pezzi" text="Nessuna riga selezionata" />
+                                                  </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" collapsible="false" text="Diametro" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                                  <content>
+                                                    <Label fx:id="lbl_diametro" text="Nessuna riga selezionata" />
+                                                  </content>
+                                                </TitledPane>
+                                              </children>
+                                              <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              </columnConstraints>
+                                              <rowConstraints>
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                              </rowConstraints>
+                                            </GridPane>
+                                            <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">
+                                              <children>
+                                                <TitledPane animated="false" collapsible="false" text="Misura taglio" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                                  <content>
+                                                    <Label fx:id="lbl_misura_taglio" text="Nessuna riga selezionata" />
+                                                  </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" collapsible="false" text="Peso (Kg)" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                                  <content>
+                                                    <Label fx:id="lbl_peso" text="Nessuna riga selezionata" />
+                                                  </content>
+                                                </TitledPane>
+                                              </children>
+                                              <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              </columnConstraints>
+                                              <rowConstraints>
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                              </rowConstraints>
+                                            </GridPane>
+                                            <GridPane GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                              <children>
+                                                <TitledPane animated="false" collapsible="false" text="Codice pezzo">
+                                                  <content>
+                                                    <Label fx:id="lbl_codice_pezzo" text="Nessuna riga selezionata" />
+                                                  </content>
+                                                </TitledPane>
+                                                <TitledPane animated="false" collapsible="false" text="Fornitore" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                                  <content>
+                                                    <Label fx:id="lbl_fornitore" text="Nessuna riga selezionata" />
+                                                  </content>
+                                                </TitledPane>
+                                              </children>
+                                              <columnConstraints>
+      										<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              </columnConstraints>
+                                              <rowConstraints>
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                              </rowConstraints>
+                                            </GridPane>
+                                                      <GridPane GridPane.rowIndex="3">
+                                                        <columnConstraints>
+                                                          <ColumnConstraints hgrow="SOMETIMES" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                          <RowConstraints vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                         <children>
+                                                  <TitledPane animated="false" collapsible="false" content="$null" text="Sagoma">
+                                                               <content>
+                                                                  <Label text="prova" />
+                                                               </content>
+                                                            </TitledPane>
+                                                         </children>
+                                                      </GridPane>
+                                          </children>
+                                          <columnConstraints>
+                                            <ColumnConstraints hgrow="SOMETIMES" />
+                                          </columnConstraints>
+                                          <rowConstraints>
+                                            <RowConstraints />
+                                            <RowConstraints />
+                                            <RowConstraints />
+                                            <RowConstraints vgrow="ALWAYS" />
+                                          </rowConstraints>
+                                        </GridPane>
+                                             </content>
+                                          </TitledPane>
+                                       </children>
+                                    </GridPane>
+                          </items>
+                        </SplitPane>
+                              <Separator prefWidth="200.0" GridPane.rowIndex="1" />
+                           </children>
+                        </GridPane>
+                     </content>
+              </TitledPane>
+               </children>
+            </GridPane>
       </children>
       <columnConstraints>
         <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="10000.0" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" valignment="TOP" vgrow="ALWAYS" />
-        <RowConstraints maxHeight="10000.0" minHeight="10.0" prefHeight="420.0" valignment="TOP" vgrow="ALWAYS" />
+        <RowConstraints valignment="TOP" vgrow="SOMETIMES" />
+        <RowConstraints valignment="TOP" vgrow="ALWAYS" />
       </rowConstraints>
     </GridPane>
   </center>
@@ -230,7 +304,7 @@
     <URL value="@../css/visualizza_distinta.css" />
   </stylesheets>
   <top>
-    <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;">
+    <HBox prefHeight="-1.0" style="-fx-background-color: #292929;">
       <children>
         <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
           <graphic>

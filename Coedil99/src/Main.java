@@ -13,6 +13,8 @@ import modello_di_dominio.Sagoma;
 
 import org.orm.PersistentException;
 
+import controller.ui.LoginController;
+import ui.MainApplication;
 import ui.VisualizzaDistinta;
 
 
@@ -106,6 +108,9 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+		
+		//MainApplication mainGUI = new MainApplication();
+		//mainGUI.main(args);
 		VisualizzaDistinta.start(args);
 		
 	}

@@ -29,6 +29,7 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 		riga.setLavorazionePezzo(lavorazione);
 		riga.setIndicazione(indicazione);		
 		riga.setPezzo(pezzo);
+		
 		distinta.righeDistinta.add(riga);
 		
 		try {
@@ -39,13 +40,6 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 			e.printStackTrace();
 		}
 		
-		/*
-		try {
-			DAOFactory.getDAOFactory().getDistintaDAO().save(distinta);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 		return riga;
 	}
 

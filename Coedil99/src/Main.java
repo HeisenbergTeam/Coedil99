@@ -147,6 +147,26 @@ public class Main {
 		
 		RigaDistinta rigaDistinta2 = gestoreRigaDistinta.creaRigaDistinta(pezzo2, distinta2, lavorazionePezzo2, "Tubo portaz");
 				
+		
+		//TEST CANCELLAZIONE CON GESTORI
+		
+		//IT WORKS
+		//gestoreOrdine.cancellaOrdine(ordine2);
+		
+		//IT WORKS
+		//gestoreCommessa.cancellaCommessa(commessa2);
+		
+		//IT WORKS
+		//gestoreDistinta.cancellaDistinta(distinta2);
+				
+		//IT WORKS
+		//gestoreRigaDistinta.cancellaRigaDistinta(rigaDistinta2);
+		
+		//TODO: FIX since it doesn't work because of no deleteAndDisassociate (because of model mistake), LavorazionePezzo,DescrizionePezzo,Sagoma,RigaDistinta
+		//gestorePezzi.cancellaPezzo(pezzo2);
+		
+		
+		
 		//MainApplication mainGUI = new MainApplication();
 		//mainGUI.main(args);
 		

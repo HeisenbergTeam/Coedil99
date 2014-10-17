@@ -31,7 +31,7 @@ public class GestoreCommessaDAO implements GestoreCommessa {
 	@Override
 	public void cancellaCommessa(Commessa commessa) {
 		try {
-			commessaDAO.delete(commessa);
+			commessaDAO.deleteAndDissociate(commessa);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public class GestoreCommessaDAO implements GestoreCommessa {
 	@Override
 	public void cancellaCommessaDaID(int id) {
 		try {
-			commessaDAO.delete(commessaDAO.getCommessaByORMID(id));
+			commessaDAO.deleteAndDissociate(commessaDAO.getCommessaByORMID(id));
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

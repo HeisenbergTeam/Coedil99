@@ -76,7 +76,7 @@ public class GestoreDistintaDAO implements GestoreDistinta {
 
 	public void cancellaDistinta(Distinta distinta) {
 		try {
-			distintaDAO.delete(distinta);
+			distintaDAO.deleteAndDissociate(distinta);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +85,7 @@ public class GestoreDistintaDAO implements GestoreDistinta {
 
 	public void cancellaDistintaByID(int id) {
 		try {
-			distintaDAO.delete(distintaDAO.getDistintaByORMID(id));
+			distintaDAO.deleteAndDissociate(distintaDAO.getDistintaByORMID(id));
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -74,7 +74,7 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 
 	public void cancellaRigaDistinta(RigaDistinta riga) {
 		try {
-			rigaDistintaDAO.delete(riga);
+			rigaDistintaDAO.deleteAndDissociate(riga);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,7 +83,7 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 
 	public void cancellaRigaDistintaByID(int id) {
 		try {
-			rigaDistintaDAO.delete(rigaDistintaDAO.getRigaDistintaByORMID(id));
+			rigaDistintaDAO.deleteAndDissociate(rigaDistintaDAO.getRigaDistintaByORMID(id));
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -29,12 +29,14 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
+import modello_di_dominio.LavorazionePezzo;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.Pezzo;
 import modello_di_dominio.RigaDistinta;
 import servizi.GestoreCommessa;
 import servizi.GestoreDistinta;
 import servizi.GestoreOrdine;
+import servizi.GestoreRigaDistinta;
 import servizi.GestoreServizi;
 import servizi.Log;
 import servizi.Sessione;
@@ -73,6 +75,7 @@ public class VisualizzaDistintaController implements Initializable {
     private Map<String,Object> rigaDistintaTextFields;
     
     private GestoreDistinta gestoreDistinta;
+    private GestoreRigaDistinta gestoreRigaDistinta;
     private GestoreOrdine gestoreOrdine;
     private GestoreCommessa gestoreCommessa;
     private Log log;
@@ -106,6 +109,7 @@ public class VisualizzaDistintaController implements Initializable {
 		gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
 		gestoreCommessa = (GestoreCommessa) gsp.getServizio("GestoreCommessaDAO");
 		gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
+		gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
 		log = (Log) gsp.getServizio("LogStdout");
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
@@ -402,6 +406,7 @@ public class VisualizzaDistintaController implements Initializable {
 		Pezzo p = (Pezzo) session.get("pezzo_aggiunto");
 		RigaDistinta riga = new RigaDistinta();
 		listaPezzi.add(riga);
+		gestoreRigaDistinta.creaRigaDistinta(p, distinta, new LavorazionePezzo(), "test_string");
 		
 	}
     
@@ -412,6 +417,7 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		RigaDistinta riga = listPezziDistinta.getSelectionModel().getSelectedItem();
 		listaPezzi.remove(riga);
+		gestoreRigaDistinta.cancellaRigaDistinta(riga);
 	}
 	
 	static class RigaDistCell extends ListCell<RigaDistinta> {

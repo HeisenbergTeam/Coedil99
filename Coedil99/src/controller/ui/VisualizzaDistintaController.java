@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -267,18 +268,16 @@ public class VisualizzaDistintaController implements Initializable {
 			while(iterator.hasNext()){
 				
 				Map.Entry<String, Object> entry = iterator.next();
-				Parent p = ((Node) entry.getValue()).getParent();
 				
-				Pane tps = (Pane) p;
-				tps.getChildren().removeAll();
-				
+				Parent p = ((Node) entry.getValue()).getParent().getParent();
 				TextField tf = new TextField();
-				tf.setText( ((Label) entry.getValue()).getText());
-				
-				rigaDistintaTextFields.put(entry.getKey(),tf);
-				
+				tf.setText(((Label) entry.getValue()).getText());
+				Pane tps = (Pane) p;
+				tps.getChildren().remove(entry.getValue());
 				tps.getChildren().add(tf);
 				
+				rigaDistintaTextFields.put(entry.getKey(), tf);
+
 			}
 			
 			aggiungiPezzoButton.setDisable(true);
@@ -298,11 +297,11 @@ public class VisualizzaDistintaController implements Initializable {
 				Parent p = ((Node) entry.getValue()).getParent();
 				
 				Pane tps = (Pane) p;
-				//TODO: fix Null pointer
-				tps.getChildren().removeAll();
-				tps.getChildren().retainAll();
+				tps.getChildren().remove(entry.getValue());
 				
-				tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
+				((Label) rigaDistintaNodes.get(entry.getKey())).setText(((TextField) entry.getValue()).getText());
+				
+				//tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
 				
 			}
 			

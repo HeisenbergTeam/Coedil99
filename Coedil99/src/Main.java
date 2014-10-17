@@ -162,7 +162,7 @@ public class Main {
 		//IT WORKS
 		//gestoreRigaDistinta.cancellaRigaDistinta(rigaDistinta2);
 		
-		//TODO: FIX since it doesn't work because of no deleteAndDisassociate (because of model mistake), LavorazionePezzo,DescrizionePezzo,Sagoma,RigaDistinta
+		//TODO: FIX since it doesn't work because of no deleteAndDisassociate (because of model mistake), RigaDistinta, LavorazionePezzo,DescrizionePezzo,Sagoma,RigaDistinta
 		//gestorePezzi.cancellaPezzo(pezzo2);
 		
 		

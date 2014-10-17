@@ -14,6 +14,15 @@ import modello_di_dominio.Sagoma;
 import org.orm.PersistentException;
 
 import controller.ui.LoginController;
+import servizi.GestoreCommessa;
+import servizi.GestoreDistinta;
+import servizi.GestoreOrdine;
+import servizi.GestorePezzi;
+import servizi.GestoreRigaDistinta;
+import servizi.GestoreServizi;
+import servizi.Log;
+import servizi.Sessione;
+import servizi.impl.GestoreServiziPrototipo;
 import ui.MainApplication;
 import ui.VisualizzaDistinta;
 
@@ -22,7 +31,7 @@ public class Main {
 	
 	public static void main(String args[]){
 		System.out.println("Start");
-		
+		/*
 		Date date = new Date();
 		
 		Destinazione dest = new Destinazione();
@@ -74,13 +83,14 @@ public class Main {
 		rigaDistinta.setPezzo(pezzo);
 		rigaDistinta.setLavorazionePezzo(lavorazionePezzo);
 		
+		
 		try {
 			DAOFactory.getDAOFactory().getOrdineDAO().save(ordine);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
+		} */
+		/*
 		try {
 			System.out.print(DAOFactory.getDAOFactory().getOrdineDAO()
 					.getOrdineByORMID(ordine.getID()).getDataCreazione()
@@ -107,10 +117,39 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
+				
+		//TEST CREAZIONE CON GESTORI
+		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
+		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
+		GestoreCommessa gestoreCommessa = (GestoreCommessa) gsp.getServizio("GestoreCommessaDAO");
+		GestoreDistinta gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
+		GestoreRigaDistinta gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
+		GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
+		Log log = (Log) gsp.getServizio("LogStdout");
+		Sessione session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
+		Destinazione dest2 = gestoreOrdine.creaDestinazione("Via Strinella, 371");
 		
+		Ordine ordine2 = gestoreOrdine.creaOrdine(dest2,new Date());
+		
+		Commessa commessa2 = gestoreOrdine.creaCommessa(ordine2, 10, new Date());
+		
+		Distinta distinta2 = gestoreDistinta.creaDistinta(new Date(), commessa2, 2, "Modello Prova es PORTONE3AE4K", "Elemento strutturale prova es Portone");
+		
+		DescrizionePezzo descrizionePezzo2 = gestorePezzi.creaDescrizionePezzo("Tubo alluminioz", 1.0f, 0.020f, "ItalSystemz");
+		
+		Sagoma sagoma2 = gestorePezzi.creaSagoma("pathImgZ");
+		
+		LavorazionePezzo lavorazionePezzo2 = gestorePezzi.creaLavorazionePezzo("Non lavoratoz", 15.0f, 1.0f, sagoma2);
+		
+		Pezzo pezzo2 = gestorePezzi.creaPezzo(descrizionePezzo2, new Date(), 4);
+		
+		RigaDistinta rigaDistinta2 = gestoreRigaDistinta.creaRigaDistinta(pezzo2, distinta2, lavorazionePezzo2, "Tubo portaz");
+				
 		//MainApplication mainGUI = new MainApplication();
 		//mainGUI.main(args);
+		
 		VisualizzaDistinta.start(args);
 		
 	}

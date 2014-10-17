@@ -22,18 +22,30 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 		rigaDistintaDAO = DAOFactory.getDAOFactory().getRigaDistintaDAO();
 	}
 
-	public RigaDistinta creaRigaDIstinta() {
-		return rigaDistintaDAO.createRigaDistinta();
-	}
-
 	public RigaDistinta creaRigaDistinta(Pezzo pezzo, Distinta distinta,
 			LavorazionePezzo lavorazione, String indicazione) {
 		RigaDistinta riga = rigaDistintaDAO.createRigaDistinta();
 		riga.setDistinta(distinta);
 		riga.setLavorazionePezzo(lavorazione);
-		riga.setIndicazione(indicazione);
-		
+		riga.setIndicazione(indicazione);		
+		riga.setPezzo(pezzo);
 		distinta.righeDistinta.add(riga);
+		
+		try {
+			rigaDistintaDAO.save(riga);
+			DAOFactory.getDAOFactory().getDistintaDAO().save(distinta);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*
+		try {
+			DAOFactory.getDAOFactory().getDistintaDAO().save(distinta);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		return riga;
 	}
 

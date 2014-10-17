@@ -34,5 +34,9 @@ public interface GestoreOrdine extends Servizio {
 	public Commessa creaCommessaByID(int IdOrdine, int priorita, Date dataCommessa);
 	
 	public Commessa creaCommessa(Ordine ordine, int priorita, Date dataCommessa);
+	
+	public Destinazione creaDestinazione();
+	
+	public Destinazione creaDestinazione(String via);
 
 }

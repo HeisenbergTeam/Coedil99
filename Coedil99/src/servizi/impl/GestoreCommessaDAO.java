@@ -49,7 +49,14 @@ public class GestoreCommessaDAO implements GestoreCommessa {
 	}
 
 	public Distinta creaDistinta(Commessa commessa) {
-		return commessa.creaDistinta();
+		Distinta distinta = commessa.creaDistinta();
+		try {
+			DAOFactory.getDAOFactory().getDistintaDAO().save(distinta);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return distinta;
 	}
 
 	@Override

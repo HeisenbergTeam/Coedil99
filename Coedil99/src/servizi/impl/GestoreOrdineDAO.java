@@ -6,6 +6,7 @@ import java.util.List;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.DAOFactory;
 import modello_di_dominio.Destinazione;
+import modello_di_dominio.LavorazionePezzo;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.dao.OrdineDAO;
 
@@ -26,8 +27,14 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 
 	@Override
 	public Ordine creaOrdine() {
-
-		return ordineDAO.createOrdine();
+		Ordine ordine = ordineDAO.createOrdine();
+		try {
+			ordineDAO.save(ordine);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ordine;
 	}
 
 	@Override
@@ -35,6 +42,12 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 		Ordine ordine = ordineDAO.createOrdine();
 		ordine.setDataCreazione(dataConsegna);
 		ordine.setDestinazione(destinazione);
+		try {
+			ordineDAO.save(ordine);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return ordine;
 	}
 
@@ -104,7 +117,15 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 
 	@Override
 	public Commessa creaCommessa(Ordine ordine) {
-		return ordine.creaCommessa();
+		//Commessa commessa = ordine.creaCommessa();
+		Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().createCommessa();
+		try {
+			DAOFactory.getDAOFactory().getCommessaDAO().save(commessa);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return commessa;
 	}
 
 	@Override
@@ -120,9 +141,17 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 
 	@Override
 	public Commessa creaCommessa(Ordine ordine, int priorita, Date dataCommessa) {
-		Commessa commessa = ordine.creaCommessa();
+		//Commessa commessa = ordine.creaCommessa();
+		Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().createCommessa();
 		commessa.setPriorita(priorita);
 		commessa.setDataCreazione(dataCommessa);
+		commessa.setOrdine(ordine);
+		try {
+			DAOFactory.getDAOFactory().getCommessaDAO().save(commessa);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return commessa;
 	}
 
@@ -137,6 +166,31 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public Destinazione creaDestinazione() {
+		Destinazione destinazione = DAOFactory.getDAOFactory().getDestinazioneDAO().createDestinazione();
+		try {
+			DAOFactory.getDAOFactory().getDestinazioneDAO().save(destinazione);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return destinazione;
+	}
+
+	@Override
+	public Destinazione creaDestinazione(String via) {
+		Destinazione destinazione = DAOFactory.getDAOFactory().getDestinazioneDAO().createDestinazione();
+		destinazione.setVia(via);
+		try {
+			DAOFactory.getDAOFactory().getDestinazioneDAO().save(destinazione);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return destinazione;
 	}
 
 }

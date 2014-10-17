@@ -9,8 +9,6 @@ import modello_di_dominio.RigaDistinta;
 
 public interface GestoreRigaDistinta extends Servizio {
 
-	public RigaDistinta creaRigaDIstinta();
-
 	public RigaDistinta creaRigaDistinta(Pezzo pezzo, Distinta distinta,
 			LavorazionePezzo lavorazione, String indicazione);
 

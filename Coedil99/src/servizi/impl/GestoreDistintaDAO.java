@@ -33,6 +33,12 @@ public class GestoreDistintaDAO implements GestoreDistinta {
 		distinta.setRevisione(revisione);
 		distinta.setModello(modello);
 		distinta.setElementoStrutturale(elementoStrutturale);
+		try {
+			distintaDAO.save(distinta);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return distinta;
 	}
 	

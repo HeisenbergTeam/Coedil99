@@ -126,9 +126,11 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		righeDistinta = distinta.righeDistinta.toArray();
 		
-		for (int i=0; righeDistinta.length>i; i++) {
-			listaPezzi.addAll(righeDistinta);
-		}
+		listaPezzi.addAll(righeDistinta);
+		
+		//for (int i=0; righeDistinta.length>i; i++) {
+		//	listaPezzi.addAll(righeDistinta);
+		//}
 		
 		listPezziDistinta.setItems(listaPezzi);
 		
@@ -351,6 +353,8 @@ public class VisualizzaDistintaController implements Initializable {
 		distinta.setRevisione(lbl_revisione.getText());
 		*/
 		gestoreDistinta.modificaDistintaByID(distinta.getID(), distinta.getDataInizio(), distinta.getCommessa(), getNumber(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
+		//gestoreCommessa.
+		//gestoreOrdine.
 		//distinta.setElementoStrutturale(lbl_elemstrutturale.getText());
 		
 		modificandoDistinta = false;
@@ -408,7 +412,6 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		RigaDistinta riga = listPezziDistinta.getSelectionModel().getSelectedItem();
 		listaPezzi.remove(riga);
-		
 	}
 	
 	static class RigaDistCell extends ListCell<RigaDistinta> {

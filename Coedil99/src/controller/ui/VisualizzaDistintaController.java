@@ -140,8 +140,8 @@ public class VisualizzaDistintaController implements Initializable {
 		listPezziDistinta.setItems(listaPezzi);
 		
 	    lbl_modulo.setText("PROSSIMA ITERAZIONE");
-	    lbl_revisione.setText("REV: "+distinta.getRevisione());
-	    lbl_data.setText(distinta.getDataInizio().toGMTString());
+	    lbl_revisione.setText(distinta.getRevisione()+"");
+	    lbl_data.setText(distinta.getDataInizio().toString());
 	    lbl_cliente.setText("PROSSIMA ITERAZIONE");
 	    lbl_destinazione.setText(ordine.getDestinazione().getVia());
 	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());

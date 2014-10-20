@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="768.0" minWidth="1024.0" prefHeight="965.0" prefWidth="1131.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ui.VisualizzaDistintaController">
+<BorderPane maxHeight="744.0" maxWidth="1024.0" minHeight="744.0" minWidth="1024.0" prefHeight="744.0" prefWidth="1024.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ui.VisualizzaDistintaController">
   <bottom>
     <HBox>
       <children>
@@ -38,30 +38,30 @@
                 <RowConstraints valignment="TOP" vgrow="NEVER" />
               </rowConstraints>
                <children>
-              <TitledPane id="main-title" fx:id="informazioni_distinta" animated="false" collapsible="false" expanded="true" prefWidth="-1.0" style="" text="Informazioni sulla distinta" textFill="WHITE">
+              <TitledPane id="main-title" fx:id="informazioni_distinta" animated="false" collapsible="false" expanded="true" prefWidth="-1.0" style="" text="Informazioni sulla distinta">
                 <content>
                   <GridPane style="">
                     <children>
                       <GridPane style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
                         <children>
-                          <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" prefWidth="-1.0" text="Modulo" textAlignment="LEFT" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                          <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" prefWidth="-1.0" text="Modulo" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                        <content>
-                                          <Label fx:id="lbl_modulo" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_modulo" />
+                                          <Label fx:id="lbl_modulo" minHeight="25.0" text="lbl_modulo" />
                                        </content>
                           </TitledPane>
-                          <TitledPane animated="false" collapsible="false" expanded="true" text="Revisione" textFill="#d8d8d8" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                          <TitledPane animated="false" collapsible="false" expanded="true" text="Revisione" GridPane.columnIndex="1" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_revisione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_revisione" />
+                              <Label fx:id="lbl_revisione" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" text="lbl_revisione" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Data" GridPane.columnIndex="2" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_data" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
+                              <Label fx:id="lbl_data" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Cliente/Impresa" GridPane.columnIndex="3" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_cliente" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
+                              <Label fx:id="lbl_cliente" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
                             </content>
                           </TitledPane>
                         </children>
@@ -79,17 +79,17 @@
                         <children>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Destinazione materiale" GridPane.columnIndex="0" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_destinazione" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
+                              <Label fx:id="lbl_destinazione" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Elemento strutturale" GridPane.columnIndex="1" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_elemstrutturale" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
+                              <Label fx:id="lbl_elemstrutturale" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Cartellino" GridPane.columnIndex="2" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_cartellino" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
+                              <Label fx:id="lbl_cartellino" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
                             </content>
                           </TitledPane>
                         </children>
@@ -122,21 +122,21 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-              <TitledPane id="main-title" fx:id="righe_distinta" animated="false" collapsible="false" text="Righe distinta" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+              <TitledPane id="main-title" fx:id="righe_distinta" animated="false" collapsible="false" text="Righe distinta" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
                      <content>
                         <GridPane>
                           <columnConstraints>
                             <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                            <RowConstraints />
                               <RowConstraints valignment="TOP" vgrow="ALWAYS" />
                           </rowConstraints>
                            <children>
-                        <SplitPane dividerPositions="0.33" focusTraversable="true" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                        <SplitPane dividerPositions="0.33" focusTraversable="true" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                           <items>
                                     <GridPane>
                                       <columnConstraints>
@@ -147,10 +147,11 @@
                                       </rowConstraints>
                                        <children>
                                   <TitledPane id="main-title" animated="false" collapsible="false" expanded="true" text="Lista pezzi">
-                                    <content>
-                                      <GridPane minHeight="-1.0" prefHeight="-1.0">
-                                        <children>
-                                          <ListView fx:id="listPezziDistinta" minHeight="-1.0" />
+                                             <content>
+                                                <VBox>
+                                                   <children>
+                                          <ListView fx:id="listPezziDistinta" minHeight="-1.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" VBox.vgrow="SOMETIMES" />
+                                                      <Separator minHeight="10.0" opacity="0.0" />
                                                   <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" GridPane.rowIndex="1">
                                                     <children>
                                                       <Button fx:id="aggiungiPezzoButton" mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi">
@@ -162,17 +163,9 @@
                                                       <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" onAction="#rimuoviPezzo" text="Rimuovi" HBox.margin="$x1" />
                                                     </children>
                                                   </HBox>
-                                        </children>
-                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        </columnConstraints>
-                                        <rowConstraints>
-                                          <RowConstraints vgrow="SOMETIMES" />
-                                                      <RowConstraints vgrow="SOMETIMES" />
-                                          <RowConstraints vgrow="SOMETIMES" />
-                                        </rowConstraints>
-                                      </GridPane>
-                                    </content>
+                                                   </children>
+                                                </VBox>
+                                             </content>
                                   </TitledPane>
                                        </children>
                                     </GridPane>
@@ -192,12 +185,12 @@
                                               <children>
                                                 <TitledPane animated="false" collapsible="false" text="Numero pezzi" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_n_pezzi" text="Nessuna riga selezionata" />
+                                                    <Label fx:id="lbl_n_pezzi" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                                 <TitledPane animated="false" collapsible="false" text="Diametro" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_diametro" text="Nessuna riga selezionata" />
+                                                    <Label fx:id="lbl_diametro" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                               </children>
@@ -213,12 +206,12 @@
                                               <children>
                                                 <TitledPane animated="false" collapsible="false" text="Misura taglio" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_misura_taglio" text="Nessuna riga selezionata" />
+                                                    <Label fx:id="lbl_misura_taglio" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                                 <TitledPane animated="false" collapsible="false" text="Peso (Kg)" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_peso" text="Nessuna riga selezionata" />
+                                                    <Label fx:id="lbl_peso" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                               </children>
@@ -234,12 +227,12 @@
                                               <children>
                                                 <TitledPane animated="false" collapsible="false" text="Codice pezzo">
                                                   <content>
-                                                    <Label fx:id="lbl_codice_pezzo" text="Nessuna riga selezionata" />
+                                                    <Label fx:id="lbl_codice_pezzo" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                                 <TitledPane animated="false" collapsible="false" text="Fornitore" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_fornitore" text="Nessuna riga selezionata" />
+                                                    <Label fx:id="lbl_fornitore" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                               </children>
@@ -283,7 +276,7 @@
                                     </GridPane>
                           </items>
                         </SplitPane>
-                              <Separator prefWidth="200.0" GridPane.rowIndex="1" />
+                              <Separator prefWidth="200.0" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </content>
@@ -295,8 +288,8 @@
         <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="10000.0" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints valignment="TOP" vgrow="SOMETIMES" />
-        <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+        <RowConstraints valignment="BOTTOM" vgrow="SOMETIMES" />
+        <RowConstraints fillHeight="false" valignment="TOP" vgrow="ALWAYS" />
       </rowConstraints>
     </GridPane>
   </center>
@@ -304,11 +297,11 @@
     <URL value="@../css/visualizza_distinta.css" />
   </stylesheets>
   <top>
-    <HBox prefHeight="-1.0" style="-fx-background-color: #292929;">
+    <HBox prefHeight="-1.0">
       <children>
-        <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
+        <Button graphicTextGap="0.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
           <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>
                 <Image url="@../icons/back.png" />
               </image>
@@ -316,7 +309,7 @@
           </graphic>
         </Button>
         <Separator orientation="VERTICAL" prefHeight="-1.0" />
-        <MenuBar style="-fx-background-color: #292929;">
+        <MenuBar prefWidth="10000.0">
           <menus>
             <Menu mnemonicParsing="false" text="File">
               <items>

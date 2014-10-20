@@ -6,6 +6,7 @@ import java.util.List;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.DAOFactory;
 import modello_di_dominio.Destinazione;
+import modello_di_dominio.Distinta;
 import modello_di_dominio.LavorazionePezzo;
 import modello_di_dominio.Ordine;
 import modello_di_dominio.dao.OrdineDAO;
@@ -191,6 +192,29 @@ public class GestoreOrdineDAO implements GestoreOrdine {
 			e.printStackTrace();
 		}
 		return destinazione;
+	}
+
+	@Override
+	public void modificaDestinazione(Ordine ordine, String via) {
+		try {
+			Destinazione destinazione = ordine.getDestinazione();
+			destinazione.setVia(via);
+			DAOFactory.getDAOFactory().getDestinazioneDAO().save(destinazione);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void modificaDestinazioneByOrderID(int idOrdine, String via) {
+		try {
+			Ordine ordine = ordineDAO.getOrdineByORMID(idOrdine);
+			modificaDestinazione(ordine,via);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

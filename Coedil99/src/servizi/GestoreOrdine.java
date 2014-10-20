@@ -38,5 +38,9 @@ public interface GestoreOrdine extends Servizio {
 	public Destinazione creaDestinazione();
 	
 	public Destinazione creaDestinazione(String via);
+	
+	public void modificaDestinazione(Ordine ordine, String via);
 
+	public void modificaDestinazioneByOrderID(int idOrdine, String via);
+	
 }

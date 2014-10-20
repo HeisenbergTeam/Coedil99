@@ -151,10 +151,10 @@ public class VisualizzaDistintaController implements Initializable {
 	    
 	    distintaLabels = new HashMap<String,Label>();
 	    //distintaLabels.put("modulo",lbl_modulo);
-	    //distintaLabels.put("revisione",lbl_revisione);
+	    distintaLabels.put("revisione",lbl_revisione);
 	    //distintaLabels.put("data",lbl_data);
 	    //distintaLabels.put("cliente",lbl_cliente);
-	    //distintaLabels.put("destinazione",lbl_destinazione);
+	    distintaLabels.put("destinazione",lbl_destinazione);
 	    distintaLabels.put("elemstrutturale",lbl_elemstrutturale);
 	    //distintaLabels.put("cartellino",lbl_cartellino);
 	    
@@ -356,6 +356,7 @@ public class VisualizzaDistintaController implements Initializable {
 		distinta.setRevisione(lbl_revisione.getText());
 		*/
 		gestoreDistinta.modificaDistintaByID(distinta.getID(), distinta.getDataInizio(), distinta.getCommessa(), getNumber(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
+		gestoreOrdine.modificaDestinazione(ordine, lbl_destinazione.getText());
 		//gestoreCommessa.
 		//gestoreOrdine.
 		//distinta.setElementoStrutturale(lbl_elemstrutturale.getText());
@@ -370,7 +371,9 @@ public class VisualizzaDistintaController implements Initializable {
 	//TODO: classe di utilità
 	public int getNumber(final String str){
 	    final String onlyNumbers = str.replaceAll("[^0-9]", "");
-	    return (onlyNumbers.length() > 0 ? onlyNumbers.charAt(0) - '0' : -1);
+	    int a = (onlyNumbers.length() > 0 ? onlyNumbers.charAt(0) - '0' : -1);
+	    System.out.println(a);
+	    return a;
 	}
 	
 /**

@@ -1,6 +1,10 @@
 package controller.ui;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -29,6 +33,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Distinta;
 import modello_di_dominio.LavorazionePezzo;
@@ -70,6 +75,9 @@ public class VisualizzaDistintaController implements Initializable {
     
     @FXML private TitledPane righe_distinta;
     @FXML private TitledPane informazioni_distinta;
+    
+    @FXML private DatePicker datePicker = new DatePicker();
+	
     
     private Map<String,Label> distintaLabels;
     private Map<String,TextField> distintaTextFields;
@@ -244,11 +252,42 @@ public class VisualizzaDistintaController implements Initializable {
 			distintaTextFields.put(entry.getKey(), tf);
 		}
 
+		String current_date = lbl_data.getText();
 		Parent datePickParent = lbl_data.getParent();
-		DatePicker newDP = new DatePicker();
+		
+		final String pattern = "yyyy-MM-dd";
+
+		datePicker.setPromptText(pattern.toLowerCase());
+
+		datePicker.setConverter(new StringConverter<LocalDate>() {
+		     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+		     @Override 
+		     public String toString(LocalDate date) {
+		         if (date != null) {
+		             return dateFormatter.format(date);
+		         } else {
+		             return "";
+		         }
+		     }
+
+		     @Override 
+		     public LocalDate fromString(String string) {
+		         if (string != null && !string.isEmpty()) {
+		             return LocalDate.parse(string, dateFormatter);
+		         } else {
+		             return null;
+		         }
+		     }
+		 });
+		String[] split = current_date.split("-");
+		LocalDate ld = LocalDate.of(Integer.parseInt(split[0]),Integer.parseInt(split[1]),Integer.parseInt(split[2]));
+			//	new LocalDate(getNumber(split[0]),getNumber(split[1]),getNumber(split[2]))
+		datePicker.setValue(ld);
+		
 		Pane tps = (Pane) datePickParent;
 		tps.getChildren().remove(lbl_data);
-		tps.getChildren().add(newDP);
+		tps.getChildren().add(datePicker);
 		
 		//Flag
 		modificandoDistinta = true;
@@ -362,7 +401,20 @@ public class VisualizzaDistintaController implements Initializable {
 		distinta.setModello(value);
 		distinta.setRevisione(lbl_revisione.getText());
 		*/
-		gestoreDistinta.modificaDistintaByID(distinta.getID(), distinta.getDataInizio(), distinta.getCommessa(), getNumber(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
+		
+		Parent datePickParent = datePicker.getParent();
+		LocalDate ld = datePicker.getValue();
+		
+		Pane tps = (Pane) datePickParent;
+		tps.getChildren().remove(datePicker);
+		tps.getChildren().add(lbl_data);
+		lbl_data.setText(ld.toString());
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
+		Date dt = cal.getTime();
+		
+		gestoreDistinta.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), getNumber(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
 		gestoreOrdine.modificaDestinazione(ordine, lbl_destinazione.getText());
 		//gestoreCommessa.
 		//gestoreOrdine.

@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.ListCell;
@@ -243,6 +244,12 @@ public class VisualizzaDistintaController implements Initializable {
 			distintaTextFields.put(entry.getKey(), tf);
 		}
 
+		Parent datePickParent = lbl_data.getParent();
+		DatePicker newDP = new DatePicker();
+		Pane tps = (Pane) datePickParent;
+		tps.getChildren().remove(lbl_data);
+		tps.getChildren().add(newDP);
+		
 		//Flag
 		modificandoDistinta = true;
 		//Disabilito le modifiche

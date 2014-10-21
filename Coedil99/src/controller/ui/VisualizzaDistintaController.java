@@ -348,7 +348,7 @@ public class VisualizzaDistintaController implements Initializable {
 				
 				((Label) rigaDistintaNodes.get(entry.getKey())).setText(((TextField) entry.getValue()).getText());
 				
-				//tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
+				tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
 				
 			}
 			

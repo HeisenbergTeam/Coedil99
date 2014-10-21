@@ -118,55 +118,6 @@ public class GestorePezziDAO implements GestorePezzi {
 		}
 		return descrizionePezzo;
 	}
-	@Override
-	public Sagoma creaSagoma() {
-		Sagoma sagoma = DAOFactory.getDAOFactory().getSagomaDAO().createSagoma();
-		try {
-			DAOFactory.getDAOFactory().getSagomaDAO().save(sagoma);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return sagoma;
-	}
-	@Override
-	public Sagoma creaSagoma(String pathImg) {
-		Sagoma sagoma = DAOFactory.getDAOFactory().getSagomaDAO().createSagoma();
-		sagoma.setImg(pathImg);
-		try {
-			DAOFactory.getDAOFactory().getSagomaDAO().save(sagoma);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return sagoma;
-	}
-	@Override
-	public LavorazionePezzo creaLavorazionePezzo() {
-		LavorazionePezzo lavorazionePezzo = DAOFactory.getDAOFactory().getLavorazionePezzoDAO().createLavorazionePezzo();
-		try {
-			DAOFactory.getDAOFactory().getLavorazionePezzoDAO().save(lavorazionePezzo);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return lavorazionePezzo;
-	}
-	@Override
-	public LavorazionePezzo creaLavorazionePezzo(String descrizione,
-			float misuraTaglio, float pesoPezzoLavorato, Sagoma sagoma) {
-		LavorazionePezzo lavorazionePezzo = DAOFactory.getDAOFactory().getLavorazionePezzoDAO().createLavorazionePezzo();
-		lavorazionePezzo.setDescrizione(descrizione);
-		lavorazionePezzo.setMisuraDiTaglio(misuraTaglio);
-		lavorazionePezzo.setPeso(pesoPezzoLavorato);
-		lavorazionePezzo.setSagoma(sagoma);
-		try {
-			DAOFactory.getDAOFactory().getLavorazionePezzoDAO().save(lavorazionePezzo);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return lavorazionePezzo;
-	}
+
 
 }

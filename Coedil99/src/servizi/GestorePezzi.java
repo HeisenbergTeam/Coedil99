@@ -27,12 +27,4 @@ public interface GestorePezzi extends Servizio{
 	
 	public DescrizionePezzo creaDescrizionePezzo(String nome, float peso, float diametro, String fornitore);
 	
-	public Sagoma creaSagoma();
-	
-	public Sagoma creaSagoma(String pathImg);
-	
-	public LavorazionePezzo creaLavorazionePezzo();
-	
-	public LavorazionePezzo creaLavorazionePezzo(String descrizione, float misuraTaglio, float pesoPezzoLavorato, Sagoma sagoma);
-	
 }

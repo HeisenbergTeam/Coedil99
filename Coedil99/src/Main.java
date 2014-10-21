@@ -139,11 +139,11 @@ public class Main {
 		
 		DescrizionePezzo descrizionePezzo2 = gestorePezzi.creaDescrizionePezzo("Tubo alluminioz", 1.0f, 0.020f, "ItalSystemz");
 		
-		Sagoma sagoma2 = gestorePezzi.creaSagoma("pathImgZ");
-		
-		LavorazionePezzo lavorazionePezzo2 = gestorePezzi.creaLavorazionePezzo("Non lavoratoz", 15.0f, 1.0f, sagoma2);
-		
 		Pezzo pezzo2 = gestorePezzi.creaPezzo(descrizionePezzo2, new Date(), 4);
+		
+		Sagoma sagoma2 = gestoreRigaDistinta.creaSagoma("pathImgZ");
+		
+		LavorazionePezzo lavorazionePezzo2 = gestoreRigaDistinta.creaLavorazionePezzo("Non lavoratoz", 15.0f, 1.0f, sagoma2);
 		
 		RigaDistinta rigaDistinta2 = gestoreRigaDistinta.creaRigaDistinta(pezzo2, distinta2, lavorazionePezzo2, "Tubo portaz");
 				

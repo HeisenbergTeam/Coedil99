@@ -174,7 +174,7 @@ public class VisualizzaDistintaController implements Initializable {
 	    rigaDistintaNodes.put("diametro", lbl_diametro);
 	    rigaDistintaNodes.put("peso", lbl_peso);
 	    rigaDistintaNodes.put("misura_taglio", lbl_misura_taglio);
-	    rigaDistintaNodes.put("fornitore", lbl_n_pezzi);
+	    rigaDistintaNodes.put("fornitore", lbl_fornitore);
 		
 	    //CellFactory
 	    listPezziDistinta.setCellFactory(new Callback<ListView<RigaDistinta>, 
@@ -315,10 +315,11 @@ public class VisualizzaDistintaController implements Initializable {
 				
 				Map.Entry<String, Object> entry = iterator.next();
 				
-				Parent p = ((Node) entry.getValue()).getParent().getParent();
+				Parent p = ((Node) entry.getValue()).getParent();
 				TextField tf = new TextField();
 				tf.setText(((Label) entry.getValue()).getText());
 				Pane tps = (Pane) p;
+				System.out.println(entry.getKey());
 				tps.getChildren().remove(entry.getValue());
 				tps.getChildren().add(tf);
 				

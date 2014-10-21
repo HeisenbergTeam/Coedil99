@@ -8,6 +8,7 @@ import modello_di_dominio.DAOFactory;
 import modello_di_dominio.DescrizionePezzo;
 import modello_di_dominio.LavorazionePezzo;
 import modello_di_dominio.Pezzo;
+import modello_di_dominio.RigaDistinta;
 import modello_di_dominio.Sagoma;
 import modello_di_dominio.dao.PezzoDAO;
 

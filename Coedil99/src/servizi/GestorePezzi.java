@@ -6,6 +6,7 @@ import java.util.List;
 import modello_di_dominio.DescrizionePezzo;
 import modello_di_dominio.LavorazionePezzo;
 import modello_di_dominio.Pezzo;
+import modello_di_dominio.RigaDistinta;
 import modello_di_dominio.Sagoma;
 
 public interface GestorePezzi extends Servizio{

@@ -62,7 +62,9 @@ public class VisualizzaDistintaController implements Initializable {
     
     @FXML private Label lbl_n_pezzi;
     @FXML private Label lbl_diametro;
-    @FXML private Label lbl_peso;
+    @FXML private Label lbl_peso_originale;
+    @FXML private Label lbl_peso_lavorato;
+    @FXML private Label lbl_lavorazione;
     @FXML private Label lbl_misura_taglio;
     @FXML private Label lbl_codice_pezzo;
     @FXML private Label lbl_fornitore;
@@ -170,9 +172,12 @@ public class VisualizzaDistintaController implements Initializable {
 	    //rigaDistinta nodes
 	    
 	    rigaDistintaNodes = new HashMap<String,Object>();
+	    rigaDistintaNodes.put("codice", lbl_codice_pezzo);
 	    rigaDistintaNodes.put("n_pezzi", lbl_n_pezzi);
 	    rigaDistintaNodes.put("diametro", lbl_diametro);
-	    rigaDistintaNodes.put("peso", lbl_peso);
+	    rigaDistintaNodes.put("peso", lbl_peso_originale);
+	    rigaDistintaNodes.put("peso_lavorato", lbl_peso_lavorato);
+	    rigaDistintaNodes.put("lavorazione", lbl_lavorazione);
 	    rigaDistintaNodes.put("misura_taglio", lbl_misura_taglio);
 	    rigaDistintaNodes.put("fornitore", lbl_fornitore);
 		
@@ -204,8 +209,10 @@ public class VisualizzaDistintaController implements Initializable {
 		            lbl_fornitore.setText(riga.getPezzo().getDescrizionePezzo().getFornitore());
 		            lbl_n_pezzi.setText(riga.getPezzo().getQuantita()+"");
 		            lbl_diametro.setText(riga.getPezzo().getDescrizionePezzo().getDiametro()+"");
-		            lbl_misura_taglio.setText("PROSSIMA ITERAZIONE");
-		            lbl_peso.setText("PROSSIMA ITERAZIONE");
+		            lbl_misura_taglio.setText(riga.getLavorazionePezzo().getMisuraDiTaglio()+"");
+		            lbl_peso_originale.setText(riga.getPezzo().getDescrizionePezzo().getPeso()+"");
+		            lbl_peso_lavorato.setText(riga.getLavorazionePezzo().getPeso()+"");
+		            lbl_lavorazione.setText(riga.getLavorazionePezzo().getDescrizione());
 		            
 		            modificaPezzoButton.setDisable(false);
 		            rimuoviPezzoButton.setDisable(false);

@@ -137,17 +137,9 @@ public class VisualizzaDistintaController implements Initializable {
 		log = (Log) gsp.getServizio("LogStdout");
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
-
-		
 		refreshList();
 		
-	    lbl_modulo.setText("PROSSIMA ITERAZIONE");
-	    lbl_revisione.setText(distinta.getRevisione()+"");
-	    lbl_data.setText(distinta.getDataInizio().toString());
-	    lbl_cliente.setText("PROSSIMA ITERAZIONE");
-	    lbl_destinazione.setText(ordine.getDestinazione().getVia());
-	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
-	    lbl_cartellino.setText("PROSSIMA ITERAZIONE");
+		refreshDistinta();
 	    
 	    //distinta labels
 	    
@@ -173,12 +165,8 @@ public class VisualizzaDistintaController implements Initializable {
 	    rigaDistintaNodes.put("fornitore", lbl_fornitore);
 	    rigaDistintaNodes.put("indicazione", lbl_indicazione);
 	    
-	    
-		
-		
-		
-		
 	}
+	
 /**
  * modificaDatiDistinta
  */
@@ -189,6 +177,9 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		//Check
 		if(modificandoDistinta != false){
+			modificandoDistinta = false;
+			modificaDistButton.setText("Modifica");
+			salvaDatiDistinta();
 			return;
 		}
 		
@@ -251,7 +242,11 @@ public class VisualizzaDistintaController implements Initializable {
 		//Flag
 		modificandoDistinta = true;
 		//Disabilito le modifiche
-		modificaDistButton.setDisable(true);
+		//modificaDistButton.setDisable(true);
+		
+		//Abilito tasto annulla
+		modificaDistButton.setText("Annulla");
+		
 		//Abilito il salvataggio
 		salvaDistButton.setDisable(false);
 	}
@@ -316,8 +311,7 @@ public class VisualizzaDistintaController implements Initializable {
 			gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
 			
 			refreshList();
-			
-			
+
 			aggiungiPezzoButton.setDisable(false);
 			modificaPezzoButton.setText("Modifica");
 			rimuoviPezzoButton.setDisable(false);
@@ -334,11 +328,7 @@ public class VisualizzaDistintaController implements Initializable {
 		log.i("Salvataggio dati distinta");
 		
 		listPezziDistinta.getSelectionModel().getSelectedItem();
-				
-		if(modificandoDistinta != true){
-			return;
-		}
-		
+						
 		Set<Map.Entry<String, TextField>> insieme = distintaTextFields.entrySet(); 
 		Iterator<Map.Entry<String, TextField>> iterator = insieme.iterator();
 		
@@ -354,20 +344,6 @@ public class VisualizzaDistintaController implements Initializable {
 			tps.getChildren().add(distintaLabels.get(entry.getKey()));
 			
 		}
-		/*
-	    @FXML private Label lbl_modulo;
-	    @FXML private Label lbl_revisione;
-	    @FXML private Label lbl_data;
-	    @FXML private Label lbl_cliente;
-	    @FXML private Label lbl_destinazione;
-	    @FXML private Label lbl_elemstrutturale;
-	    @FXML private Label lbl_cartellino;
-		
-		distinta.setDataInizio(lbl_data.getText());
-		distinta.setElementoStrutturale(lbl_elemstrutturale.getText());
-		distinta.setModello(value);
-		distinta.setRevisione(lbl_revisione.getText());
-		*/
 		
 		Parent datePickParent = datePicker.getParent();
 		LocalDate ld = datePicker.getValue();
@@ -381,13 +357,14 @@ public class VisualizzaDistintaController implements Initializable {
 		cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
 		Date dt = cal.getTime();
 		
+		if(modificandoDistinta != true){
+			refreshDistinta();
+			return;
+		}
+		
 		gestoreDistinta.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), getSingleNumber(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
 		gestoreOrdine.modificaDestinazione(ordine, lbl_destinazione.getText());
-		//initialize(null,null);
-		//gestoreCommessa.
-		//gestoreOrdine.
-		//distinta.setElementoStrutturale(lbl_elemstrutturale.getText());
-		
+
 		modificandoDistinta = false;
 		modificaDistButton.setDisable(false);
 		salvaDistButton.setDisable(true);
@@ -395,27 +372,44 @@ public class VisualizzaDistintaController implements Initializable {
 		
 	}
 	
-	private void refreshList() {
-	// TODO Auto-generated method stub
-
-		if (listPezziDistinta.getSelectionModel().getSelectedIndex() != -1) {
-			oldIndex = listPezziDistinta.getSelectionModel().getSelectedIndex();
-		}
+	private void refreshCommonDataDistinta() {
 		
-		//Prendo il primo ordine per ora
 		ordine = gestoreOrdine.getOrdine(1);
 		
 		log.i(String.valueOf(ordine.getID()));
-		
-		
+			
 		//TODO: modifica a getCommessaID(id)
 		commesse = ordine.commesse.toArray();
-		
+				
 		for (int i=0; i < commesse.length; i++) {
 			log.i(commesse[i].getID()+" "+commesse[i].getDistinta());
 		}
 		
 		distinta = commesse[0].getDistinta();
+		
+	}
+	
+	private void refreshDistinta() {
+		
+		refreshCommonDataDistinta();
+		
+		lbl_modulo.setText("PROSSIME ITERAZIONI");
+	    lbl_revisione.setText(distinta.getRevisione()+"");
+	    lbl_data.setText(distinta.getDataInizio().toString());
+	    lbl_cliente.setText("PROSSIME ITERAZIONI");
+	    lbl_destinazione.setText(ordine.getDestinazione().getVia());
+	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
+	    lbl_cartellino.setText("PROSSIME ITERAZIONI");
+	    
+	}
+	
+	private void refreshList() {
+
+		if (listPezziDistinta.getSelectionModel().getSelectedIndex() != -1) {
+			oldIndex = listPezziDistinta.getSelectionModel().getSelectedIndex();
+		}
+		
+		refreshCommonDataDistinta();
 		
 		righeDistinta = distinta.righeDistinta.toArray();
 		listaPezzi.removeAll();

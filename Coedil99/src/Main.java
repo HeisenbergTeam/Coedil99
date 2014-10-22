@@ -30,6 +30,7 @@ import ui.VisualizzaDistinta;
 public class Main {
 	
 	public static void main(String args[]){
+        //TEST IntelliJ IDEA
 		System.out.println("Start");
 		/*
 		Date date = new Date();

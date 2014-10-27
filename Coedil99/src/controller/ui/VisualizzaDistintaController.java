@@ -1,6 +1,7 @@
 package controller.ui;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -10,6 +11,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -66,6 +69,7 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Label lbl_indicazione;
     @FXML private Label lbl_n_pezzi;
     @FXML private Label lbl_n_pezzi_magazzino;
+    @FXML private Label lbl_data_arrivo;
     @FXML private Label lbl_diametro;
     @FXML private Label lbl_peso_originale;
     @FXML private Label lbl_peso_lavorato;
@@ -85,8 +89,9 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private TitledPane informazioni_distinta;
     
     @FXML private DatePicker datePicker = new DatePicker();
-	
-    
+    @FXML private DatePicker dateConsegnaPicker = new DatePicker();
+
+
     private Map<String,Label> distintaLabels;
     private Map<String,TextField> distintaTextFields;
     private Map<String,Object> rigaDistintaNodes;
@@ -205,7 +210,7 @@ public class VisualizzaDistintaController implements Initializable {
 		String current_date = lbl_data.getText();
 		Parent datePickParent = lbl_data.getParent();
 		
-		final String pattern = "yyyy-MM-dd";
+		final String pattern = "dd-MM-yyyy";
 
 		datePicker.setPromptText(pattern.toLowerCase());
 
@@ -231,15 +236,16 @@ public class VisualizzaDistintaController implements Initializable {
 		     }
 		 });
 		String[] split = current_date.split("-");
-		LocalDate ld = LocalDate.of(Integer.parseInt(split[0]),Integer.parseInt(split[1]),Integer.parseInt(split[2]));
+		LocalDate ld = LocalDate.of(Integer.parseInt(split[2]),Integer.parseInt(split[1]),Integer.parseInt(split[0]));
 			//	new LocalDate(getNumber(split[0]),getNumber(split[1]),getNumber(split[2]))
 		datePicker.setValue(ld);
 		
 		Pane tps = (Pane) datePickParent;
 		tps.getChildren().remove(lbl_data);
 		tps.getChildren().add(datePicker);
-		
-		//Flag
+        datePicker.setMaxWidth(Double.MAX_VALUE);
+
+        //Flag
 		modificandoDistinta = true;
 		//Disabilito le modifiche
 		//modificaDistButton.setDisable(true);
@@ -280,8 +286,46 @@ public class VisualizzaDistintaController implements Initializable {
 				rigaDistintaTextFields.put(entry.getKey(), tf);
 
 			}
-			
-			aggiungiPezzoButton.setDisable(true);
+
+            String current_date = lbl_data_arrivo.getText();
+            Parent datePickParent = lbl_data_arrivo.getParent();
+
+            final String pattern = "dd-MM-yyyy";
+
+            dateConsegnaPicker.setPromptText(pattern.toLowerCase());
+
+            dateConsegnaPicker.setConverter(new StringConverter<LocalDate>() {
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+                @Override
+                public String toString(LocalDate date) {
+                    if (date != null) {
+                        return dateFormatter.format(date);
+                    } else {
+                        return "";
+                    }
+                }
+
+                @Override
+                public LocalDate fromString(String string) {
+                    if (string != null && !string.isEmpty()) {
+                        return LocalDate.parse(string, dateFormatter);
+                    } else {
+                        return null;
+                    }
+                }
+            });
+            String[] split = current_date.split("-");
+            LocalDate ld = LocalDate.of(Integer.parseInt(split[2]),Integer.parseInt(split[1]),Integer.parseInt(split[0]));
+            //	new LocalDate(getNumber(split[0]),getNumber(split[1]),getNumber(split[2]))
+            dateConsegnaPicker.setValue(ld);
+
+            Pane tps = (Pane) datePickParent;
+            tps.getChildren().remove(lbl_data_arrivo);
+            tps.getChildren().add(dateConsegnaPicker);
+            dateConsegnaPicker.setMaxWidth(Double.MAX_VALUE);
+
+            aggiungiPezzoButton.setDisable(true);
 			modificaPezzoButton.setText("Salva");
 			rimuoviPezzoButton.setDisable(true);
 			
@@ -305,12 +349,22 @@ public class VisualizzaDistintaController implements Initializable {
 				tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
 				
 			}
-			
-			//gestorePezzi.
-			gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), getFloat(lbl_misura_taglio.getText()), getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
+
+            Parent datePickParent = dateConsegnaPicker.getParent();
+            LocalDate ld = dateConsegnaPicker.getValue();
+
+            Pane tps = (Pane) datePickParent;
+            tps.getChildren().remove(dateConsegnaPicker);
+            tps.getChildren().add(lbl_data_arrivo);
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
+            Date dt = cal.getTime();
+
+            gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), getFloat(lbl_misura_taglio.getText()), getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
 			gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
             gestorePezzi.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(),lbl_codice_pezzo.getText(),getFloat(lbl_peso_originale.getText()),getFloat(lbl_diametro.getText()),lbl_fornitore.getText());
-            gestorePezzi.modificaPezzo(rigaSelezionata.getPezzo(),rigaSelezionata.getPezzo().getDescrizionePezzo(),rigaSelezionata.getPezzo().getDataArrivo(),Integer.parseInt(lbl_n_pezzi.getText()));
+            gestorePezzi.modificaPezzo(rigaSelezionata.getPezzo(),rigaSelezionata.getPezzo().getDescrizionePezzo(),dt,Integer.parseInt(lbl_n_pezzi.getText()));
 
 			refreshList();
 
@@ -328,8 +382,10 @@ public class VisualizzaDistintaController implements Initializable {
 	protected void salvaDatiDistinta(){
 		
 		log.i("Salvataggio dati distinta");
-		
-		listPezziDistinta.getSelectionModel().getSelectedItem();
+
+        salvaDistButton.setDisable(true);
+
+        listPezziDistinta.getSelectionModel().getSelectedItem();
 						
 		Set<Map.Entry<String, TextField>> insieme = distintaTextFields.entrySet(); 
 		Iterator<Map.Entry<String, TextField>> iterator = insieme.iterator();
@@ -340,6 +396,7 @@ public class VisualizzaDistintaController implements Initializable {
 			Parent p = entry.getValue().getParent();
 			
 			Pane tps = (Pane) p;
+            System.out.println(entry.toString());
 			tps.getChildren().remove(entry.getValue());
 			distintaLabels.get(entry.getKey()).setText(entry.getValue().getText());
 			
@@ -353,24 +410,25 @@ public class VisualizzaDistintaController implements Initializable {
 		Pane tps = (Pane) datePickParent;
 		tps.getChildren().remove(datePicker);
 		tps.getChildren().add(lbl_data);
-		lbl_data.setText(ld.toString());
-		
+
 		Calendar cal = Calendar.getInstance();
 		cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
 		Date dt = cal.getTime();
-		
-		if(modificandoDistinta != true){
+
+        if(modificandoDistinta != true){
 			refreshDistinta();
 			return;
 		}
 		
-		gestoreDistinta.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), getSingleNumber(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
+		gestoreDistinta.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), getNumbers(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
 		gestoreOrdine.modificaDestinazione(ordine, lbl_destinazione.getText());
 
+        refreshDistinta();
+
 		modificandoDistinta = false;
-		modificaDistButton.setDisable(false);
-		salvaDistButton.setDisable(true);
-		
+        modificaDistButton.setText("Modifica");
+        modificaDistButton.setDisable(false);
+
 		
 	}
 	
@@ -397,7 +455,7 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		lbl_modulo.setText("PROSSIME ITERAZIONI");
 	    lbl_revisione.setText(distinta.getRevisione()+"");
-	    lbl_data.setText(distinta.getDataInizio().toString());
+	    lbl_data.setText(printItalianDate(distinta.getDataInizio()));
 	    lbl_cliente.setText("PROSSIME ITERAZIONI");
 	    lbl_destinazione.setText(ordine.getDestinazione().getVia());
 	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
@@ -464,7 +522,7 @@ public class VisualizzaDistintaController implements Initializable {
             lbl_indicazione.setText(rigaSelezionata.getIndicazione());
             lbl_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
             lbl_fornitore.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getFornitore());
-            lbl_n_pezzi_magazzino.setText("PROSSIME INTERAZIONI");
+            lbl_data_arrivo.setText(printItalianDate(rigaSelezionata.getPezzo().getDataArrivo()));
             lbl_n_pezzi.setText(rigaSelezionata.getPezzo().getQuantita()+"");
             lbl_diametro.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getDiametro()+"");
             lbl_misura_taglio.setText(rigaSelezionata.getLavorazionePezzo().getMisuraDiTaglio()+"");
@@ -478,6 +536,21 @@ public class VisualizzaDistintaController implements Initializable {
             printSelectedItem(listPezziDistinta);
     	}
 	}
+
+    public String printItalianDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(date);
+    }
+
+    public int getNumbers(String str) {
+        StringBuffer sBuffer = new StringBuffer();
+        Pattern p = Pattern.compile("[0-9]+.[0-9]*|[0-9]*.[0-9]+|[0-9]+");
+        Matcher m = p.matcher(str);
+        while (m.find()) {
+            sBuffer.append(m.group());
+        }
+        return Integer.parseInt(sBuffer.toString());
+    }
 
 	//TODO: classe di utilit�
 	public int getSingleNumber(final String str){

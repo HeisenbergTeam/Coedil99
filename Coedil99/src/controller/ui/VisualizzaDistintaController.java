@@ -309,7 +309,9 @@ public class VisualizzaDistintaController implements Initializable {
 			//gestorePezzi.
 			gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), getFloat(lbl_misura_taglio.getText()), getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
 			gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
-			
+            gestorePezzi.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(),lbl_codice_pezzo.getText(),getFloat(lbl_peso_originale.getText()),getFloat(lbl_diametro.getText()),lbl_fornitore.getText());
+            gestorePezzi.modificaPezzo(rigaSelezionata.getPezzo(),rigaSelezionata.getPezzo().getDescrizionePezzo(),rigaSelezionata.getPezzo().getDataArrivo(),Integer.parseInt(lbl_n_pezzi.getText()));
+
 			refreshList();
 
 			aggiungiPezzoButton.setDisable(false);
@@ -477,7 +479,7 @@ public class VisualizzaDistintaController implements Initializable {
     	}
 	}
 
-	//TODO: classe di utilità
+	//TODO: classe di utilitï¿½
 	public int getSingleNumber(final String str){
 	    final String onlyNumbers = str.replaceAll("[^0-9]", "");
 	    int a = (onlyNumbers.length() > 0 ? onlyNumbers.charAt(0) - '0' : -1);
@@ -485,7 +487,7 @@ public class VisualizzaDistintaController implements Initializable {
 	    return a;
 	}
 	
-	//TODO: classe di utilità
+	//TODO: classe di utilitï¿½
 	public float getFloat(final String str){
 		return Float.parseFloat(str);
 	}

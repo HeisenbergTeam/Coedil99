@@ -119,5 +119,55 @@ public class GestorePezziDAO implements GestorePezzi {
 		return descrizionePezzo;
 	}
 
+    @Override
+    public Pezzo modificaPezzoByID(int idPezzo, DescrizionePezzo descPrezzo, Date dataArrivo, int quantita) {
+        Pezzo pezzo = null;
+        try {
+            pezzo = pezzoDAO.getPezzoByORMID(idPezzo);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+        pezzo = modificaPezzo(pezzo, descPrezzo, dataArrivo, quantita);
+        return pezzo;
+    }
+
+    @Override
+    public Pezzo modificaPezzo(Pezzo pezzo, DescrizionePezzo descPrezzo, Date dataArrivo, int quantita) {
+        pezzo.setDescrizionePezzo(descPrezzo);
+        pezzo.setDataArrivo(dataArrivo);
+        pezzo.setQuantita(quantita);
+        try {
+            pezzoDAO.save(pezzo);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+        return pezzo;
+    }
+
+    @Override
+    public DescrizionePezzo modificaDescrizionePezzo(DescrizionePezzo descrizionePezzo, String nome, float peso, float diametro, String fornitore) {
+        descrizionePezzo.setNome(nome);
+        descrizionePezzo.setPeso(peso);
+        descrizionePezzo.setDiametro(diametro);
+        descrizionePezzo.setFornitore(fornitore);
+        try {
+            DAOFactory.getDAOFactory().getDescrizionePezzoDAO().save(descrizionePezzo);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+        return descrizionePezzo;
+    }
+
+    @Override
+    public DescrizionePezzo modificaDescrizionePezzobyID(int idDescrizionePezzo, String nome, float peso, float diametro, String fornitore) {
+        DescrizionePezzo descrizionePezzo = null;
+        try {
+            descrizionePezzo = modificaDescrizionePezzo(DAOFactory.getDAOFactory().getDescrizionePezzoDAO().getDescrizionePezzoByORMID(idDescrizionePezzo), nome, peso, diametro, fornitore);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+        return descrizionePezzo;
+    }
+
 
 }

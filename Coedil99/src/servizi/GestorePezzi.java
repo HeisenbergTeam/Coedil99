@@ -26,5 +26,13 @@ public interface GestorePezzi extends Servizio{
 	public DescrizionePezzo creaDescrizionePezzo();
 	
 	public DescrizionePezzo creaDescrizionePezzo(String nome, float peso, float diametro, String fornitore);
-	
+
+    public Pezzo modificaPezzoByID(int idPezzo, DescrizionePezzo descPrezzo, Date dataArrivo, int quantita);
+
+    public Pezzo modificaPezzo(Pezzo pezzo, DescrizionePezzo descPrezzo, Date dataArrivo, int quantita);
+
+    public DescrizionePezzo modificaDescrizionePezzo(DescrizionePezzo descrizionePezzo, String nome, float peso, float diametro, String fornitore);
+
+    public DescrizionePezzo modificaDescrizionePezzobyID(int idDescrizionePezzo, String nome, float peso, float diametro, String fornitore);
+
 }

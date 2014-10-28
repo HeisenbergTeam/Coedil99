@@ -1,6 +1,10 @@
 package controller.ui;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -32,6 +36,8 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -77,7 +83,9 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Label lbl_misura_taglio;
     @FXML private Label lbl_codice_pezzo;
     @FXML private Label lbl_fornitore;
-    
+
+    @FXML private ImageView img_sagoma;
+
     @FXML private Button modificaDistButton;
     @FXML private Button salvaDistButton;
     @FXML private Button aggiungiPezzoButton;
@@ -529,7 +537,14 @@ public class VisualizzaDistintaController implements Initializable {
             lbl_peso_originale.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getPeso()+"");
             lbl_peso_lavorato.setText(rigaSelezionata.getLavorazionePezzo().getPeso()+"");
             lbl_lavorazione.setText(rigaSelezionata.getLavorazionePezzo().getDescrizione());
-            
+            rigaSelezionata.getLavorazionePezzo().getSagoma().getImg();
+            File file = new File(rigaSelezionata.getLavorazionePezzo().getSagoma().getImg());
+            try {
+                img_sagoma.setImage(new Image("file:///"+file.getCanonicalPath()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             modificaPezzoButton.setDisable(false);
             rimuoviPezzoButton.setDisable(false);
             

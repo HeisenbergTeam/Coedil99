@@ -14,16 +14,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="744.0" maxWidth="1024.0" minHeight="744.0" minWidth="1024.0" prefHeight="744.0" prefWidth="1024.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ui.VisualizzaDistintaController">
+<BorderPane maxHeight="730.0" maxWidth="1024.0" minHeight="730.0" minWidth="1024.0" prefHeight="730.0" prefWidth="1024.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ui.VisualizzaDistintaController">
   <bottom>
     <HBox>
       <children>
-        <HBox alignment="CENTER_RIGHT" fillHeight="true" prefHeight="-1.0" prefWidth="-1.0">
-          <children>
-            <Button fx:id="modificaDistButton" mnemonicParsing="false" onAction="#modificaDatiDistinta" text="Modifica" />
-            <Button fx:id="salvaDistButton" mnemonicParsing="false" onAction="#salvaDatiDistinta" text="Salva" textAlignment="LEFT" HBox.margin="$x1" />
-          </children>
-        </HBox>
+        <HBox alignment="CENTER_RIGHT" fillHeight="true" prefHeight="-1.0" prefWidth="-1.0" />
       </children>
     </HBox>
   </bottom>
@@ -102,7 +97,20 @@
                           <RowConstraints vgrow="SOMETIMES" />
                         </rowConstraints>
                       </GridPane>
-                              <Separator prefWidth="200.0" GridPane.rowIndex="2" />
+                              <HBox alignment="TOP_RIGHT" GridPane.rowIndex="2">
+                                 <children>
+                              <Button fx:id="modificaDistButton" mnemonicParsing="false" onAction="#modificaDatiDistinta" text="Modifica" GridPane.rowIndex="3">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                              <Button fx:id="salvaDistButton" mnemonicParsing="false" onAction="#salvaDatiDistinta" text="Salva" textAlignment="LEFT" GridPane.rowIndex="3">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
                     </children>
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -110,6 +118,7 @@
                     <rowConstraints>
                       <RowConstraints valignment="TOP" vgrow="ALWAYS" />
                       <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                              <RowConstraints vgrow="SOMETIMES" />
                               <RowConstraints vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
@@ -158,15 +167,21 @@
                                                    </rowConstraints>
                                                    <children>
                                           <ListView fx:id="listPezziDistinta" minHeight="-1.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" VBox.vgrow="SOMETIMES" />
-                                                  <HBox alignment="CENTER_LEFT" prefHeight="-1.0" prefWidth="-1.0" GridPane.rowIndex="1">
+                                                  <HBox alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="-1.0" GridPane.rowIndex="1">
                                                     <children>
                                                       <Button fx:id="aggiungiPezzoButton" mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi">
                                                         <HBox.margin>
-                                                          <Insets left="10.0" right="10.0" fx:id="x1" />
+                                                          <Insets left="5.0" top="5.0" fx:id="x1" />
                                                         </HBox.margin>
                                                       </Button>
-                                                      <Button fx:id="modificaPezzoButton" mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica" HBox.margin="$x1" />
-                                                      <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" onAction="#rimuoviPezzo" text="Rimuovi" HBox.margin="$x1" />
+                                                      <Button fx:id="modificaPezzoButton" mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" top="5.0" />
+                                                               </HBox.margin></Button>
+                                                      <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" onAction="#rimuoviPezzo" text="Rimuovi">
+                                                               <HBox.margin>
+                                                                  <Insets left="5.0" top="5.0" />
+                                                               </HBox.margin></Button>
                                                     </children>
                                                   </HBox>
                                                    </children>
@@ -260,7 +275,37 @@
                                                          <children>
                                                             <TitledPane animated="false" collapsible="false" text="Sagoma">
                                                                <content>
-                                                                  <ImageView fx:id="img_sagoma" fitHeight="150.0" fitWidth="611.0" pickOnBounds="true" />
+                                                                  <GridPane alignment="TOP_CENTER">
+                                                                    <columnConstraints>
+                                                                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="80.0" />
+                                                                    </columnConstraints>
+                                                                    <rowConstraints>
+                                                                      <RowConstraints vgrow="SOMETIMES" />
+                                                                    </rowConstraints>
+                                                                     <children>
+                                                                        <VBox alignment="BOTTOM_RIGHT" GridPane.columnIndex="1">
+                                                                           <children>
+                                                                              <Button fx:id="btn_aggiungi_sagoma" minWidth="80.0" mnemonicParsing="false" text="Aggiungi">
+                                                                                 <VBox.margin>
+                                                                                    <Insets top="5.0" />
+                                                                                 </VBox.margin>
+                                                                              </Button>
+                                                                              <Button fx:id="btn_modifica_sagoma" minWidth="80.0" mnemonicParsing="false" text="Modifica">
+                                                                                 <VBox.margin>
+                                                                                    <Insets top="5.0" />
+                                                                                 </VBox.margin>
+                                                                              </Button>
+                                                                              <Button fx:id="btn_rimuovi_sagoma" minWidth="80.0" mnemonicParsing="false" text="Rimuovi">
+                                                                                 <VBox.margin>
+                                                                                    <Insets top="5.0" />
+                                                                                 </VBox.margin>
+                                                                              </Button>
+                                                                           </children>
+                                                                        </VBox>
+                                                                        <ImageView fx:id="img_sagoma" fitHeight="129.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                                                                     </children>
+                                                                  </GridPane>
                                                                </content>
                                                             </TitledPane>
                                                          </children>
@@ -366,7 +411,7 @@
                 <MenuItem mnemonicParsing="false" text="Close" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
+            <Menu mnemonicParsing="false" text="Modifica">
               <items>
                 <MenuItem mnemonicParsing="false" text="Delete" />
               </items>

@@ -24,9 +24,9 @@ public class VisualizzaDistinta extends Application {
 			root = (BorderPane) FXMLLoader.load(getClass().getResource("/ui/fxml/visualizza_distinta.fxml"));
 			
 			
-			Scene scene = new Scene(root, 1024, 768);
+			Scene scene = new Scene(root, 1024, 730);
 			stage.setMinWidth(1024);
-			stage.setMinHeight(768);
+			stage.setMinHeight(730);
 			stage.setTitle("Distinta");
 			stage.setScene(scene);
 			stage.show();

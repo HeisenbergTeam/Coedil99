@@ -610,10 +610,11 @@ public class VisualizzaDistintaController implements Initializable {
 		popupStage.showAndWait();
 		
 		Pezzo p = (Pezzo) session.get("pezzo_aggiunto");
-		RigaDistinta riga = new RigaDistinta();
-		listaPezzi.add(riga);
-		gestoreRigaDistinta.creaRigaDistinta(p, distinta, new LavorazionePezzo(), "test_string");
-		
+        if (p!=null) {
+            RigaDistinta riga = new RigaDistinta();
+            listaPezzi.add(riga);
+            gestoreRigaDistinta.creaRigaDistinta(p, distinta, new LavorazionePezzo(), "test_string");
+        }
 	}
     
 	@FXML

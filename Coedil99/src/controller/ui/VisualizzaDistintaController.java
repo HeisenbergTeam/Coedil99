@@ -608,12 +608,13 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		//blocking
 		popupStage.showAndWait();
-		
-		Pezzo p = (Pezzo) session.get("pezzo_aggiunto");
-        if (p!=null) {
-            RigaDistinta riga = new RigaDistinta();
+
+		Pezzo pezzoSelezionato = (Pezzo) session.get("pezzo_selezionato");
+        LavorazionePezzo lavorazionePezzo = (LavorazionePezzo) session.get("lavorazionePezzo_selezionato");
+        String indicazione = (String) session.get("indicazione_rigaDistinta");
+        if (pezzoSelezionato!=null && pezzoSelezionato!=null && indicazione!=null) {
+            RigaDistinta riga = gestoreRigaDistinta.creaRigaDistinta(pezzoSelezionato, distinta, lavorazionePezzo, indicazione);
             listaPezzi.add(riga);
-            gestoreRigaDistinta.creaRigaDistinta(p, distinta, new LavorazionePezzo(), "test_string");
         }
 	}
     

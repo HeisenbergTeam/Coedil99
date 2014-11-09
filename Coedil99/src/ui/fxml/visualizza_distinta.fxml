@@ -204,7 +204,7 @@
                                           <children>
                                             <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2">
                                               <children>
-                                                <TitledPane animated="false" collapsible="false" text="Diametro" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                                <TitledPane animated="false" collapsible="false" text="Diametro (cm)" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                   <content>
                                                     <Label fx:id="lbl_diametro" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
@@ -312,7 +312,7 @@
                                                       </GridPane>
                                                       <GridPane GridPane.rowIndex="4">
                                                          <children>
-                                                            <TitledPane animated="false" collapsible="false" text="Misura del taglio" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                                            <TitledPane animated="false" collapsible="false" text="Misura del taglio (cm)" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                                <content>
                                                                   <Label fx:id="lbl_misura_taglio" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                </content>

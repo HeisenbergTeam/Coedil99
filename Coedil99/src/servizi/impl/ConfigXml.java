@@ -107,7 +107,7 @@ public class ConfigXml implements Config {
 	@Override
 	public void delete(String name) {
 		// TODO Auto-generated method stub
-		
+		document.removeChild(document.getElementsByTagName(name).item(0));
 	}
 	
 	

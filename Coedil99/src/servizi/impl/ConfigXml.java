@@ -108,6 +108,7 @@ public class ConfigXml implements Config {
 	public void delete(String name) {
 		// TODO Auto-generated method stub
 		document.removeChild(document.getElementsByTagName(name).item(0));
+		saveDocument();
 	}
 	
 	

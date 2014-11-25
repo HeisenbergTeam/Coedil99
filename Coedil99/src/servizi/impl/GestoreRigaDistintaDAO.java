@@ -83,7 +83,9 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 
 	public void cancellaRigaDistinta(RigaDistinta riga) {
 		try {
-			rigaDistintaDAO.deleteAndDissociate(riga);
+            //cancellaSagomaByRigaDistinta(riga);
+            //cancellaLavorazionePezzoByRigaDistinta(riga);
+            rigaDistintaDAO.deleteAndDissociate(riga);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,13 +93,12 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 	}
 
 	public void cancellaRigaDistintaByID(int id) {
-		try {
-			rigaDistintaDAO.deleteAndDissociate(rigaDistintaDAO.getRigaDistintaByORMID(id));
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        try {
+            cancellaRigaDistinta(rigaDistintaDAO.getRigaDistintaByORMID(id));
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+    }
 	@Override
 	public Sagoma creaSagoma() {
 		Sagoma sagoma = DAOFactory.getDAOFactory().getSagomaDAO().createSagoma();
@@ -182,7 +183,31 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 		return lavorazionePezzo;
 	}
 
-	@Override
+    @Override
+    public void cancellaLavorazionePezzoByRigaDistintaID(int id) {
+        RigaDistinta rigaDistinta = null;
+        try {
+            rigaDistinta = rigaDistintaDAO.getRigaDistintaByORMID(id);
+        } catch (PersistentException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        cancellaLavorazionePezzoByRigaDistinta(rigaDistinta);
+    }
+
+    @Override
+    public void cancellaLavorazionePezzoByRigaDistinta(RigaDistinta rigaDistinta) {
+        try {
+            LavorazionePezzo lavorazionePezzoDaEliminare = rigaDistinta.getLavorazionePezzo();
+            //rigaDistinta.getLavorazionePezzo().setSagoma(null);
+            //rigaDistinta.setLavorazionePezzo(null);
+            DAOFactory.getDAOFactory().getLavorazionePezzoDAO().deleteAndDissociate(lavorazionePezzoDaEliminare);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
 	public Sagoma modificaSagomaByRigaDistintaID(int id, String pathImg) {
 		RigaDistinta rigaDistinta = null;
 		try {
@@ -208,5 +233,26 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 		}
 		return sagoma;
 	}
+
+    @Override
+    public void cancellaSagomaByRigaDistintaID(int id) {
+        RigaDistinta rigaDistinta = null;
+        try {
+            rigaDistinta = rigaDistintaDAO.getRigaDistintaByORMID(id);
+        } catch (PersistentException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        cancellaSagomaByRigaDistinta(rigaDistinta);
+    }
+
+    @Override
+    public void cancellaSagomaByRigaDistinta(RigaDistinta rigaDistinta) {
+        try {
+            DAOFactory.getDAOFactory().getSagomaDAO().deleteAndDissociate(rigaDistinta.getLavorazionePezzo().getSagoma());
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

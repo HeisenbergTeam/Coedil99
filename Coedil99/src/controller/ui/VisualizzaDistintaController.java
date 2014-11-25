@@ -298,7 +298,7 @@ public class VisualizzaDistintaController implements Initializable {
 				tps.getChildren().add(tf);
 				
 				rigaDistintaTextFields.put(entry.getKey(), tf);
-
+                System.out.println(entry.getKey());
 			}
 
             String current_date = lbl_data_arrivo.getText();
@@ -340,32 +340,31 @@ public class VisualizzaDistintaController implements Initializable {
             dateConsegnaPicker.setMaxWidth(Double.MAX_VALUE);
 
             aggiungiPezzoButton.setDisable(true);
-			modificaPezzoButton.setText("Salva");
-			rimuoviPezzoButton.setDisable(true);
+			modificaPezzoButton.setText("Annulla");
+			rimuoviPezzoButton.setText("Salva");
+            listPezziDistinta.setDisable(true);
             btn_aggiungi_sagoma.setDisable(false);
             btn_modifica_sagoma.setDisable(false);
             btn_rimuovi_sagoma.setDisable(false);
 
+
 			modificandoRigaDistinta = true;
 			
 		}else{
-			
-			Set<Map.Entry<String, Object>> insieme = rigaDistintaTextFields.entrySet();
-			Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
-			
-			while(iterator.hasNext()){
-				
-				Map.Entry<String, Object> entry = iterator.next();
-				Parent p = ((Node) entry.getValue()).getParent();
-				
-				Pane tps = (Pane) p;
-				tps.getChildren().remove(entry.getValue());
-				
-				((Label) rigaDistintaNodes.get(entry.getKey())).setText(((TextField) entry.getValue()).getText());
-				
-				tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
-				
-			}
+            Set<Map.Entry<String, Object>> insieme = rigaDistintaTextFields.entrySet();
+            Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
+
+            while(iterator.hasNext()){
+
+                Map.Entry<String, Object> entry = iterator.next();
+                Parent p = ((Node) entry.getValue()).getParent();
+
+                Pane tps = (Pane) p;
+                System.out.println(entry.getKey());
+                tps.getChildren().remove(entry.getValue());
+                tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
+
+            }
 
             Parent datePickParent = dateConsegnaPicker.getParent();
             LocalDate ld = dateConsegnaPicker.getValue();
@@ -378,24 +377,81 @@ public class VisualizzaDistintaController implements Initializable {
             cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
             Date dt = cal.getTime();
 
-            gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), getFloat(lbl_misura_taglio.getText()), getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
-			gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
-            gestoreRigaDistinta.modificaSagomaByRigaDistinta(rigaSelezionata,pathSagoma);
-            gestorePezzi.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(),lbl_codice_pezzo.getText(),getFloat(lbl_peso_originale.getText()),getFloat(lbl_diametro.getText()),lbl_fornitore.getText());
-            gestorePezzi.modificaPezzo(rigaSelezionata.getPezzo(),rigaSelezionata.getPezzo().getDescrizionePezzo(),dt,Integer.parseInt(lbl_n_pezzi.getText()));
+            aggiornaCampiRigaDistinta();
 
-			refreshList();
-
-			aggiungiPezzoButton.setDisable(false);
-			modificaPezzoButton.setText("Modifica");
-			rimuoviPezzoButton.setDisable(false);
+            aggiungiPezzoButton.setDisable(false);
+            modificaPezzoButton.setText("Modifica");
+            rimuoviPezzoButton.setText("Rimuovi");
+            listPezziDistinta.setDisable(false);
             btn_aggiungi_sagoma.setDisable(true);
             btn_modifica_sagoma.setDisable(true);
             btn_rimuovi_sagoma.setDisable(true);
-			modificandoRigaDistinta = false;
+            modificandoRigaDistinta=false;
+            return;
 		}
 		
 	}
+
+    @FXML
+    protected void rimuoviPezzo(){
+
+        if(modificandoRigaDistinta != true){
+            log.i("Rimuovi pezzo");
+
+            RigaDistinta riga = listPezziDistinta.getSelectionModel().getSelectedItem();
+            listaPezzi.remove(riga);
+            gestoreRigaDistinta.cancellaRigaDistinta(riga);
+        } else {
+
+            Set<Map.Entry<String, Object>> insieme = rigaDistintaTextFields.entrySet();
+            Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
+
+            while(iterator.hasNext()){
+
+                Map.Entry<String, Object> entry = iterator.next();
+                Parent p = ((Node) entry.getValue()).getParent();
+
+                Pane tps = (Pane) p;
+                tps.getChildren().remove(entry.getValue());
+
+                ((Label) rigaDistintaNodes.get(entry.getKey())).setText(((TextField) entry.getValue()).getText());
+
+                tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
+
+            }
+
+            Parent datePickParent = dateConsegnaPicker.getParent();
+            LocalDate ld = dateConsegnaPicker.getValue();
+
+            Pane tps = (Pane) datePickParent;
+            tps.getChildren().remove(dateConsegnaPicker);
+            tps.getChildren().add(lbl_data_arrivo);
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
+            Date dt = cal.getTime();
+
+            gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), utilita.Parsers.getFloat(lbl_misura_taglio.getText()), utilita.Parsers.getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
+            gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
+            gestoreRigaDistinta.modificaSagomaByRigaDistinta(rigaSelezionata,pathSagoma);
+            gestorePezzi.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(),lbl_codice_pezzo.getText(),utilita.Parsers.getFloat(lbl_peso_originale.getText()),utilita.Parsers.getFloat(lbl_diametro.getText()),lbl_fornitore.getText());
+            gestorePezzi.modificaPezzo(rigaSelezionata.getPezzo(),rigaSelezionata.getPezzo().getDescrizionePezzo(),dt,Integer.parseInt(lbl_n_pezzi.getText()));
+
+            refreshList();
+
+            aggiungiPezzoButton.setDisable(false);
+            modificaPezzoButton.setText("Modifica");
+            rimuoviPezzoButton.setText("Rimuovi");
+            listPezziDistinta.setDisable(false);
+            rimuoviPezzoButton.setDisable(false);
+            btn_aggiungi_sagoma.setDisable(true);
+            btn_modifica_sagoma.setDisable(true);
+            btn_rimuovi_sagoma.setDisable(true);
+            modificandoRigaDistinta = false;
+
+        }
+
+    }
 /**
  * 
  */
@@ -441,7 +497,7 @@ public class VisualizzaDistintaController implements Initializable {
 			return;
 		}
 		
-		gestoreDistinta.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), getNumbers(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
+		gestoreDistinta.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), utilita.Parsers.getNumbers(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
 		gestoreOrdine.modificaDestinazione(ordine, lbl_destinazione.getText());
 
         refreshDistinta();
@@ -476,7 +532,7 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		lbl_modulo.setText("PROSSIME ITERAZIONI");
 	    lbl_revisione.setText(distinta.getRevisione()+"");
-	    lbl_data.setText(printItalianDate(distinta.getDataInizio()));
+	    lbl_data.setText(utilita.Parsers.printItalianDate(distinta.getDataInizio()));
 	    lbl_cliente.setText("PROSSIME ITERAZIONI");
 	    lbl_destinazione.setText(ordine.getDestinazione().getVia());
 	    lbl_elemstrutturale.setText(distinta.getElementoStrutturale());
@@ -543,19 +599,20 @@ public class VisualizzaDistintaController implements Initializable {
             lbl_indicazione.setText(rigaSelezionata.getIndicazione());
             lbl_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
             lbl_fornitore.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getFornitore());
-            lbl_data_arrivo.setText(printItalianDate(rigaSelezionata.getPezzo().getDataArrivo()));
+            lbl_data_arrivo.setText(utilita.Parsers.printItalianDate(rigaSelezionata.getPezzo().getDataArrivo()));
             lbl_n_pezzi.setText(rigaSelezionata.getPezzo().getQuantita()+"");
             lbl_diametro.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getDiametro()+"");
             lbl_misura_taglio.setText(rigaSelezionata.getLavorazionePezzo().getMisuraDiTaglio()+"");
             lbl_peso_originale.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getPeso()+"");
             lbl_peso_lavorato.setText(rigaSelezionata.getLavorazionePezzo().getPeso()+"");
             lbl_lavorazione.setText(rigaSelezionata.getLavorazionePezzo().getDescrizione());
-            rigaSelezionata.getLavorazionePezzo().getSagoma().getImg();
-            File file = new File(rigaSelezionata.getLavorazionePezzo().getSagoma().getImg());
             try {
+                rigaSelezionata.getLavorazionePezzo().getSagoma().getImg();
+                File file = new File(rigaSelezionata.getLavorazionePezzo().getSagoma().getImg());
                 img_sagoma.setImage(new Image("file:///"+file.getCanonicalPath()));
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("no image");
+                //e.printStackTrace();
             }
 
             modificaPezzoButton.setDisable(false);
@@ -565,34 +622,7 @@ public class VisualizzaDistintaController implements Initializable {
     	}
 	}
 
-    public String printItalianDate(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        return sdf.format(date);
-    }
 
-    public int getNumbers(String str) {
-        StringBuffer sBuffer = new StringBuffer();
-        Pattern p = Pattern.compile("[0-9]+.[0-9]*|[0-9]*.[0-9]+|[0-9]+");
-        Matcher m = p.matcher(str);
-        while (m.find()) {
-            sBuffer.append(m.group());
-        }
-        return Integer.parseInt(sBuffer.toString());
-    }
-
-	//TODO: classe di utilit�
-	public int getSingleNumber(final String str){
-	    final String onlyNumbers = str.replaceAll("[^0-9]", "");
-	    int a = (onlyNumbers.length() > 0 ? onlyNumbers.charAt(0) - '0' : -1);
-	    System.out.println(a);
-	    return a;
-	}
-	
-	//TODO: classe di utilit�
-	public float getFloat(final String str){
-		return Float.parseFloat(str);
-	}
-	
 /**
  *  aggiungiPezzo
  */
@@ -629,16 +659,6 @@ public class VisualizzaDistintaController implements Initializable {
             RigaDistinta riga = gestoreRigaDistinta.creaRigaDistinta(pezzoSelezionato, distinta, lavorazionePezzo, indicazione);
             listaPezzi.add(riga);
         }
-	}
-    
-	@FXML
-	protected void rimuoviPezzo(){
-		
-		log.i("Rimuovi pezzo");
-		
-		RigaDistinta riga = listPezziDistinta.getSelectionModel().getSelectedItem();
-		listaPezzi.remove(riga);
-		gestoreRigaDistinta.cancellaRigaDistinta(riga);
 	}
 	
 	static class RigaDistCell extends ListCell<RigaDistinta> {

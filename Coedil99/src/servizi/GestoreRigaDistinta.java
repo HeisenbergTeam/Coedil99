@@ -35,9 +35,17 @@ public interface GestoreRigaDistinta extends Servizio {
 	public LavorazionePezzo modificaLavorazionePezzoByRigaDistintaID(int id, String descrizione, float misuraTaglio, float pesoPezzoLavorato, Sagoma sagoma);
 	
 	public LavorazionePezzo modificaLavorazionePezzoByRigaDistinta(RigaDistinta rigaDistinta, String descrizione, float misuraTaglio, float pesoPezzoLavorato, Sagoma sagoma);
-	
-	public Sagoma modificaSagomaByRigaDistintaID(int id, String pathImg);
+
+    public void cancellaLavorazionePezzoByRigaDistintaID(int id);
+
+    public void cancellaLavorazionePezzoByRigaDistinta(RigaDistinta rigaDistinta);
+
+    public Sagoma modificaSagomaByRigaDistintaID(int id, String pathImg);
 	
 	public Sagoma modificaSagomaByRigaDistinta(RigaDistinta rigaDistinta, String pathImg);
+
+    public void cancellaSagomaByRigaDistintaID(int id);
+
+    public void cancellaSagomaByRigaDistinta(RigaDistinta rigaDistinta);
 	
 }

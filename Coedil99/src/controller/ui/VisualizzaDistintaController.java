@@ -1,8 +1,7 @@
 package controller.ui;
 
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
@@ -41,6 +40,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -91,7 +91,9 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Button aggiungiPezzoButton;
     @FXML private Button modificaPezzoButton;
     @FXML private Button rimuoviPezzoButton;
-    
+    @FXML private Button btn_aggiungi_sagoma;
+    @FXML private Button btn_modifica_sagoma;
+    @FXML private Button btn_rimuovi_sagoma;
     
     @FXML private TitledPane righe_distinta;
     @FXML private TitledPane informazioni_distinta;
@@ -99,6 +101,7 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private DatePicker datePicker = new DatePicker();
     @FXML private DatePicker dateConsegnaPicker = new DatePicker();
 
+    private String pathSagoma="";
 
     private Map<String,Label> distintaLabels;
     private Map<String,TextField> distintaTextFields;
@@ -139,7 +142,10 @@ public class VisualizzaDistintaController implements Initializable {
 		salvaDistButton.setDisable(true);
 		modificaPezzoButton.setDisable(true);
 		rimuoviPezzoButton.setDisable(true);
-		
+        btn_aggiungi_sagoma.setDisable(true);
+        btn_modifica_sagoma.setDisable(true);
+        btn_rimuovi_sagoma.setDisable(true);
+
 		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
@@ -336,7 +342,10 @@ public class VisualizzaDistintaController implements Initializable {
             aggiungiPezzoButton.setDisable(true);
 			modificaPezzoButton.setText("Salva");
 			rimuoviPezzoButton.setDisable(true);
-			
+            btn_aggiungi_sagoma.setDisable(false);
+            btn_modifica_sagoma.setDisable(false);
+            btn_rimuovi_sagoma.setDisable(false);
+
 			modificandoRigaDistinta = true;
 			
 		}else{
@@ -371,6 +380,7 @@ public class VisualizzaDistintaController implements Initializable {
 
             gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), getFloat(lbl_misura_taglio.getText()), getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
 			gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
+            gestoreRigaDistinta.modificaSagomaByRigaDistinta(rigaSelezionata,pathSagoma);
             gestorePezzi.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(),lbl_codice_pezzo.getText(),getFloat(lbl_peso_originale.getText()),getFloat(lbl_diametro.getText()),lbl_fornitore.getText());
             gestorePezzi.modificaPezzo(rigaSelezionata.getPezzo(),rigaSelezionata.getPezzo().getDescrizionePezzo(),dt,Integer.parseInt(lbl_n_pezzi.getText()));
 
@@ -379,6 +389,9 @@ public class VisualizzaDistintaController implements Initializable {
 			aggiungiPezzoButton.setDisable(false);
 			modificaPezzoButton.setText("Modifica");
 			rimuoviPezzoButton.setDisable(false);
+            btn_aggiungi_sagoma.setDisable(true);
+            btn_modifica_sagoma.setDisable(true);
+            btn_rimuovi_sagoma.setDisable(true);
 			modificandoRigaDistinta = false;
 		}
 		
@@ -638,6 +651,96 @@ public class VisualizzaDistintaController implements Initializable {
             }
         }
     }
-	
-	
+
+    /**
+     *
+     */
+    @FXML
+    public void onBtnAggiungiSagoma() {
+
+        log.i("aggiunta_sagoma");
+
+        final FileChooser fileChooser = new FileChooser();
+        //fileChooser.setInitialDirectory(new File(".\\Coedil99\\blobs\\sagoma\\"));
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+
+            File newfile = new File(".\\Coedil99\\blobs\\sagoma\\" + file.getName());
+
+            //try {
+            //    Files.copy(file.toPath(), newfile.toPath());
+            //} catch (IOException e) {
+            //    e.printStackTrace();
+            //}
+            try {
+                utilita.FilesOp.copyFileUsingStream(file, newfile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //FileUtils.copyFile(source, dest);
+
+            int start = (newfile.getAbsolutePath().indexOf("Coedil99\\blobs\\sagoma\\"));
+
+            int end = (newfile.getAbsolutePath().length());
+
+            pathSagoma = (newfile.getAbsolutePath().substring(start, end));
+
+            File file2 = new File(pathSagoma);
+            try {
+                System.out.println(file2.getCanonicalPath());
+                img_sagoma.setImage(new Image("file:///" + file2.getCanonicalPath()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+        /**
+         *
+         */
+        @FXML
+        public void onBtnModificaSagoma(){
+
+            log.i("selezione_sagoma");
+
+            final FileChooser fileChooser = new FileChooser();
+            fileChooser.setInitialDirectory(new File(".\\Coedil99\\blobs\\sagoma\\"));
+            File file = fileChooser.showOpenDialog(null);
+            if (file != null) {
+                int start = (file.getAbsolutePath().indexOf("Coedil99\\blobs\\sagoma\\"));
+
+                int end = (file.getAbsolutePath().length());
+
+                pathSagoma = ( file.getAbsolutePath().substring(start,end) );
+
+                File file2 = new File(pathSagoma);
+                try {
+                    System.out.println(file2.getCanonicalPath());
+                    img_sagoma.setImage(new Image("file:///"+file2.getCanonicalPath()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        /**
+         *
+         */
+        @FXML
+        public void onBtnRimuoviSagoma(){
+
+            log.i("rimuovi_sagoma");
+
+            img_sagoma.setImage(null);
+            pathSagoma="";
+
+
+        }
+
+
+
+
+
+
 }

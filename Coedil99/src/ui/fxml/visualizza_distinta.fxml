@@ -286,17 +286,17 @@
                                                                      <children>
                                                                         <VBox alignment="BOTTOM_RIGHT" GridPane.columnIndex="1">
                                                                            <children>
-                                                                              <Button fx:id="btn_aggiungi_sagoma" minWidth="80.0" mnemonicParsing="false" text="Aggiungi">
+                                                                              <Button fx:id="btn_aggiungi_sagoma" minWidth="80.0" mnemonicParsing="false" onAction="#onBtnAggiungiSagoma" text="Aggiungi">
                                                                                  <VBox.margin>
                                                                                     <Insets top="5.0" />
                                                                                  </VBox.margin>
                                                                               </Button>
-                                                                              <Button fx:id="btn_modifica_sagoma" minWidth="80.0" mnemonicParsing="false" text="Modifica">
+                                                                              <Button fx:id="btn_modifica_sagoma" minWidth="80.0" mnemonicParsing="false" onAction="#onBtnModificaSagoma" text="Modifica">
                                                                                  <VBox.margin>
                                                                                     <Insets top="5.0" />
                                                                                  </VBox.margin>
                                                                               </Button>
-                                                                              <Button fx:id="btn_rimuovi_sagoma" minWidth="80.0" mnemonicParsing="false" text="Rimuovi">
+                                                                              <Button fx:id="btn_rimuovi_sagoma" minWidth="80.0" mnemonicParsing="false" onAction="#onBtnRimuoviSagoma" text="Rimuovi">
                                                                                  <VBox.margin>
                                                                                     <Insets top="5.0" />
                                                                                  </VBox.margin>

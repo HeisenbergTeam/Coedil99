@@ -116,7 +116,7 @@ public class AggiungiPezzoController implements Initializable {
             //    e.printStackTrace();
             //}
             try {
-                copyFileUsingStream(file,newfile);
+                utilita.FilesOp.copyFileUsingStream(file,newfile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -138,23 +138,6 @@ public class AggiungiPezzoController implements Initializable {
             }
         }
 
-    }
-
-    private static void copyFileUsingStream(File source, File dest) throws IOException {
-        InputStream is = null;
-        OutputStream os = null;
-        try {
-            is = new FileInputStream(source);
-            os = new FileOutputStream(dest);
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = is.read(buffer)) > 0) {
-                os.write(buffer, 0, length);
-            }
-        } finally {
-            is.close();
-            os.close();
-        }
     }
 
     /**
@@ -193,12 +176,9 @@ public class AggiungiPezzoController implements Initializable {
 
         log.i("rimuovi_sagoma");
 
-        //Pezzo scelto
-        Pezzo scelto = listPezzi.getSelectionModel().getSelectedItem();
-        sessione.set("pezzo_aggiunto",scelto);
+        imgSagoma.setImage(null);
+        pathSagoma="";
 
-        //Chiudo la finestra
-        ((Stage) cercaPezzo.getScene().getWindow()).close();
 
     }
 /**

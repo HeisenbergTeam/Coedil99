@@ -1,8 +1,10 @@
 package controller.ui;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -99,16 +101,62 @@ public class AggiungiPezzoController implements Initializable {
     @FXML
     public void onBtnAggiungiSagoma(){
 
-        log.i("pezzo aggiunto");
+        log.i("aggiunta_sagoma");
 
-        //Pezzo scelto
-        Pezzo scelto = listPezzi.getSelectionModel().getSelectedItem();
-        sessione.set("pezzo_aggiunto",scelto);
+        final FileChooser fileChooser = new FileChooser();
+        //fileChooser.setInitialDirectory(new File(".\\Coedil99\\blobs\\sagoma\\"));
+        File file = fileChooser.showOpenDialog(((Stage) cercaPezzo.getScene().getWindow()));
+        if (file != null) {
 
-        //Chiudo la finestra
-        ((Stage) cercaPezzo.getScene().getWindow()).close();
+            File newfile = new File(".\\Coedil99\\blobs\\sagoma\\"+file.getName());
+
+            //try {
+            //    Files.copy(file.toPath(), newfile.toPath());
+            //} catch (IOException e) {
+            //    e.printStackTrace();
+            //}
+            try {
+                copyFileUsingStream(file,newfile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //FileUtils.copyFile(source, dest);
+
+            int start = (newfile.getAbsolutePath().indexOf("Coedil99\\blobs\\sagoma\\"));
+
+            int end = (newfile.getAbsolutePath().length());
+
+            pathSagoma = ( newfile.getAbsolutePath().substring(start,end) );
+
+            File file2 = new File(pathSagoma);
+            try {
+                System.out.println(file2.getCanonicalPath());
+                imgSagoma.setImage(new Image("file:///"+file2.getCanonicalPath()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     }
+
+    private static void copyFileUsingStream(File source, File dest) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            is.close();
+            os.close();
+        }
+    }
+
     /**
      *
      */
@@ -143,7 +191,7 @@ public class AggiungiPezzoController implements Initializable {
     @FXML
     public void onBtnRimuoviSagoma(){
 
-        log.i("pezzo aggiunto");
+        log.i("rimuovi_sagoma");
 
         //Pezzo scelto
         Pezzo scelto = listPezzi.getSelectionModel().getSelectedItem();

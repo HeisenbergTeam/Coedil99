@@ -23,7 +23,7 @@
           </children>
         </HBox>
         <ListView id="listPezziDistinta" fx:id="listPezzi" minHeight="450.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-          <TextField fx:id="cercaPezzo" promptText="Cerca..." GridPane.columnSpan="2">
+          <TextField fx:id="cercaPezzo" onKeyReleased="#instaSearch" promptText="Cerca..." GridPane.columnSpan="2">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

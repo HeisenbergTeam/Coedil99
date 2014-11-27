@@ -14,12 +14,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
@@ -47,12 +49,19 @@ public class AggiungiPezzoController implements Initializable {
 	private Log log;
 	private Sessione sessione;
     private GestoreRigaDistinta gestoreRigaDistinta;
+    private GestoreServizi gsp;
+    private GestorePezzi gestorePezzi;
 
     private String pathSagoma="";
     private String descrizione="";
     private String indicazione="";
     private float peso=0;
     private float taglio=0;
+
+    private String oldString = null;
+
+    private List<Pezzo> pezzi;
+    private ObservableList<Pezzo> obsPezzi;
 /**
  * 
  */
@@ -62,39 +71,129 @@ public class AggiungiPezzoController implements Initializable {
 		
 		aggiungiPezzo.setDisable(true);
 
-        GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-        GestorePezzi gestorePezzi = (GestorePezzi) GestoreServizi.getGestoreServizi().getServizio("GestorePezziDAO");
+        gsp = GestoreServiziPrototipo.getGestoreServizi();
+        gestorePezzi = (GestorePezzi) GestoreServizi.getGestoreServizi().getServizio("GestorePezziDAO");
 		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
 		sessione = (Sessione) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
         gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
 
-        List<Pezzo> pezzi = gestorePezzi.getPezzi();
-		ObservableList<Pezzo> obsPezzi = FXCollections.observableArrayList(pezzi);
-		
-		
-		listPezzi.setItems(obsPezzi);
-		
-		listPezzi.setCellFactory(new Callback<ListView<Pezzo>, 
-	            ListCell<Pezzo>>() {
-	                @Override 
-	                public ListCell<Pezzo> call(ListView<Pezzo> list) {
-	                    return new PezzoCell();
-	                }
-	            }
-	        );
-		
-		listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Pezzo> arg0,
-					Pezzo arg1, Pezzo arg2) {
-				
-				aggiungiPezzo.setDisable(false);
-				
-			}
-		});
+        refreshListaPezzi();
 		
 	}
+
+    public void handleSearchByKey(String oldVal, String newVal) {
+        // If the number of characters in the text box is less than last time
+        // it must be because the user pressed delete
+        if ( oldVal != null && !oldVal.matches("") && (newVal.length() < oldVal.length()) ) {
+            // Restore the lists original set of entries
+            // and start from the beginning
+            refreshListaPezzi();
+        }
+
+        // Break out all of the parts of the search text
+        // by splitting on white space
+        String[] parts = newVal.toUpperCase().split(" ");
+
+        // Filter out the entries that don't contain the entered text
+        ObservableList<Pezzo> subentries = FXCollections.observableArrayList();
+        for ( Pezzo entry: listPezzi.getItems() ) {
+            boolean match = true;
+            String entryText = (String)entry.getDescrizionePezzo().getNome();
+            //System.out.println(entryText);
+            //System.out.println(parts[0]);
+            //System.out.println(parts[1]);
+            for ( String part: parts ) {
+                // The entry needs to contain all portions of the
+                // search string *but* in any order
+                if ( ! entryText.toUpperCase().contains(part) ) {
+                    match = false;
+                    break;
+                }
+            }
+
+            if ( match ) {
+                subentries.add(entry);
+                //System.out.println(entry.getDescrizionePezzo().getNome());
+            }
+        }
+
+        Parent listPezziParent = listPezzi.getParent();
+
+        Pane tps = (Pane) listPezziParent;
+        tps.getChildren().remove(listPezzi);
+        listPezzi.setItems(subentries);
+
+        tps.getChildren().add(listPezzi);
+
+        listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
+                                         ListCell<Pezzo>>() {
+                                     @Override
+                                     public ListCell<Pezzo> call(ListView<Pezzo> list) {
+                                         return new PezzoCell();
+                                     }
+                                 }
+        );
+
+        listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Pezzo> arg0,
+                                Pezzo arg1, Pezzo arg2) {
+
+                aggiungiPezzo.setDisable(false);
+
+            }
+        });
+
+    }
+
+    private void refreshListaPezzi(){
+        pezzi = gestorePezzi.getPezzi();
+        obsPezzi = FXCollections.observableArrayList(pezzi);
+
+
+        Parent listPezziParent = listPezzi.getParent();
+
+        Pane tps = (Pane) listPezziParent;
+        tps.getChildren().remove(listPezzi);
+
+        listPezzi.setItems(obsPezzi);
+
+        tps.getChildren().add(listPezzi);
+
+        //listPezzi.setItems(obsPezzi);
+
+        listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
+                                         ListCell<Pezzo>>() {
+                                     @Override
+                                     public ListCell<Pezzo> call(ListView<Pezzo> list) {
+                                         return new PezzoCell();
+                                     }
+                                 }
+        );
+
+        listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Pezzo> arg0,
+                                Pezzo arg1, Pezzo arg2) {
+
+                aggiungiPezzo.setDisable(false);
+
+            }
+        });
+    }
+
+    /**
+     *
+     */
+    @FXML
+    private void instaSearch() {
+        //System.out.println("aaa");
+        handleSearchByKey(oldString,cercaPezzo.getText());
+        oldString=cercaPezzo.getText();
+    }
+
     /**
      *
      */
@@ -116,7 +215,7 @@ public class AggiungiPezzoController implements Initializable {
             //    e.printStackTrace();
             //}
             try {
-                utilita.FilesOp.copyFileUsingStream(file,newfile);
+                utilita.FilesOp.copyFileUsingStream(file, newfile);
             } catch (IOException e) {
                 e.printStackTrace();
             }

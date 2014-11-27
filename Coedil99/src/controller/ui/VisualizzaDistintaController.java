@@ -400,6 +400,15 @@ public class VisualizzaDistintaController implements Initializable {
 
             RigaDistinta riga = listPezziDistinta.getSelectionModel().getSelectedItem();
             listaPezzi.remove(riga);
+            riga.getDistinta().righeDistinta.remove(riga);
+            distinta.righeDistinta.remove(riga);
+            righeDistinta = distinta.righeDistinta.toArray();
+            listaPezzi.removeAll();
+            listaPezzi.clear();
+            listaPezzi.addAll(righeDistinta);
+            listPezziDistinta.setItems(listaPezzi);
+            refreshList();
+            //gestoreRigaDistinta.cancellaSagomaByRigaDistinta(riga);
             gestoreRigaDistinta.cancellaRigaDistinta(riga);
         } else {
 

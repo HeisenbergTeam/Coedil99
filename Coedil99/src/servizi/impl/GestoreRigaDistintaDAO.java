@@ -85,7 +85,9 @@ public class GestoreRigaDistintaDAO implements GestoreRigaDistinta {
 		try {
             //cancellaSagomaByRigaDistinta(riga);
             //cancellaLavorazionePezzoByRigaDistinta(riga);
-            rigaDistintaDAO.deleteAndDissociate(riga);
+            //riga.getDistinta().righeDistinta.remove(riga);
+            riga.setPezzo(null);
+            rigaDistintaDAO.deleteAndDissociate(riga);//.deleteAndDissociate(riga);
 		} catch (PersistentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

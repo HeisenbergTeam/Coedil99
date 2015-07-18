@@ -1,10 +1,7 @@
 package controller.ui;
 
-import java.awt.*;
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Path;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -14,12 +11,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,14 +24,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -46,11 +38,10 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 import modello_di_dominio.*;
-import modello_di_dominio.dao.CommessaDAO;
-import servizi.GestoreDistinta;
-import servizi.GestoreOrdine;
-import servizi.GestorePezzi;
-import servizi.GestoreRigaDistinta;
+import modello_di_dominio.dao.DistintaDAO;
+import modello_di_dominio.dao.OrdineDAO;
+import modello_di_dominio.dao.RigaDistintaDAO;
+import org.orm.PersistentException;
 import servizi.GestoreServizi;
 import servizi.Log;
 import servizi.Sessione;
@@ -105,12 +96,10 @@ public class VisualizzaDistintaController implements Initializable {
     
     private RigaDistinta rigaSelezionata;
     
-    private GestoreDistinta gestoreDistinta;
-    private GestoreRigaDistinta gestoreRigaDistinta;
-    private GestoreOrdine gestoreOrdine;
-    //private GestoreCommessa gestoreCommessa;
-    private CommessaDAO commessaDAO;
-    private GestorePezzi gestorePezzi;
+    private DistintaDAO distintaDAO;
+    private RigaDistintaDAO rigaDistintaDAO;
+    private OrdineDAO ordineDao;
+
     private Log log;
     private Sessione session;
     
@@ -144,11 +133,11 @@ public class VisualizzaDistintaController implements Initializable {
 
 		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-		gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		commessaDAO = DAOFactory.getDAOFactory().getCommessaDAO();
-		gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
-		gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
-		gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
+		ordineDao = DAOFactory.getDAOFactory().getOrdineDAO();
+
+		distintaDAO = DAOFactory.getDAOFactory().getDistintaDAO();
+		rigaDistintaDAO = DAOFactory.getDAOFactory().getRigaDistintaDAO();
+
 		log = (Log) gsp.getServizio("LogStdout");
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
@@ -405,7 +394,11 @@ public class VisualizzaDistintaController implements Initializable {
             listPezziDistinta.setItems(listaPezzi);
             refreshList();
             //gestoreRigaDistinta.cancellaSagomaByRigaDistinta(riga);
-            gestoreRigaDistinta.cancellaRigaDistinta(riga);
+            try {
+                rigaDistintaDAO.delete(riga);
+            } catch (PersistentException e) {
+                e.printStackTrace();
+            }
         } else {
 
             Set<Map.Entry<String, Object>> insieme = rigaDistintaTextFields.entrySet();
@@ -436,11 +429,14 @@ public class VisualizzaDistintaController implements Initializable {
             cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
             Date dt = cal.getTime();
 
-            gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), utilita.Parsers.getFloat(lbl_misura_taglio.getText()), utilita.Parsers.getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
-            gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
-            gestoreRigaDistinta.modificaSagomaByRigaDistinta(rigaSelezionata,pathSagoma);
-            gestorePezzi.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(),lbl_codice_pezzo.getText(),utilita.Parsers.getFloat(lbl_peso_originale.getText()),utilita.Parsers.getFloat(lbl_diametro.getText()),lbl_fornitore.getText());
-            gestorePezzi.modificaPezzo(rigaSelezionata.getPezzo(),rigaSelezionata.getPezzo().getDescrizionePezzo(),dt,Integer.parseInt(lbl_n_pezzi.getText()));
+            //TODO: Reimpostare
+            //gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, lbl_lavorazione.getText(), utilita.Parsers.getFloat(lbl_misura_taglio.getText()), utilita.Parsers.getFloat(lbl_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
+            //gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), lbl_indicazione.getText());
+            //gestoreRigaDistinta.modificaSagomaByRigaDistinta(rigaSelezionata,pathSagoma);
+            //TODO: Aggiornare la descrizione del pezzo
+            //pezzoDao.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(), lbl_codice_pezzo.getText(), utilita.Parsers.getFloat(lbl_peso_originale.getText()), utilita.Parsers.getFloat(lbl_diametro.getText()), lbl_fornitore.getText());
+            //TODO: Aggiornare il pezzo
+            //pezzoDao.modificaPezzo(rigaSelezionata.getPezzo(), rigaSelezionata.getPezzo().getDescrizionePezzo(), dt, Integer.parseInt(lbl_n_pezzi.getText()));
 
             refreshList();
 
@@ -501,9 +497,12 @@ public class VisualizzaDistintaController implements Initializable {
 			refreshDistinta();
 			return;
 		}
-		
-		gestoreDistinta.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), utilita.Parsers.getNumbers(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
-		gestoreOrdine.modificaDestinazione(ordine, lbl_destinazione.getText());
+
+        //TODO:modifica distinta
+		//distintaDAO.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), utilita.Parsers.getNumbers(lbl_revisione.getText()), distinta.getModello(), lbl_elemstrutturale.getText());
+		//TODO:Modifica destinazione ordine
+        //ordine.setDestinazione();
+		//ordineDao.modificaDestinazione(ordine, lbl_destinazione.getText());
 
         refreshDistinta();
 
@@ -515,10 +514,14 @@ public class VisualizzaDistintaController implements Initializable {
 	}
 	
 	private void refreshCommonDataDistinta() {
-		
-		ordine = gestoreOrdine.getOrdine(1);
-		
-		log.i(String.valueOf(ordine.getID()));
+
+        try {
+            ordine = ordineDao.getOrdineByORMID(1);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+
+        log.i(String.valueOf(ordine.getID()));
 			
 		//TODO: modifica a getCommessaID(id)
 		commesse = ordine.commesse.toArray();
@@ -661,7 +664,8 @@ public class VisualizzaDistintaController implements Initializable {
         LavorazionePezzo lavorazionePezzo = (LavorazionePezzo) session.get("lavorazionePezzo_selezionato");
         String indicazione = (String) session.get("indicazione_rigaDistinta");
         if (pezzoSelezionato!=null && pezzoSelezionato!=null && indicazione!=null) {
-            RigaDistinta riga = gestoreRigaDistinta.creaRigaDistinta(pezzoSelezionato, distinta, lavorazionePezzo, indicazione);
+            //RigaDistinta riga = gestoreRigaDistinta.creaRigaDistinta(pezzoSelezionato, distinta, lavorazionePezzo, indicazione);
+            RigaDistinta riga = rigaDistintaDAO.createRigaDistinta();
             listaPezzi.add(riga);
         }
 	}

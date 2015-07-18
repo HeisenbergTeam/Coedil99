@@ -24,11 +24,12 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import modello_di_dominio.Commessa;
+import modello_di_dominio.DAOFactory;
 import modello_di_dominio.Ordine;
-import servizi.GestoreOrdine;
+import modello_di_dominio.dao.OrdineDAO;
+import org.orm.PersistentException;
 import servizi.GestoreServizi;
 import servizi.Log;
-import servizi.impl.GestoreOrdineDAO;
 import servizi.impl.GestoreServiziPrototipo;
 import ui.MainApplication;
 
@@ -51,17 +52,21 @@ public class VisualizzaOrdiniController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-		GestoreOrdineDAO gestoreOrdineDAO = (GestoreOrdineDAO) gsp
-				.getServizio("GestoreOrdineDAO");
+		OrdineDAO ordineDAO = DAOFactory.getDAOFactory().getOrdineDAO();
 		log = (Log) gsp.getServizio("LogStdout");
 
 		/**************************************************
 		 * TABELLA ORDINI
 		 *************************************************/
-		final ArrayList<Ordine> ordini = new ArrayList<Ordine>(
-				gestoreOrdineDAO.getOrdini());
+        final ArrayList<Ordine> ordini;
+        try {
+            ordini = new ArrayList<Ordine>(
+                    ordineDAO.listOrdineByQuery(null,null));
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
 
-		this.loadOrdiniTable(ordini);
+        this.loadOrdiniTable(ordini);
 
 		// ListenerOrdini
 

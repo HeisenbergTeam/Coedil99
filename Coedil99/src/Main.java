@@ -15,10 +15,6 @@ import org.orm.PersistentException;
 
 import controller.ui.LoginController;
 
-import servizi.GestoreDistinta;
-import servizi.GestoreOrdine;
-import servizi.GestorePezzi;
-import servizi.GestoreRigaDistinta;
 import servizi.GestoreServizi;
 import servizi.Log;
 import servizi.Sessione;
@@ -122,30 +118,23 @@ public class Main {
 				
 		//TEST CREAZIONE CON GESTORI
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		GestoreDistinta gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
-		GestoreRigaDistinta gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
-		GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
+		//GestoreDistinta gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
+		//GestoreRigaDistinta gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
+		//GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
 		Log log = (Log) gsp.getServizio("LogStdout");
 		Sessione session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
-		Destinazione dest2 = gestoreOrdine.creaDestinazione("Via Strinella, 371");
+		//Distinta distinta2 = gestoreDistinta.creaDistinta(new Date(), commessa2, 2, "Modello Prova es PORTONE3AE4K", "Elemento strutturale prova es Portone");
 		
-		Ordine ordine2 = gestoreOrdine.creaOrdine(dest2,new Date());
+		//DescrizionePezzo descrizionePezzo2 = gestorePezzi.creaDescrizionePezzo("Tubo alluminioz", 1.0f, 0.020f, "ItalSystemz");
 		
-		Commessa commessa2 = gestoreOrdine.creaCommessa(ordine2, 10, new Date());
+		//Pezzo pezzo2 = gestorePezzi.creaPezzo(descrizionePezzo2, new Date(), 4);
 		
-		Distinta distinta2 = gestoreDistinta.creaDistinta(new Date(), commessa2, 2, "Modello Prova es PORTONE3AE4K", "Elemento strutturale prova es Portone");
+		//Sagoma sagoma2 = gestoreRigaDistinta.creaSagoma("pathImgZ");
 		
-		DescrizionePezzo descrizionePezzo2 = gestorePezzi.creaDescrizionePezzo("Tubo alluminioz", 1.0f, 0.020f, "ItalSystemz");
+		//LavorazionePezzo lavorazionePezzo2 = gestoreRigaDistinta.creaLavorazionePezzo("Non lavoratoz", 15.0f, 1.0f, sagoma2);
 		
-		Pezzo pezzo2 = gestorePezzi.creaPezzo(descrizionePezzo2, new Date(), 4);
-		
-		Sagoma sagoma2 = gestoreRigaDistinta.creaSagoma("pathImgZ");
-		
-		LavorazionePezzo lavorazionePezzo2 = gestoreRigaDistinta.creaLavorazionePezzo("Non lavoratoz", 15.0f, 1.0f, sagoma2);
-		
-		RigaDistinta rigaDistinta2 = gestoreRigaDistinta.creaRigaDistinta(pezzo2, distinta2, lavorazionePezzo2, "Tubo portaz");
+		//RigaDistinta rigaDistinta2 = gestoreRigaDistinta.creaRigaDistinta(pezzo2, distinta2, lavorazionePezzo2, "Tubo portaz");
 				
 		
 		//TEST CANCELLAZIONE CON GESTORI

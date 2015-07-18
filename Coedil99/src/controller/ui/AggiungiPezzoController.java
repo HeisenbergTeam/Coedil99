@@ -2,10 +2,6 @@ package controller.ui;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.CopyOption;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -22,15 +18,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import modello_di_dominio.DAOFactory;
 import modello_di_dominio.LavorazionePezzo;
 import modello_di_dominio.Pezzo;
-import modello_di_dominio.RigaDistinta;
 import modello_di_dominio.Sagoma;
+import modello_di_dominio.dao.PezzoDAO;
+import modello_di_dominio.dao.RigaDistintaDAO;
+import org.orm.PersistentException;
 import servizi.*;
 import servizi.impl.GestoreServiziPrototipo;
 
@@ -48,9 +45,9 @@ public class AggiungiPezzoController implements Initializable {
     @FXML private ImageView imgSagoma;
 	private Log log;
 	private Sessione sessione;
-    private GestoreRigaDistinta gestoreRigaDistinta;
+    private RigaDistintaDAO rigaDistintaDAO;
     private GestoreServizi gsp;
-    private GestorePezzi gestorePezzi;
+    private PezzoDAO pezzoDAO;
 
     private String pathSagoma="";
     private String descrizione="";
@@ -60,7 +57,7 @@ public class AggiungiPezzoController implements Initializable {
 
     private String oldString = null;
 
-    private List<Pezzo> pezzi;
+    private Pezzo[] pezzi;
     private ObservableList<Pezzo> obsPezzi;
 /**
  * 
@@ -72,10 +69,10 @@ public class AggiungiPezzoController implements Initializable {
 		aggiungiPezzo.setDisable(true);
 
         gsp = GestoreServiziPrototipo.getGestoreServizi();
-        gestorePezzi = (GestorePezzi) GestoreServizi.getGestoreServizi().getServizio("GestorePezziDAO");
+        pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
 		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
 		sessione = (Sessione) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
-        gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
+        rigaDistintaDAO = DAOFactory.getDAOFactory().getRigaDistintaDAO();
 
         refreshListaPezzi();
 		
@@ -148,7 +145,14 @@ public class AggiungiPezzoController implements Initializable {
     }
 
     private void refreshListaPezzi(){
-        pezzi = gestorePezzi.getPezzi();
+        try
+        {
+            pezzi = pezzoDAO.listPezzoByQuery("","");
+        }catch(PersistentException e)
+        {
+
+        }
+
         obsPezzi = FXCollections.observableArrayList(pezzi);
 
 
@@ -291,16 +295,17 @@ public class AggiungiPezzoController implements Initializable {
 		//Pezzo scelto
 		Pezzo pezzoScelto = listPezzi.getSelectionModel().getSelectedItem();
 
-		Sagoma sagoma = gestoreRigaDistinta.creaSagoma(pathSagoma);
+		//Sagoma sagoma = rigaDistintaDAO.creaSagoma(pathSagoma);
 
         descrizione = descrizioneTipoLavorazione.getText();
         indicazione = indicazioneRigaDistinta.getText();
         taglio = Float.parseFloat(misuraTaglio.getText());
         peso = Float.parseFloat(pesoTxt.getText());
 
-        LavorazionePezzo lavorazionePezzo = gestoreRigaDistinta.creaLavorazionePezzo(descrizione, taglio, peso, sagoma);
+        //LavorazionePezzo lavorazionePezzo = rigaDistintaDAO.creaLavorazionePezzo(descrizione, taglio, peso, sagoma);
+        LavorazionePezzo lavorazionePezzo = null;
 
-        //RigaDistinta rigaDistinta = gestoreRigaDistinta.creaRigaDistinta(scelto, distinta, lavorazionePezzo, indicazione);
+        //RigaDistinta rigaDistinta = rigaDistintaDAO.creaRigaDistinta(scelto, distinta, lavorazionePezzo, indicazione);
 
 
         sessione.set("pezzo_selezionato",pezzoScelto);

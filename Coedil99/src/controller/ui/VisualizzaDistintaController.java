@@ -45,13 +45,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import modello_di_dominio.Commessa;
-import modello_di_dominio.Distinta;
-import modello_di_dominio.LavorazionePezzo;
-import modello_di_dominio.Ordine;
-import modello_di_dominio.Pezzo;
-import modello_di_dominio.RigaDistinta;
-import servizi.GestoreCommessa;
+import modello_di_dominio.*;
+import modello_di_dominio.dao.CommessaDAO;
 import servizi.GestoreDistinta;
 import servizi.GestoreOrdine;
 import servizi.GestorePezzi;
@@ -113,7 +108,8 @@ public class VisualizzaDistintaController implements Initializable {
     private GestoreDistinta gestoreDistinta;
     private GestoreRigaDistinta gestoreRigaDistinta;
     private GestoreOrdine gestoreOrdine;
-    private GestoreCommessa gestoreCommessa;
+    //private GestoreCommessa gestoreCommessa;
+    private CommessaDAO commessaDAO;
     private GestorePezzi gestorePezzi;
     private Log log;
     private Sessione session;
@@ -149,7 +145,7 @@ public class VisualizzaDistintaController implements Initializable {
 		//Caricamento servizi
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		gestoreCommessa = (GestoreCommessa) gsp.getServizio("GestoreCommessaDAO");
+		commessaDAO = DAOFactory.getDAOFactory().getCommessaDAO();
 		gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
 		gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
 		gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");

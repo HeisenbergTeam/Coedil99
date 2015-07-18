@@ -14,7 +14,7 @@ import modello_di_dominio.Sagoma;
 import org.orm.PersistentException;
 
 import controller.ui.LoginController;
-import servizi.GestoreCommessa;
+
 import servizi.GestoreDistinta;
 import servizi.GestoreOrdine;
 import servizi.GestorePezzi;
@@ -123,7 +123,6 @@ public class Main {
 		//TEST CREAZIONE CON GESTORI
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp.getServizio("GestoreOrdineDAO");
-		GestoreCommessa gestoreCommessa = (GestoreCommessa) gsp.getServizio("GestoreCommessaDAO");
 		GestoreDistinta gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
 		GestoreRigaDistinta gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
 		GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");
@@ -153,9 +152,6 @@ public class Main {
 		
 		//IT WORKS
 		//gestoreOrdine.cancellaOrdine(ordine2);
-		
-		//IT WORKS
-		//gestoreCommessa.cancellaCommessa(commessa2);
 		
 		//IT WORKS
 		//gestoreDistinta.cancellaDistinta(distinta2);

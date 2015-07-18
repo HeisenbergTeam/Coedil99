@@ -25,7 +25,6 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import modello_di_dominio.Commessa;
 import modello_di_dominio.Ordine;
-import servizi.GestoreCommessa;
 import servizi.GestoreOrdine;
 import servizi.GestoreServizi;
 import servizi.Log;

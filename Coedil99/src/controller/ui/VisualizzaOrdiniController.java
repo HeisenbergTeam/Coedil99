@@ -1,10 +1,7 @@
 package controller.ui;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -58,31 +55,32 @@ public class VisualizzaOrdiniController implements Initializable {
 		/**************************************************
 		 * TABELLA ORDINI
 		 *************************************************/
-        final ArrayList<Ordine> ordini;
-        try {
-            ordini = new ArrayList<Ordine>(
-                    ordineDAO.listOrdineByQuery(null,null));
-        } catch (PersistentException e) {
-            e.printStackTrace();
-        }
-
-        this.loadOrdiniTable(ordini);
-
-		// ListenerOrdini
-
-		tableOrdini.getSelectionModel().selectedIndexProperty()
-				.addListener(new ChangeListener<Object>() {
-
-					@Override
-					public void changed(ObservableValue<? extends Object> arg0,
-							Object arg1, Object arg2) {
-
-						Ordine ao = ordini.get((Integer) arg2);
-						VisualizzaOrdiniController.this.ordineCorrente = ao;
-						VisualizzaOrdiniController.this.loadTablePane(ao);
-
-					}
-				});
+//        final ArrayList<Ordine> ordini = null;
+//        try {
+//            ordini = new ArrayList<Ordine>(
+//                    Arrays.asList(ordineDAO.listOrdineByQuery(null,null)));
+//            this.loadOrdiniTable(ordini);
+//        } catch (PersistentException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//
+//		// ListenerOrdini
+//
+//		tableOrdini.getSelectionModel().selectedIndexProperty()
+//				.addListener(new ChangeListener<Object>() {
+//
+//					@Override
+//					public void changed(ObservableValue<? extends Object> arg0,
+//							Object arg1, Object arg2) {
+//
+//						Ordine ao = ordini.get((Integer) arg2);
+//						VisualizzaOrdiniController.this.ordineCorrente = ao;
+//						VisualizzaOrdiniController.this.loadTablePane(ao);
+//
+//					}
+//				});
 
 		// Listener commesse
 		/*

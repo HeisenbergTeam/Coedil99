@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Faculty of informatics, Burapha University 01
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.coedil99.modello_di_dominio.Pezzo" table="Pezzo" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="dataArrivo" column="DataArrivo" type="date" not-null="false" lazy="false"/>
+		<property name="quantita" column="Quantita" type="integer" length="11" not-null="false" lazy="false"/>
+		<many-to-one name="descrizionePezzo" column="DescrizionePezzoID" class="com.coedil99.modello_di_dominio.DescrizionePezzo" cascade="save-update,lock,delete" unique="true" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

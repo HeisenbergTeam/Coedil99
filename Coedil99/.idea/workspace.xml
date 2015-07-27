@@ -2,13 +2,122 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1269044b-c6f2-48f3-b04f-c9e9e1e0347d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ui/VisualizzaOrdiniController.java" afterPath="$PROJECT_DIR$/src/controller/ui/VisualizzaOrdiniController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Servizio.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\Servizio.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/Main.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\controller\ui\AggiungiPezzoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\controller\ui\LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/LoginController.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\controller\ui\PannelloControlloController.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/PannelloControlloController.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\controller\ui\VisualizzaDistintaController.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\controller\ui\VisualizzaOrdiniController.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\Coedil99PersistentManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\Commessa.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Commessa.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\CommessaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\CommessaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\CommessaSetCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaSetCollection.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactory.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DAOFactoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactoryImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DescrizionePezzo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzo.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DescrizionePezzoCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DescrizionePezzoDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\Destinazione.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Destinazione.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DestinazioneCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DestinazioneDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\Distinta.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Distinta.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DistintaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\DistintaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\LavorazionePezzo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzo.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\LavorazionePezzoCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\LavorazionePezzoDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\LavorazionePezzoSetCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoSetCollection.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\ORMConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/ORMConstants.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\Ordine.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Ordine.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\OrdineCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\OrdineDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\Pezzo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Pezzo.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\PezzoCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\PezzoDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\RigaDistinta.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistinta.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\RigaDistintaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\RigaDistintaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\RigaDistintaSetCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaSetCollection.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\Sagoma.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Sagoma.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\SagomaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\SagomaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaDetachedCriteria.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\CommessaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\DescrizionePezzoDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DescrizionePezzoDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\DestinazioneDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DestinazioneDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\DistintaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DistintaDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\LavorazionePezzoDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/LavorazionePezzoDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\OrdineDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/OrdineDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\PezzoDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/PezzoDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\RigaDistintaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaDistintaDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\dao\SagomaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/SagomaDAO.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\CommessaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/CommessaDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\DescrizionePezzoDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DescrizionePezzoDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\DestinazioneDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DestinazioneDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\DistintaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DistintaDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\LavorazionePezzoDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/LavorazionePezzoDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\OrdineDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/OrdineDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\PezzoDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/PezzoDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\RigaDistintaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaDistintaDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\modello_di_dominio\impl\SagomaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/SagomaDAOImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\Coedil99.cfg.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/Coedil99.cfg.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\Coedil99.erd.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/Coedil99.erd.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\database.cfg.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/database.cfg.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\Commessa.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/Commessa.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\DescrizionePezzo.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/DescrizionePezzo.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\Destinazione.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/Destinazione.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\Distinta.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/Distinta.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\LavorazionePezzo.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/LavorazionePezzo.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\Ordine.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/Ordine.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\Pezzo.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/Pezzo.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\RigaDistinta.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/RigaDistinta.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ormmapping\modello_di_dominio\Sagoma.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ormmapping/modello_di_dominio/Sagoma.hbm.xml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\Autenticazione.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Autenticazione.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\Config.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Config.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\GestoreServizi.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/GestoreServizi.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\Log.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Log.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\Ottimizzatore.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Ottimizzatore.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\Sessione.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Sessione.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\annotation\injected.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/annotation/injected.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\impl\AutenticazionePrototipo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/AutenticazionePrototipo.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\impl\ConfigXml.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/ConfigXml.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\impl\GestoreServiziPrototipo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/GestoreServiziPrototipo.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\impl\LogStdout.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/LogStdout.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\impl\OttimizzatorePrototipo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/OttimizzatorePrototipo.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\servizi\impl\SessionePrototipo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/SessionePrototipo.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\test\servizi\ConfigXmlTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\MainApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\VisualizzaDistinta.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/VisualizzaDistinta.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\css\login.css" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/css/login.css" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\css\pannello_di_controllo.css" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/css/pannello_di_controllo.css" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\css\visualizza_distinta_TEMP_DISABLED.css" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/css/visualizza_distinta_TEMP_DISABLED.css" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\css\visualizza_ordini.css" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/css/visualizza_ordini.css" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\fxml\about.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/about.fxml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\fxml\aggiungi_pezzo.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/aggiungi_pezzo.fxml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\fxml\login.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/login.fxml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\fxml\pannello_di_controllo.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/pannello_di_controllo.fxml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\fxml\ricerca_ordini.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/ricerca_ordini.fxml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\fxml\visualizza_distinta.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/visualizza_distinta.fxml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\fxml\visualizza_ordini.fxml" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/visualizza_ordini.fxml" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\icons\back.png" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/icons/back.png" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\icons\coedil99.png" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/icons/coedil99.png" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\icons\gestisci.png" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/icons/gestisci.png" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\ui\icons\nuovo.png" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/ui/icons/nuovo.png" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\utilita\FilesOp.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/utilita/FilesOp.java" />
+      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\utilita\Parsers.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/utilita/Parsers.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Coedil99.iml" afterPath="$PROJECT_DIR$/Coedil99.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Coedil99.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <ignored path=".idea/dataSources.local.xml" />
+    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,20 +139,84 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="AggiungiPezzoController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ui/AggiungiPezzoController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5372" max-vertical-offset="5474">
-              <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="5695">
+              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Coedil99PersistentManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommessaDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="765">
+              <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainApplication.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.26344085" vertical-offset="1160" max-vertical-offset="1785">
+              <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassLoader.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/lang/ClassLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7093" max-vertical-offset="36295">
+              <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LauncherImpl.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="13043" max-vertical-offset="15844">
+              <caret line="822" column="0" selection-start-line="822" selection-start-column="0" selection-end-line="822" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrintStream.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/io/PrintStream.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="12720" max-vertical-offset="18360">
+              <caret line="806" column="0" selection-start-line="806" selection-start-column="0" selection-end-line="806" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="VisualizzaDistintaController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ui/VisualizzaDistintaController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="13243">
-              <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13141">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,35 +224,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="2873">
-              <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VisualizzaOrdiniController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller/ui/VisualizzaOrdiniController.java">
+      <file leaf-file-name="Autenticazione.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Autenticazione.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08717949" vertical-offset="1003" max-vertical-offset="4012">
-              <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConfigXmlTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/servizi/ConfigXmlTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="986">
-              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -100,6 +259,12 @@
         <option value="$PROJECT_DIR$/src/controller/ui/VisualizzaDistintaController.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/controller/ui/VisualizzaOrdiniController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java" />
       </list>
     </option>
   </component>
@@ -137,7 +302,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -166,6 +330,110 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -184,7 +452,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="servizi" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -199,6 +467,66 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coedil99" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -208,6 +536,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -226,6 +555,14 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
+    <property name="LayoutCode.rearrangeEntries" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\target\classes\com\coedil99\ui" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.MainApplication">
     <configuration default="false" name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -235,18 +572,24 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="ui.MainApplication" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="com.coedil99.ui.MainApplication" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="Coedil99" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -534,12 +877,15 @@
       <workItem from="1436918335799" duration="5167000" />
       <workItem from="1436991977833" duration="2883000" />
       <workItem from="1437232183253" duration="5726000" />
-      <workItem from="1437501253915" duration="824000" />
+      <workItem from="1437501253915" duration="2052000" />
+      <workItem from="1437549150679" duration="284000" />
+      <workItem from="1437561780780" duration="1179000" />
+      <workItem from="1437824326626" duration="4283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17966000" />
+    <option name="totallyTimeSpent" value="24940000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -548,6 +894,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -556,8 +903,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33601287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32905295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33601287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -567,11 +914,10 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32636657" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -593,15 +939,21 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="pageUrl" language="JAVA" custom="" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/AggiungiPezzoController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5372" max-vertical-offset="5474">
           <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
@@ -609,7 +961,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/VisualizzaDistintaController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="13243">
           <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
@@ -619,17 +971,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="2873">
           <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4182">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/VisualizzaOrdiniController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="986">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#826#827#0" expanded="false" />
+            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#1016#1017#0" expanded="false" />
+            <element signature="e#1058#1059#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5372" max-vertical-offset="5474">
+          <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="13243">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="2873">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4182">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="986">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#826#827#0" expanded="false" />
+            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#1016#1017#0" expanded="false" />
+            <element signature="e#1058#1059#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5372" max-vertical-offset="5474">
+          <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="13243">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="2873">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4216">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -639,15 +1091,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/servizi/ConfigXmlTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="986">
           <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#826#827#0" expanded="false" />
+            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#1016#1017#0" expanded="false" />
+            <element signature="e#1058#1059#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/AggiungiPezzoController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="5338">
           <caret line="113" column="23" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
@@ -655,68 +1114,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modello_di_dominio/Coedil99PersistentManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/impl/SessionePrototipo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/SessionePrototipo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="510">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/annotation/injected.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/annotation/injected.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="289">
           <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="527">
           <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/Autenticazione.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Autenticazione.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="255">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/fxml/login.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/login.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1105">
           <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/MainApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="1751">
           <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#738#739#0" expanded="false" />
-            <element signature="e#760#761#0" expanded="false" />
-            <element signature="e#833#834#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#751#752#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#846#847#0" expanded="false" />
+            <element signature="e#881#882#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/AggiungiPezzoController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="5338">
           <caret line="113" column="23" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
@@ -724,194 +1181,230 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="578">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilita/FilesOp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/FilesOp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="595">
           <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilita/Parsers.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/Parsers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="714">
           <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/impl/SessionePrototipo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/SessionePrototipo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="510">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/annotation/injected.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/annotation/injected.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="289">
           <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="527">
           <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/MainApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#738#739#0" expanded="false" />
-            <element signature="e#760#761#0" expanded="false" />
-            <element signature="e#833#834#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#751#752#0" expanded="false" />
+            <element signature="e#773#774#0" expanded="false" />
+            <element signature="e#846#847#0" expanded="false" />
+            <element signature="e#881#882#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/MainApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="1751">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#738#739#0" expanded="false" />
-            <element signature="e#760#761#0" expanded="false" />
-            <element signature="e#833#834#0" expanded="false" />
-            <element signature="e#868#869#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="578">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilita/FilesOp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/FilesOp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
           <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilita/Parsers.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/Parsers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
           <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/impl/SessionePrototipo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/SessionePrototipo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="510">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/annotation/injected.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/annotation/injected.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
           <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
           <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/fxml/login.fxml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/login.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1105">
           <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1088">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#826#827#0" expanded="false" />
+            <element signature="e#868#869#0" expanded="false" />
+            <element signature="e#1016#1017#0" expanded="false" />
+            <element signature="e#1058#1059#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servizi/Autenticazione.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17480719" vertical-offset="0" max-vertical-offset="389">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1986" max-vertical-offset="2567">
+          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4012">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Autenticazione.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/modello_di_dominio/Coedil99PersistentManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3933162" vertical-offset="136" max-vertical-offset="1598">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/servizi/ConfigXmlTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1088">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="5695">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/AggiungiPezzoController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5372" max-vertical-offset="5474">
-          <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13141">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="765">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="13043" max-vertical-offset="15844">
+          <caret line="822" column="0" selection-start-line="822" selection-start-column="0" selection-end-line="822" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/io/PrintStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="2873">
-          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="12720" max-vertical-offset="18360">
+          <caret line="806" column="0" selection-start-line="806" selection-start-column="0" selection-end-line="806" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/VisualizzaDistintaController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/lang/ClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="708" max-vertical-offset="13107">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="7093" max-vertical-offset="36295">
+          <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ui/VisualizzaOrdiniController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08717949" vertical-offset="1003" max-vertical-offset="4012">
-          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.26344085" vertical-offset="1160" max-vertical-offset="1785">
+          <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

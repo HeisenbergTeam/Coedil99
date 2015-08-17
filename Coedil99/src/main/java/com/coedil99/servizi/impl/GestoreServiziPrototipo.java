@@ -9,7 +9,7 @@ public class GestoreServiziPrototipo extends GestoreServizi {
 /**
  * 
  */
-	private final static String serviziPackage = "servizi.impl.";
+	private final static String serviziPackage = "com.coedil99.servizi.impl.";
 /**
  * 
  */

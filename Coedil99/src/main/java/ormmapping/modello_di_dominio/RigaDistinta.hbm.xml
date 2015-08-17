@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Faculty of informatics, Burapha University 01
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.coedil99.modello_di_dominio.RigaDistinta" table="RigaDistinta" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="pezzo" column="PezzoID" class="com.coedil99.modello_di_dominio.Pezzo" cascade="save-update,lock,delete" unique="true" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<many-to-one name="distinta" cascade="lock" column="DistintaID" class="com.coedil99.modello_di_dominio.Distinta" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<many-to-one name="lavorazionePezzo" column="LavorazionePezzoID" class="com.coedil99.modello_di_dominio.LavorazionePezzo" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<property name="indicazione" column="Indicazione" type="string" length="255" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

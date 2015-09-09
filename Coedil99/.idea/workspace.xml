@@ -2,19 +2,90 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1269044b-c6f2-48f3-b04f-c9e9e1e0347d" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\Coedil99.cfg.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/Coedil99.cfg.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\Coedil99.erd.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/Coedil99.erd.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\database.cfg.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/database.cfg.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\Commessa.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/Commessa.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\DescrizionePezzo.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/DescrizionePezzo.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\Destinazione.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/Destinazione.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\Distinta.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/Distinta.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\LavorazionePezzo.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/LavorazionePezzo.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\Ordine.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/Ordine.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\Pezzo.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/Pezzo.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\RigaDistinta.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/RigaDistinta.hbm.xml" />
-      <change type="MOVED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99\ormmapping\modello_di_dominio\Sagoma.hbm.xml" afterPath="$PROJECT_DIR$/src/main/java/ormmapping/modello_di_dominio/Sagoma.hbm.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Coedil99.iml" afterPath="$PROJECT_DIR$/Coedil99.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoSetCollection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Fornitore.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/FornitoreCriteria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/FornitoreDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/FornitoreDAOImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/FornitoreDetachedCriteria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDA.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDACriteria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RDADAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RDADAOImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDADetachedCriteria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDASetCollection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDA.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDACriteria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaRDADAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaRDADAOImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDADetachedCriteria.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDASetCollection.java" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\lib\orm.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\Coedil99.cfg.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\Coedil99.erd.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\database.cfg.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\Commessa.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\DescrizionePezzo.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\Destinazione.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\Distinta.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\LavorazionePezzo.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\Ordine.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\Pezzo.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\RigaDistinta.hbm.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\ormmapping\modello_di_dominio\Sagoma.hbm.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Commessa.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Commessa.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/CommessaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/CommessaDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaSetCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaSetCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactoryImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DescrizionePezzoDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DescrizionePezzoDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DescrizionePezzoDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DescrizionePezzoDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Destinazione.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Destinazione.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DestinazioneDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DestinazioneDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DestinazioneDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DestinazioneDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Distinta.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Distinta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DistintaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DistintaDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DistintaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DistintaDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/LavorazionePezzoDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/LavorazionePezzoDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/LavorazionePezzoDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/LavorazionePezzoDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoSetCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoSetCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/ORMConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/ORMConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Ordine.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Ordine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/OrdineDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/OrdineDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/OrdineDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/OrdineDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Pezzo.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Pezzo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/PezzoDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/PezzoDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/PezzoDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/PezzoDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistinta.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistinta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaDistintaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaDistintaDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaDistintaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaDistintaDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaSetCollection.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaSetCollection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Sagoma.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Sagoma.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/SagomaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/SagomaDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/SagomaDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/SagomaDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaDetachedCriteria.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaDetachedCriteria.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java" afterPath="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Coedil99.iws" />
@@ -42,74 +113,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AggiungiPezzoController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
+      <file leaf-file-name="RigaDistintaCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="6001">
-              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coedil99PersistentManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java">
+      <file leaf-file-name="RigaDistintaDetachedCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaDetachedCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersistentManager.class" pinned="false" current-in-tab="true">
-        <entry file="jar://$PROJECT_DIR$/lib/orm.jar!/org/orm/PersistentManager.class">
+      <file leaf-file-name="RigaRDADetachedCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDADetachedCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9020173" vertical-offset="435" max-vertical-offset="5236">
-              <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+              <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommessaDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java">
+      <file leaf-file-name="RigaRDACriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDACriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="714">
-              <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#3648#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1785">
-              <caret line="80" column="3" selection-start-line="80" selection-start-column="3" selection-end-line="80" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+              <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GestoreServiziPrototipo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/GestoreServiziPrototipo.java">
+      <file leaf-file-name="SagomaCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8" max-vertical-offset="1377">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+              <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.cfg.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/database.cfg.xml">
+      <file leaf-file-name="SagomaDetachedCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaDetachedCriteria.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1955">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="799">
+              <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -118,18 +176,38 @@
       <file leaf-file-name="VisualizzaDistintaController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8002" max-vertical-offset="12342">
-              <caret line="525" column="0" selection-start-line="525" selection-start-column="0" selection-end-line="525" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="9430" max-vertical-offset="12342">
+              <caret line="619" column="16" selection-start-line="619" selection-start-column="16" selection-end-line="619" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrdineDAOImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/OrdineDAOImpl.java">
+      <file leaf-file-name="database.cfg.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/database.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="6545">
-              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1570" max-vertical-offset="1955">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Coedil99.erd.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/Coedil99.erd.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12206">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Coedil99.cfg.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/Coedil99.cfg.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.044155844" vertical-offset="255" max-vertical-offset="663">
+              <caret line="16" column="39" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -143,20 +221,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/servizi/GestoreCommessa.java" />
-        <option value="$PROJECT_DIR$/src/servizi/impl/GestoreCommessaDAO.java" />
-        <option value="$PROJECT_DIR$/src/servizi/GestoreRigaDistinta.java" />
-        <option value="$PROJECT_DIR$/src/controller/ui/AggiungiPezzoController.java" />
-        <option value="$PROJECT_DIR$/src/controller/ui/VisualizzaDistintaController.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/controller/ui/VisualizzaOrdiniController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/GestoreServiziPrototipo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Commessa.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DistintaDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/FornitoreDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/LavorazionePezzoDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/OrdineDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/PezzoDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RDADAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaDistintaDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaRDADAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/SagomaDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DestinazioneDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/CommessaDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DescrizionePezzoDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DestinazioneDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/FornitoreDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/LavorazionePezzoDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/OrdineDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RDADAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaDistintaDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/SagomaDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaRDADAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DistintaDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/PezzoDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDACriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/FornitoreCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/FornitoreDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDADetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDADetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDACriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaDetachedCriteria.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java" />
       </list>
     </option>
   </component>
@@ -194,6 +309,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -298,10 +415,104 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ormmapping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ormmapping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dominio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Coedil99" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,13 +531,18 @@
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="LayoutCode.rearrangeEntriesJava" value="false" />
-    <property name="LayoutCode.rearrangeEntries" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJava" value="true" />
+    <property name="LayoutCode.rearrangeEntries" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\lib" />
+      <recent name="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java\com\coedil99" />
       <recent name="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\target\classes" />
       <recent name="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\target\classes\com\coedil99\ui" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Igor\IdeaProjects\Coedil99\Coedil99\src\main\java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -428,6 +644,7 @@
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/lib/orm.jar" />
       <envs />
       <method />
     </configuration>
@@ -655,16 +872,24 @@
       <workItem from="1439023457749" duration="2234000" />
       <workItem from="1439032664055" duration="2879000" />
       <workItem from="1439458018081" duration="1647000" />
-      <workItem from="1439821839589" duration="1827000" />
+      <workItem from="1439821839589" duration="2496000" />
+      <workItem from="1439918511996" duration="1975000" />
+      <workItem from="1440448310886" duration="1200000" />
+      <workItem from="1440946271111" duration="1936000" />
+      <workItem from="1441286359000" duration="733000" />
+      <workItem from="1441414635926" duration="2142000" />
+      <workItem from="1441465910874" duration="1033000" />
+      <workItem from="1441785784481" duration="2816000" />
+      <workItem from="1441829719282" duration="3355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39831000" />
+    <option name="totallyTimeSpent" value="55690000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -679,10 +904,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33601287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33601287" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31467474" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -694,7 +919,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32636657" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254818" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -715,7 +940,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaCriteria.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -728,388 +961,416 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DescrizionePezzoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="13243">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="2873">
-          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4182">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="986">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5372" max-vertical-offset="5474">
-          <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="833" max-vertical-offset="13243">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2292" max-vertical-offset="2873">
-          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4216">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="986">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="5338">
-          <caret line="113" column="23" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/SessionePrototipo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="510">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/annotation/injected.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="289">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="527">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Autenticazione.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="255">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/login.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1105">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="1751">
-          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="5338">
-          <caret line="113" column="23" selection-start-line="113" selection-start-column="23" selection-end-line="113" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="578">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/FilesOp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="595">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/Parsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="714">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/SessionePrototipo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="510">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/annotation/injected.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="289">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="527">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="578">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/FilesOp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/utilita/Parsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/SessionePrototipo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="510">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/annotation/injected.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/fxml/login.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1105">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/test/servizi/ConfigXmlTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="1088">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1986" max-vertical-offset="2567">
-          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaOrdiniController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4012">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/Autenticazione.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/AggiungiPezzoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="5695">
-          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/CommessaDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="765">
-          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#3648#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="13043" max-vertical-offset="15844">
-          <caret line="822" column="0" selection-start-line="822" selection-start-column="0" selection-end-line="822" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/io/PrintStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12720" max-vertical-offset="18360">
-          <caret line="806" column="0" selection-start-line="806" selection-start-column="0" selection-end-line="806" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2948718" vertical-offset="7093" max-vertical-offset="36295">
-          <caret line="487" column="0" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/ui/MainApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1785">
-          <caret line="80" column="3" selection-start-line="80" selection-start-column="3" selection-end-line="80" selection-end-column="3" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="761" max-vertical-offset="1343">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/servizi/impl/GestoreServiziPrototipo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/DistintaDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8" max-vertical-offset="1377">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/database.cfg.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/LavorazionePezzoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1955">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
+          <caret line="81" column="21" selection-start-line="81" selection-start-column="21" selection-end-line="81" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/OrdineDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+          <caret line="62" column="30" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/PezzoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1326">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RDADAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="778" max-vertical-offset="1360">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaDistintaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="778" max-vertical-offset="1360">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/dao/RigaRDADAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+          <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/FornitoreDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6137">
+          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/LavorazionePezzoDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6001">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8002" max-vertical-offset="12342">
-          <caret line="525" column="0" selection-start-line="525" selection-start-column="0" selection-end-line="525" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/orm.jar!/org/orm/util/SessionController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33055556" vertical-offset="0" max-vertical-offset="360">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/OrdineDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="6545">
-          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5521" max-vertical-offset="6103">
+          <caret line="331" column="15" selection-start-line="331" selection-start-column="15" selection-end-line="331" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RDADAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5521" max-vertical-offset="6103">
+          <caret line="367" column="40" selection-start-line="367" selection-start-column="40" selection-end-line="367" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaDistintaDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5419" max-vertical-offset="6001">
+          <caret line="366" column="67" selection-start-line="366" selection-start-column="67" selection-end-line="366" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/SagomaDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5368" max-vertical-offset="5950">
+          <caret line="357" column="50" selection-start-line="357" selection-start-column="50" selection-end-line="357" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/RigaRDADAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6086">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Coedil99PersistentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/ormmapping/Coedil99.cfg.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/Commessa.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
+          <caret line="96" column="28" selection-start-line="96" selection-start-column="28" selection-end-line="96" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/orm.jar!/org/orm/PersistentManager.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DestinazioneDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9020173" vertical-offset="435" max-vertical-offset="5236">
-          <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6001">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DescrizionePezzoDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6001">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/CommessaDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6307">
+          <caret line="369" column="9" selection-start-line="369" selection-start-column="9" selection-end-line="369" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/DistintaDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6137">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/impl/PezzoDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5368" max-vertical-offset="5950">
+          <caret line="358" column="42" selection-start-line="358" selection-start-column="42" selection-end-line="358" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DAOFactoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDACriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="799">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/CommessaCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="901">
+          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="867">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DescrizionePezzoDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="631" max-vertical-offset="1020">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DestinazioneDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="410" max-vertical-offset="799">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="901">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/DistintaDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1071">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/FornitoreCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/FornitoreDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="833">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/LavorazionePezzoDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="410" max-vertical-offset="799">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/OrdineDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="529" max-vertical-offset="918">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/PezzoDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RDADetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaDistintaDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDADetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
+          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/RigaRDACriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/modello_di_dominio/SagomaDetachedCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="205" max-vertical-offset="799">
+          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/coedil99/controller/ui/VisualizzaDistintaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9430" max-vertical-offset="12342">
+          <caret line="619" column="16" selection-start-line="619" selection-start-column="16" selection-end-line="619" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/database.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1570" max-vertical-offset="1955">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/Coedil99.erd.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12206">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ormmapping/Coedil99.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.044155844" vertical-offset="255" max-vertical-offset="663">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="39" />
           <folding />
         </state>
       </provider>

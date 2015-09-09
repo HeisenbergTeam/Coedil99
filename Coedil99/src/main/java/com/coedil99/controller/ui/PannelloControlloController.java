@@ -1,9 +1,9 @@
 package com.coedil99.controller.ui;
 
+import com.coedil99.ui.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
-import com.coedil99.ui.MainApplication;
 /**
  * PannelloControlloController
  * @author mw

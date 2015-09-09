@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.*?>
-
+<?import java.net.URL?>
 <BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.coedil99.controller.ui.VisualizzaOrdiniController">
   <center>
     <VBox prefHeight="-1.0" prefWidth="-1.0" style="-fx-border-width: 0 0 0 2px;&#10;-fx-border-color: lightgray;&#10;-fx-background-color: #1d1d1d;;">

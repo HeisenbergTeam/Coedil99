@@ -5,14 +5,14 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="dominio.RigaRDA" table="RigaRDA" lazy="false">
+	<class name="com.coedil99.modello_di_dominio.RigaRDA" table="RigaRDA" lazy="false">
 		<id name="ID" column="ID" type="integer" unsaved-value="0">
 			<generator class="native">
 			</generator>
 		</id>
-		<many-to-one name="pezzo" cascade="lock" column="PezzoID" class="dominio.Pezzo" not-null="true" lazy="no-proxy" access="field">
+		<many-to-one name="pezzo" cascade="lock" column="PezzoID" class="com.coedil99.modello_di_dominio.Pezzo" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
-		<many-to-one name="rda" cascade="lock" column="RDAID" class="dominio.RDA" not-null="true" lazy="no-proxy" access="field">
+		<many-to-one name="rda" cascade="lock" column="RDAID" class="com.coedil99.modello_di_dominio.RDA" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
 		<property name="indicazione" column="Indicazione" type="string" length="255" not-null="false" lazy="false"/>
 	</class>

@@ -1,18 +1,13 @@
 package com.coedil99.controller.ui;
 
-import java.io.*;
-import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
-
 import com.coedil99.modello_di_dominio.*;
+import com.coedil99.modello_di_dominio.dao.DistintaDAO;
+import com.coedil99.modello_di_dominio.dao.OrdineDAO;
+import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
+import com.coedil99.servizi.GestoreServizi;
+import com.coedil99.servizi.Log;
+import com.coedil99.servizi.Sessione;
+import com.coedil99.servizi.impl.GestoreServiziPrototipo;
 import com.coedil99.utilita.FilesOp;
 import com.coedil99.utilita.Parsers;
 import javafx.collections.FXCollections;
@@ -24,13 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -40,14 +29,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
-import com.coedil99.modello_di_dominio.dao.DistintaDAO;
-import com.coedil99.modello_di_dominio.dao.OrdineDAO;
-import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
 import org.orm.PersistentException;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.Sessione;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class VisualizzaDistintaController implements Initializable {
 	
@@ -122,8 +111,7 @@ public class VisualizzaDistintaController implements Initializable {
         System.out.println("The selectedIndices property contains: " + list.size() + " element(s):");
         for(int i=0; i<list.size(); i++) { System.out.println(i + ")" + list.get(i)); }
     }
-    
-	@Override
+
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		salvaDistButton.setDisable(true);
@@ -580,7 +568,6 @@ public class VisualizzaDistintaController implements Initializable {
 		//CellFactory
 	    listPezziDistinta.setCellFactory(new Callback<ListView<RigaDistinta>, 
 	            ListCell<RigaDistinta>>() {
-	                @Override 
 	                public ListCell<RigaDistinta> call(ListView<RigaDistinta> list) {
 	                    return new RigaDistCell();
 	                }
@@ -590,7 +577,6 @@ public class VisualizzaDistintaController implements Initializable {
 	    //Listener
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-	        @Override
 	        public void handle(MouseEvent event) {
 	        	oldIndex=listPezziDistinta.getSelectionModel().getSelectedIndex();
 	        	aggiornaCampiRigaDistinta();

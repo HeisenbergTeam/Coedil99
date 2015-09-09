@@ -78,7 +78,7 @@
   </Setting>
   <Setting type="2">
     <Driver>MySQL5 (Connector/J Driver)</Driver>
-    <DriverFiles>C:\Program Files (x86)\MySQL\MySQL Connector J\mysql-connector-java-5.1.26-bin.jar</DriverFiles>
+    <DriverFiles>C:\Program Files (x86)\MySQL\MySQL Connector J\mysql-connector-java-5.1.36-bin.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.MySQL5InnoDBDialect</Dialect>
     <DriverClass>com.mysql.jdbc.Driver</DriverClass>
     <URL>jdbc:mysql://localhost/coedil</URL>

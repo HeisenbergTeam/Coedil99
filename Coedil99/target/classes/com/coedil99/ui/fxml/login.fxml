@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-
 <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f6f7f8;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.coedil99.controller.ui.LoginController">
   <bottom>
     <VBox alignment="CENTER_RIGHT" disable="false" fillWidth="true" focusTraversable="false" maxWidth="800.0" mouseTransparent="false" prefHeight="301.0" prefWidth="800.0" style="" BorderPane.alignment="CENTER">

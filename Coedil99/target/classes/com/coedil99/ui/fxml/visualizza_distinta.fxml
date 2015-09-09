@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.Accordion?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TreeItem?>
-<?import javafx.scene.control.TreeView?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.VBox?>
-
+<?import java.net.URL?>
 <BorderPane maxHeight="730.0" maxWidth="1024.0" minHeight="730.0" minWidth="1024.0" prefHeight="730.0" prefWidth="1024.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coedil99.controller.ui.VisualizzaDistintaController">
   <bottom>
     <HBox>

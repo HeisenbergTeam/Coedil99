@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.coedil99.modello_di_dominio.Sagoma" table="Sagoma" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="img" column="Img" type="string" length="255" not-null="false" lazy="false"/>
+		<one-to-one name="lavorazionePezzo" class="com.coedil99.modello_di_dominio.LavorazionePezzo" cascade="save-update,lock" property-ref="sagoma" lazy="no-proxy" access="field"/>
+	</class>
+</hibernate-mapping>

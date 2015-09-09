@@ -1,24 +1,5 @@
 package com.coedil99.controller.ui;
 
-import java.net.URL;
-import java.util.*;
-
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.util.Callback;
 import com.coedil99.modello_di_dominio.Commessa;
 import com.coedil99.modello_di_dominio.DAOFactory;
 import com.coedil99.modello_di_dominio.Ordine;
@@ -27,6 +8,22 @@ import com.coedil99.servizi.GestoreServizi;
 import com.coedil99.servizi.Log;
 import com.coedil99.servizi.impl.GestoreServiziPrototipo;
 import com.coedil99.ui.MainApplication;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.util.Callback;
+
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class VisualizzaOrdiniController implements Initializable {
 

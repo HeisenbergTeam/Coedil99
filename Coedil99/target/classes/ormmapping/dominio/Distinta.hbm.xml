@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.coedil99.modello_di_dominio.Distinta" table="Distinta" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="dataInizio" column="DataInizio" type="date" not-null="false" lazy="false"/>
+		<many-to-one name="commessa" column="CommessaID" class="com.coedil99.modello_di_dominio.Commessa" cascade="save-update,lock" unique="true" not-null="false" lazy="no-proxy" access="field">
+		</many-to-one>
+		<property name="revisione" column="Revisione" type="integer" length="11" not-null="true" lazy="false"/>
+		<property name="modello" column="Modello" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="elementoStrutturale" column="ElementoStrutturale" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="ORM_RigheDistinta" lazy="true" cascade="all-delete-orphan" inverse="true">
+			<key column="DistintaID" not-null="true"/>
+			<one-to-many class="com.coedil99.modello_di_dominio.RigaDistinta"/>
+		</set>
+	</class>
+</hibernate-mapping>

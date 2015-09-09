@@ -1,16 +1,14 @@
 package com.coedil99.ui;
 
- 
-import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
  
 public class VisualizzaDistinta extends Application {
     public static void start(String[] args) {

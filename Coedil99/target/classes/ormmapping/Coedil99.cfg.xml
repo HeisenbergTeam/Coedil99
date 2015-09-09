@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-Licensee: Faculty of informatics, Burapha University 01
-License Type: Purchased
+Licensee: 
+License Type: Evaluation
 -->
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
@@ -17,14 +17,17 @@ License Type: Purchased
 		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 		<!-- mapping files -->
-		<mapping resource="ormmapping/modello_di_dominio/Commessa.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/DescrizionePezzo.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/Destinazione.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/Distinta.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/LavorazionePezzo.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/Ordine.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/Pezzo.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/RigaDistinta.hbm.xml" />
-		<mapping resource="ormmapping/modello_di_dominio/Sagoma.hbm.xml" />
+		<mapping resource="ormmapping/dominio/Commessa.hbm.xml" />
+		<mapping resource="ormmapping/dominio/DescrizionePezzo.hbm.xml" />
+		<mapping resource="ormmapping/dominio/Destinazione.hbm.xml" />
+		<mapping resource="ormmapping/dominio/Distinta.hbm.xml" />
+		<mapping resource="ormmapping/dominio/Fornitore.hbm.xml" />
+		<mapping resource="ormmapping/dominio/LavorazionePezzo.hbm.xml" />
+		<mapping resource="ormmapping/dominio/Ordine.hbm.xml" />
+		<mapping resource="ormmapping/dominio/Pezzo.hbm.xml" />
+		<mapping resource="ormmapping/dominio/RDA.hbm.xml" />
+		<mapping resource="ormmapping/dominio/RigaDistinta.hbm.xml" />
+		<mapping resource="ormmapping/dominio/RigaRDA.hbm.xml" />
+		<mapping resource="ormmapping/dominio/Sagoma.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

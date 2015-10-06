@@ -682,7 +682,7 @@ public class VisualizzaDistintaController implements Initializable {
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
 
-            File newfile = new File(".\\Coedil99\\blobs\\sagoma\\" + file.getName());
+            File newfile = new File(".\\Coedil99\\src\\main\\resources\\blobs\\sagoma\\" + file.getName());
 
             //try {
             //    Files.copy(file.toPath(), newfile.toPath());
@@ -697,7 +697,7 @@ public class VisualizzaDistintaController implements Initializable {
 
             //FileUtils.copyFile(source, dest);
 
-            int start = (newfile.getAbsolutePath().indexOf("Coedil99\\blobs\\sagoma\\"));
+            int start = (newfile.getAbsolutePath().indexOf("Coedil99\\src\\main\\resources\\blobs\\sagoma\\"));
 
             int end = (newfile.getAbsolutePath().length());
 
@@ -722,10 +722,10 @@ public class VisualizzaDistintaController implements Initializable {
             log.i("selezione_sagoma");
 
             final FileChooser fileChooser = new FileChooser();
-            fileChooser.setInitialDirectory(new File(".\\Coedil99\\blobs\\sagoma\\"));
+            fileChooser.setInitialDirectory(new File(".\\Coedil99\\src\\main\\resources\\blobs\\sagoma\\"));
             File file = fileChooser.showOpenDialog(null);
             if (file != null) {
-                int start = (file.getAbsolutePath().indexOf("Coedil99\\blobs\\sagoma\\"));
+                int start = (file.getAbsolutePath().indexOf("Coedil99\\src\\main\\resources\\blobs\\sagoma\\"));
 
                 int end = (file.getAbsolutePath().length());
 

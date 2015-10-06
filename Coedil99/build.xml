@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<project name="Coedil99" default="instrument">
+	<description>
+		Coedil99
+	</description>
+
+	<property name="src.dir" location="src" />
+	<property name="lib.dir" location="lib" />
+	<property name="classes.dir" location="classes" />
+	<property name="javac.debug" value="on" />
+
+	<target name="compile" description="Compile Coedil99">
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${javac.debug}">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+			</classpath>
+		</javac>
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean" description="Clean Coedil99">
+		<delete dir="${classes.dir}" />
+	</target>
+
+	<target name="createSchema" description="Run create data schema sample">
+		<java classname="ormsamples.CreateCoedil99DatabaseSchema" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="createdata" description="Run create test data sample">
+		<java classname="ormsamples.CreateCoedil99Data" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="retrievedata" description="Run retrieve data sample">
+		<java classname="ormsamples.RetrieveAndUpdateCoedil99Data" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="deletedata" description="Run delete data sample">
+		<java classname="ormsamples.DeleteCoedil99Data" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="dropschema" description="Run drop schema sample">
+		<java classname="ormsamples.DropCoedil99DatabaseSchema" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="listdata" description="Run list data sample">
+		<java classname="ormsamples.ListCoedil99Data" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="instrument" depends="compile">
+		<taskdef name="instrument" classname="org.hibernate.tool.instrument.javassist.InstrumentTask">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</taskdef>
+		<instrument verbose="true">
+			<fileset dir="${classes.dir}">
+				<include name="com\coedil99\modello_di_dominio\Commessa.class"/>
+				<include name="com\coedil99\modello_di_dominio\Distinta.class"/>
+				<include name="com\coedil99\modello_di_dominio\Ordine.class"/>
+				<include name="com\coedil99\modello_di_dominio\Pezzo.class"/>
+				<include name="com\coedil99\modello_di_dominio\DescrizionePezzo.class"/>
+				<include name="com\coedil99\modello_di_dominio\RigaDistinta.class"/>
+				<include name="com\coedil99\modello_di_dominio\LavorazionePezzo.class"/>
+				<include name="com\coedil99\modello_di_dominio\Destinazione.class"/>
+				<include name="com\coedil99\modello_di_dominio\Sagoma.class"/>
+				<include name="com\coedil99\modello_di_dominio\RDA.class"/>
+				<include name="com\coedil99\modello_di_dominio\RigaRDA.class"/>
+				<include name="com\coedil99\modello_di_dominio\Fornitore.class"/>
+			</fileset>
+		</instrument>
+	</target>
+</project>

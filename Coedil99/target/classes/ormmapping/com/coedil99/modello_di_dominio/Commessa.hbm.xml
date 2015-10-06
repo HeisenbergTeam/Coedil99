@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.coedil99.modello_di_dominio.Commessa" table="Commessa" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="priorita" column="Priorita" type="integer" length="11" not-null="false" lazy="false"/>
+		<many-to-one name="ordine" cascade="lock" column="OrdineID" class="com.coedil99.modello_di_dominio.Ordine" not-null="false" lazy="no-proxy" access="field">
+		</many-to-one>
+		<property name="dataCreazione" column="DataCreazione" type="date" not-null="false" lazy="false"/>
+		<one-to-one name="distinta" class="com.coedil99.modello_di_dominio.Distinta" cascade="save-update,lock,delete" property-ref="commessa" lazy="no-proxy" access="field"/>
+	</class>
+</hibernate-mapping>

@@ -143,7 +143,7 @@
     <Column name="DestinazioneID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Dominio.Destinazione.ID</ReferencedColumn>
+      <ReferencedColumn>com.coedil99.modello_di_dominio.Destinazione.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -215,7 +215,7 @@
     <Column name="FornitoreID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Dominio.Fornitore.ID</ReferencedColumn>
+      <ReferencedColumn>com.coedil99.modello_di_dominio.Fornitore.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -366,7 +366,7 @@
     <Column name="SagomaID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Dominio.Sagoma.ID</ReferencedColumn>
+      <ReferencedColumn>com.coedil99.modello_di_dominio.Sagoma.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>true</Nullable>
@@ -465,7 +465,7 @@
     <Column name="FornitoreID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Dominio.Fornitore.ID</ReferencedColumn>
+      <ReferencedColumn>com.coedil99.modello_di_dominio.Fornitore.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -548,7 +548,7 @@
     <Column name="RDAID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>Dominio.RDA.ID</ReferencedColumn>
+      <ReferencedColumn>com.coedil99.modello_di_dominio.RDA.ID</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -689,7 +689,7 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="è composta da2">
+  <ForeignKey name="riga è composta da">
     <ReferenceTable>RigaRDA</ReferenceTable>
     <ReferencedTable>Pezzo</ReferencedTable>
     <Columns>

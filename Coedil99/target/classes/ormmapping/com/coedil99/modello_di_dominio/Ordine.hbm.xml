@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.coedil99.modello_di_dominio.Ordine" table="Ordine" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="dataCreazione" column="DataCreazione" type="date" not-null="false" lazy="false"/>
+		<many-to-one name="destinazione" column="DestinazioneID" class="com.coedil99.modello_di_dominio.Destinazione" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
+		</many-to-one>
+		<set name="ORM_Commesse" lazy="true" cascade="all-delete-orphan" inverse="true">
+			<key column="OrdineID" not-null="false"/>
+			<one-to-many class="com.coedil99.modello_di_dominio.Commessa"/>
+		</set>
+	</class>
+</hibernate-mapping>

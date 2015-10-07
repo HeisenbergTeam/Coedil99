@@ -1,8 +1,21 @@
+.classpath
+.project
+.settings/
+.idea/
+
 *.class
 
-# Package Files #
-*.war
-*.ear
+/bin
 
-# IDE Files #
-.idea
+Coedil99/target
+Coedil99/target/
+Coedil99/target/*
+Coedil99/target/**
+/Coedil99/target
+/Coedil99/target/
+/Coedil99/target/*
+/Coedil99/target/**
+/target
+target/
+*/target/*
+*/target/**

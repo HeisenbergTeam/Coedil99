@@ -14,6 +14,8 @@ License Type: Evaluation
 		</many-to-one>
 		<property name="descrizione" column="Descrizione" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="dataCreazione" column="DataCreazione" type="date" not-null="false" lazy="false"/>
+		<property name="dataArrivoPrevista" column="DataArrivoPrevista" type="date" not-null="false" lazy="false"/>
+		<property name="dataArrivoEffettiva" column="DataArrivoEffettiva" type="date" not-null="false" lazy="false"/>
 		<set name="ORM_RigheRDA" lazy="true" cascade="all-delete-orphan" inverse="true">
 			<key column="RDAID" not-null="true"/>
 			<one-to-many class="com.coedil99.modello_di_dominio.RigaRDA"/>

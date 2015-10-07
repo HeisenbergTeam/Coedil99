@@ -20,7 +20,6 @@ import org.orm.criteria.*;
 
 public class PezzoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
-	public final DateExpression dataArrivo;
 	public final IntegerExpression quantita;
 	public final IntegerExpression descrizionePezzoId;
 	public final AssociationExpression descrizionePezzo;
@@ -29,7 +28,6 @@ public class PezzoCriteria extends AbstractORMCriteria {
 	public PezzoCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
-		dataArrivo = new DateExpression("dataArrivo", this);
 		quantita = new IntegerExpression("quantita", this);
 		descrizionePezzoId = new IntegerExpression("descrizionePezzo.ID", this);
 		descrizionePezzo = new AssociationExpression("descrizionePezzo", this);

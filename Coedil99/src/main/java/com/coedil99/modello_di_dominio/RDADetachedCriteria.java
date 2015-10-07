@@ -24,6 +24,8 @@ public class RDADetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression fornitore;
 	public final StringExpression descrizione;
 	public final DateExpression dataCreazione;
+	public final DateExpression dataArrivoPrevista;
+	public final DateExpression dataArrivoEffettiva;
 	public final CollectionExpression righeRDA;
 	
 	public RDADetachedCriteria() {
@@ -33,6 +35,8 @@ public class RDADetachedCriteria extends AbstractORMDetachedCriteria {
 		fornitore = new AssociationExpression("fornitore", this.getDetachedCriteria());
 		descrizione = new StringExpression("descrizione", this.getDetachedCriteria());
 		dataCreazione = new DateExpression("dataCreazione", this.getDetachedCriteria());
+		dataArrivoPrevista = new DateExpression("dataArrivoPrevista", this.getDetachedCriteria());
+		dataArrivoEffettiva = new DateExpression("dataArrivoEffettiva", this.getDetachedCriteria());
 		righeRDA = new CollectionExpression("ORM_RigheRDA", this.getDetachedCriteria());
 	}
 	
@@ -43,6 +47,8 @@ public class RDADetachedCriteria extends AbstractORMDetachedCriteria {
 		fornitore = new AssociationExpression("fornitore", this.getDetachedCriteria());
 		descrizione = new StringExpression("descrizione", this.getDetachedCriteria());
 		dataCreazione = new DateExpression("dataCreazione", this.getDetachedCriteria());
+		dataArrivoPrevista = new DateExpression("dataArrivoPrevista", this.getDetachedCriteria());
+		dataArrivoEffettiva = new DateExpression("dataArrivoEffettiva", this.getDetachedCriteria());
 		righeRDA = new CollectionExpression("ORM_RigheRDA", this.getDetachedCriteria());
 	}
 	

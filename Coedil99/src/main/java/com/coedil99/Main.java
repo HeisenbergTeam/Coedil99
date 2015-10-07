@@ -18,7 +18,7 @@ public class Main {
 		System.out.println("Start");
 
 
-		/*
+
 		Date date = new Date();
 		
 		Destinazione dest = new Destinazione();
@@ -79,7 +79,7 @@ public class Main {
 		
 		Pezzo pezzo = DAOFactory.getDAOFactory().getPezzoDAO().createPezzo();
 		pezzo.setDescrizionePezzo(descrizionePezzo);
-		pezzo.setDataArrivo(dateArrivo);
+		//pezzo.setDataArrivo(dateArrivo);
 		pezzo.setQuantita(5);
 
 		try {
@@ -103,7 +103,7 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		*/
+
 
 
 

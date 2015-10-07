@@ -595,7 +595,7 @@ public class VisualizzaDistintaController implements Initializable {
             lbl_indicazione.setText(rigaSelezionata.getIndicazione());
             lbl_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
             lbl_fornitore.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getFornitore().getNome());
-            lbl_data_arrivo.setText(Parsers.printItalianDate(rigaSelezionata.getPezzo().getDataArrivo()));
+            //lbl_data_arrivo.setText(Parsers.printItalianDate(rigaSelezionata.getPezzo().getDataArrivo()));
             lbl_n_pezzi.setText(rigaSelezionata.getPezzo().getQuantita()+"");
             lbl_diametro.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getDiametro()+"");
             lbl_misura_taglio.setText(rigaSelezionata.getLavorazionePezzo().getMisuraDiTaglio()+"");

@@ -50,6 +50,10 @@ public class RDA {
 	
 	private java.util.Date dataCreazione;
 	
+	private java.util.Date dataArrivoPrevista;
+	
+	private java.util.Date dataArrivoEffettiva;
+	
 	private java.util.Set ORM_righeRDA = new java.util.HashSet();
 	
 	private void setID(int value) {
@@ -78,6 +82,22 @@ public class RDA {
 	
 	public java.util.Date getDataCreazione() {
 		return dataCreazione;
+	}
+	
+	public void setDataArrivoPrevista(java.util.Date value) {
+		this.dataArrivoPrevista = value;
+	}
+	
+	public java.util.Date getDataArrivoPrevista() {
+		return dataArrivoPrevista;
+	}
+	
+	public void setDataArrivoEffettiva(java.util.Date value) {
+		this.dataArrivoEffettiva = value;
+	}
+	
+	public java.util.Date getDataArrivoEffettiva() {
+		return dataArrivoEffettiva;
 	}
 	
 	public void setFornitore(com.coedil99.modello_di_dominio.Fornitore value) {

@@ -165,17 +165,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="DataArrivo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="Quantita">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -486,6 +475,28 @@
       <UserTypes/>
     </Column>
     <Column name="DataCreazione">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>17</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="DataArrivoPrevista">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>17</Type>
+      <Length>0</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="DataArrivoEffettiva">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>17</Type>

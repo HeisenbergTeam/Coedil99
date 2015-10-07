@@ -34,8 +34,6 @@ public class Pezzo {
 	
 	private int ID;
 	
-	private java.util.Date dataArrivo;
-	
 	private int quantita;
 	
 	private com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo;
@@ -52,14 +50,6 @@ public class Pezzo {
 	
 	public int getORMID() {
 		return getID();
-	}
-	
-	public void setDataArrivo(java.util.Date value) {
-		this.dataArrivo = value;
-	}
-	
-	public java.util.Date getDataArrivo() {
-		return dataArrivo;
 	}
 	
 	public void setQuantita(int value) {

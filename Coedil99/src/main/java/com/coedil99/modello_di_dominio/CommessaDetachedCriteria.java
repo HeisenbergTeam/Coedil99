@@ -20,6 +20,7 @@ import org.orm.criteria.*;
 
 public class CommessaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression priorita;
 	public final IntegerExpression ordineId;
 	public final AssociationExpression ordine;
 	public final DateExpression dataCreazione;
@@ -29,6 +30,7 @@ public class CommessaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public CommessaDetachedCriteria() {
 		super(com.coedil99.modello_di_dominio.Commessa.class, com.coedil99.modello_di_dominio.CommessaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		priorita = new IntegerExpression("priorita", this.getDetachedCriteria());
 		ordineId = new IntegerExpression("ordine.ID", this.getDetachedCriteria());
 		ordine = new AssociationExpression("ordine", this.getDetachedCriteria());
 		dataCreazione = new DateExpression("dataCreazione", this.getDetachedCriteria());
@@ -39,6 +41,7 @@ public class CommessaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public CommessaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.coedil99.modello_di_dominio.CommessaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		priorita = new IntegerExpression("priorita", this.getDetachedCriteria());
 		ordineId = new IntegerExpression("ordine.ID", this.getDetachedCriteria());
 		ordine = new AssociationExpression("ordine", this.getDetachedCriteria());
 		dataCreazione = new DateExpression("dataCreazione", this.getDetachedCriteria());

@@ -24,6 +24,8 @@ public class RDACriteria extends AbstractORMCriteria {
 	public final AssociationExpression fornitore;
 	public final StringExpression descrizione;
 	public final DateExpression dataCreazione;
+	public final DateExpression dataArrivoPrevista;
+	public final DateExpression dataArrivoEffettiva;
 	public final CollectionExpression righeRDA;
 	
 	public RDACriteria(Criteria criteria) {
@@ -33,6 +35,8 @@ public class RDACriteria extends AbstractORMCriteria {
 		fornitore = new AssociationExpression("fornitore", this);
 		descrizione = new StringExpression("descrizione", this);
 		dataCreazione = new DateExpression("dataCreazione", this);
+		dataArrivoPrevista = new DateExpression("dataArrivoPrevista", this);
+		dataArrivoEffettiva = new DateExpression("dataArrivoEffettiva", this);
 		righeRDA = new CollectionExpression("ORM_RigheRDA", this);
 	}
 	

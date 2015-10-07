@@ -20,6 +20,7 @@ import org.orm.criteria.*;
 
 public class CommessaCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression priorita;
 	public final IntegerExpression ordineId;
 	public final AssociationExpression ordine;
 	public final DateExpression dataCreazione;
@@ -29,6 +30,7 @@ public class CommessaCriteria extends AbstractORMCriteria {
 	public CommessaCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		priorita = new IntegerExpression("priorita", this);
 		ordineId = new IntegerExpression("ordine.ID", this);
 		ordine = new AssociationExpression("ordine", this);
 		dataCreazione = new DateExpression("dataCreazione", this);

@@ -5,17 +5,5 @@
 
 *.class
 
-/bin
-
-Coedil99/target
-Coedil99/target/
-Coedil99/target/*
-Coedil99/target/**
+/Coedil99/src/main/resources/blobs/sagoma/*
 /Coedil99/target
-/Coedil99/target/
-/Coedil99/target/*
-/Coedil99/target/**
-/target
-target/
-*/target/*
-*/target/**

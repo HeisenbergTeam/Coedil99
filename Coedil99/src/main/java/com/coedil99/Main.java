@@ -17,6 +17,8 @@ public class Main {
         //TEST IntelliJ IDEA
 		System.out.println("Start");
 
+
+		/*
 		Date date = new Date();
 		
 		Destinazione dest = new Destinazione();
@@ -101,7 +103,7 @@ public class Main {
 			e.printStackTrace();
 		}
 
-
+		*/
 
 
 

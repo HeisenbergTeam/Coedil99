@@ -150,10 +150,10 @@ public class AggiungiPezzoController implements Initializable {
     private void refreshListaPezzi(){
         try
         {
-            pezzi = pezzoDAO.listPezzoByQuery("","");
+            pezzi = pezzoDAO.listPezzoByQuery(null,null);
         }catch(PersistentException e)
         {
-
+            e.printStackTrace();
         }
 
         obsPezzi = FXCollections.observableArrayList(pezzi);

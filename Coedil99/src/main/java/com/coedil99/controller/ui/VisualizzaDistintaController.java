@@ -8,6 +8,7 @@ import com.coedil99.servizi.GestoreServizi;
 import com.coedil99.servizi.Log;
 import com.coedil99.servizi.Sessione;
 import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.ui.MainApplication;
 import com.coedil99.utilita.FilesOp;
 import com.coedil99.utilita.Parsers;
 import javafx.collections.FXCollections;
@@ -511,7 +512,7 @@ public class VisualizzaDistintaController implements Initializable {
             e.printStackTrace();
         }
 
-        log.i(String.valueOf(ordine.getID()));
+        //log.i(String.valueOf(ordine.getID()));
 			
 		//TODO: modifica a getCommessaID(id)
 		commesse = ordine.commesse.toArray();
@@ -636,7 +637,7 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		Parent root = null;
 		try {
-			root = FXMLLoader.load(getClass().getResource("../../ui/fxml/aggiungi_pezzo.fxml"));
+			root = FXMLLoader.load(MainApplication.class.getResource("fxml/aggiungi_pezzo.fxml"));
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

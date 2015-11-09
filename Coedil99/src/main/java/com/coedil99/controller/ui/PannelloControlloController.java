@@ -13,16 +13,20 @@ public class PannelloControlloController {
 	
 	@FXML protected BorderPane container;
 	
-	@FXML protected void visualizzaOrdini(ActionEvent action){
-		
+	@FXML protected void visualizzaOrdini(ActionEvent action)
+    {
 		MainApplication.getInstance().loadPage("visualizza_ordini");
-		
 	}
-	
-	@FXML protected void creaOrdine(ActionEvent action){
-		
+
+	@FXML protected void creaOrdine(ActionEvent action)
+    {
 		MainApplication.getInstance().goBack();
-		
 	}
+
+    @FXML protected void gestisciRDA(ActionEvent action)
+    {
+        MainApplication.getInstance().loadPage("elabora_rda");
+    }
+
 	
 }

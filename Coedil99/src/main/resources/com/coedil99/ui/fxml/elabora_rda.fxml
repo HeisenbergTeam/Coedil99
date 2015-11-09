@@ -343,7 +343,7 @@
   <top>
     <HBox prefHeight="-1.0">
       <children>
-        <Button graphicTextGap="0.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
+        <Button graphicTextGap="0.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
           <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.coedil99.controller.ui.VisualizzaOrdiniController">
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coedil99.controller.ui.VisualizzaOrdiniController">
   <center>
-    <VBox prefHeight="-1.0" prefWidth="-1.0" style="-fx-border-width: 0 0 0 2px;&#10;-fx-border-color: lightgray;&#10;-fx-background-color: #1d1d1d;;">
+    <VBox prefHeight="-1.0" prefWidth="-1.0">
       <children>
         <TabPane fx:id="commesseTabPane" maxWidth="1.7976931348623157E308" minHeight="500.0" prefHeight="-1.0" prefWidth="-1.0" style="" tabClosingPolicy="UNAVAILABLE">
           <tabs>
             <Tab text="Commessa Id">
               <content>
-                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="598.0" style="-fx-background-color: #1d1d1d;;">
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="598.0">
                   <children>
                     <GridPane layoutX="0.0" layoutY="0.0" prefWidth="450.0">
                       <children>
@@ -63,7 +67,7 @@
             </Tab>
           </tabs>
         </TabPane>
-        <HBox alignment="BOTTOM_RIGHT" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #1d1d1d;">
+        <HBox alignment="BOTTOM_RIGHT" prefHeight="-1.0" prefWidth="-1.0">
           <children>
             <Button mnemonicParsing="false" onMouseClicked="#onNewCommessa" text="Nuova">
               <HBox.margin>
@@ -81,7 +85,7 @@
     </VBox>
   </center>
   <left>
-    <VBox prefHeight="-1.0" prefWidth="300.0" style="-fx-background-color: #1d1d1d;;">
+    <VBox prefHeight="-1.0" prefWidth="300.0">
       <children>
         <Label style="-fx-background-color: transparent;" text="Ordini" wrapText="false">
           <VBox.margin>
@@ -91,20 +95,17 @@
         <Separator prefWidth="200.0" />
         <TableView fx:id="tableOrdini">
           <columns>
-            <TableColumn id="tableOrdiniId" text="Id" fx:id="tableOrdiniId" />
-            <TableColumn id="tableOrdiniData" text="Data" fx:id="tableOrdiniData" />
+            <TableColumn id="tableOrdiniId" fx:id="tableOrdiniId" text="Id" />
+            <TableColumn id="tableOrdiniData" fx:id="tableOrdiniData" text="Data" />
           </columns>
         </TableView>
       </children>
     </VBox>
   </left>
-  <stylesheets>
-    <URL value="@../css/visualizza_ordini.css" />
-  </stylesheets>
   <top>
-    <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-border-color: #BBC2CC;&#10;-fx-background-color: derive(#1d1d1d,20%);&#10;    -fx-selection-bar: derive(-fx-background,-7%);" styleClass=".menu .label">
+    <HBox prefHeight="-1.0" prefWidth="200.0" styleClass=".menu .label">
       <children>
-        <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: derive(#1d1d1d,20%);&#10;    -fx-selection-bar: derive(-fx-background,-7%);&#10; -fx-border-width: 0;" text="">
+        <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="43.0" text="">
           <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

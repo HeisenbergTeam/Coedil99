@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane fx:id="container" layoutX="0.0" layoutY="0.0" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.coedil99.controller.ui.PannelloControlloController">
+
+<BorderPane fx:id="container" layoutX="0.0" layoutY="0.0" prefHeight="516.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coedil99.controller.ui.PannelloControlloController">
   <left>
-    <VBox alignment="CENTER" prefHeight="354.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+    <VBox alignment="CENTER" prefHeight="343.0" prefWidth="300.0" BorderPane.alignment="CENTER">
       <children>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
           <children>
-            <Button mnemonicParsing="false" onAction="#creaOrdine" text="Nuovo Ordine">
+            <Button mnemonicParsing="false" onAction="#creaOrdine" prefHeight="108.0" prefWidth="221.0" text="Nuovo Ordine">
               <graphic>
                 <ImageView id="nuovo.png" fitHeight="100.0" fitWidth="236.0" preserveRatio="true" smooth="true">
                   <image>
-                    <Image url="@../icons/nuovo.png" preserveRatio="true" smooth="true" />
+                    <Image preserveRatio="true" smooth="true" url="@../icons/nuovo.png" />
                   </image>
                 </ImageView>
               </graphic>
@@ -32,31 +37,38 @@
               <graphic>
                 <ImageView id="gestisci.png" fitHeight="89.0" fitWidth="89.0" mouseTransparent="true" preserveRatio="true">
                   <image>
-                    <Image url="@../icons/gestisci.png" preserveRatio="true" smooth="true" />
+                    <Image preserveRatio="true" smooth="true" url="@../icons/gestisci.png" />
                   </image>
                 </ImageView>
               </graphic>
             </Button>
           </children>
         </HBox>
+            <HBox alignment="CENTER" prefHeight="131.0" prefWidth="300.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#gestisciRDA" prefHeight="104.0" prefWidth="224.0" text="Gestisci RDA">
+                     <graphic>
+                        <ImageView id="gestisci.png" fitHeight="89.0" fitWidth="89.0" mouseTransparent="true" preserveRatio="true">
+                           <image>
+                              <Image preserveRatio="true" smooth="true" url="@../icons/gestisci.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="11.0" fx:id="x21" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
       </children>
       <BorderPane.margin>
         <Insets top="20.0" fx:id="x1" />
       </BorderPane.margin>
     </VBox>
   </left>
-  <right>
-    <FlowPane columnHalignment="LEFT" maxWidth="-1.0" minHeight="-1.0" minWidth="-Infinity" orientation="VERTICAL" prefHeight="354.0" prefWidth="300.0" prefWrapLength="400.0" rowValignment="CENTER" BorderPane.margin="$x1">
-      <children>
-        <Label text="Ultime attività">
-          <font>
-            <Font size="16.0" />
-          </font>
-        </Label>
-        <Separator prefWidth="109.0" />
-      </children>
-    </FlowPane>
-  </right>
   <top>
     <Label text="Pannello di controllo">
       <font>
@@ -67,4 +79,7 @@
       </BorderPane.margin>
     </Label>
   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

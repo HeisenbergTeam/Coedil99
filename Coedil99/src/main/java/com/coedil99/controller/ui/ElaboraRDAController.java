@@ -181,4 +181,10 @@ public class ElaboraRDAController implements Initializable {
 
 	}
 
+    @FXML
+    protected void goBack()
+    {
+
+    }
+
 }

@@ -6,6 +6,7 @@ import com.coedil99.servizi.GestoreServizi;
 import com.coedil99.servizi.Log;
 import com.coedil99.servizi.Sessione;
 import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.ui.MainApplication;
 import com.coedil99.utilita.FilesOp;
 import com.coedil99.utilita.Parsers;
 import javafx.collections.FXCollections;
@@ -177,14 +178,42 @@ public class ElaboraRDAController implements Initializable {
  *  aggiungiPezzo
  */
 	@FXML 
-	protected void aggiungiPezzo(){
+	protected void aggiungiPezzo()
+    {
+        log.i("Aggiungi pezzo");
+
+        Stage popupStage = new Stage();
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(MainApplication.class.getResource("fxml/aggiungi_pezzo.fxml"));
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        Scene scene = new Scene(root);
+        popupStage.setScene(scene);
+
+        //blocking
+        popupStage.showAndWait();
+
+        Pezzo pezzoSelezionato = (Pezzo) session.get("pezzo_selezionato");
+        LavorazionePezzo lavorazionePezzo = (LavorazionePezzo) session.get("lavorazionePezzo_selezionato");
+        String indicazione = (String) session.get("indicazione_rigaDistinta");
+        if (pezzoSelezionato!=null && pezzoSelezionato!=null && indicazione!=null) {
+            //RigaDistinta riga = gestoreRigaDistinta.creaRigaDistinta(pezzoSelezionato, distinta, lavorazionePezzo, indicazione);
+            //RigaDistinta riga = rigaDistintaDAO.createRigaDistinta();
+            //listaPezzi.add(riga);
+        }
 
 	}
 
     @FXML
     protected void goBack()
     {
-
+        MainApplication.getInstance().goBack();
     }
 
 }

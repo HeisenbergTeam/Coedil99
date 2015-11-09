@@ -106,12 +106,6 @@ public class VisualizzaDistintaController implements Initializable {
     private int oldIndex = -1;
     
     final ObservableList<RigaDistinta> listaPezzi = FXCollections.observableArrayList();
-    
-    public void printSelectedItem(ListView listView) {
-        ObservableList<Integer> list = listView.getSelectionModel().getSelectedIndices();
-        System.out.println("The selectedIndices property contains: " + list.size() + " element(s):");
-        for(int i=0; i<list.size(); i++) { System.out.println(i + ")" + list.get(i)); }
-    }
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -614,8 +608,6 @@ public class VisualizzaDistintaController implements Initializable {
 
             modificaPezzoButton.setDisable(false);
             rimuoviPezzoButton.setDisable(false);
-            
-            printSelectedItem(listPezziDistinta);
     	}
 	}
 
@@ -627,13 +619,9 @@ public class VisualizzaDistintaController implements Initializable {
 	protected void aggiungiPezzo(){
 		
 		log.i("Aggiungi pezzo");
-		
-		
+
 		Stage popupStage = new Stage();
 		popupStage.initModality(Modality.APPLICATION_MODAL);
-		
-		//popupStage.setScene(new Scene(new Group(new Text(10,10, "my second window"))));
-		
 		
 		Parent root = null;
 		try {
@@ -652,10 +640,15 @@ public class VisualizzaDistintaController implements Initializable {
 		Pezzo pezzoSelezionato = (Pezzo) session.get("pezzo_selezionato");
         LavorazionePezzo lavorazionePezzo = (LavorazionePezzo) session.get("lavorazionePezzo_selezionato");
         String indicazione = (String) session.get("indicazione_rigaDistinta");
+
         if (pezzoSelezionato!=null && pezzoSelezionato!=null && indicazione!=null) {
-            //RigaDistinta riga = gestoreRigaDistinta.creaRigaDistinta(pezzoSelezionato, distinta, lavorazionePezzo, indicazione);
+
             RigaDistinta riga = rigaDistintaDAO.createRigaDistinta();
+            riga.setPezzo(pezzoSelezionato);
+            riga.setIndicazione(indicazione);
+            riga.setLavorazionePezzo(lavorazionePezzo);
             listaPezzi.add(riga);
+
         }
 	}
 	
@@ -734,7 +727,7 @@ public class VisualizzaDistintaController implements Initializable {
 
                 File file2 = new File(pathSagoma);
                 try {
-                    System.out.println(file2.getCanonicalPath());
+
                     img_sagoma.setImage(new Image("file:///"+file2.getCanonicalPath()));
                 } catch (Exception e) {
                     e.printStackTrace();

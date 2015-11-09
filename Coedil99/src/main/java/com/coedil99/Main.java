@@ -5,7 +5,6 @@ import com.coedil99.servizi.GestoreServizi;
 import com.coedil99.servizi.Log;
 import com.coedil99.servizi.Sessione;
 import com.coedil99.servizi.impl.GestoreServiziPrototipo;
-import com.coedil99.ui.VisualizzaDistinta;
 import org.orm.PersistentException;
 
 import java.util.Date;
@@ -144,42 +143,6 @@ public class Main {
 		Log log = (Log) gsp.getServizio("LogStdout");
 		Sessione session = (Sessione) gsp.getServizio("SessionePrototipo");
 
-		//Fornitore fornitore = new Fornitore();
-		//fornitore.setNome("ItalTubi");
-		
-		//Distinta distinta2 = gestoreDistinta.creaDistinta(new Date(), commessa2, 2, "Modello Prova es PORTONE3AE4K", "Elemento strutturale prova es Portone");
-		
-		//DescrizionePezzo descrizionePezzo2 = gestorePezzi.creaDescrizionePezzo("Tubo alluminioz", 1.0f, 0.020f, "ItalSystemz");
-		
-		//Pezzo pezzo2 = gestorePezzi.creaPezzo(descrizionePezzo2, new Date(), 4);
-		
-		//Sagoma sagoma2 = gestoreRigaDistinta.creaSagoma("pathImgZ");
-		
-		//LavorazionePezzo lavorazionePezzo2 = gestoreRigaDistinta.creaLavorazionePezzo("Non lavoratoz", 15.0f, 1.0f, sagoma2);
-		
-		//RigaDistinta rigaDistinta2 = gestoreRigaDistinta.creaRigaDistinta(pezzo2, distinta2, lavorazionePezzo2, "Tubo portaz");
-				
-		
-		//TEST CANCELLAZIONE CON GESTORI
-		
-		//IT WORKS
-		//gestoreOrdine.cancellaOrdine(ordine2);
-		
-		//IT WORKS
-		//gestoreDistinta.cancellaDistinta(distinta2);
-				
-		//IT WORKS
-		//gestoreRigaDistinta.cancellaRigaDistinta(rigaDistinta2);
-		
-		//TODO: FIX since it doesn't work because of no deleteAndDisassociate (because of model mistake), RigaDistinta, LavorazionePezzo,DescrizionePezzo,Sagoma,RigaDistinta
-		//gestorePezzi.cancellaPezzo(pezzo2);
-		
-		
-		
-		//MainApplication mainGUI = new MainApplication();
-		//mainGUI.main(args);
-		
-		VisualizzaDistinta.start(args);
 		
 	}
 	

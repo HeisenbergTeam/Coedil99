@@ -3,6 +3,7 @@ package com.coedil99.controller.ui;
 import com.coedil99.modello_di_dominio.DAOFactory;
 import com.coedil99.modello_di_dominio.LavorazionePezzo;
 import com.coedil99.modello_di_dominio.Pezzo;
+import com.coedil99.modello_di_dominio.RigaDistinta;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
 import com.coedil99.servizi.GestoreServizi;
@@ -99,9 +100,7 @@ public class AggiungiPezzoController implements Initializable {
         for ( Pezzo entry: listPezzi.getItems() ) {
             boolean match = true;
             String entryText = (String)entry.getDescrizionePezzo().getNome();
-            //System.out.println(entryText);
-            //System.out.println(parts[0]);
-            //System.out.println(parts[1]);
+
             for ( String part: parts ) {
                 // The entry needs to contain all portions of the
                 // search string *but* in any order
@@ -302,8 +301,23 @@ public class AggiungiPezzoController implements Initializable {
 
         descrizione = descrizioneTipoLavorazione.getText();
         indicazione = indicazioneRigaDistinta.getText();
-        taglio = Float.parseFloat(misuraTaglio.getText());
-        peso = Float.parseFloat(pesoTxt.getText());
+        try {
+            taglio = Float.parseFloat(misuraTaglio.getText());
+        }catch (NumberFormatException e)
+        {
+            misuraTaglio.setStyle("-fx-border-color: red");
+            misuraTaglio.setPromptText("Riempi questo campo");
+        }
+
+        try
+        {
+            peso = Float.parseFloat(pesoTxt.getText());
+        }catch(NumberFormatException e)
+        {
+            pesoTxt.setStyle("-fx-border-color: red");
+            pesoTxt.setPromptText("Riempi questo campo");
+        }
+
 
         //LavorazionePezzo lavorazionePezzo = rigaDistintaDAO.creaLavorazionePezzo(descrizione, taglio, peso, sagoma);
         LavorazionePezzo lavorazionePezzo = null;
@@ -323,12 +337,6 @@ public class AggiungiPezzoController implements Initializable {
         } else {
             blocca = false;
             sessione.set("indicazione_rigaDistinta", indicazione);
-
-
-            //@FXML private TextField indicazioneRigaDistinta;
-            //@FXML private TextField descrizioneTipoLavorazione;
-            //@FXML private TextField misuraTaglio;
-            //@FXML private TextField pesoTxt;
 
             //Chiudo la finestra
             ((Stage) cercaPezzo.getScene().getWindow()).close();

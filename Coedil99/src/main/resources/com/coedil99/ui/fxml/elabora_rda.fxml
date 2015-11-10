@@ -143,7 +143,6 @@
                                                       <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                          <ListView fx:id="listPezziRDA" minHeight="-1.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" VBox.vgrow="SOMETIMES" />
                                                   <HBox alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="-1.0" GridPane.rowIndex="1">
                                                     <children>
                                                       <Button fx:id="aggiungiPezzoButton" mnemonicParsing="false" onAction="#aggiungiPezzo" text="Aggiungi">
@@ -151,16 +150,18 @@
                                                           <Insets left="5.0" top="5.0" fx:id="x1" />
                                                         </HBox.margin>
                                                       </Button>
-                                                      <Button fx:id="modificaPezzoButton" mnemonicParsing="false" onAction="#modificaRigaRDA" text="Modifica">
-                                                               <HBox.margin>
-                                                                  <Insets left="5.0" top="5.0" />
-                                                               </HBox.margin></Button>
-                                                      <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" onAction="#rimuoviPezzo" text="Rimuovi">
+                                                      <Button fx:id="btn_rimuoviPezzo" mnemonicParsing="false" onAction="#rimuoviPezzo" text="Rimuovi">
                                                                <HBox.margin>
                                                                   <Insets left="5.0" top="5.0" />
                                                                </HBox.margin></Button>
                                                     </children>
                                                   </HBox>
+                                                      <TableView fx:id="tbl_righeRDA" prefHeight="200.0" prefWidth="200.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="cl_indicazione" prefWidth="231.0" text="Indicazione" />
+                                                          <TableColumn fx:id="cl_quantita" prefWidth="73.0" text="Quantità" />
+                                                        </columns>
+                                                      </TableView>
                                                    </children>
                                                 </GridPane>
                                              </content>
@@ -290,8 +291,8 @@
                                           <Label fx:id="lbl_codice_colata_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_codice_colata_ddt" />
                                        </content>
                                     </TitledPane>
-                                    <Button fx:id="modificaDistButton1" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#modificaDatiRDA" prefWidth="70.0" text="Modifica" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
-                                    <Button fx:id="salvaDistButton1" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salvaDatiRDA" prefWidth="70.0" text="Salva" textAlignment="LEFT" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+                                    <Button fx:id="modificaDDTButton" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#modificaDatiDDT" prefWidth="70.0" text="Modifica" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+                                    <Button fx:id="salvaDDTButton" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salvaDatiDDT" prefWidth="70.0" text="Salva" textAlignment="LEFT" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />

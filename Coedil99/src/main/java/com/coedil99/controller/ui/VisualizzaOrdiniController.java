@@ -9,6 +9,7 @@ import com.coedil99.servizi.Log;
 import com.coedil99.servizi.impl.GestoreServiziPrototipo;
 import com.coedil99.ui.MainApplication;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,8 +21,11 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
+import org.orm.PersistentException;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -47,50 +51,31 @@ public class VisualizzaOrdiniController implements Initializable {
 		OrdineDAO ordineDAO = DAOFactory.getDAOFactory().getOrdineDAO();
 		log = (Log) gsp.getServizio("LogStdout");
 
-		/**************************************************
-		 * TABELLA ORDINI
-		 *************************************************/
-//        final ArrayList<Ordine> ordini = null;
-//        try {
-//            ordini = new ArrayList<Ordine>(
-//                    Arrays.asList(ordineDAO.listOrdineByQuery(null,null)));
-//            this.loadOrdiniTable(ordini);
-//        } catch (PersistentException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//
-//		// ListenerOrdini
-//
-//		tableOrdini.getSelectionModel().selectedIndexProperty()
-//				.addListener(new ChangeListener<Object>() {
-//
-//					@Override
-//					public void changed(ObservableValue<? extends Object> arg0,
-//							Object arg1, Object arg2) {
-//
-//						Ordine ao = ordini.get((Integer) arg2);
-//						VisualizzaOrdiniController.this.ordineCorrente = ao;
-//						VisualizzaOrdiniController.this.loadTablePane(ao);
-//
-//					}
-//				});
 
-		// Listener commesse
-		/*
-		 * tableCommesse.setOnMouseClicked((new EventHandler<MouseEvent>() {
-		 * 
-		 * @Override public void handle(MouseEvent mouseEvent) {
-		 * if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-		 * if(mouseEvent.getClickCount() == 2){
-		 * System.out.println("Double clicked"); } }
-		 * 
-		 * } }));
-		 */
-	}
+        final ArrayList<Ordine> ordini;
+        try {
+            ordini = new
+                    ArrayList<Ordine>(Arrays.asList(ordineDAO.listOrdineByQuery(null, null)));
+            this.loadOrdiniTable(ordini);
+            // ListenerOrdini
 
-	protected void initOrdinitTable() {
+            tableOrdini.getSelectionModel().selectedIndexProperty()
+                    .addListener(new ChangeListener<Object>() {
+
+                        @Override
+                        public void changed(ObservableValue<? extends Object> arg0,
+                                            Object arg1, Object arg2) {
+
+                            Ordine ao = ordini.get((Integer) arg2);
+                            VisualizzaOrdiniController.this.ordineCorrente = ao;
+                            VisualizzaOrdiniController.this.loadTablePane(ao);
+
+                        }
+                    });
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+
 
 	}
 

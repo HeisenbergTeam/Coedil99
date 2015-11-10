@@ -4,6 +4,7 @@ import com.coedil99.modello_di_dominio.DAOFactory;
 import com.coedil99.modello_di_dominio.LavorazionePezzo;
 import com.coedil99.modello_di_dominio.Pezzo;
 import com.coedil99.modello_di_dominio.RigaDistinta;
+import com.coedil99.modello_di_dominio.dao.LavorazionePezzoDAO;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
 import com.coedil99.servizi.GestoreServizi;
@@ -63,7 +64,9 @@ public class AggiungiPezzoController implements Initializable {
 
     private Pezzo[] pezzi;
     private ObservableList<Pezzo> obsPezzi;
-/**
+    private LavorazionePezzoDAO lavorazionePezzoDAO;
+
+    /**
  * 
  */
 	@Override
@@ -77,6 +80,7 @@ public class AggiungiPezzoController implements Initializable {
 		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
 		sessione = (Sessione) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
         rigaDistintaDAO = DAOFactory.getDAOFactory().getRigaDistintaDAO();
+        lavorazionePezzoDAO = DAOFactory.getDAOFactory().getLavorazionePezzoDAO();
 
         refreshListaPezzi();
 		
@@ -146,7 +150,8 @@ public class AggiungiPezzoController implements Initializable {
 
     }
 
-    private void refreshListaPezzi(){
+    private void refreshListaPezzi()
+    {
         try
         {
             pezzi = pezzoDAO.listPezzoByQuery(null,null);
@@ -194,8 +199,9 @@ public class AggiungiPezzoController implements Initializable {
      *
      */
     @FXML
-    private void instaSearch() {
-        //System.out.println("aaa");
+    private void instaSearch()
+    {
+
         handleSearchByKey(oldString,cercaPezzo.getText());
         oldString=cercaPezzo.getText();
     }
@@ -209,24 +215,17 @@ public class AggiungiPezzoController implements Initializable {
         log.i("aggiunta_sagoma");
 
         final FileChooser fileChooser = new FileChooser();
-        //fileChooser.setInitialDirectory(new File(".\\Coedil99\\blobs\\sagoma\\"));
+
         File file = fileChooser.showOpenDialog(((Stage) cercaPezzo.getScene().getWindow()));
         if (file != null) {
 
             File newfile = new File(".\\Coedil99\\blobs\\sagoma\\"+file.getName());
 
-            //try {
-            //    Files.copy(file.toPath(), newfile.toPath());
-            //} catch (IOException e) {
-            //    e.printStackTrace();
-            //}
             try {
                 FilesOp.copyFileUsingStream(file, newfile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            //FileUtils.copyFile(source, dest);
 
             int start = (newfile.getAbsolutePath().indexOf("Coedil99\\blobs\\sagoma\\"));
 
@@ -318,12 +317,7 @@ public class AggiungiPezzoController implements Initializable {
             pesoTxt.setPromptText("Riempi questo campo");
         }
 
-
-        //LavorazionePezzo lavorazionePezzo = rigaDistintaDAO.creaLavorazionePezzo(descrizione, taglio, peso, sagoma);
-        LavorazionePezzo lavorazionePezzo = null;
-
-        //RigaDistinta rigaDistinta = rigaDistintaDAO.creaRigaDistinta(scelto, distinta, lavorazionePezzo, indicazione);
-
+        LavorazionePezzo lavorazionePezzo = lavorazionePezzoDAO.createLavorazionePezzo();
 
         sessione.set("pezzo_selezionato",pezzoScelto);
         sessione.set("lavorazionePezzo_selezionato", lavorazionePezzo);

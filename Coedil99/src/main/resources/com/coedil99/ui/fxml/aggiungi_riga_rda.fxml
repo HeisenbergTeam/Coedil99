@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coedil99.controller.ui.AggiungiRigaRdaController">
+   <children>
+      <GridPane minHeight="-1.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <children>
+                  <Button fx:id="aggiungiPezzo" mnemonicParsing="false" onAction="#onAggiungiPezzo" text="Aggiungi">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <ListView id="listPezziDistinta" fx:id="listPezzi" minHeight="450.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="cercaPezzo" onKeyReleased="#instaSearch" promptText="Cerca..." GridPane.columnSpan="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <TitledPane animated="false" collapsible="false" text="Lavorazione pezzo">
+                     <content>
+                        <AnchorPane prefHeight="0.0" prefWidth="218.0">
+                           <children>
+                              <Label layoutX="13.0" layoutY="14.0" text="Indicazione riga rda" />
+                              <TextField fx:id="txt_indicazione_rda" layoutX="13.0" layoutY="31.0" prefWidth="180.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane animated="false" collapsible="false" prefHeight="347.0" prefWidth="220.0" text="Quantità" GridPane.rowIndex="1">
+                     <content>
+                        <AnchorPane prefHeight="0.0" prefWidth="218.0">
+                           <children>
+                              <Label layoutX="13.0" layoutY="14.0" text="Quantità" />
+                              <TextField fx:id="txt_quantita" layoutX="13.0" layoutY="31.0" prefWidth="180.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+                  <RowConstraints valignment="TOP" vgrow="ALWAYS" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

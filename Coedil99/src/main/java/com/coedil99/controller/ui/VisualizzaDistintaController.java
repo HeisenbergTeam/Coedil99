@@ -116,7 +116,7 @@ public class VisualizzaDistintaController implements Initializable {
         btn_modifica_sagoma.setDisable(true);
         btn_rimuovi_sagoma.setDisable(true);
 
-		//Caricamento servizi
+
 		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
 		ordineDao = DAOFactory.getDAOFactory().getOrdineDAO();
 
@@ -127,10 +127,7 @@ public class VisualizzaDistintaController implements Initializable {
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 		
 		refreshList();
-		
 		refreshDistinta();
-	    
-	    //distinta labels
 	    
 	    distintaLabels = new HashMap<String,Label>();
 	    //distintaLabels.put("modulo",lbl_modulo);
@@ -593,10 +590,10 @@ public class VisualizzaDistintaController implements Initializable {
             //lbl_data_arrivo.setText(Parsers.printItalianDate(rigaSelezionata.getPezzo().getDataArrivo()));
             lbl_n_pezzi.setText(rigaSelezionata.getPezzo().getQuantita()+"");
             lbl_diametro.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getDiametro()+"");
-            lbl_misura_taglio.setText(rigaSelezionata.getLavorazionePezzo().getMisuraDiTaglio()+"");
-            lbl_peso_originale.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getPeso()+"");
-            lbl_peso_lavorato.setText(rigaSelezionata.getLavorazionePezzo().getPeso()+"");
-            lbl_lavorazione.setText(rigaSelezionata.getLavorazionePezzo().getDescrizione());
+            //lbl_misura_taglio.setText(rigaSelezionata.getLavorazionePezzo().getMisuraDiTaglio()+"");
+            //lbl_peso_originale.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getPeso()+"");
+            //lbl_peso_lavorato.setText(rigaSelezionata.getLavorazionePezzo().getPeso()+"");
+            //lbl_lavorazione.setText(rigaSelezionata.getLavorazionePezzo().getDescrizione());
             try {
                 rigaSelezionata.getLavorazionePezzo().getSagoma().getImg();
                 File file = new File(rigaSelezionata.getLavorazionePezzo().getSagoma().getImg());
@@ -606,8 +603,8 @@ public class VisualizzaDistintaController implements Initializable {
                 //e.printStackTrace();
             }
 
-            modificaPezzoButton.setDisable(false);
-            rimuoviPezzoButton.setDisable(false);
+            btn_modifica_sagoma.setDisable(false);
+            btn_rimuovi_sagoma.setDisable(false);
     	}
 	}
 
@@ -616,7 +613,7 @@ public class VisualizzaDistintaController implements Initializable {
  *  aggiungiPezzo
  */
 	@FXML 
-	protected void aggiungiPezzo(){
+	protected void aggiungiPezzo() throws PersistentException {
 		
 		log.i("Aggiungi pezzo");
 
@@ -641,13 +638,20 @@ public class VisualizzaDistintaController implements Initializable {
         LavorazionePezzo lavorazionePezzo = (LavorazionePezzo) session.get("lavorazionePezzo_selezionato");
         String indicazione = (String) session.get("indicazione_rigaDistinta");
 
-        if (pezzoSelezionato!=null && pezzoSelezionato!=null && indicazione!=null) {
+        if (pezzoSelezionato!=null && indicazione!=null) {
 
             RigaDistinta riga = rigaDistintaDAO.createRigaDistinta();
             riga.setPezzo(pezzoSelezionato);
             riga.setIndicazione(indicazione);
             riga.setLavorazionePezzo(lavorazionePezzo);
+            riga.setDistinta(distinta);
+            //riga.
             listaPezzi.add(riga);
+
+            rigaDistintaDAO.save(riga);
+
+            session.set("pezzo_selezionato",false);
+
 
         }
 	}
@@ -749,7 +753,11 @@ public class VisualizzaDistintaController implements Initializable {
 
         }
 
-
+        @FXML
+        public void goBack()
+        {
+            MainApplication.getInstance().goBack();
+        }
 
 
 

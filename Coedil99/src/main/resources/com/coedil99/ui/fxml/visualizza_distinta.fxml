@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
+
 <BorderPane maxHeight="730.0" maxWidth="1024.0" minHeight="730.0" minWidth="1024.0" prefHeight="730.0" prefWidth="1024.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coedil99.controller.ui.VisualizzaDistintaController">
   <bottom>
     <HBox>
@@ -386,7 +390,7 @@
   <top>
     <HBox prefHeight="-1.0">
       <children>
-        <Button graphicTextGap="0.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
+        <Button graphicTextGap="0.0" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: transparent;&#10;-fx-border-width: 0;&#10;" text="">
           <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
               <image>

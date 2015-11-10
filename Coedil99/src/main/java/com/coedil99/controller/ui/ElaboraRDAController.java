@@ -27,10 +27,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import org.orm.PersistentException;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ElaboraRDAController implements Initializable {
@@ -131,7 +133,7 @@ public class ElaboraRDAController implements Initializable {
 
         rdaDDTLabels = new HashMap<String, Label>();
         rdaDDTLabels.put("numero",lbl_numero_ddt);
-        rdaDDTLabels.put("data_ddt",lbl_data_ddt);
+        //rdaDDTLabels.put("data_ddt",lbl_data_ddt);
         rdaDDTLabels.put("codice_colata",lbl_codice_colata_ddt);
 
         tbl_righeRDA.getSelectionModel().selectedIndexProperty()
@@ -145,8 +147,9 @@ public class ElaboraRDAController implements Initializable {
                         if((Integer) arg2 < rda.righeRDA.size())
                         {
                             ElaboraRDAController.this.rigaSelezionata = rda.righeRDA.toArray()[(Integer)arg2];
-
                             ElaboraRDAController.this.btn_rimuoviPezzo.setDisable(false);
+
+                            //ElabordaRdaC
                         }
 
                     }
@@ -420,8 +423,44 @@ public class ElaboraRDAController implements Initializable {
             rdaDDTTextFields.put(entry.getKey(), tf);
         }
 
-        String current_date = lbl_data_consegna_effettiva_rda.getText();
-        Parent datePickParent = lbl_data_consegna_prevista_rda.getParent();
+        String current_date = lbl_data_ddt.getText();
+        Parent datePickParent = lbl_data_ddt.getParent();
+
+        final String pattern = "dd-MM-yyyy";
+
+        datePicker.setPromptText(pattern.toLowerCase());
+
+        datePicker.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        });
+        String[] split = current_date.split("-");
+        LocalDate ld = LocalDate.now();
+
+        //	new LocalDate(getNumber(split[0]),getNumber(split[1]),getNumber(split[2]))
+        datePicker.setValue(ld);
+
+        Pane tps = (Pane) datePickParent;
+        tps.getChildren().remove(lbl_data_ddt);
+        tps.getChildren().add(datePicker);
+        datePicker.setMaxWidth(Double.MAX_VALUE);
 
 
         //Flag
@@ -461,15 +500,15 @@ public class ElaboraRDAController implements Initializable {
 
         Parent datePickParent = datePicker.getParent();
         LocalDate ld = datePicker.getValue();
-        /*
+
         Pane tps = (Pane) datePickParent;
         tps.getChildren().remove(datePicker);
-        tps.getChildren().add(lbl_data);
+        tps.getChildren().add(lbl_data_ddt);
 
         Calendar cal = Calendar.getInstance();
         cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
         Date dt = cal.getTime();
-        */
+
 
         if(modificandoDDTRDA != true){
             refreshRDA();

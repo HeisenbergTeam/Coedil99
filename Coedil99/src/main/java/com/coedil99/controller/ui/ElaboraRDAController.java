@@ -56,11 +56,17 @@ public class ElaboraRDAController implements Initializable {
     @FXML private Button aggiungiPezzoButton;
     @FXML private Button btn_rimuoviPezzo;
 
+    @FXML private Label lbl_codice_pezzo;
+    @FXML private Label lbl_pezzo_quantita;
     
     @FXML private TitledPane righe_rda;
     @FXML private TitledPane informazioni_rda;
     @FXML private Button salvaDDTButton;
-    
+
+    @FXML private TextArea text_area_rda;
+    @FXML private Button btn_salvaNote;
+    @FXML private Button btn_modificaNote;
+
     @FXML private DatePicker datePicker = new DatePicker();
     @FXML private DatePicker dateConsegnaPicker = new DatePicker();
 
@@ -94,10 +100,13 @@ public class ElaboraRDAController implements Initializable {
     private Map<String,Label> rdaDDTLabels;
     private boolean modificandoDDTRDA;
     @FXML private Button modificaDDTButton;
+    private boolean modificandoNoteRDA;
 
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+
+        text_area_rda.setDisable(true);
 
         modificandoDatiRDA = false;
 
@@ -149,7 +158,8 @@ public class ElaboraRDAController implements Initializable {
                             ElaboraRDAController.this.rigaSelezionata = rda.righeRDA.toArray()[(Integer)arg2];
                             ElaboraRDAController.this.btn_rimuoviPezzo.setDisable(false);
 
-                            //ElabordaRdaC
+                            ElaboraRDAController.this.lbl_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
+                            ElaboraRDAController.this.lbl_pezzo_quantita.setText(String.valueOf(rigaSelezionata.getPezzo().getQuantita()));
                         }
 
                     }
@@ -305,6 +315,7 @@ public class ElaboraRDAController implements Initializable {
 		refreshCommonDataRDA();
 
         lbl_ordine_rda.setText("PROSSIME ITERAZIONI");
+        text_area_rda.setText(rda.getDescrizione());
 	    
 	}
 	
@@ -531,6 +542,38 @@ public class ElaboraRDAController implements Initializable {
         rigaRDADAO.deleteAndDissociate(rigaSelezionata);
         rda = rdaDAO.getRDAByORMID(1);
         refreshTable();
+
+    }
+
+    @FXML
+    protected void modificaNoteRDA() throws PersistentException {
+        if(modificandoNoteRDA != false){
+            modificandoNoteRDA  = false;
+            btn_modificaNote.setText("Modifica");
+            salvaNoteRDA();
+            return;
+        }
+
+        btn_modificaNote.setText("Annulla");
+
+        text_area_rda.setDisable(false);
+        btn_salvaNote.setDisable(false);
+
+        modificandoNoteRDA = true;
+    }
+
+    @FXML
+    protected void salvaNoteRDA() throws PersistentException {
+
+        rda.setDescrizione(text_area_rda.getText());
+        rdaDAO.save(rda);
+
+        btn_modificaNote.setText("Modifica");
+
+        text_area_rda.setDisable(true);
+        btn_salvaNote.setDisable(true);
+
+        modificandoNoteRDA = false;
 
     }
 

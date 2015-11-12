@@ -88,14 +88,15 @@ public class MainApplication extends Application {
 
 			root = FXMLLoader.load(getClass().getResource("fxml/"+name+".fxml"));
 			Scene scene = new Scene(root, 800, 600);
-			
-			
+
 			//Save history
 			this.history.push(this.mainStage.getScene());
 			
 			this.mainStage.setTitle("Coedil99");
 			this.mainStage.setScene(scene);
 			this.mainStage.show();
+
+
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

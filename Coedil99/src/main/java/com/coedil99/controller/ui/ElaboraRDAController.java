@@ -87,11 +87,11 @@ public class ElaboraRDAController implements Initializable {
 
     private Log log;
     private Sessione session;
-    
+
     Ordine ordine;
-    Commessa[] commesse;
-    //RDA rda;
-    //RigaRDA[] righeRDA;
+
+
+
     
     private Boolean modificandoRDA = false;
     private Boolean modificandoRigaRDA = false;
@@ -411,7 +411,7 @@ public class ElaboraRDAController implements Initializable {
         if(modificandoDDTRDA != false){
             modificandoDDTRDA = false;
             modificaDDTButton.setText("Modifica");
-            salvaDatiRDA();
+            salvaDatiDDT();
             return;
         }
 
@@ -519,7 +519,6 @@ public class ElaboraRDAController implements Initializable {
         Calendar cal = Calendar.getInstance();
         cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
         Date dt = cal.getTime();
-
 
         if(modificandoDDTRDA != true){
             refreshRDA();

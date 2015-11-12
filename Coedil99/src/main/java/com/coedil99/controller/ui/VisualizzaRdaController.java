@@ -4,13 +4,16 @@ import com.coedil99.modello_di_dominio.DAOFactory;
 import com.coedil99.modello_di_dominio.Ordine;
 import com.coedil99.modello_di_dominio.RDA;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
+import com.coedil99.modello_di_dominio.dao.RDADAO;
 import com.coedil99.servizi.GestoreServizi;
 import com.coedil99.servizi.Log;
 import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.ui.MainApplication;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TabPane;
@@ -29,11 +32,11 @@ import java.util.ResourceBundle;
 public class VisualizzaRdaController implements Initializable {
 
     @FXML
-    private TableView<Ordine> tableRda;
+    private TableView<RDA> tableRda;
     @FXML
-    private TableColumn<Ordine, String> tableRdaId;
+    private TableColumn<RDA, String> tableRdaId;
     @FXML
-    private TableColumn<Ordine, String> tableRdaData;
+    private TableColumn<RDA, String> tableRdaData;
 
     @FXML
     private TabPane rdaTabPane;
@@ -45,15 +48,15 @@ public class VisualizzaRdaController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-        OrdineDAO ordineDAO = DAOFactory.getDAOFactory().getOrdineDAO();
+        RDADAO rdaDAO = DAOFactory.getDAOFactory().getRDADAO();
         log = (Log) gsp.getServizio("LogStdout");
 
 
-        ArrayList<Ordine> rdas = null;
+        ArrayList<RDA> rdas = null;
         try {
-            rdas = new ArrayList<Ordine>(
-                    Arrays.asList(ordineDAO.listOrdineByQuery(null, null)));
-            this.loadOrdiniTable(rdas);
+            rdas = new ArrayList<RDA>(
+                    Arrays.asList(rdaDAO.listRDAByQuery(null,null)));
+            this.loadRdaTable(rdas);
         } catch (PersistentException e) {
             e.printStackTrace();
         }
@@ -94,15 +97,15 @@ public class VisualizzaRdaController implements Initializable {
      *
      * @param ordini
      */
-    protected void loadOrdiniTable(List<Ordine> ordini) {
+    protected void loadRdaTable(List<RDA> ordini) {
 
 
         tableRdaId
-                .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
+                .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDA, String>, ObservableValue<String>>() {
 
                     @Override
                     public ObservableValue<String> call(
-                            CellDataFeatures<Ordine, String> arg0) {
+                            CellDataFeatures<RDA, String> arg0) {
                         // TODO Auto-generated method stub
                         SimpleStringProperty s = new SimpleStringProperty();
                         s.set(((Integer) arg0.getValue().getID()).toString());
@@ -111,11 +114,11 @@ public class VisualizzaRdaController implements Initializable {
                 });
 
         tableRdaData
-                .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
+                .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDA, String>, ObservableValue<String>>() {
 
                     @Override
                     public ObservableValue<String> call(
-                            CellDataFeatures<Ordine, String> arg0) {
+                            CellDataFeatures<RDA, String> arg0) {
                         // TODO Auto-generated method stub
                         SimpleStringProperty s = new SimpleStringProperty();
 
@@ -128,8 +131,29 @@ public class VisualizzaRdaController implements Initializable {
                     }
                 });
 
-        ObservableList<Ordine> list = FXCollections.observableList(ordini);
-        //tableOrdini.setItems(list);
+        ObservableList<RDA> list = FXCollections.observableList(ordini);
+        tableRda.setItems(list);
 
+    }
+
+    @FXML
+    public void onNuovaRda(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void onEditRda(ActionEvent actionEvent) {
+        MainApplication.getInstance().loadPage("elabora_rda");
+    }
+
+    @FXML
+    public void onDeleteRda(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void goBack()
+    {
+        MainApplication.getInstance().goBack();
     }
 }

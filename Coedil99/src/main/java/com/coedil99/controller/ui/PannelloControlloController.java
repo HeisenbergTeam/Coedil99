@@ -25,7 +25,7 @@ public class PannelloControlloController {
 
     @FXML protected void gestisciRDA(ActionEvent action)
     {
-        MainApplication.getInstance().loadPage("elabora_rda");
+        MainApplication.getInstance().loadPage("visualizza_rda");
     }
 
 	

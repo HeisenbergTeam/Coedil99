@@ -1,4 +1,4 @@
-package com.coedil99.servizi;
+package com.coedil99.utilita;
 
 
 public interface Sessione extends Servizio {

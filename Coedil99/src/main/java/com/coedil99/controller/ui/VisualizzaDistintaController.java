@@ -4,10 +4,10 @@ import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.DistintaDAO;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.Sessione;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Log;
+import com.coedil99.utilita.Sessione;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.ui.MainApplication;
 import com.coedil99.utilita.FilesOp;
 import com.coedil99.utilita.Parsers;
@@ -107,6 +107,8 @@ public class VisualizzaDistintaController implements Initializable {
     
     final ObservableList<RigaDistinta> listaPezzi = FXCollections.observableArrayList();
 
+    static public final String DISTINTA_CORRENTE = "distinta_corrente";
+
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		salvaDistButton.setDisable(true);
@@ -117,7 +119,7 @@ public class VisualizzaDistintaController implements Initializable {
         btn_rimuovi_sagoma.setDisable(true);
 
 
-		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
+		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
 		ordineDao = DAOFactory.getDAOFactory().getOrdineDAO();
 
 		distintaDAO = DAOFactory.getDAOFactory().getDistintaDAO();
@@ -377,6 +379,7 @@ public class VisualizzaDistintaController implements Initializable {
             refreshList();
             //gestoreRigaDistinta.cancellaSagomaByRigaDistinta(riga);
             try {
+
                 rigaDistintaDAO.delete(riga);
             } catch (PersistentException e) {
                 e.printStackTrace();
@@ -444,8 +447,6 @@ public class VisualizzaDistintaController implements Initializable {
 		log.i("Salvataggio dati distinta");
 
         salvaDistButton.setDisable(true);
-
-        listPezziDistinta.getSelectionModel().getSelectedItem();
 						
 		Set<Map.Entry<String, TextField>> insieme = distintaTextFields.entrySet(); 
 		Iterator<Map.Entry<String, TextField>> iterator = insieme.iterator();
@@ -503,7 +504,7 @@ public class VisualizzaDistintaController implements Initializable {
             e.printStackTrace();
         }
 
-        //log.i(String.valueOf(ordine.getID()));
+
 			
 		//TODO: modifica a getCommessaID(id)
 		commesse = ordine.commesse.toArray();
@@ -570,7 +571,15 @@ public class VisualizzaDistintaController implements Initializable {
 	    listPezziDistinta.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 	        public void handle(MouseEvent event) {
+
+                if(oldIndex == -1)
+                {
+                    modificaPezzoButton.setDisable(false);
+                    rimuoviPezzoButton.setDisable(false);
+                }
+
 	        	oldIndex=listPezziDistinta.getSelectionModel().getSelectedIndex();
+
 	        	aggiornaCampiRigaDistinta();
 	        }
 	    });
@@ -599,7 +608,7 @@ public class VisualizzaDistintaController implements Initializable {
                 File file = new File(rigaSelezionata.getLavorazionePezzo().getSagoma().getImg());
                 img_sagoma.setImage(new Image("file:///"+file.getCanonicalPath()));
             } catch (Exception e) {
-                System.out.println("no image");
+                log.i("No image");
                 //e.printStackTrace();
             }
 

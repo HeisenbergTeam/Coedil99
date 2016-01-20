@@ -1,13 +1,11 @@
 package com.coedil99.controller.ui;
 
 import com.coedil99.modello_di_dominio.DAOFactory;
-import com.coedil99.modello_di_dominio.Ordine;
 import com.coedil99.modello_di_dominio.RDA;
-import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.modello_di_dominio.dao.RDADAO;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Log;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.ui.MainApplication;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -47,7 +45,7 @@ public class VisualizzaRdaController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
-        GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
+        UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
         RDADAO rdaDAO = DAOFactory.getDAOFactory().getRDADAO();
         log = (Log) gsp.getServizio("LogStdout");
 

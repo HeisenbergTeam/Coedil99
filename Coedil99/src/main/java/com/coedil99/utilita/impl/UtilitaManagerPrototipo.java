@@ -1,21 +1,21 @@
-package com.coedil99.servizi.impl;
+package com.coedil99.utilita.impl;
 
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Servizio;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Servizio;
 
 import java.util.HashMap;
 
-public class GestoreServiziPrototipo extends GestoreServizi {
+public class UtilitaManagerPrototipo extends UtilitaManager {
 /**
  * 
  */
-	private final static String serviziPackage = "com.coedil99.servizi.impl.";
+	private final static String serviziPackage = "com.coedil99.utilita.impl.";
 /**
  * 
  */
 	private HashMap<String, Servizio> servizi = new HashMap<String, Servizio>();
 
-	public GestoreServiziPrototipo(){
+	public UtilitaManagerPrototipo(){
 		
 	}
 	

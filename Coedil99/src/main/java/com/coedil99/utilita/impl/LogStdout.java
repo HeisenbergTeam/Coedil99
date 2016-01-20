@@ -1,6 +1,6 @@
-package com.coedil99.servizi.impl;
+package com.coedil99.utilita.impl;
 
-import com.coedil99.servizi.Log;
+import com.coedil99.utilita.Log;
 
 public class LogStdout implements Log {
 

@@ -1,10 +1,10 @@
 package com.coedil99;
 
 import com.coedil99.modello_di_dominio.*;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.Sessione;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Log;
+import com.coedil99.utilita.Sessione;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import org.orm.PersistentException;
 
 import java.util.Date;
@@ -136,7 +136,7 @@ public class Main {
 		*/
 				
 		//TEST CREAZIONE CON GESTORI
-		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
+		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
 		//GestoreDistinta gestoreDistinta = (GestoreDistinta) gsp.getServizio("GestoreDistintaDAO");
 		//GestoreRigaDistinta gestoreRigaDistinta = (GestoreRigaDistinta) gsp.getServizio("GestoreRigaDistintaDAO");
 		//GestorePezzi gestorePezzi = (GestorePezzi) gsp.getServizio("GestorePezziDAO");

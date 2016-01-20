@@ -3,14 +3,13 @@ package com.coedil99.controller.ui;
 import com.coedil99.modello_di_dominio.DAOFactory;
 import com.coedil99.modello_di_dominio.LavorazionePezzo;
 import com.coedil99.modello_di_dominio.Pezzo;
-import com.coedil99.modello_di_dominio.RigaDistinta;
 import com.coedil99.modello_di_dominio.dao.LavorazionePezzoDAO;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.Sessione;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Log;
+import com.coedil99.utilita.Sessione;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.utilita.FilesOp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -51,7 +50,7 @@ public class AggiungiPezzoController implements Initializable {
 	private Log log;
 	private Sessione sessione;
     private RigaDistintaDAO rigaDistintaDAO;
-    private GestoreServizi gsp;
+    private UtilitaManager gsp;
     private PezzoDAO pezzoDAO;
 
     private String pathSagoma="";
@@ -75,10 +74,10 @@ public class AggiungiPezzoController implements Initializable {
 		
 		aggiungiPezzo.setDisable(true);
 
-        gsp = GestoreServiziPrototipo.getGestoreServizi();
+        gsp = UtilitaManagerPrototipo.getGestoreServizi();
         pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
-		log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
-		sessione = (Sessione) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
+		log = (Log) UtilitaManager.getGestoreServizi().getServizio("LogStdout");
+		sessione = (Sessione) UtilitaManager.getGestoreServizi().getServizio("SessionePrototipo");
         rigaDistintaDAO = DAOFactory.getDAOFactory().getRigaDistintaDAO();
         lavorazionePezzoDAO = DAOFactory.getDAOFactory().getLavorazionePezzoDAO();
 
@@ -166,7 +165,7 @@ public class AggiungiPezzoController implements Initializable {
         Parent listPezziParent = listPezzi.getParent();
 
         Pane tps = (Pane) listPezziParent;
-        tps.getChildren().remove(listPezzi);
+            tps.getChildren().remove(listPezzi);
 
         listPezzi.setItems(obsPezzi);
 

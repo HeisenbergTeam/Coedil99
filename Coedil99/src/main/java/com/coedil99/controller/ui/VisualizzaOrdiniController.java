@@ -4,9 +4,10 @@ import com.coedil99.modello_di_dominio.Commessa;
 import com.coedil99.modello_di_dominio.DAOFactory;
 import com.coedil99.modello_di_dominio.Ordine;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Log;
+import com.coedil99.utilita.Sessione;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.ui.MainApplication;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -42,14 +43,16 @@ public class VisualizzaOrdiniController implements Initializable {
 	private TabPane commesseTabPane;
 
 	protected Log log;
+    protected Sessione sessione;
 	protected Ordine ordineCorrente = null;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
+		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
 		OrdineDAO ordineDAO = DAOFactory.getDAOFactory().getOrdineDAO();
 		log = (Log) gsp.getServizio("LogStdout");
+        sessione = (Sessione) gsp.getServizio("SessionePrototipo");
 
 
         final ArrayList<Ordine> ordini;
@@ -136,19 +139,8 @@ public class VisualizzaOrdiniController implements Initializable {
 	 */
 	@FXML
 	protected void onNewCommessa() {
-		log.i("nuova commessa");
-		/*
-		// TODO: Creare una nuova distinta
-		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
-		GestoreOrdine gestoreOrdine = (GestoreOrdine) gsp
-				.getServizio("GestoreOrdineDAO");
-		Commessa nuovaCommessa = gestoreOrdine.creaCommessa(ordineCorrente, 0,
-				new Date());
-		GestoreCommessa gestoreCommessa = (GestoreCommessa) gsp
-				.getServizio("GestoreCommessaDAO");
-		gestoreCommessa.creaDistinta(nuovaCommessa);
-		*/
-		MainApplication.getInstance().loadPage("visualizza_distinta");
+
+        log.i("nuova commessa");
 
 	}
 
@@ -158,7 +150,10 @@ public class VisualizzaOrdiniController implements Initializable {
 	@FXML
 	protected void onEditCommessa() {
 		log.i("modifica commessa");
-		// MainApplication.getInstance().loadPage("visualizza_commessa");
+
+        sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
+
+		 MainApplication.getInstance().loadPage("visualizza_distinta");
 
 	}
 

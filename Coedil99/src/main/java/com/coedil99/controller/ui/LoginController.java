@@ -1,7 +1,7 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.servizi.Autenticazione;
-import com.coedil99.servizi.GestoreServizi;
+import com.coedil99.utilita.Autenticazione;
+import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.ui.MainApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,13 +26,20 @@ public class LoginController implements Initializable {
 	
 	@FXML protected void login(ActionEvent event){
 		
-		GestoreServizi gs = GestoreServizi.getGestoreServizi();
+		UtilitaManager gs = UtilitaManager.getGestoreServizi();
 		Autenticazione autenticazione = (Autenticazione) gs.getServizio("AutenticazionePrototipo");
 		
-		if(autenticazione.login(username.getText(),password.getText())){
-			
+		if(autenticazione.login(username.getText(),password.getText()))
+        {
 			MainApplication.getInstance().loadPage("pannello_di_controllo");
-			
 		}
+        else
+        {
+            username.setStyle("-fx-border-color: red");
+            username.setPromptText("Username errato!");
+
+            password.setStyle("-fx-border-color: red");
+            password.setPromptText("Password errata!");
+        }
 	}
 }

@@ -1,6 +1,6 @@
-package com.coedil99.servizi.impl;
+package com.coedil99.utilita.impl;
 
-import com.coedil99.servizi.Sessione;
+import com.coedil99.utilita.Sessione;
 
 import java.util.HashMap;
 

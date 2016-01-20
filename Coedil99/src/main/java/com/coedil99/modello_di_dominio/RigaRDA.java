@@ -87,26 +87,19 @@ public class RigaRDA {
 	}
 	
 	public void setPezzo(com.coedil99.modello_di_dominio.Pezzo value) {
-		if (pezzo != null) {
-			pezzo.rigaRDA.remove(this);
-		}
-		if (value != null) {
-			value.rigaRDA.add(this);
+		if (this.pezzo != value) {
+			com.coedil99.modello_di_dominio.Pezzo lpezzo = this.pezzo;
+			this.pezzo = value;
+			if (value != null) {
+				pezzo.setRigaRDA(this);
+			}
+			if (lpezzo != null && lpezzo.getRigaRDA() == this) {
+				lpezzo.setRigaRDA(null);
+			}
 		}
 	}
 	
 	public com.coedil99.modello_di_dominio.Pezzo getPezzo() {
-		return pezzo;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Pezzo(com.coedil99.modello_di_dominio.Pezzo value) {
-		this.pezzo = value;
-	}
-	
-	private com.coedil99.modello_di_dominio.Pezzo getORM_Pezzo() {
 		return pezzo;
 	}
 	

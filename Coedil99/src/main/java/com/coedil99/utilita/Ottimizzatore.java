@@ -1,4 +1,4 @@
-package com.coedil99.servizi;
+package com.coedil99.utilita;
 
 import com.coedil99.modello_di_dominio.Distinta;
 

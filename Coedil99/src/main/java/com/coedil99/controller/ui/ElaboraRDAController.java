@@ -2,16 +2,14 @@ package com.coedil99.controller.ui;
 
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
+import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RDADAO;
 import com.coedil99.modello_di_dominio.dao.RigaRDADAO;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.Sessione;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Log;
+import com.coedil99.utilita.Sessione;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.ui.MainApplication;
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -82,6 +80,7 @@ public class ElaboraRDAController implements Initializable {
     private RDA rda;
     
     private RDADAO rdaDAO;
+    private PezzoDAO pezzoDAO;
     private RigaRDADAO rigaRDADAO;
     private OrdineDAO ordineDao;
 
@@ -89,9 +88,6 @@ public class ElaboraRDAController implements Initializable {
     private Sessione session;
 
     Ordine ordine;
-
-
-
     
     private Boolean modificandoRDA = false;
     private Boolean modificandoRigaRDA = false;
@@ -115,10 +111,11 @@ public class ElaboraRDAController implements Initializable {
 		btn_rimuoviPezzo.setDisable(true);
 
 		//Caricamento servizi
-		GestoreServizi gsp = GestoreServiziPrototipo.getGestoreServizi();
+		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
 		ordineDao = DAOFactory.getDAOFactory().getOrdineDAO();
         rigaRDADAO = DAOFactory.getDAOFactory().getRigaRDADAO();
         rdaDAO = DAOFactory.getDAOFactory().getRDADAO();
+        pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
 
         try {
             rda = rdaDAO.getRDAByORMID(1);
@@ -131,10 +128,9 @@ public class ElaboraRDAController implements Initializable {
 		
 		refreshTable();
 		refreshRDA();
-
 	    
 	    rdaLabels = new HashMap<String,Label>();
-        rdaLabels.put("ordine",lbl_ordine_rda);
+        //rdaLabels.put("ordine",lbl_ordine_rda);
         rdaLabels.put("fornitore",lbl_fornitore_rda);
         rdaLabels.put("consegna_prevista",lbl_data_consegna_prevista_rda);
         rdaLabels.put("consegna_effittiva",lbl_data_consegna_effettiva_rda);
@@ -272,7 +268,7 @@ public class ElaboraRDAController implements Initializable {
             Parent p = entry.getValue().getParent();
 
             Pane tps = (Pane) p;
-            System.out.println(entry.toString());
+            //System.out.println(entry.toString());
             tps.getChildren().remove(entry.getValue());
             rdaLabels.get(entry.getKey()).setText(entry.getValue().getText());
 
@@ -282,6 +278,10 @@ public class ElaboraRDAController implements Initializable {
 
         Parent datePickParent = datePicker.getParent();
         LocalDate ld = datePicker.getValue();
+
+        //rda.setDataCreazione();
+        //rda.setDescrizione();
+
         /*
         Pane tps = (Pane) datePickParent;
         tps.getChildren().remove(datePicker);
@@ -300,6 +300,9 @@ public class ElaboraRDAController implements Initializable {
         //TODO: Aggiornare l'rda anche sul db amico
 
         refreshRDA();
+
+
+
 
         modificandoDatiRDA = false;
         modificaDistButton.setText("Modifica");
@@ -388,6 +391,9 @@ public class ElaboraRDAController implements Initializable {
             rigaRDA.setIndicazione(indicazione);
             rigaRDA.setPezzo(pezzoSelezionato);
             rigaRDA.setRda(rda);
+            pezzoSelezionato.setRigaRDA(rigaRDA);
+
+            pezzoDAO.save(pezzoSelezionato);
             rigaRDADAO.save(rigaRDA);
 
         }

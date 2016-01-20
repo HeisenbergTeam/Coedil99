@@ -13,9 +13,6 @@ License Type: Evaluation
 		<property name="quantita" column="Quantita" type="integer" length="11" not-null="false" lazy="false"/>
 		<many-to-one name="descrizionePezzo" column="DescrizionePezzoID" class="com.coedil99.modello_di_dominio.DescrizionePezzo" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
-		<set name="ORM_RigaRDA" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="PezzoID" not-null="true"/>
-			<one-to-many class="com.coedil99.modello_di_dominio.RigaRDA"/>
-		</set>
+		<one-to-one name="rigaRDA" class="com.coedil99.modello_di_dominio.RigaRDA" cascade="save-update,lock" property-ref="pezzo" lazy="no-proxy" access="field"/>
 	</class>
 </hibernate-mapping>

@@ -5,10 +5,10 @@ import com.coedil99.modello_di_dominio.Pezzo;
 import com.coedil99.modello_di_dominio.dao.LavorazionePezzoDAO;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
-import com.coedil99.servizi.GestoreServizi;
-import com.coedil99.servizi.Log;
-import com.coedil99.servizi.Sessione;
-import com.coedil99.servizi.impl.GestoreServiziPrototipo;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.Log;
+import com.coedil99.utilita.Sessione;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -46,7 +46,7 @@ public class AggiungiRigaRdaController implements Initializable {
     private Pezzo[] pezzi;
     private ObservableList<Pezzo> obsPezzi;
 
-    private GestoreServizi gsp;
+    private UtilitaManager gsp;
     private Log log;
     private Sessione sessione;
     private RigaDistintaDAO rigaDistintaDAO;
@@ -147,10 +147,10 @@ public class AggiungiRigaRdaController implements Initializable {
 
         aggiungiPezzo.setDisable(true);
 
-        gsp = GestoreServiziPrototipo.getGestoreServizi();
+        gsp = UtilitaManagerPrototipo.getGestoreServizi();
         pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
-        log = (Log) GestoreServizi.getGestoreServizi().getServizio("LogStdout");
-        sessione = (Sessione) GestoreServizi.getGestoreServizi().getServizio("SessionePrototipo");
+        log = (Log) UtilitaManager.getGestoreServizi().getServizio("LogStdout");
+        sessione = (Sessione) UtilitaManager.getGestoreServizi().getServizio("SessionePrototipo");
         rigaDistintaDAO = DAOFactory.getDAOFactory().getRigaDistintaDAO();
         lavorazionePezzoDAO = DAOFactory.getDAOFactory().getLavorazionePezzoDAO();
 

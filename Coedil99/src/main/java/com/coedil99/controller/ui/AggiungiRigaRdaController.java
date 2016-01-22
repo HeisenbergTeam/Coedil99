@@ -55,6 +55,10 @@ public class AggiungiRigaRdaController implements Initializable {
 
     private String oldString;
 
+    public void setAction(int action) {
+
+    }
+
     private void refreshListaPezzi()
     {
         try

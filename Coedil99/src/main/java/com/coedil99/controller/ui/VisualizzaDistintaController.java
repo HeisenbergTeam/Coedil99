@@ -109,6 +109,10 @@ public class VisualizzaDistintaController implements Initializable {
 
     static public final String DISTINTA_CORRENTE = "distinta_corrente";
 
+    public void setAction(int action) {
+
+    }
+
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		salvaDistButton.setDisable(true);
@@ -631,7 +635,15 @@ public class VisualizzaDistintaController implements Initializable {
 		
 		Parent root = null;
 		try {
-			root = FXMLLoader.load(MainApplication.class.getResource("fxml/aggiungi_pezzo.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("fxml/aggiungi_pezzo.fxml"));
+
+            //"com.coedil99.controller.ui.AggiungiPezzoController"
+            AggiungiPezzoController controller = new AggiungiPezzoController();
+
+            // Set it in the FXMLLoader
+            loader.setController(controller);
+
+			root = loader.load();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

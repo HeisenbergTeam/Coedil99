@@ -7,6 +7,7 @@ import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.ui.MainApplication;
+import com.coedil99.controller.ui.DefineControllerUi;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -41,6 +42,10 @@ public class VisualizzaRdaController implements Initializable {
 
     protected Log log;
     protected RDA rdaCorrente = null;
+
+    public void setAction(int action) {
+
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -136,12 +141,14 @@ public class VisualizzaRdaController implements Initializable {
 
     @FXML
     public void onNuovaRda(ActionEvent actionEvent) {
-
+        //fx:controller="com.coedil99.controller.ui.ElaboraRDAController"
+        MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", DefineControllerUi.ELABORA_RDA_NUOVA);
     }
 
     @FXML
     public void onEditRda(ActionEvent actionEvent) {
-        MainApplication.getInstance().loadPage("elabora_rda");
+        //fx:controller="com.coedil99.controller.ui.ElaboraRDAController"
+        MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", DefineControllerUi.ELABORA_RDA_LISTA);
     }
 
     @FXML

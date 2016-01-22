@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="730.0" maxWidth="1024.0" minHeight="730.0" minWidth="1024.0" prefHeight="730.0" prefWidth="1024.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coedil99.controller.ui.ElaboraRDAController">
+<BorderPane maxHeight="730.0" maxWidth="1024.0" minHeight="730.0" minWidth="1024.0" prefHeight="730.0" prefWidth="1024.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <bottom>
     <HBox>
       <children>

@@ -65,6 +65,10 @@ public class AggiungiPezzoController implements Initializable {
     private ObservableList<Pezzo> obsPezzi;
     private LavorazionePezzoDAO lavorazionePezzoDAO;
 
+    public void setAction(int action) {
+
+    }
+
     /**
  * 
  */

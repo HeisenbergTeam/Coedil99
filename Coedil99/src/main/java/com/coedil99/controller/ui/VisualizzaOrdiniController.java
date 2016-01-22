@@ -46,6 +46,10 @@ public class VisualizzaOrdiniController implements Initializable {
     protected Sessione sessione;
 	protected Ordine ordineCorrente = null;
 
+	public void setAction(int action) {
+
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -153,7 +157,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
         sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
 
-		 MainApplication.getInstance().loadPage("visualizza_distinta");
+		 MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
 
 	}
 

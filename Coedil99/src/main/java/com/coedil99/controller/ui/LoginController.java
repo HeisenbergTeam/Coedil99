@@ -16,7 +16,11 @@ public class LoginController implements Initializable {
 	
 	@FXML private TextField username;
 	@FXML private PasswordField password;
-	
+
+	public void setAction(int action) {
+
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -31,7 +35,7 @@ public class LoginController implements Initializable {
 		
 		if(autenticazione.login(username.getText(),password.getText()))
         {
-			MainApplication.getInstance().loadPage("pannello_di_controllo");
+			MainApplication.getInstance().loadPage("pannello_di_controllo", "com.coedil99.controller.ui.PannelloControlloController", 0);
 		}
         else
         {

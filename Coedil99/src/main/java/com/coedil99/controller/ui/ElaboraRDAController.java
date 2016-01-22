@@ -98,6 +98,13 @@ public class ElaboraRDAController implements Initializable {
     @FXML private Button modificaDDTButton;
     private boolean modificandoNoteRDA;
 
+    private boolean nuovaRda = false;
+
+    public void setAction(int action) {
+        if (action == DefineControllerUi.ELABORA_RDA_NUOVA) {
+            nuovaRda = true;
+        }
+    }
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -125,10 +132,12 @@ public class ElaboraRDAController implements Initializable {
 
         log = (Log) gsp.getServizio("LogStdout");
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
-		
-		refreshTable();
-		refreshRDA();
-	    
+
+        if (!nuovaRda) {
+            refreshTable();
+            refreshRDA();
+        }
+
 	    rdaLabels = new HashMap<String,Label>();
         //rdaLabels.put("ordine",lbl_ordine_rda);
         rdaLabels.put("fornitore",lbl_fornitore_rda);
@@ -368,7 +377,12 @@ public class ElaboraRDAController implements Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(MainApplication.class.getResource("fxml/aggiungi_riga_rda.fxml"));
+            //fx:controller="com.coedil99.controller.ui.AggiungiRigaRdaController"
+            //root = FXMLLoader.load(MainApplication.class.getResource("fxml/aggiungi_riga_rda.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("fxml/aggiungi_riga_rda.fxml"));
+            AggiungiRigaRdaController controller = new AggiungiRigaRdaController();
+            loader.setController(controller);
+            root = loader.load();
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

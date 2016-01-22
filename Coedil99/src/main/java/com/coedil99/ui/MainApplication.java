@@ -4,9 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 /**
  * MainApplication
@@ -63,7 +67,7 @@ public class MainApplication extends Application {
 		this.mainStage.setMinHeight(600);
 		MainApplication.instance = this;
 		
-		this.loadPage(startpage);
+		this.loadPage(startpage, "com.coedil99.controller.ui.LoginController", 0);
 		
 	}
 /**
@@ -79,14 +83,39 @@ public class MainApplication extends Application {
  * loadPage
  * @param name page to be loaded
  */
-	public void loadPage(String name){
-		
+	public void loadPage(String name, String strControllerName, int intAction){
+
 		Parent root;
 		try {
 
             String pageUrl = getClass().getResource("./fxml/"+name+".fxml").toString();
 
-			root = FXMLLoader.load(getClass().getResource("fxml/"+name+".fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/"+name+".fxml"));
+
+			try {
+				Class classController = Class.forName(strControllerName);
+				Class reflectionParameters[] = new Class[1];
+				reflectionParameters[0] = Integer.TYPE;
+				Object istanceController = classController.newInstance();
+				Method meth = classController.getMethod(
+						"setAction", reflectionParameters);
+				meth.invoke(istanceController, intAction);
+				loader.setController(istanceController);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+
+			root = loader.load();
+			//root = FXMLLoader.load(getClass().getResource("fxml/"+name+".fxml"));
+
 			Scene scene = new Scene(root, 800, 600);
 
 			//Save history

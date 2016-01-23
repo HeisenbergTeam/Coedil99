@@ -324,10 +324,10 @@ public class PezzoDAOImpl implements com.coedil99.modello_di_dominio.dao.PezzoDA
 	
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Pezzo pezzo)throws PersistentException {
 		try {
-			if (pezzo.getRigaRDA() != null) {
-				pezzo.getRigaRDA().setPezzo(null);
+			com.coedil99.modello_di_dominio.RigaRDA[] lRigaRDAs = pezzo.rigaRDA.toArray();
+			for(int i = 0; i < lRigaRDAs.length; i++) {
+				lRigaRDAs[i].setPezzo(null);
 			}
-			
 			return delete(pezzo);
 		}
 		catch(Exception e) {
@@ -338,10 +338,10 @@ public class PezzoDAOImpl implements com.coedil99.modello_di_dominio.dao.PezzoDA
 	
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Pezzo pezzo, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (pezzo.getRigaRDA() != null) {
-				pezzo.getRigaRDA().setPezzo(null);
+			com.coedil99.modello_di_dominio.RigaRDA[] lRigaRDAs = pezzo.rigaRDA.toArray();
+			for(int i = 0; i < lRigaRDAs.length; i++) {
+				lRigaRDAs[i].setPezzo(null);
 			}
-			
 			try {
 				session.delete(pezzo);
 				return true;

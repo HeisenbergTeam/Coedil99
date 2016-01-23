@@ -24,6 +24,7 @@ public class RigaRDADetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression pezzo;
 	public final IntegerExpression rdaId;
 	public final AssociationExpression rda;
+	public final IntegerExpression quantitaPezziOrdinati;
 	public final StringExpression indicazione;
 	
 	public RigaRDADetachedCriteria() {
@@ -33,6 +34,7 @@ public class RigaRDADetachedCriteria extends AbstractORMDetachedCriteria {
 		pezzo = new AssociationExpression("pezzo", this.getDetachedCriteria());
 		rdaId = new IntegerExpression("rda.ID", this.getDetachedCriteria());
 		rda = new AssociationExpression("rda", this.getDetachedCriteria());
+		quantitaPezziOrdinati = new IntegerExpression("quantitaPezziOrdinati", this.getDetachedCriteria());
 		indicazione = new StringExpression("indicazione", this.getDetachedCriteria());
 	}
 	
@@ -43,6 +45,7 @@ public class RigaRDADetachedCriteria extends AbstractORMDetachedCriteria {
 		pezzo = new AssociationExpression("pezzo", this.getDetachedCriteria());
 		rdaId = new IntegerExpression("rda.ID", this.getDetachedCriteria());
 		rda = new AssociationExpression("rda", this.getDetachedCriteria());
+		quantitaPezziOrdinati = new IntegerExpression("quantitaPezziOrdinati", this.getDetachedCriteria());
 		indicazione = new StringExpression("indicazione", this.getDetachedCriteria());
 	}
 	

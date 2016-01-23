@@ -325,7 +325,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.RigaRDA rigaRDA)throws PersistentException {
 		try {
 			if (rigaRDA.getPezzo() != null) {
-				rigaRDA.getPezzo().setRigaRDA(null);
+				rigaRDA.getPezzo().rigaRDA.remove(rigaRDA);
 			}
 			
 			if (rigaRDA.getRda() != null) {
@@ -343,7 +343,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.RigaRDA rigaRDA, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			if (rigaRDA.getPezzo() != null) {
-				rigaRDA.getPezzo().setRigaRDA(null);
+				rigaRDA.getPezzo().rigaRDA.remove(rigaRDA);
 			}
 			
 			if (rigaRDA.getRda() != null) {

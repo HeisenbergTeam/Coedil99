@@ -165,17 +165,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Quantita">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="DescrizionePezzoID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
@@ -287,6 +276,17 @@
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>LavorazionePezzo.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="QuantitaUtilizzata">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -568,6 +568,17 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="QuantitaPezziOrdinati">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
     <Column name="Indicazione">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -700,21 +711,21 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="riga è composta da">
-    <ReferenceTable>RigaRDA</ReferenceTable>
-    <ReferencedTable>Pezzo</ReferencedTable>
-    <Columns>
-      <Column>PezzoID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="FKDescrizion417574">
     <ReferenceTable>DescrizionePezzo</ReferenceTable>
     <ReferencedTable>Fornitore</ReferencedTable>
     <Columns>
       <Column>FornitoreID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="riga è composta da">
+    <ReferenceTable>RigaRDA</ReferenceTable>
+    <ReferencedTable>Pezzo</ReferencedTable>
+    <Columns>
+      <Column>PezzoID</Column>
     </Columns>
     <RefColumns>
       <Column>ID</Column>

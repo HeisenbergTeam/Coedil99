@@ -220,7 +220,7 @@ public class ElaboraRDAController implements Initializable {
                             ElaboraRDAController.this.btn_rimuoviPezzo.setDisable(false);
 
                             ElaboraRDAController.this.lbl_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
-                            ElaboraRDAController.this.lbl_pezzo_quantita.setText(String.valueOf(rigaSelezionata.getPezzo().getQuantita()));
+                            //ElaboraRDAController.this.lbl_pezzo_quantita.setText(String.valueOf(rigaSelezionata.getPezzo().getQuantita()));
                         }
 
                     }
@@ -413,7 +413,7 @@ public class ElaboraRDAController implements Initializable {
                         return s;
                     }
                 });
-
+/*
         cl_quantita
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RigaRDA, String>, ObservableValue<String>>() {
 
@@ -427,7 +427,7 @@ public class ElaboraRDAController implements Initializable {
                         return simpleStringProperty;
                     }
                 });
-
+*/
         if (rda.righeRDA.size() != 0) {
             ObservableList<RigaRDA> list = FXCollections.observableList(Arrays.asList(rda.righeRDA.toArray()));
             tbl_righeRDA.setItems(list);
@@ -475,7 +475,8 @@ public class ElaboraRDAController implements Initializable {
             rigaRDA.setIndicazione(indicazione);
             rigaRDA.setPezzo(pezzoSelezionato);
             rigaRDA.setRda(rda);
-            pezzoSelezionato.setRigaRDA(rigaRDA);
+            //pezzoSelezionato.setRigaRDA(rigaRDA);
+            rigaRDA.setPezzo(pezzoSelezionato);
 
             pezzoDAO.save(pezzoSelezionato);
             rigaRDADAO.save(rigaRDA);

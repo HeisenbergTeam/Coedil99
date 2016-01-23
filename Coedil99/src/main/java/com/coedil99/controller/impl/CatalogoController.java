@@ -20,6 +20,13 @@ public class CatalogoController {
         FornitoreBuilder setNome(String strNomeFornitore) {this.fornitore.setNome(strNomeFornitore); return this;}
 
         Fornitore build() {
+            try {
+                DAOFactory.getDAOFactory().getFornitoreDAO().save(this.fornitore);
+            } catch (PersistentException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
             return this.fornitore;
         }
     }
@@ -42,6 +49,14 @@ public class CatalogoController {
         DescrizionePezzoBuilder setFornitore(Fornitore fornitore)  {this.descrizionePezzo.setFornitore(fornitore); return this;}
 
         DescrizionePezzo build() {
+
+            try {
+                DAOFactory.getDAOFactory().getDescrizionePezzoDAO().save(this.descrizionePezzo);
+            } catch (PersistentException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
             return this.descrizionePezzo;
         }
     }

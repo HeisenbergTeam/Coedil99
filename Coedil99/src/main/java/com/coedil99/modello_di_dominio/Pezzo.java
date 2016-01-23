@@ -17,26 +17,13 @@ public class Pezzo {
 	public Pezzo() {
 	}
 	
-	private java.util.Set this_getSet (int key) {
-		if (key == com.coedil99.modello_di_dominio.ORMConstants.KEY_PEZZO_RIGARDA) {
-			return ORM_rigaRDA;
-		}
-		
-		return null;
-	}
-	
-	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
-		public java.util.Set getSet(int key) {
-			return this_getSet(key);
-		}
-		
-	};
-	
 	private int ID;
+	
+	private int quantitaOrdinate;
 	
 	private com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo;
 	
-	private java.util.Set ORM_rigaRDA = new java.util.HashSet();
+	private com.coedil99.modello_di_dominio.RigaRDA rigaRDA;
 	
 	private void setID(int value) {
 		this.ID = value;
@@ -50,6 +37,14 @@ public class Pezzo {
 		return getID();
 	}
 	
+	public void setQuantitaOrdinate(int value) {
+		this.quantitaOrdinate = value;
+	}
+	
+	public int getQuantitaOrdinate() {
+		return quantitaOrdinate;
+	}
+	
 	public void setDescrizionePezzo(com.coedil99.modello_di_dominio.DescrizionePezzo value) {
 		this.descrizionePezzo = value;
 	}
@@ -58,17 +53,22 @@ public class Pezzo {
 		return descrizionePezzo;
 	}
 	
-	private void setORM_RigaRDA(java.util.Set value) {
-		this.ORM_rigaRDA = value;
+	public void setRigaRDA(com.coedil99.modello_di_dominio.RigaRDA value) {
+		if (this.rigaRDA != value) {
+			com.coedil99.modello_di_dominio.RigaRDA lrigaRDA = this.rigaRDA;
+			this.rigaRDA = value;
+			if (value != null) {
+				rigaRDA.setPezzo(this);
+			}
+			if (lrigaRDA != null && lrigaRDA.getPezzo() == this) {
+				lrigaRDA.setPezzo(null);
+			}
+		}
 	}
 	
-	private java.util.Set getORM_RigaRDA() {
-		return ORM_rigaRDA;
+	public com.coedil99.modello_di_dominio.RigaRDA getRigaRDA() {
+		return rigaRDA;
 	}
-	
-	public final com.coedil99.modello_di_dominio.RigaRDASetCollection rigaRDA = new com.coedil99.modello_di_dominio.RigaRDASetCollection(this, _ormAdapter, com.coedil99.modello_di_dominio.ORMConstants.KEY_PEZZO_RIGARDA, com.coedil99.modello_di_dominio.ORMConstants.KEY_RIGARDA_PEZZO, com.coedil99.modello_di_dominio.ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private int quantita;
 	
 	public String toString() {
 		return String.valueOf(getID());

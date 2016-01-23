@@ -24,7 +24,6 @@ public class RigaRDACriteria extends AbstractORMCriteria {
 	public final AssociationExpression pezzo;
 	public final IntegerExpression rdaId;
 	public final AssociationExpression rda;
-	public final IntegerExpression quantitaPezziOrdinati;
 	public final StringExpression indicazione;
 	
 	public RigaRDACriteria(Criteria criteria) {
@@ -34,7 +33,6 @@ public class RigaRDACriteria extends AbstractORMCriteria {
 		pezzo = new AssociationExpression("pezzo", this);
 		rdaId = new IntegerExpression("rda.ID", this);
 		rda = new AssociationExpression("rda", this);
-		quantitaPezziOrdinati = new IntegerExpression("quantitaPezziOrdinati", this);
 		indicazione = new StringExpression("indicazione", this);
 	}
 	

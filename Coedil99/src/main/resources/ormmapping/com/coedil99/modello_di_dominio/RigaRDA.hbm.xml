@@ -10,11 +10,10 @@ License Type: Evaluation
 			<generator class="native">
 			</generator>
 		</id>
-		<many-to-one name="pezzo" cascade="lock" column="PezzoID" class="com.coedil99.modello_di_dominio.Pezzo" not-null="true" lazy="no-proxy" access="field">
+		<many-to-one name="pezzo" column="PezzoID" class="com.coedil99.modello_di_dominio.Pezzo" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
 		<many-to-one name="rda" cascade="lock" column="RDAID" class="com.coedil99.modello_di_dominio.RDA" not-null="true" lazy="no-proxy" access="field">
 		</many-to-one>
-		<property name="quantitaPezziOrdinati" column="QuantitaPezziOrdinati" type="integer" length="11" not-null="true" lazy="false"/>
 		<property name="indicazione" column="Indicazione" type="string" length="255" not-null="false" lazy="false"/>
 	</class>
 </hibernate-mapping>

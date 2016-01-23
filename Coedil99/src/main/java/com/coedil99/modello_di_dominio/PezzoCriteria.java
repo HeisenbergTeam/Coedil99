@@ -20,16 +20,20 @@ import org.orm.criteria.*;
 
 public class PezzoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final IntegerExpression quantitaOrdinate;
 	public final IntegerExpression descrizionePezzoId;
 	public final AssociationExpression descrizionePezzo;
-	public final CollectionExpression rigaRDA;
+	public final IntegerExpression rigaRDAId;
+	public final AssociationExpression rigaRDA;
 	
 	public PezzoCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		quantitaOrdinate = new IntegerExpression("quantitaOrdinate", this);
 		descrizionePezzoId = new IntegerExpression("descrizionePezzo.ID", this);
 		descrizionePezzo = new AssociationExpression("descrizionePezzo", this);
-		rigaRDA = new CollectionExpression("ORM_RigaRDA", this);
+		rigaRDAId = new IntegerExpression("rigaRDA.ID", this);
+		rigaRDA = new AssociationExpression("rigaRDA", this);
 	}
 	
 	public PezzoCriteria(PersistentSession session) {
@@ -45,7 +49,7 @@ public class PezzoCriteria extends AbstractORMCriteria {
 	}
 	
 	public RigaRDACriteria createRigaRDACriteria() {
-		return new RigaRDACriteria(createCriteria("ORM_RigaRDA"));
+		return new RigaRDACriteria(createCriteria("rigaRDA"));
 	}
 	
 	public Pezzo uniquePezzo() {

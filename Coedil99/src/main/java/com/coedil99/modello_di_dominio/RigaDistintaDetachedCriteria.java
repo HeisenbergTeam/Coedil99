@@ -26,7 +26,7 @@ public class RigaDistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression distinta;
 	public final IntegerExpression lavorazionePezzoId;
 	public final AssociationExpression lavorazionePezzo;
-	public final IntegerExpression quantitaUtilizzata;
+	public final IntegerExpression quantitaRigaDistinta;
 	public final StringExpression indicazione;
 	
 	public RigaDistintaDetachedCriteria() {
@@ -38,7 +38,7 @@ public class RigaDistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 		distinta = new AssociationExpression("distinta", this.getDetachedCriteria());
 		lavorazionePezzoId = new IntegerExpression("lavorazionePezzo.ID", this.getDetachedCriteria());
 		lavorazionePezzo = new AssociationExpression("lavorazionePezzo", this.getDetachedCriteria());
-		quantitaUtilizzata = new IntegerExpression("quantitaUtilizzata", this.getDetachedCriteria());
+		quantitaRigaDistinta = new IntegerExpression("quantitaRigaDistinta", this.getDetachedCriteria());
 		indicazione = new StringExpression("indicazione", this.getDetachedCriteria());
 	}
 	
@@ -51,7 +51,7 @@ public class RigaDistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 		distinta = new AssociationExpression("distinta", this.getDetachedCriteria());
 		lavorazionePezzoId = new IntegerExpression("lavorazionePezzo.ID", this.getDetachedCriteria());
 		lavorazionePezzo = new AssociationExpression("lavorazionePezzo", this.getDetachedCriteria());
-		quantitaUtilizzata = new IntegerExpression("quantitaUtilizzata", this.getDetachedCriteria());
+		quantitaRigaDistinta = new IntegerExpression("quantitaRigaDistinta", this.getDetachedCriteria());
 		indicazione = new StringExpression("indicazione", this.getDetachedCriteria());
 	}
 	

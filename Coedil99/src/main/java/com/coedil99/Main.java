@@ -84,7 +84,7 @@ public class Main {
 		Pezzo pezzo = DAOFactory.getDAOFactory().getPezzoDAO().createPezzo();
 		pezzo.setDescrizionePezzo(descrizionePezzo);
 		//pezzo.setDataArrivo(dateArrivo);
-		//pezzo.setQuantita(5);
+		pezzo.setQuantitaOrdinate(5);
 
 		try {
 			DAOFactory.getDAOFactory().getPezzoDAO().save(pezzo);
@@ -98,7 +98,7 @@ public class Main {
 		rigaDistinta.setIndicazione("Tubo porta");
 		rigaDistinta.setPezzo(pezzo);
 		rigaDistinta.setLavorazionePezzo(lavorazionePezzo);
-		rigaDistinta.setQuantitaUtilizzata(5);
+		rigaDistinta.setQuantitaRigaDistinta(3);
 		
 		try {
 			DAOFactory.getDAOFactory().getOrdineDAO().save(ordine);
@@ -124,7 +124,7 @@ public class Main {
 		RigaRDA rigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().createRigaRDA();
 		rigaRDA.setIndicazione("indicazione riga rda");
 		rigaRDA.setPezzo(pezzo);
-		rigaRDA.setQuantitaPezziOrdinati(10);
+		//rigaRDA.setQuantitaPezziOrdinati(10);
 		rigaRDA.setRda(rda);
 
 		try {
@@ -142,17 +142,17 @@ public class Main {
 		try {
 			RigaRDA[] arrayRigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().listRigaRDAByQuery("PezzoID = 1",null);
 			for (int i = 0; i < arrayRigaRDA.length; i++) {
-				quantitaOrdinate = quantitaOrdinate + arrayRigaRDA[i].getQuantitaPezziOrdinati();
+				quantitaOrdinate = quantitaOrdinate + arrayRigaRDA[i].getPezzo().getQuantitaOrdinate();
 
 				RDA rdaQuantita = arrayRigaRDA[i].getRda();
 				if (rdaQuantita.getDataArrivoEffettiva().compareTo(dateNow) <= 0) {
-					quantitaArrivate = quantitaArrivate + arrayRigaRDA[i].getQuantitaPezziOrdinati();
+					quantitaArrivate = quantitaArrivate + arrayRigaRDA[i].getPezzo().getQuantitaOrdinate();
 				}
 			}
 
 			RigaDistinta[] arrayRigaDistinta = DAOFactory.getDAOFactory().getRigaDistintaDAO().listRigaDistintaByQuery("PezzoID = 1",null);
 			for (int i = 0; i < arrayRigaDistinta.length; i++) {
-				quantitaUtilizzate = quantitaUtilizzate + arrayRigaDistinta[i].getQuantitaUtilizzata();
+				quantitaUtilizzate = quantitaUtilizzate + arrayRigaDistinta[i].getQuantitaRigaDistinta();
 			}
 
 			quantitaDisponibili = quantitaArrivate - quantitaUtilizzate;

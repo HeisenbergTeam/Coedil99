@@ -46,7 +46,7 @@ public class RigaDistinta {
 	
 	private com.coedil99.modello_di_dominio.LavorazionePezzo lavorazionePezzo;
 	
-	private int quantitaUtilizzata;
+	private int quantitaRigaDistinta;
 	
 	private String indicazione;
 	
@@ -70,12 +70,12 @@ public class RigaDistinta {
 		return indicazione;
 	}
 	
-	public void setQuantitaUtilizzata(int value) {
-		this.quantitaUtilizzata = value;
+	public void setQuantitaRigaDistinta(int value) {
+		this.quantitaRigaDistinta = value;
 	}
 	
-	public int getQuantitaUtilizzata() {
-		return quantitaUtilizzata;
+	public int getQuantitaRigaDistinta() {
+		return quantitaRigaDistinta;
 	}
 	
 	public void setPezzo(com.coedil99.modello_di_dominio.Pezzo value) {

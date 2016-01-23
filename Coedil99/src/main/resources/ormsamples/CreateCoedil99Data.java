@@ -24,7 +24,7 @@ public class CreateCoedil99Data {
 			lcomcoedil99modello_di_dominioOrdineDAO.save(lcomcoedil99modello_di_dominioOrdine);
 			com.coedil99.modello_di_dominio.dao.PezzoDAO lcomcoedil99modello_di_dominioPezzoDAO = lDAOFactory.getPezzoDAO();
 			com.coedil99.modello_di_dominio.Pezzo lcomcoedil99modello_di_dominioPezzo = lcomcoedil99modello_di_dominioPezzoDAO.createPezzo();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : rigaRDA, descrizionePezzo
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : rigaRDA, descrizionePezzo, quantitaOrdinate
 			lcomcoedil99modello_di_dominioPezzoDAO.save(lcomcoedil99modello_di_dominioPezzo);
 			com.coedil99.modello_di_dominio.dao.DescrizionePezzoDAO lcomcoedil99modello_di_dominioDescrizionePezzoDAO = lDAOFactory.getDescrizionePezzoDAO();
 			com.coedil99.modello_di_dominio.DescrizionePezzo lcomcoedil99modello_di_dominioDescrizionePezzo = lcomcoedil99modello_di_dominioDescrizionePezzoDAO.createDescrizionePezzo();
@@ -32,7 +32,7 @@ public class CreateCoedil99Data {
 			lcomcoedil99modello_di_dominioDescrizionePezzoDAO.save(lcomcoedil99modello_di_dominioDescrizionePezzo);
 			com.coedil99.modello_di_dominio.dao.RigaDistintaDAO lcomcoedil99modello_di_dominioRigaDistintaDAO = lDAOFactory.getRigaDistintaDAO();
 			com.coedil99.modello_di_dominio.RigaDistinta lcomcoedil99modello_di_dominioRigaDistinta = lcomcoedil99modello_di_dominioRigaDistintaDAO.createRigaDistinta();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : quantitaUtilizzata, lavorazionePezzo, distinta, pezzo
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : quantitaRigaDistinta, lavorazionePezzo, distinta, pezzo
 			lcomcoedil99modello_di_dominioRigaDistintaDAO.save(lcomcoedil99modello_di_dominioRigaDistinta);
 			com.coedil99.modello_di_dominio.dao.LavorazionePezzoDAO lcomcoedil99modello_di_dominioLavorazionePezzoDAO = lDAOFactory.getLavorazionePezzoDAO();
 			com.coedil99.modello_di_dominio.LavorazionePezzo lcomcoedil99modello_di_dominioLavorazionePezzo = lcomcoedil99modello_di_dominioLavorazionePezzoDAO.createLavorazionePezzo();
@@ -52,7 +52,7 @@ public class CreateCoedil99Data {
 			lcomcoedil99modello_di_dominioRDADAO.save(lcomcoedil99modello_di_dominioRDA);
 			com.coedil99.modello_di_dominio.dao.RigaRDADAO lcomcoedil99modello_di_dominioRigaRDADAO = lDAOFactory.getRigaRDADAO();
 			com.coedil99.modello_di_dominio.RigaRDA lcomcoedil99modello_di_dominioRigaRDA = lcomcoedil99modello_di_dominioRigaRDADAO.createRigaRDA();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : quantitaPezziOrdinati, rda, pezzo
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : rda, pezzo
 			lcomcoedil99modello_di_dominioRigaRDADAO.save(lcomcoedil99modello_di_dominioRigaRDA);
 			com.coedil99.modello_di_dominio.dao.FornitoreDAO lcomcoedil99modello_di_dominioFornitoreDAO = lDAOFactory.getFornitoreDAO();
 			com.coedil99.modello_di_dominio.Fornitore lcomcoedil99modello_di_dominioFornitore = lcomcoedil99modello_di_dominioFornitoreDAO.createFornitore();

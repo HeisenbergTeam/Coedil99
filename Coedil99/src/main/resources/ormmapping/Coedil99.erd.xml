@@ -165,6 +165,17 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="QuantitaOrdinate">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
     <Column name="DescrizionePezzoID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
@@ -284,7 +295,7 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="QuantitaUtilizzata">
+    <Column name="QuantitaRigaDistinta">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -560,17 +571,6 @@
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>com.coedil99.modello_di_dominio.RDA.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="QuantitaPezziOrdinati">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>

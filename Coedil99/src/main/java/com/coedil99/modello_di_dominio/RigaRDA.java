@@ -40,8 +40,6 @@ public class RigaRDA {
 	
 	private com.coedil99.modello_di_dominio.RDA rda;
 	
-	private int quantitaPezziOrdinati;
-	
 	private String indicazione;
 	
 	private void setID(int value) {
@@ -62,14 +60,6 @@ public class RigaRDA {
 	
 	public String getIndicazione() {
 		return indicazione;
-	}
-	
-	public void setQuantitaPezziOrdinati(int value) {
-		this.quantitaPezziOrdinati = value;
-	}
-	
-	public int getQuantitaPezziOrdinati() {
-		return quantitaPezziOrdinati;
 	}
 	
 	public void setRda(com.coedil99.modello_di_dominio.RDA value) {
@@ -97,11 +87,15 @@ public class RigaRDA {
 	}
 	
 	public void setPezzo(com.coedil99.modello_di_dominio.Pezzo value) {
-		if (pezzo != null) {
-			pezzo.rigaRDA.remove(this);
-		}
-		if (value != null) {
-			value.rigaRDA.add(this);
+		if (this.pezzo != value) {
+			com.coedil99.modello_di_dominio.Pezzo lpezzo = this.pezzo;
+			this.pezzo = value;
+			if (value != null) {
+				pezzo.setRigaRDA(this);
+			}
+			if (lpezzo != null && lpezzo.getRigaRDA() == this) {
+				lpezzo.setRigaRDA(null);
+			}
 		}
 	}
 	
@@ -109,16 +103,7 @@ public class RigaRDA {
 		return pezzo;
 	}
 	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Pezzo(com.coedil99.modello_di_dominio.Pezzo value) {
-		this.pezzo = value;
-	}
-	
-	private com.coedil99.modello_di_dominio.Pezzo getORM_Pezzo() {
-		return pezzo;
-	}
+	private int quantitaPezziOrdinati;
 	
 	public String toString() {
 		return String.valueOf(getID());

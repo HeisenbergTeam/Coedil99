@@ -102,9 +102,31 @@ public class Main {
 			e.printStackTrace();
 		}
 
+		RDA rda = DAOFactory.getDAOFactory().getRDADAO().createRDA();
+		rda.setFornitore(fornitore);
+		rda.setDescrizione("descizione rda");
+		rda.setDataArrivoEffettiva(date);
+		rda.setDataArrivoPrevista(date);
+		rda.setDataCreazione(date);
 
+		try {
+			DAOFactory.getDAOFactory().getRDADAO().save(rda);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		RigaRDA rigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().createRigaRDA();
+		rigaRDA.setIndicazione("indicazione riga rda");
+		rigaRDA.setPezzo(pezzo);
+		rigaRDA.setRda(rda);
 
+		try {
+			DAOFactory.getDAOFactory().getRigaRDADAO().save(rigaRDA);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		/*
 		try {

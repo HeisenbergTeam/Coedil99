@@ -20,7 +20,7 @@ import org.orm.criteria.*;
 
 public class PezzoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
-	public final IntegerExpression quantita;
+	public final IntegerExpression quantitaOrdinate;
 	public final IntegerExpression descrizionePezzoId;
 	public final AssociationExpression descrizionePezzo;
 	public final IntegerExpression rigaRDAId;
@@ -29,7 +29,7 @@ public class PezzoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public PezzoDetachedCriteria() {
 		super(com.coedil99.modello_di_dominio.Pezzo.class, com.coedil99.modello_di_dominio.PezzoCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
-		quantita = new IntegerExpression("quantita", this.getDetachedCriteria());
+		quantitaOrdinate = new IntegerExpression("quantitaOrdinate", this.getDetachedCriteria());
 		descrizionePezzoId = new IntegerExpression("descrizionePezzo.ID", this.getDetachedCriteria());
 		descrizionePezzo = new AssociationExpression("descrizionePezzo", this.getDetachedCriteria());
 		rigaRDAId = new IntegerExpression("rigaRDA.ID", this.getDetachedCriteria());
@@ -39,7 +39,7 @@ public class PezzoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public PezzoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.coedil99.modello_di_dominio.PezzoCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
-		quantita = new IntegerExpression("quantita", this.getDetachedCriteria());
+		quantitaOrdinate = new IntegerExpression("quantitaOrdinate", this.getDetachedCriteria());
 		descrizionePezzoId = new IntegerExpression("descrizionePezzo.ID", this.getDetachedCriteria());
 		descrizionePezzo = new AssociationExpression("descrizionePezzo", this.getDetachedCriteria());
 		rigaRDAId = new IntegerExpression("rigaRDA.ID", this.getDetachedCriteria());

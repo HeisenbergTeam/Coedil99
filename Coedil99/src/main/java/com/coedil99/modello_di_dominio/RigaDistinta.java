@@ -46,6 +46,8 @@ public class RigaDistinta {
 	
 	private com.coedil99.modello_di_dominio.LavorazionePezzo lavorazionePezzo;
 	
+	private int quantitaRigaDistinta;
+	
 	private String indicazione;
 	
 	private void setID(int value) {
@@ -66,6 +68,14 @@ public class RigaDistinta {
 	
 	public String getIndicazione() {
 		return indicazione;
+	}
+	
+	public void setQuantitaRigaDistinta(int value) {
+		this.quantitaRigaDistinta = value;
+	}
+	
+	public int getQuantitaRigaDistinta() {
+		return quantitaRigaDistinta;
 	}
 	
 	public void setPezzo(com.coedil99.modello_di_dominio.Pezzo value) {

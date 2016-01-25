@@ -26,6 +26,7 @@ public class RigaDistintaCriteria extends AbstractORMCriteria {
 	public final AssociationExpression distinta;
 	public final IntegerExpression lavorazionePezzoId;
 	public final AssociationExpression lavorazionePezzo;
+	public final IntegerExpression quantitaRigaDistinta;
 	public final StringExpression indicazione;
 	
 	public RigaDistintaCriteria(Criteria criteria) {
@@ -37,6 +38,7 @@ public class RigaDistintaCriteria extends AbstractORMCriteria {
 		distinta = new AssociationExpression("distinta", this);
 		lavorazionePezzoId = new IntegerExpression("lavorazionePezzo.ID", this);
 		lavorazionePezzo = new AssociationExpression("lavorazionePezzo", this);
+		quantitaRigaDistinta = new IntegerExpression("quantitaRigaDistinta", this);
 		indicazione = new StringExpression("indicazione", this);
 	}
 	

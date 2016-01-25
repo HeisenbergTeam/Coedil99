@@ -108,6 +108,10 @@ public class RigaRDA {
 		return pezzo;
 	}
 
+	
+	private int quantitaPezziOrdinati;
+	
+
 	public String toString() {
 		return String.valueOf(getID());
 	}

@@ -35,6 +35,9 @@ import java.util.*;
 
 public class ElaboraRDAController implements Initializable {
 
+    @FXML private TitledPane title_fornitore_rda_lbl;
+    @FXML private TitledPane title_fornitore_rda_txt;
+
     @FXML public TableColumn<RigaRDA,String> cl_indicazione;
     @FXML public TableColumn<RigaRDA,String> cl_quantita;
     @FXML public TableView<RigaRDA> tbl_righeRDA;
@@ -49,6 +52,16 @@ public class ElaboraRDAController implements Initializable {
     @FXML private Label lbl_data_ddt;
     @FXML private Label lbl_codice_colata_ddt;
 
+    @FXML private TextField txt_ordine_rda;
+    @FXML private TextField txt_fornitore_rda;
+    @FXML private TextField txt_data_consegna_prevista_rda;
+    @FXML private TextField txt_data_consegna_effettiva_rda;
+    @FXML private TextField txt_ritardo_rda;
+
+    @FXML private TextField txt_numero_ddt;
+    @FXML private TextField txt_data_ddt;
+    @FXML private TextField txt_codice_colata_ddt;
+
     @FXML private Button modificaDistButton;
     @FXML private Button salvaDistButton;
     @FXML private Button aggiungiPezzoButton;
@@ -56,6 +69,9 @@ public class ElaboraRDAController implements Initializable {
 
     @FXML private Label lbl_codice_pezzo;
     @FXML private Label lbl_pezzo_quantita;
+
+    @FXML private TextField txt_codice_pezzo;
+    @FXML private TextField txt_pezzo_quantita;
     
     @FXML private TitledPane righe_rda;
     @FXML private TitledPane informazioni_rda;
@@ -74,7 +90,7 @@ public class ElaboraRDAController implements Initializable {
     private Map<String,Label> rdaLabels;
     private Map<String,TextField> rdaTextFields;
     private Map<String, TextField> rdaDDTTextFields;
-    private Map<String,Object> rigaRDATextFields;
+    private Map<String,TextField> rigaRDATextFields;
     
     private RigaRDA rigaSelezionata = null;
     private RDA rda;
@@ -106,6 +122,15 @@ public class ElaboraRDAController implements Initializable {
         }
     }
 
+    private void enableTextEdit() {
+        //modificandoDatiRDA = false;
+        modificaDatiRDA();
+    }
+
+    private void disableTextEdit() {
+
+    }
+
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -133,11 +158,6 @@ public class ElaboraRDAController implements Initializable {
         log = (Log) gsp.getServizio("LogStdout");
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 
-        if (!nuovaRda) {
-            refreshTable();
-            refreshRDA();
-        }
-
 	    rdaLabels = new HashMap<String,Label>();
         //rdaLabels.put("ordine",lbl_ordine_rda);
         rdaLabels.put("fornitore",lbl_fornitore_rda);
@@ -149,6 +169,42 @@ public class ElaboraRDAController implements Initializable {
         rdaDDTLabels.put("numero",lbl_numero_ddt);
         //rdaDDTLabels.put("data_ddt",lbl_data_ddt);
         rdaDDTLabels.put("codice_colata",lbl_codice_colata_ddt);
+
+        rdaTextFields = new HashMap<String,TextField>();
+        //rdaTextFields.put("ordine",lbl_ordine_rda);
+        rdaTextFields.put("fornitore",txt_fornitore_rda);
+        rdaTextFields.put("consegna_prevista",txt_data_consegna_prevista_rda);
+        rdaTextFields.put("consegna_effittiva",txt_data_consegna_effettiva_rda);
+        rdaTextFields.put("giorni_ritardo",txt_ritardo_rda);
+        //txt_ritardo_rda.setEditable(false);
+        //txt_data_consegna_effettiva_rda.setDisable(true);
+        //txt_data_consegna_effettiva_rda.setManaged(false);
+
+        rigaRDATextFields = new HashMap<String, TextField>();
+        rigaRDATextFields.put("numero",txt_numero_ddt);
+        //rigaRDATextFields.put("data_ddt",txt_data_ddt);
+        rigaRDATextFields.put("codice_colata",txt_codice_colata_ddt);
+/*
+        Set<Map.Entry<String, Label>> insieme = rdaLabels.entrySet();
+        Set<Map.Entry<String, TextField>> insieme2 = rdaTextFields.entrySet();
+        Iterator<Map.Entry<String, Label>> iterator = insieme.iterator();
+        Iterator<Map.Entry<String, TextField>> iterator2 = insieme2.iterator();
+
+        while(iterator.hasNext() != false && iterator2.hasNext() != false){
+
+            Map.Entry<String, Label> entryLabel = iterator.next();
+            Map.Entry<String, TextField> entryTextField = iterator2.next();
+            //entryTextField.getValue().setText(entryLabel.getValue().getText());
+            entryTextField.getValue().setVisible(false);
+            //entryTextField.getValue().setManaged(false);
+            entryLabel.getValue().setVisible(true);
+            //entryLabel.getValue().setManaged(true);
+        }
+*/
+        title_fornitore_rda_txt.setVisible(false);
+        title_fornitore_rda_txt.setManaged(false);
+        title_fornitore_rda_lbl.setVisible(true);
+        title_fornitore_rda_lbl.setManaged(true);
 
         tbl_righeRDA.getSelectionModel().selectedIndexProperty()
                 .addListener(new ChangeListener<Object>() {
@@ -164,12 +220,19 @@ public class ElaboraRDAController implements Initializable {
                             ElaboraRDAController.this.btn_rimuoviPezzo.setDisable(false);
 
                             ElaboraRDAController.this.lbl_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
-                            ElaboraRDAController.this.lbl_pezzo_quantita.setText(String.valueOf(rigaSelezionata.getPezzo().getQuantita()));
+                            //ElaboraRDAController.this.lbl_pezzo_quantita.setText(String.valueOf(rigaSelezionata.getPezzo().getQuantita()));
                         }
 
                     }
                 });
-	    
+
+        if (!nuovaRda && rda != null) {
+            refreshTable();
+            refreshRDA();
+        } else {
+            enableTextEdit();
+        }
+
 	}
 	
 /**
@@ -187,24 +250,30 @@ public class ElaboraRDAController implements Initializable {
             return;
         }
 
+/*
         Set<Map.Entry<String, Label>> insieme = rdaLabels.entrySet();
+        Set<Map.Entry<String, TextField>> insieme2 = rdaTextFields.entrySet();
         Iterator<Map.Entry<String, Label>> iterator = insieme.iterator();
+        Iterator<Map.Entry<String, TextField>> iterator2 = insieme2.iterator();
 
-        rdaTextFields = new HashMap<String, TextField>();
-
-        while(iterator.hasNext() != false){
-
-            Map.Entry<String, Label> entry = iterator.next();
-
-            Parent p = entry.getValue().getParent();
-            TextField tf = new TextField();
-            tf.setText(entry.getValue().getText());
-            Pane tps = (Pane) p;
-            tps.getChildren().remove(entry.getValue());
-            tps.getChildren().add(tf);
-
-            rdaTextFields.put(entry.getKey(), tf);
+        while(iterator.hasNext() != false && iterator2.hasNext() != false){
+            Map.Entry<String, Label> entryLabel = iterator.next();
+            Map.Entry<String, TextField> entryTextField = iterator2.next();
+            entryTextField.getValue().setText(entryLabel.getValue().getText());
+            entryLabel.getValue().setVisible(false);
+            //entryLabel.getValue().setManaged(false);
+            entryTextField.getValue().setVisible(true);
+            //entryTextField.getValue().setManaged(true);
         }
+        txt_fornitore_rda.setVisible(true);
+        //txt_fornitore_rda.setManaged(true);
+       */
+
+        title_fornitore_rda_lbl.setVisible(false);
+        title_fornitore_rda_lbl.setManaged(false);
+        title_fornitore_rda_txt.setVisible(true);
+        title_fornitore_rda_txt.setManaged(true);
+
 
         String current_date = lbl_data_consegna_effettiva_rda.getText();
         Parent datePickParent = lbl_data_consegna_prevista_rda.getParent();
@@ -344,7 +413,7 @@ public class ElaboraRDAController implements Initializable {
                         return s;
                     }
                 });
-
+/*
         cl_quantita
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RigaRDA, String>, ObservableValue<String>>() {
 
@@ -358,10 +427,11 @@ public class ElaboraRDAController implements Initializable {
                         return simpleStringProperty;
                     }
                 });
-
-
-        ObservableList<RigaRDA> list = FXCollections.observableList(Arrays.asList(rda.righeRDA.toArray()));
-        tbl_righeRDA.setItems(list);
+*/
+        if (rda.righeRDA.size() != 0) {
+            ObservableList<RigaRDA> list = FXCollections.observableList(Arrays.asList(rda.righeRDA.toArray()));
+            tbl_righeRDA.setItems(list);
+        }
 	}
 
 
@@ -405,7 +475,8 @@ public class ElaboraRDAController implements Initializable {
             rigaRDA.setIndicazione(indicazione);
             rigaRDA.setPezzo(pezzoSelezionato);
             rigaRDA.setRda(rda);
-            pezzoSelezionato.setRigaRDA(rigaRDA);
+            //pezzoSelezionato.setRigaRDA(rigaRDA);
+            rigaRDA.setPezzo(pezzoSelezionato);
 
             pezzoDAO.save(pezzoSelezionato);
             rigaRDADAO.save(rigaRDA);

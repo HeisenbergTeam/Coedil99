@@ -63,11 +63,11 @@ public class VisualizzaRdaController implements Initializable {
         } catch (PersistentException e) {
             e.printStackTrace();
         }
-//
-//
-//
-//		// ListenerOrdini
-//
+
+
+
+		// ListenerOrdini
+
 //		tableOrdini.getSelectionModel().selectedIndexProperty()
 //				.addListener(new ChangeListener<Object>() {
 //

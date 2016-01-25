@@ -165,12 +165,12 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Quantita">
+    <Column name="QuantitaOrdinate">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>11</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -287,6 +287,17 @@
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
       <ReferencedColumn>LavorazionePezzo.ID</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="QuantitaRigaDistinta">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -700,21 +711,21 @@
       <Column>ID</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="riga è composta da">
-    <ReferenceTable>RigaRDA</ReferenceTable>
-    <ReferencedTable>Pezzo</ReferencedTable>
-    <Columns>
-      <Column>PezzoID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="FKDescrizion417574">
     <ReferenceTable>DescrizionePezzo</ReferenceTable>
     <ReferencedTable>Fornitore</ReferencedTable>
     <Columns>
       <Column>FornitoreID</Column>
+    </Columns>
+    <RefColumns>
+      <Column>ID</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="riga è composta da">
+    <ReferenceTable>RigaRDA</ReferenceTable>
+    <ReferencedTable>Pezzo</ReferencedTable>
+    <Columns>
+      <Column>PezzoID</Column>
     </Columns>
     <RefColumns>
       <Column>ID</Column>

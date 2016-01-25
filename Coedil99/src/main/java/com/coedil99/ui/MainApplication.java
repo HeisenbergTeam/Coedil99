@@ -116,7 +116,7 @@ public class MainApplication extends Application {
 			root = loader.load();
 			//root = FXMLLoader.load(getClass().getResource("fxml/"+name+".fxml"));
 
-			Scene scene = new Scene(root, 800, 600);
+			Scene scene = new Scene(root, 1024, 768);
 
 			//Save history
 			this.history.push(this.mainStage.getScene());

@@ -20,7 +20,7 @@ import org.orm.criteria.*;
 
 public class PezzoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
-	public final IntegerExpression quantita;
+	public final IntegerExpression quantitaOrdinate;
 	public final IntegerExpression descrizionePezzoId;
 	public final AssociationExpression descrizionePezzo;
 	public final IntegerExpression rigaRDAId;
@@ -29,7 +29,7 @@ public class PezzoCriteria extends AbstractORMCriteria {
 	public PezzoCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
-		quantita = new IntegerExpression("quantita", this);
+		quantitaOrdinate = new IntegerExpression("quantitaOrdinate", this);
 		descrizionePezzoId = new IntegerExpression("descrizionePezzo.ID", this);
 		descrizionePezzo = new AssociationExpression("descrizionePezzo", this);
 		rigaRDAId = new IntegerExpression("rigaRDA.ID", this);

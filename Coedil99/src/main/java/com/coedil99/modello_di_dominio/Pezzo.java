@@ -22,8 +22,8 @@ public class Pezzo {
 	}
 
 	private int ID;
-
-	private int quantita;
+	
+	private int quantitaOrdinate;
 
 	private com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo;
 
@@ -40,13 +40,13 @@ public class Pezzo {
 	public int getORMID() {
 		return getID();
 	}
-
-	public void setQuantita(int value) {
-		this.quantita = value;
+	
+	public void setQuantitaOrdinate(int value) {
+		this.quantitaOrdinate = value;
 	}
-
-	public int getQuantita() {
-		return quantita;
+	
+	public int getQuantitaOrdinate() {
+		return quantitaOrdinate;
 	}
 
 	public void setDescrizionePezzo(com.coedil99.modello_di_dominio.DescrizionePezzo value) {

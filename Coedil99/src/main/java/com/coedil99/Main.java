@@ -1,12 +1,18 @@
 package com.coedil99;
 
 import com.coedil99.modello_di_dominio.*;
+import com.coedil99.modello_di_dominio.dao.RDADAO;
+import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
+import com.coedil99.modello_di_dominio.dao.RigaRDADAO;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.Sessione;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
+import com.coedil99.controller.builder.Builder;
 import org.orm.PersistentException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -19,10 +25,9 @@ public class Main {
 
 
 		Date date = new Date();
-		
-		Destinazione dest = new Destinazione();
-		dest.setVia("Via Strinella, 37");
-		
+
+		Destinazione dest = new Builder.DestinazioneBuilder().setVia("Via Garibaldi").build();
+
 		Ordine ordine = DAOFactory.getDAOFactory().getOrdineDAO().createOrdine();
 		ordine.setDataCreazione(date);
 		ordine.setDestinazione(dest);
@@ -79,7 +84,7 @@ public class Main {
 		Pezzo pezzo = DAOFactory.getDAOFactory().getPezzoDAO().createPezzo();
 		pezzo.setDescrizionePezzo(descrizionePezzo);
 		//pezzo.setDataArrivo(dateArrivo);
-		pezzo.setQuantita(5);
+		pezzo.setQuantitaOrdinate(5);
 
 		try {
 			DAOFactory.getDAOFactory().getPezzoDAO().save(pezzo);
@@ -93,7 +98,7 @@ public class Main {
 		rigaDistinta.setIndicazione("Tubo porta");
 		rigaDistinta.setPezzo(pezzo);
 		rigaDistinta.setLavorazionePezzo(lavorazionePezzo);
-		
+		rigaDistinta.setQuantitaRigaDistinta(3);
 		
 		try {
 			DAOFactory.getDAOFactory().getOrdineDAO().save(ordine);
@@ -102,9 +107,61 @@ public class Main {
 			e.printStackTrace();
 		}
 
+		RDA rda = DAOFactory.getDAOFactory().getRDADAO().createRDA();
+		rda.setFornitore(fornitore);
+		rda.setDescrizione("descizione rda");
+		rda.setDataArrivoEffettiva(date);
+		rda.setDataArrivoPrevista(date);
+		rda.setDataCreazione(date);
 
+		try {
+			DAOFactory.getDAOFactory().getRDADAO().save(rda);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		RigaRDA rigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().createRigaRDA();
+		rigaRDA.setIndicazione("indicazione riga rda");
+		rigaRDA.setPezzo(pezzo);
+		//rigaRDA.setQuantitaPezziOrdinati(10);
+		rigaRDA.setRda(rda);
 
+		try {
+			DAOFactory.getDAOFactory().getRigaRDADAO().save(rigaRDA);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Date dateNow = new Date();
+		int quantitaOrdinate = 0;
+		int quantitaArrivate = 0;
+		int quantitaUtilizzate = 0;
+		int quantitaDisponibili = 0;
+		try {
+			RigaRDA[] arrayRigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().listRigaRDAByQuery("PezzoID = 1",null);
+			for (int i = 0; i < arrayRigaRDA.length; i++) {
+				quantitaOrdinate = quantitaOrdinate + arrayRigaRDA[i].getPezzo().getQuantitaOrdinate();
+
+				RDA rdaQuantita = arrayRigaRDA[i].getRda();
+				if (rdaQuantita.getDataArrivoEffettiva().compareTo(dateNow) <= 0) {
+					quantitaArrivate = quantitaArrivate + arrayRigaRDA[i].getPezzo().getQuantitaOrdinate();
+				}
+			}
+
+			RigaDistinta[] arrayRigaDistinta = DAOFactory.getDAOFactory().getRigaDistintaDAO().listRigaDistintaByQuery("PezzoID = 1",null);
+			for (int i = 0; i < arrayRigaDistinta.length; i++) {
+				quantitaUtilizzate = quantitaUtilizzate + arrayRigaDistinta[i].getQuantitaRigaDistinta();
+			}
+
+			quantitaDisponibili = quantitaArrivate - quantitaUtilizzate;
+
+			System.out.print("Quantità ordinate: "+quantitaOrdinate+" - Quantità arrivate: "+quantitaArrivate+" - Quantità utilizzate: "+quantitaUtilizzate+" - Quantità disponibili: "+quantitaDisponibili);
+
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
 
 		/*
 		try {

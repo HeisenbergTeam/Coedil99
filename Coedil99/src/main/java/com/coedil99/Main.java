@@ -8,6 +8,7 @@ import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.Sessione;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
+import com.coedil99.controller.builder.Builder;
 import org.orm.PersistentException;
 
 import java.util.ArrayList;
@@ -24,10 +25,9 @@ public class Main {
 
 
 		Date date = new Date();
-		
-		Destinazione dest = new Destinazione();
-		dest.setVia("Via Strinella, 37");
-		
+
+		Destinazione dest = new Builder.DestinazioneBuilder().setVia("Via Garibaldi").build();
+
 		Ordine ordine = DAOFactory.getDAOFactory().getOrdineDAO().createOrdine();
 		ordine.setDataCreazione(date);
 		ordine.setDestinazione(dest);

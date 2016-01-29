@@ -63,8 +63,8 @@ public class MainApplication extends Application {
 	public void start(Stage stage) {
 		
 		this.mainStage = stage;
-		this.mainStage.setMinWidth(800);
-		this.mainStage.setMinHeight(600);
+		this.mainStage.setMinWidth(1024);
+		this.mainStage.setMinHeight(768);
 		MainApplication.instance = this;
 		
 		this.loadPage(startpage, "com.coedil99.controller.ui.LoginController", 0);

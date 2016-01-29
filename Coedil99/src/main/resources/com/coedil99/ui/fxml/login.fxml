@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<BorderPane layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f6f7f8;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+
+<BorderPane layoutX="0.0" layoutY="0.0" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #f6f7f8;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <bottom>
     <VBox alignment="CENTER_RIGHT" disable="false" fillWidth="true" focusTraversable="false" maxWidth="800.0" mouseTransparent="false" prefHeight="301.0" prefWidth="800.0" style="" BorderPane.alignment="CENTER">
       <children>
@@ -44,9 +48,9 @@
   <center>
     <Pane prefHeight="225.0" prefWidth="800.0" BorderPane.alignment="CENTER">
       <children>
-        <ImageView id="coedil99.png" fitHeight="129.0" fitWidth="429.99999062674385" layoutX="185.0" layoutY="86.0" preserveRatio="true">
+        <ImageView id="coedil99.png" fitHeight="129.0" fitWidth="429.99999062674385" layoutX="297.0" layoutY="203.0" preserveRatio="true">
           <image>
-            <Image url="@../icons/coedil99.png" preserveRatio="true" smooth="true" />
+            <Image preserveRatio="true" smooth="true" url="@../icons/coedil99.png" />
           </image>
         </ImageView>
       </children>

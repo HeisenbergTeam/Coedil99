@@ -1,111 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <VBox prefHeight="-1.0" prefWidth="-1.0">
-         <children>
-            <TabPane fx:id="commesseTabPane" maxWidth="1.7976931348623157E308" minHeight="500.0" prefHeight="-1.0" prefWidth="-1.0" style="" tabClosingPolicy="UNAVAILABLE">
-               <tabs>
-                  <Tab text="RDA">
-                     <content>
-                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="598.0">
-                           <children>
-                              <GridPane layoutX="0.0" layoutY="0.0" prefHeight="129.0" prefWidth="450.0">
-                                 <children>
-                                    <Label text="Stato" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                    <Label text="Data Creazione" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                 </children>
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                              </GridPane>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </Tab>
-               </tabs>
-            </TabPane>
+<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <center>
+    <VBox>
+      <children>
+            <Label prefHeight="38.0" prefWidth="249.0" style="-fx-background-color: transparent;" text="-&gt; Commesse associate all'ordine selezionato" wrapText="false" />
+            <Separator opacity="0.0" prefHeight="24.0" prefWidth="724.0" valignment="TOP" />
+            <TitledPane alignment="TOP_LEFT" animated="false" prefHeight="94.0" prefWidth="724.0" text="Informazioni sulla commessa selezionata">
+               <content>
+        <GridPane alignment="TOP_CENTER" maxHeight="200.0" prefHeight="45.0" prefWidth="685.0">
+          <children>
+                        <Label GridPane.columnIndex="1" />
+                        <TitledPane animated="false" text="Data di creazione della RDA">
+                           <content>
+                              <Label text="Data creazione" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Data di arrivo prevista" GridPane.columnIndex="1">
+                           <content>
+                              <Label text="Data arrivo prevista" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Data di arrivo effettiva" GridPane.columnIndex="2">
+                           <content>
+                              <Label text="Data arrivo effettiva" />
+                           </content>
+                        </TitledPane>
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          </columnConstraints>
+          <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+          </padding>
+          <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+        </GridPane>
+               </content>
+            </TitledPane>
+      </children>
+    </VBox>
+  </center>
+  <left>
+    <VBox prefHeight="-1.0">
+      <children>
+        <Label style="-fx-background-color: transparent;" text="Richieste d'acquisto" wrapText="false">
+          <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+          </VBox.margin>
+        </Label>
+        <TableView fx:id="tableOrdini" prefHeight="660.0" prefWidth="300.0">
+          <columns>
+            <TableColumn id="tableOrdiniId" fx:id="tableOrdiniId" minWidth="80.0" prefWidth="160.0" text="Descrizione" />
+            <TableColumn id="tableOrdiniData" fx:id="tableOrdiniData" minWidth="27.0" prefWidth="138.0" text="Fornitore" />
+          </columns>
+        </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="-1.0" prefWidth="-1.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onNuovaRda" text="Nuova">
+                  <Button mnemonicParsing="false" onMouseClicked="#onNewCommessa" text="Nuovo">
                      <HBox.margin>
-                        <Insets right="10.0" fx:id="x1" />
+                        <Insets right="10.0" fx:id="x11" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onEditRda" text="Modifica" HBox.margin="$x1" />
-                  <Button mnemonicParsing="false" onAction="#onDeleteRda" text="Elimina" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onEditCommessa" text="Modifica" HBox.margin="$x11" />
+                  <Button mnemonicParsing="false" onMouseClicked="#onDeleteCommessa" text="Elimina" />
                </children>
                <padding>
                   <Insets bottom="10.0" right="10.0" top="10.0" />
                </padding>
             </HBox>
-         </children>
-      </VBox>
-   </center>
-   <left>
-      <VBox prefHeight="-1.0" prefWidth="300.0">
-         <children>
-            <Label style="-fx-background-color: transparent;" text="Ordini" wrapText="false">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <Separator prefWidth="200.0" />
-            <TableView fx:id="tableRda">
-               <columns>
-                  <TableColumn id="tableOrdiniId" fx:id="tableRdaId" text="Id" />
-                  <TableColumn id="tableOrdiniData" fx:id="tableRdaData" text="Data" />
-               </columns>
-            </TableView>
-         </children>
-      </VBox>
-   </left>
-   <top>
-      <HBox prefHeight="-1.0" prefWidth="200.0" styleClass=".menu .label">
-         <children>
-            <Button cancelButton="false" defaultButton="false" disable="false" minHeight="30.0" minWidth="43.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="43.0" text="">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      </children>
+    </VBox>
+  </left>
+  <top>
+    <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;">
+      <children>
+        <Button minHeight="30.0" minWidth="43.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="43.0" style="-fx-background-color: transparent;" text="">
+          <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/back.png" />
                      </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Separator orientation="VERTICAL" prefHeight="-1.0" />
-            <MenuBar style="" useSystemMenuBar="false">
-               <menus>
-                  <Menu style="-fx-text-fill: #292929;" text="File">
-                     <items>
-                        <MenuItem style="-fx-text-fill: #292929;" text="Open" />
-                        <MenuItem text="Save" />
-                        <MenuItem text="Exit" />
-                     </items>
-                  </Menu>
-                  <Menu style="-fx-text-fill: #292929;" text="Edit">
-                     <items>
-                        <MenuItem text="Copy" />
-                        <MenuItem text="Paste" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
-         </children>
-      </HBox>
-   </top>
+            </ImageView>
+          </graphic>
+        </Button>
+        <Separator orientation="VERTICAL" prefHeight="-1.0" />
+		            <Label text="Gestione RDA" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+      </children>
+    </HBox>
+  </top>
 </BorderPane>

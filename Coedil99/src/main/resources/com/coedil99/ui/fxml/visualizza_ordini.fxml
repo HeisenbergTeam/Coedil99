@@ -101,7 +101,6 @@
                         <Insets right="10.0" fx:id="x11" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="btnEditOrdine" mnemonicParsing="false" onAction="#onEditOrdine" text="Modifica" HBox.margin="$x11" />
                   <Button fx:id="btnDeleteOrdine" mnemonicParsing="false" onAction="#onDeleteOrdine" text="Elimina" />
                </children>
                <padding>

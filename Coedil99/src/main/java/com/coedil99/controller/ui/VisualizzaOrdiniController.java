@@ -1,10 +1,7 @@
 package com.coedil99.controller.ui;
 
 import com.coedil99.controller.builder.Builder;
-import com.coedil99.modello_di_dominio.Commessa;
-import com.coedil99.modello_di_dominio.DAOFactory;
-import com.coedil99.modello_di_dominio.Destinazione;
-import com.coedil99.modello_di_dominio.Ordine;
+import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
@@ -16,12 +13,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -51,7 +51,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	@FXML
 	public Button btnNewOrdine;
-	public Button btnEditOrdine;
+	//public Button btnEditOrdine;
 	public Button btnDeleteOrdine;
 	public Button btnNewCommessa;
 	public Button btnEditCommessa;
@@ -91,11 +91,16 @@ public class VisualizzaOrdiniController implements Initializable {
 		public void changed(ObservableValue<? extends Object> arg0,
 				Object arg1, Object arg2) {
 
-			Ordine ao = getOrdini().get((Integer) arg2);
-			System.out.print(ao.getID());
-			VisualizzaOrdiniController.this.ordineCorrente = ao;
-			VisualizzaOrdiniController.this.loadTablePane(ao);
-
+			Integer index = (Integer)arg2;
+			if (index >= 0 ) {
+				btnNewCommessa.setDisable(false);
+				//btnEditOrdine.setDisable(false);
+				btnDeleteOrdine.setDisable(false);
+				Ordine ao = getOrdini().get(index);
+				//System.out.print(ao.getID());
+				VisualizzaOrdiniController.this.ordineCorrente = ao;
+				VisualizzaOrdiniController.this.loadTablePane(ao);
+			}
 		}
 	};
 
@@ -127,6 +132,7 @@ public class VisualizzaOrdiniController implements Initializable {
 		//tableOrdini.getSelectionModel().clearSelection();
 		refreshListaOrdini();
 		tableOrdini.getSelectionModel().selectLast();
+		tableOrdini.scrollTo(ordine);
 		//tableOrdini.requestFocus();
 		//System.out.print(tableOrdini.getSelectionModel().getTableView().refresh();//.getSelectedItem(ordine));
 		//tableOrdini.getSelectionModel().getTableView().refresh();
@@ -136,7 +142,7 @@ public class VisualizzaOrdiniController implements Initializable {
 		//tableOrdini.getSelectionModel().select( tableOrdini.getSelectionModel().getSelectedIndices().size()-1);
 		//tableOrdini.getFocusModel().fo.focus(0);
 		btnNewOrdine.setDisable(false);
-		btnEditOrdine.setDisable(false);
+		//btnEditOrdine.setDisable(false);
 		btnDeleteOrdine.setDisable(false);
 		btnNewCommessa.setDisable(false);
 		btnEditCommessa.setDisable(true);
@@ -147,12 +153,15 @@ public class VisualizzaOrdiniController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
+		tableOrdini.setEditable(true);//.setCellFactory(TextFieldTableCell.forTableColumn());
+		//tableOrdiniCliente.setCellFactory(TextFieldTableCell.forTableColumn());
+		//tableOrdiniCliente.setEditable(true);
 		refreshListaOrdini();
 
 		commesseTabPane.getTabs().clear();
 
 		btnNewOrdine.setDisable(false);
-		btnEditOrdine.setDisable(true);
+		//btnEditOrdine.setDisable(true);
 		btnDeleteOrdine.setDisable(true);
 		btnNewCommessa.setDisable(true);
 		btnEditCommessa.setDisable(true);
@@ -204,6 +213,34 @@ public class VisualizzaOrdiniController implements Initializable {
 					}
 				});
 
+		tableOrdiniData.setCellFactory(TextFieldTableCell.forTableColumn());
+		tableOrdiniData.setOnEditCommit(
+				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
+
+					@Override
+					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
+						System.out.print(t.getNewValue());
+
+						Ordine ordineCorrenet = ((Ordine) t.getTableView().getItems().get(
+								t.getTablePosition().getRow())
+						);
+
+						ordineCorrenet.setDataCreazione(new Date());
+
+						try {
+
+							DAOFactory.getDAOFactory().getOrdineDAO().save(ordineCorrenet);
+						} catch (PersistentException e) {
+							e.printStackTrace();
+						} finally {
+							refreshListaOrdini();
+						}
+
+					}
+				}
+		);
+		tableOrdiniData.setEditable(true);
+
 		tableOrdiniDestinazione
 				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
 
@@ -222,8 +259,57 @@ public class VisualizzaOrdiniController implements Initializable {
 					}
 				});
 
-		tableOrdiniCliente
-				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
+		tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
+		tableOrdiniDestinazione.setOnEditCommit(
+				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
+
+					@Override
+					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
+						System.out.print(t.getNewValue());
+
+						Ordine ordineCorrenet = ((Ordine) t.getTableView().getItems().get(
+								t.getTablePosition().getRow())
+						);
+
+						Destinazione oldDest = ordineCorrenet.getDestinazione();
+
+
+
+						Destinazione dest = new Builder.DestinazioneBuilder().setVia(t.getNewValue()).build();
+
+						ordineCorrenet.setDestinazione(dest);
+
+						try {
+
+							DAOFactory.getDAOFactory().getOrdineDAO().save(ordineCorrenet);
+						} catch (PersistentException e) {
+							e.printStackTrace();
+						} finally {
+							refreshListaOrdini();
+						}
+
+						try {
+
+							DAOFactory.getDAOFactory().getDestinazioneDAO().deleteAndDissociate(oldDest);
+						} catch (PersistentException e) {
+							e.printStackTrace();
+						}
+
+					}
+				}
+		);
+		tableOrdiniDestinazione.setEditable(true);
+
+
+/*
+		Callback<TableColumn<Ordine,String>, TableCell<Ordine,String>> cellFactory =
+				new Callback<TableColumn<Ordine,String>, TableCell<Ordine,String>>() {
+					public TableCell call(TableColumn p) {
+						return new EditingCell();
+					}
+				};
+*/
+		tableOrdiniCliente.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
 
 					@Override
 					public ObservableValue<String> call(
@@ -239,6 +325,23 @@ public class VisualizzaOrdiniController implements Initializable {
 						return s;
 					}
 				});
+
+		tableOrdiniCliente.setCellFactory(TextFieldTableCell.forTableColumn());
+		tableOrdiniCliente.setOnEditCommit(
+				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
+
+					@Override
+					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
+						System.out.print(t.getNewValue());
+						/*
+						((Ordine) t.getTableView().getItems().get(
+								t.getTablePosition().getRow())
+						).setDestinazione(t.getNewValue());
+						*/
+					}
+				}
+		);
+		tableOrdiniCliente.setEditable(true);
 
 		ObservableList<Ordine> list = FXCollections.observableList(ordini);
 		tableOrdini.setItems(list);
@@ -313,7 +416,8 @@ public class VisualizzaOrdiniController implements Initializable {
 	@FXML
 	protected void onEditOrdine() {
 		log.i("edit ordine");
-
+		tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
+		//setCellFactory(TextFieldTableCell.<StateData>forTableColumn());
 	}
 
 	/**
@@ -322,6 +426,16 @@ public class VisualizzaOrdiniController implements Initializable {
 	@FXML
 	protected void onDeleteOrdine() {
 		log.i("delete ordine");
+
+		Ordine ordine = tableOrdini.getSelectionModel().getSelectedItem();
+		try {
+
+			DAOFactory.getDAOFactory().getOrdineDAO().deleteAndDissociate(ordine);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		} finally {
+			refreshListaOrdini();
+		}
 
 	}
 
@@ -419,3 +533,70 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	}
 }
+/*
+class EditingCell extends TableCell<Ordine, String> {
+
+	private TextField textField;
+
+	public EditingCell() {
+	}
+
+	@Override
+	public void startEdit() {
+		if (!isEmpty()) {
+			super.startEdit();
+			createTextField();
+			setText(null);
+			setGraphic(textField);
+			textField.selectAll();
+		}
+	}
+
+	@Override
+	public void cancelEdit() {
+		super.cancelEdit();
+
+		setText((String) getItem());
+		setGraphic(null);
+	}
+
+	@Override
+	public void updateItem(String item, boolean empty) {
+		super.updateItem(item, empty);
+
+		if (empty) {
+			setText(null);
+			setGraphic(null);
+		} else {
+			if (isEditing()) {
+				if (textField != null) {
+					textField.setText(getString());
+				}
+				setText(null);
+				setGraphic(textField);
+			} else {
+				setText(getString());
+				setGraphic(null);
+			}
+		}
+	}
+
+	private void createTextField() {
+		textField = new TextField(getString());
+		textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
+		textField.focusedProperty().addListener(new ChangeListener<Boolean>(){
+			@Override
+			public void changed(ObservableValue<? extends Boolean> arg0,
+								Boolean arg1, Boolean arg2) {
+				if (!arg2) {
+					commitEdit(textField.getText());
+				}
+			}
+		});
+	}
+
+	private String getString() {
+		return getItem() == null ? "" : getItem().toString();
+	}
+}
+*/

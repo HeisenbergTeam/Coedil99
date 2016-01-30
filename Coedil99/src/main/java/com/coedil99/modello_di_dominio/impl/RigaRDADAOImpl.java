@@ -13,11 +13,13 @@
  */
 package com.coedil99.modello_di_dominio.impl;
 
-import org.orm.*;
+import com.coedil99.modello_di_dominio.RigaRDA;
+import com.coedil99.modello_di_dominio.RigaRDACriteria;
 import org.hibernate.Query;
-import org.hibernate.LockMode;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+
 import java.util.List;
-import com.coedil99.modello_di_dominio.*;
 
 public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaRDADAO {
 	public RigaRDA loadRigaRDAByORMID(int ID) throws PersistentException {
@@ -30,7 +32,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA getRigaRDAByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -41,7 +43,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA loadRigaRDAByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -52,7 +54,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA getRigaRDAByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -63,7 +65,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA loadRigaRDAByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (RigaRDA) session.load(com.coedil99.modello_di_dominio.RigaRDA.class, new Integer(ID));
@@ -73,7 +75,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA getRigaRDAByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (RigaRDA) session.get(com.coedil99.modello_di_dominio.RigaRDA.class, new Integer(ID));
@@ -83,7 +85,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA loadRigaRDAByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (RigaRDA) session.load(com.coedil99.modello_di_dominio.RigaRDA.class, new Integer(ID), lockMode);
@@ -93,7 +95,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA getRigaRDAByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (RigaRDA) session.get(com.coedil99.modello_di_dominio.RigaRDA.class, new Integer(ID), lockMode);
@@ -103,7 +105,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRigaRDA(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -114,7 +116,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRigaRDA(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -125,7 +127,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA[] listRigaRDAByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -136,7 +138,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA[] listRigaRDAByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -147,7 +149,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRigaRDA(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RigaRDA as RigaRDA");
 		if (condition != null)
@@ -163,7 +165,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRigaRDA(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RigaRDA as RigaRDA");
 		if (condition != null)
@@ -180,7 +182,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA[] listRigaRDAByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		try {
 			List list = queryRigaRDA(session, condition, orderBy);
@@ -191,7 +193,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA[] listRigaRDAByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			List list = queryRigaRDA(session, condition, orderBy, lockMode);
@@ -202,7 +204,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA loadRigaRDAByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -213,7 +215,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA loadRigaRDAByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -224,7 +226,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA loadRigaRDAByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		RigaRDA[] rigaRDAs = listRigaRDAByQuery(session, condition, orderBy);
 		if (rigaRDAs != null && rigaRDAs.length > 0)
@@ -232,7 +234,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 		else
 			return null;
 	}
-	
+
 	public RigaRDA loadRigaRDAByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		RigaRDA[] rigaRDAs = listRigaRDAByQuery(session, condition, orderBy, lockMode);
 		if (rigaRDAs != null && rigaRDAs.length > 0)
@@ -240,7 +242,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 		else
 			return null;
 	}
-	
+
 	public java.util.Iterator iterateRigaRDAByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -251,7 +253,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateRigaRDAByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -262,7 +264,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateRigaRDAByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RigaRDA as RigaRDA");
 		if (condition != null)
@@ -278,7 +280,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateRigaRDAByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RigaRDA as RigaRDA");
 		if (condition != null)
@@ -295,11 +297,11 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RigaRDA createRigaRDA() {
 		return new com.coedil99.modello_di_dominio.RigaRDA();
 	}
-	
+
 	public boolean save(com.coedil99.modello_di_dominio.RigaRDA rigaRDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().saveObject(rigaRDA);
@@ -310,7 +312,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean delete(com.coedil99.modello_di_dominio.RigaRDA rigaRDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().deleteObject(rigaRDA);
@@ -321,17 +323,17 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.RigaRDA rigaRDA)throws PersistentException {
 		try {
 			if (rigaRDA.getPezzo() != null) {
 				rigaRDA.getPezzo().setRigaRDA(null);
 			}
-			
+
 			if (rigaRDA.getRda() != null) {
 				rigaRDA.getRda().righeRDA.remove(rigaRDA);
 			}
-			
+
 			return delete(rigaRDA);
 		}
 		catch(Exception e) {
@@ -339,17 +341,17 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.RigaRDA rigaRDA, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			if (rigaRDA.getPezzo() != null) {
 				rigaRDA.getPezzo().setRigaRDA(null);
 			}
-			
+
 			if (rigaRDA.getRda() != null) {
 				rigaRDA.getRda().righeRDA.remove(rigaRDA);
 			}
-			
+
 			try {
 				session.delete(rigaRDA);
 				return true;
@@ -362,7 +364,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean refresh(com.coedil99.modello_di_dominio.RigaRDA rigaRDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().refresh(rigaRDA);
@@ -373,7 +375,7 @@ public class RigaRDADAOImpl implements com.coedil99.modello_di_dominio.dao.RigaR
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean evict(com.coedil99.modello_di_dominio.RigaRDA rigaRDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().evict(rigaRDA);

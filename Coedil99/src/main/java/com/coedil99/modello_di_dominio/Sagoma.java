@@ -13,6 +13,11 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Sagoma {
 	public Sagoma() {
 	}
@@ -22,27 +27,27 @@ public class Sagoma {
 	private String img;
 	
 	private com.coedil99.modello_di_dominio.LavorazionePezzo lavorazionePezzo;
-	
+
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
-	
+
 	public int getORMID() {
 		return getID();
 	}
-	
+
 	public void setImg(String value) {
 		this.img = value;
 	}
-	
+
 	public String getImg() {
 		return img;
 	}
-	
+
 	public void setLavorazionePezzo(com.coedil99.modello_di_dominio.LavorazionePezzo value) {
 		if (this.lavorazionePezzo != value) {
 			com.coedil99.modello_di_dominio.LavorazionePezzo llavorazionePezzo = this.lavorazionePezzo;
@@ -55,7 +60,8 @@ public class Sagoma {
 			}
 		}
 	}
-	
+
+	@XmlIDREF
 	public com.coedil99.modello_di_dominio.LavorazionePezzo getLavorazionePezzo() {
 		return lavorazionePezzo;
 	}

@@ -13,9 +13,10 @@
  */
 package com.coedil99.modello_di_dominio.dao;
 
-import org.orm.*;
-import org.hibernate.LockMode;
-import com.coedil99.modello_di_dominio.*;
+import com.coedil99.modello_di_dominio.Commessa;
+import com.coedil99.modello_di_dominio.CommessaCriteria;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
 
 public interface CommessaDAO {
 	public Commessa loadCommessaByORMID(int ID) throws PersistentException;

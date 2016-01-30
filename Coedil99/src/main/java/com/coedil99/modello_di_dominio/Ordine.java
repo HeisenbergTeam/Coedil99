@@ -13,6 +13,9 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.*;
+
+@XmlRootElement
 public class Ordine {
 	public Ordine() {
 	}
@@ -43,7 +46,7 @@ public class Ordine {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -72,7 +75,7 @@ public class Ordine {
 			}
 		}
 	}
-	
+	@XmlIDREF
 	public com.coedil99.modello_di_dominio.Destinazione getDestinazione() {
 		return destinazione;
 	}
@@ -80,13 +83,20 @@ public class Ordine {
 	private void setORM_Commesse(java.util.Set value) {
 		this.ORM_commesse = value;
 	}
-	
+	@XmlTransient
 	private java.util.Set getORM_Commesse() {
 		return ORM_commesse;
 	}
-	
+
+	@XmlTransient
 	public final com.coedil99.modello_di_dominio.CommessaSetCollection commesse = new com.coedil99.modello_di_dominio.CommessaSetCollection(this, _ormAdapter, com.coedil99.modello_di_dominio.ORMConstants.KEY_ORDINE_COMMESSE, com.coedil99.modello_di_dominio.ORMConstants.KEY_COMMESSA_ORDINE, com.coedil99.modello_di_dominio.ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
+
+	@XmlElement
+	public Commessa[] getCommesse()
+	{
+		return commesse.toArray();
+	}
+
 	public String toString() {
 		return String.valueOf(getID());
 	}

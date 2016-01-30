@@ -14,7 +14,9 @@
 package com.coedil99.modello_di_dominio;
 
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Pezzo {
@@ -40,11 +42,11 @@ public class Pezzo {
 	public int getORMID() {
 		return getID();
 	}
-	
+
 	public void setQuantitaOrdinate(int value) {
 		this.quantitaOrdinate = value;
 	}
-	
+
 	public int getQuantitaOrdinate() {
 		return quantitaOrdinate;
 	}

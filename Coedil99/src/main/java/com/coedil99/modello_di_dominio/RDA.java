@@ -13,6 +13,12 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
 public class RDA {
 	public RDA() {
 	}
@@ -59,7 +65,7 @@ public class RDA {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -108,7 +114,7 @@ public class RDA {
 			value.rda.add(this);
 		}
 	}
-	
+	@XmlIDREF
 	public com.coedil99.modello_di_dominio.Fornitore getFornitore() {
 		return fornitore;
 	}
@@ -119,7 +125,7 @@ public class RDA {
 	public void setORM_Fornitore(com.coedil99.modello_di_dominio.Fornitore value) {
 		this.fornitore = value;
 	}
-	
+	@XmlTransient
 	private com.coedil99.modello_di_dominio.Fornitore getORM_Fornitore() {
 		return fornitore;
 	}
@@ -127,11 +133,11 @@ public class RDA {
 	private void setORM_RigheRDA(java.util.Set value) {
 		this.ORM_righeRDA = value;
 	}
-	
+	@XmlTransient
 	private java.util.Set getORM_RigheRDA() {
 		return ORM_righeRDA;
 	}
-	
+	@XmlTransient
 	public final com.coedil99.modello_di_dominio.RigaRDASetCollection righeRDA = new com.coedil99.modello_di_dominio.RigaRDASetCollection(this, _ormAdapter, com.coedil99.modello_di_dominio.ORMConstants.KEY_RDA_RIGHERDA, com.coedil99.modello_di_dominio.ORMConstants.KEY_RIGARDA_RDA, com.coedil99.modello_di_dominio.ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {

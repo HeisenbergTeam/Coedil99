@@ -13,9 +13,10 @@
  */
 package com.coedil99.modello_di_dominio.dao;
 
-import org.orm.*;
-import org.hibernate.LockMode;
-import com.coedil99.modello_di_dominio.*;
+import com.coedil99.modello_di_dominio.Destinazione;
+import com.coedil99.modello_di_dominio.DestinazioneCriteria;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
 
 public interface DestinazioneDAO {
 	public Destinazione loadDestinazioneByORMID(int ID) throws PersistentException;

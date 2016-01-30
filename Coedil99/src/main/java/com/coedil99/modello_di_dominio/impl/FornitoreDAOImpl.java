@@ -13,11 +13,13 @@
  */
 package com.coedil99.modello_di_dominio.impl;
 
-import org.orm.*;
+import com.coedil99.modello_di_dominio.Fornitore;
+import com.coedil99.modello_di_dominio.FornitoreCriteria;
 import org.hibernate.Query;
-import org.hibernate.LockMode;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+
 import java.util.List;
-import com.coedil99.modello_di_dominio.*;
 
 public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.FornitoreDAO {
 	public Fornitore loadFornitoreByORMID(int ID) throws PersistentException {
@@ -30,7 +32,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore getFornitoreByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -41,7 +43,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore loadFornitoreByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -52,7 +54,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore getFornitoreByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -63,7 +65,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore loadFornitoreByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (Fornitore) session.load(com.coedil99.modello_di_dominio.Fornitore.class, new Integer(ID));
@@ -73,7 +75,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore getFornitoreByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (Fornitore) session.get(com.coedil99.modello_di_dominio.Fornitore.class, new Integer(ID));
@@ -83,7 +85,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore loadFornitoreByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (Fornitore) session.load(com.coedil99.modello_di_dominio.Fornitore.class, new Integer(ID), lockMode);
@@ -93,7 +95,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore getFornitoreByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (Fornitore) session.get(com.coedil99.modello_di_dominio.Fornitore.class, new Integer(ID), lockMode);
@@ -103,7 +105,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryFornitore(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -114,7 +116,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryFornitore(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -125,7 +127,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore[] listFornitoreByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -136,7 +138,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore[] listFornitoreByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -147,7 +149,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryFornitore(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Fornitore as Fornitore");
 		if (condition != null)
@@ -163,7 +165,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryFornitore(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Fornitore as Fornitore");
 		if (condition != null)
@@ -180,7 +182,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore[] listFornitoreByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		try {
 			List list = queryFornitore(session, condition, orderBy);
@@ -191,7 +193,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore[] listFornitoreByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			List list = queryFornitore(session, condition, orderBy, lockMode);
@@ -202,7 +204,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore loadFornitoreByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -213,7 +215,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore loadFornitoreByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -224,7 +226,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore loadFornitoreByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		Fornitore[] fornitores = listFornitoreByQuery(session, condition, orderBy);
 		if (fornitores != null && fornitores.length > 0)
@@ -232,7 +234,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 		else
 			return null;
 	}
-	
+
 	public Fornitore loadFornitoreByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		Fornitore[] fornitores = listFornitoreByQuery(session, condition, orderBy, lockMode);
 		if (fornitores != null && fornitores.length > 0)
@@ -240,7 +242,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 		else
 			return null;
 	}
-	
+
 	public java.util.Iterator iterateFornitoreByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -251,7 +253,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateFornitoreByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -262,7 +264,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateFornitoreByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Fornitore as Fornitore");
 		if (condition != null)
@@ -278,7 +280,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateFornitoreByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Fornitore as Fornitore");
 		if (condition != null)
@@ -295,11 +297,11 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Fornitore createFornitore() {
 		return new com.coedil99.modello_di_dominio.Fornitore();
 	}
-	
+
 	public boolean save(com.coedil99.modello_di_dominio.Fornitore fornitore) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().saveObject(fornitore);
@@ -310,7 +312,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean delete(com.coedil99.modello_di_dominio.Fornitore fornitore) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().deleteObject(fornitore);
@@ -321,7 +323,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Fornitore fornitore)throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.RDA[] lRdas = fornitore.rda.toArray();
@@ -339,7 +341,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Fornitore fornitore, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.RDA[] lRdas = fornitore.rda.toArray();
@@ -362,7 +364,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean refresh(com.coedil99.modello_di_dominio.Fornitore fornitore) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().refresh(fornitore);
@@ -373,7 +375,7 @@ public class FornitoreDAOImpl implements com.coedil99.modello_di_dominio.dao.For
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean evict(com.coedil99.modello_di_dominio.Fornitore fornitore) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().evict(fornitore);

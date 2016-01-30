@@ -30,6 +30,7 @@ public class Main {
                 accept(MediaType.APPLICATION_JSON).
                 get(Pezzo.class);
 
+
         System.out.println(pezzo);
 
 

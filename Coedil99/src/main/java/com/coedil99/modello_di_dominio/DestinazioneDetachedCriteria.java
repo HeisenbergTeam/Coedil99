@@ -13,10 +13,14 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
-import org.orm.criteria.*;
+import org.orm.criteria.AbstractORMDetachedCriteria;
+import org.orm.criteria.AssociationExpression;
+import org.orm.criteria.IntegerExpression;
+import org.orm.criteria.StringExpression;
+
+import java.util.List;
 
 public class DestinazioneDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
@@ -25,7 +29,7 @@ public class DestinazioneDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final AssociationExpression ordine;
 	
 	public DestinazioneDetachedCriteria() {
-		super(com.coedil99.modello_di_dominio.Destinazione.class, com.coedil99.modello_di_dominio.DestinazioneCriteria.class);
+		super(Destinazione.class, DestinazioneCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		via = new StringExpression("via", this.getDetachedCriteria());
 		ordineId = new IntegerExpression("ordine.ID", this.getDetachedCriteria());
@@ -33,7 +37,7 @@ public class DestinazioneDetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public DestinazioneDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, com.coedil99.modello_di_dominio.DestinazioneCriteria.class);
+		super(aDetachedCriteria, DestinazioneCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		via = new StringExpression("via", this.getDetachedCriteria());
 		ordineId = new IntegerExpression("ordine.ID", this.getDetachedCriteria());

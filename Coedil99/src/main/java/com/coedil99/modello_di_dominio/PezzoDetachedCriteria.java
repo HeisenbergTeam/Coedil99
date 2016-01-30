@@ -13,10 +13,13 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
-import org.orm.criteria.*;
+import org.orm.criteria.AbstractORMDetachedCriteria;
+import org.orm.criteria.AssociationExpression;
+import org.orm.criteria.IntegerExpression;
+
+import java.util.List;
 
 public class PezzoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
@@ -35,7 +38,7 @@ public class PezzoDetachedCriteria extends AbstractORMDetachedCriteria {
 		rigaRDAId = new IntegerExpression("rigaRDA.ID", this.getDetachedCriteria());
 		rigaRDA = new AssociationExpression("rigaRDA", this.getDetachedCriteria());
 	}
-	
+
 	public PezzoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.coedil99.modello_di_dominio.PezzoCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());

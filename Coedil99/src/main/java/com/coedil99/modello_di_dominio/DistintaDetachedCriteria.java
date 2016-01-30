@@ -13,10 +13,11 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
+
+import java.util.List;
 
 public class DistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
@@ -29,7 +30,7 @@ public class DistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression righeDistinta;
 	
 	public DistintaDetachedCriteria() {
-		super(com.coedil99.modello_di_dominio.Distinta.class, com.coedil99.modello_di_dominio.DistintaCriteria.class);
+		super(Distinta.class, DistintaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		dataInizio = new DateExpression("dataInizio", this.getDetachedCriteria());
 		commessaId = new IntegerExpression("commessa.ID", this.getDetachedCriteria());
@@ -41,7 +42,7 @@ public class DistintaDetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public DistintaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, com.coedil99.modello_di_dominio.DistintaCriteria.class);
+		super(aDetachedCriteria, DistintaCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		dataInizio = new DateExpression("dataInizio", this.getDetachedCriteria());
 		commessaId = new IntegerExpression("commessa.ID", this.getDetachedCriteria());

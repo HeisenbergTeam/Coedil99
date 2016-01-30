@@ -13,10 +13,11 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
+
+import java.util.List;
 
 public class RDADetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
@@ -29,7 +30,7 @@ public class RDADetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression righeRDA;
 	
 	public RDADetachedCriteria() {
-		super(com.coedil99.modello_di_dominio.RDA.class, com.coedil99.modello_di_dominio.RDACriteria.class);
+		super(RDA.class, RDACriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		fornitoreId = new IntegerExpression("fornitore.ID", this.getDetachedCriteria());
 		fornitore = new AssociationExpression("fornitore", this.getDetachedCriteria());
@@ -41,7 +42,7 @@ public class RDADetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public RDADetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, com.coedil99.modello_di_dominio.RDACriteria.class);
+		super(aDetachedCriteria, RDACriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		fornitoreId = new IntegerExpression("fornitore.ID", this.getDetachedCriteria());
 		fornitore = new AssociationExpression("fornitore", this.getDetachedCriteria());

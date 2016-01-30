@@ -13,9 +13,10 @@
  */
 package com.coedil99.modello_di_dominio.dao;
 
-import org.orm.*;
-import org.hibernate.LockMode;
-import com.coedil99.modello_di_dominio.*;
+import com.coedil99.modello_di_dominio.Ordine;
+import com.coedil99.modello_di_dominio.OrdineCriteria;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
 
 public interface OrdineDAO {
 	public Ordine loadOrdineByORMID(int ID) throws PersistentException;

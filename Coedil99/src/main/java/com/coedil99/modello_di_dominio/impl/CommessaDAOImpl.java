@@ -13,11 +13,13 @@
  */
 package com.coedil99.modello_di_dominio.impl;
 
-import org.orm.*;
+import com.coedil99.modello_di_dominio.Commessa;
+import com.coedil99.modello_di_dominio.CommessaCriteria;
 import org.hibernate.Query;
-import org.hibernate.LockMode;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+
 import java.util.List;
-import com.coedil99.modello_di_dominio.*;
 
 public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.CommessaDAO {
 	public Commessa loadCommessaByORMID(int ID) throws PersistentException {
@@ -30,7 +32,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa getCommessaByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -41,7 +43,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa loadCommessaByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -52,7 +54,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa getCommessaByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -63,7 +65,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa loadCommessaByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (Commessa) session.load(com.coedil99.modello_di_dominio.Commessa.class, new Integer(ID));
@@ -73,7 +75,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa getCommessaByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (Commessa) session.get(com.coedil99.modello_di_dominio.Commessa.class, new Integer(ID));
@@ -83,7 +85,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa loadCommessaByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (Commessa) session.load(com.coedil99.modello_di_dominio.Commessa.class, new Integer(ID), lockMode);
@@ -93,7 +95,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa getCommessaByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (Commessa) session.get(com.coedil99.modello_di_dominio.Commessa.class, new Integer(ID), lockMode);
@@ -103,7 +105,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryCommessa(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -114,7 +116,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryCommessa(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -125,7 +127,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa[] listCommessaByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -136,7 +138,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa[] listCommessaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -147,7 +149,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryCommessa(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Commessa as Commessa");
 		if (condition != null)
@@ -163,7 +165,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryCommessa(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Commessa as Commessa");
 		if (condition != null)
@@ -180,7 +182,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa[] listCommessaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		try {
 			List list = queryCommessa(session, condition, orderBy);
@@ -191,7 +193,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa[] listCommessaByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			List list = queryCommessa(session, condition, orderBy, lockMode);
@@ -202,7 +204,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa loadCommessaByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -213,7 +215,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa loadCommessaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -224,7 +226,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa loadCommessaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		Commessa[] commessas = listCommessaByQuery(session, condition, orderBy);
 		if (commessas != null && commessas.length > 0)
@@ -232,7 +234,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 		else
 			return null;
 	}
-	
+
 	public Commessa loadCommessaByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		Commessa[] commessas = listCommessaByQuery(session, condition, orderBy, lockMode);
 		if (commessas != null && commessas.length > 0)
@@ -240,7 +242,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 		else
 			return null;
 	}
-	
+
 	public java.util.Iterator iterateCommessaByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -251,7 +253,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateCommessaByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -262,7 +264,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateCommessaByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Commessa as Commessa");
 		if (condition != null)
@@ -278,7 +280,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateCommessaByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Commessa as Commessa");
 		if (condition != null)
@@ -295,11 +297,11 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Commessa createCommessa() {
 		return new com.coedil99.modello_di_dominio.Commessa();
 	}
-	
+
 	public boolean save(com.coedil99.modello_di_dominio.Commessa commessa) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().saveObject(commessa);
@@ -310,7 +312,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean delete(com.coedil99.modello_di_dominio.Commessa commessa) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().deleteObject(commessa);
@@ -321,17 +323,17 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Commessa commessa)throws PersistentException {
 		try {
 			if (commessa.getOrdine() != null) {
 				commessa.getOrdine().commesse.remove(commessa);
 			}
-			
+
 			if (commessa.getDistinta() != null) {
 				commessa.getDistinta().setCommessa(null);
 			}
-			
+
 			return delete(commessa);
 		}
 		catch(Exception e) {
@@ -339,17 +341,17 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Commessa commessa, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			if (commessa.getOrdine() != null) {
 				commessa.getOrdine().commesse.remove(commessa);
 			}
-			
+
 			if (commessa.getDistinta() != null) {
 				commessa.getDistinta().setCommessa(null);
 			}
-			
+
 			try {
 				session.delete(commessa);
 				return true;
@@ -362,7 +364,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean refresh(com.coedil99.modello_di_dominio.Commessa commessa) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().refresh(commessa);
@@ -373,7 +375,7 @@ public class CommessaDAOImpl implements com.coedil99.modello_di_dominio.dao.Comm
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean evict(com.coedil99.modello_di_dominio.Commessa commessa) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().evict(commessa);

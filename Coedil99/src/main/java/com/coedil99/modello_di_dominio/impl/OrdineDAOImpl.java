@@ -13,11 +13,13 @@
  */
 package com.coedil99.modello_di_dominio.impl;
 
-import org.orm.*;
+import com.coedil99.modello_di_dominio.Ordine;
+import com.coedil99.modello_di_dominio.OrdineCriteria;
 import org.hibernate.Query;
-import org.hibernate.LockMode;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+
 import java.util.List;
-import com.coedil99.modello_di_dominio.*;
 
 public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.OrdineDAO {
 	public Ordine loadOrdineByORMID(int ID) throws PersistentException {
@@ -30,7 +32,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine getOrdineByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -41,7 +43,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine loadOrdineByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -52,7 +54,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine getOrdineByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -63,7 +65,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine loadOrdineByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (Ordine) session.load(com.coedil99.modello_di_dominio.Ordine.class, new Integer(ID));
@@ -73,7 +75,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine getOrdineByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (Ordine) session.get(com.coedil99.modello_di_dominio.Ordine.class, new Integer(ID));
@@ -83,7 +85,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine loadOrdineByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (Ordine) session.load(com.coedil99.modello_di_dominio.Ordine.class, new Integer(ID), lockMode);
@@ -93,7 +95,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine getOrdineByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (Ordine) session.get(com.coedil99.modello_di_dominio.Ordine.class, new Integer(ID), lockMode);
@@ -103,7 +105,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryOrdine(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -114,7 +116,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryOrdine(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -125,7 +127,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine[] listOrdineByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -136,7 +138,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine[] listOrdineByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -147,7 +149,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryOrdine(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Ordine as Ordine");
 		if (condition != null)
@@ -163,7 +165,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryOrdine(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Ordine as Ordine");
 		if (condition != null)
@@ -180,7 +182,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine[] listOrdineByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		try {
 			List list = queryOrdine(session, condition, orderBy);
@@ -191,7 +193,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine[] listOrdineByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			List list = queryOrdine(session, condition, orderBy, lockMode);
@@ -202,7 +204,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine loadOrdineByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -213,7 +215,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine loadOrdineByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -224,7 +226,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine loadOrdineByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		Ordine[] ordines = listOrdineByQuery(session, condition, orderBy);
 		if (ordines != null && ordines.length > 0)
@@ -232,7 +234,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 		else
 			return null;
 	}
-	
+
 	public Ordine loadOrdineByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		Ordine[] ordines = listOrdineByQuery(session, condition, orderBy, lockMode);
 		if (ordines != null && ordines.length > 0)
@@ -240,7 +242,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 		else
 			return null;
 	}
-	
+
 	public java.util.Iterator iterateOrdineByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -251,7 +253,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateOrdineByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -262,7 +264,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateOrdineByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Ordine as Ordine");
 		if (condition != null)
@@ -278,7 +280,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateOrdineByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.Ordine as Ordine");
 		if (condition != null)
@@ -295,11 +297,11 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public Ordine createOrdine() {
 		return new com.coedil99.modello_di_dominio.Ordine();
 	}
-	
+
 	public boolean save(com.coedil99.modello_di_dominio.Ordine ordine) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().saveObject(ordine);
@@ -310,7 +312,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean delete(com.coedil99.modello_di_dominio.Ordine ordine) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().deleteObject(ordine);
@@ -321,13 +323,13 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Ordine ordine)throws PersistentException {
 		try {
 			if (ordine.getDestinazione() != null) {
 				ordine.getDestinazione().setOrdine(null);
 			}
-			
+
 			com.coedil99.modello_di_dominio.Commessa[] lCommesses = ordine.commesse.toArray();
 			for(int i = 0; i < lCommesses.length; i++) {
 				lCommesses[i].setOrdine(null);
@@ -339,13 +341,13 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.Ordine ordine, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			if (ordine.getDestinazione() != null) {
 				ordine.getDestinazione().setOrdine(null);
 			}
-			
+
 			com.coedil99.modello_di_dominio.Commessa[] lCommesses = ordine.commesse.toArray();
 			for(int i = 0; i < lCommesses.length; i++) {
 				lCommesses[i].setOrdine(null);
@@ -362,7 +364,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean refresh(com.coedil99.modello_di_dominio.Ordine ordine) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().refresh(ordine);
@@ -373,7 +375,7 @@ public class OrdineDAOImpl implements com.coedil99.modello_di_dominio.dao.Ordine
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean evict(com.coedil99.modello_di_dominio.Ordine ordine) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().evict(ordine);

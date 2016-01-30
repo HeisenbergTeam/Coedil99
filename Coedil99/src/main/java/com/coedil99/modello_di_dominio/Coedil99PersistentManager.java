@@ -13,9 +13,11 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import org.orm.*;
+import org.hibernate.FlushMode;
+import org.orm.PersistentException;
+import org.orm.PersistentManager;
 import org.orm.cfg.JDBCConnectionSetting;
-import org.hibernate.*;
+
 import java.util.Properties;
 
 public class Coedil99PersistentManager extends PersistentManager {

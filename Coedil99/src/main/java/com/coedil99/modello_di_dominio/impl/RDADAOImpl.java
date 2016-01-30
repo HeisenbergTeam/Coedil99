@@ -13,11 +13,13 @@
  */
 package com.coedil99.modello_di_dominio.impl;
 
-import org.orm.*;
+import com.coedil99.modello_di_dominio.RDA;
+import com.coedil99.modello_di_dominio.RDACriteria;
 import org.hibernate.Query;
-import org.hibernate.LockMode;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+
 import java.util.List;
-import com.coedil99.modello_di_dominio.*;
 
 public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 	public RDA loadRDAByORMID(int ID) throws PersistentException {
@@ -30,7 +32,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA getRDAByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -41,7 +43,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA loadRDAByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -52,7 +54,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA getRDAByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -63,7 +65,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA loadRDAByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (RDA) session.load(com.coedil99.modello_di_dominio.RDA.class, new Integer(ID));
@@ -73,7 +75,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA getRDAByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (RDA) session.get(com.coedil99.modello_di_dominio.RDA.class, new Integer(ID));
@@ -83,7 +85,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA loadRDAByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (RDA) session.load(com.coedil99.modello_di_dominio.RDA.class, new Integer(ID), lockMode);
@@ -93,7 +95,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA getRDAByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (RDA) session.get(com.coedil99.modello_di_dominio.RDA.class, new Integer(ID), lockMode);
@@ -103,7 +105,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRDA(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -114,7 +116,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRDA(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -125,7 +127,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA[] listRDAByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -136,7 +138,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA[] listRDAByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -147,7 +149,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRDA(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RDA as RDA");
 		if (condition != null)
@@ -163,7 +165,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryRDA(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RDA as RDA");
 		if (condition != null)
@@ -180,7 +182,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA[] listRDAByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		try {
 			List list = queryRDA(session, condition, orderBy);
@@ -191,7 +193,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA[] listRDAByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			List list = queryRDA(session, condition, orderBy, lockMode);
@@ -202,7 +204,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA loadRDAByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -213,7 +215,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA loadRDAByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -224,7 +226,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA loadRDAByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		RDA[] rDAs = listRDAByQuery(session, condition, orderBy);
 		if (rDAs != null && rDAs.length > 0)
@@ -232,7 +234,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 		else
 			return null;
 	}
-	
+
 	public RDA loadRDAByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		RDA[] rDAs = listRDAByQuery(session, condition, orderBy, lockMode);
 		if (rDAs != null && rDAs.length > 0)
@@ -240,7 +242,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 		else
 			return null;
 	}
-	
+
 	public java.util.Iterator iterateRDAByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -251,7 +253,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateRDAByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -262,7 +264,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateRDAByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RDA as RDA");
 		if (condition != null)
@@ -278,7 +280,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateRDAByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.RDA as RDA");
 		if (condition != null)
@@ -295,11 +297,11 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public RDA createRDA() {
 		return new com.coedil99.modello_di_dominio.RDA();
 	}
-	
+
 	public boolean save(com.coedil99.modello_di_dominio.RDA rDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().saveObject(rDA);
@@ -310,7 +312,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean delete(com.coedil99.modello_di_dominio.RDA rDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().deleteObject(rDA);
@@ -321,13 +323,13 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.RDA rDA)throws PersistentException {
 		try {
 			if (rDA.getFornitore() != null) {
 				rDA.getFornitore().rda.remove(rDA);
 			}
-			
+
 			com.coedil99.modello_di_dominio.RigaRDA[] lRigheRDAs = rDA.righeRDA.toArray();
 			for(int i = 0; i < lRigheRDAs.length; i++) {
 				lRigheRDAs[i].setRda(null);
@@ -339,13 +341,13 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.RDA rDA, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			if (rDA.getFornitore() != null) {
 				rDA.getFornitore().rda.remove(rDA);
 			}
-			
+
 			com.coedil99.modello_di_dominio.RigaRDA[] lRigheRDAs = rDA.righeRDA.toArray();
 			for(int i = 0; i < lRigheRDAs.length; i++) {
 				lRigheRDAs[i].setRda(null);
@@ -362,7 +364,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean refresh(com.coedil99.modello_di_dominio.RDA rDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().refresh(rDA);
@@ -373,7 +375,7 @@ public class RDADAOImpl implements com.coedil99.modello_di_dominio.dao.RDADAO {
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean evict(com.coedil99.modello_di_dominio.RDA rDA) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().evict(rDA);

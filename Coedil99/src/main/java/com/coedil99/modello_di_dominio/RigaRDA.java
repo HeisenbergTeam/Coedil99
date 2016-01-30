@@ -1,9 +1,9 @@
 /**
  * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
- *
+ * 
  * This is an automatic generated file. It will be regenerated every time 
  * you generate persistence class.
- *
+ * 
  * Modifying its content may cause the program not work, or your work may lost.
  */
 
@@ -13,13 +13,16 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 public class RigaRDA {
 	public RigaRDA() {
 	}
-
+	
 	private void this_setOwner(Object owner, int key) {
 		if (key == com.coedil99.modello_di_dominio.ORMConstants.KEY_RIGARDA_RDA) {
 			this.rda = (RDA) owner;
@@ -29,43 +32,43 @@ public class RigaRDA {
 			this.pezzo = (Pezzo) owner;
 		}
 	}
-
+	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
 		public void setOwner(Object owner, int key) {
 			this_setOwner(owner, key);
 		}
-
+		
 	};
 
 
 	private int ID;
-
+	
 	private Pezzo pezzo;
-
+	
 	private RDA rda;
-
+	
 	private String indicazione;
-
+	
 	private void setID(int value) {
 		this.ID = value;
 	}
-	@XmlID
+    @XmlID
 	public int getID() {
 		return ID;
 	}
-
+	
 	public int getORMID() {
 		return getID();
 	}
-
+	
 	public void setIndicazione(String value) {
 		this.indicazione = value;
 	}
-
+	
 	public String getIndicazione() {
 		return indicazione;
 	}
-
+	
 	public void setRda(RDA value) {
 		if (rda != null) {
 			rda.righeRDA.remove(this);
@@ -74,11 +77,11 @@ public class RigaRDA {
 			value.righeRDA.add(this);
 		}
 	}
-	@XmlTransient
+	@XmlIDREF
 	public RDA getRda() {
 		return rda;
 	}
-
+	
 	/**
 	 * This method is for internal use only.
 	 */
@@ -90,7 +93,7 @@ public class RigaRDA {
 	private RDA getORM_Rda() {
 		return rda;
 	}
-
+	
 	public void setPezzo(Pezzo value) {
 		if (this.pezzo != value) {
 			Pezzo lpezzo = this.pezzo;
@@ -103,17 +106,13 @@ public class RigaRDA {
 			}
 		}
 	}
-	@XmlTransient
+	@XmlIDREF
 	public Pezzo getPezzo() {
 		return pezzo;
 	}
-
 	
-	private int quantitaPezziOrdinati;
-	
-
 	public String toString() {
 		return String.valueOf(getID());
 	}
-
+	
 }

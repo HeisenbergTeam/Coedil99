@@ -13,7 +13,8 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import org.orm.*;
+import org.orm.PersistentException;
+import org.orm.PersistentManager;
 
 public class CommessaSetCollection extends org.orm.util.ORMSet {
 	public CommessaSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {

@@ -13,10 +13,14 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
-import org.orm.criteria.*;
+import org.orm.criteria.AbstractORMDetachedCriteria;
+import org.orm.criteria.CollectionExpression;
+import org.orm.criteria.IntegerExpression;
+import org.orm.criteria.StringExpression;
+
+import java.util.List;
 
 public class FornitoreDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
@@ -25,7 +29,7 @@ public class FornitoreDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression descrizionePezzo;
 	
 	public FornitoreDetachedCriteria() {
-		super(com.coedil99.modello_di_dominio.Fornitore.class, com.coedil99.modello_di_dominio.FornitoreCriteria.class);
+		super(Fornitore.class, FornitoreCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		rda = new CollectionExpression("ORM_Rda", this.getDetachedCriteria());
@@ -33,7 +37,7 @@ public class FornitoreDetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public FornitoreDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, com.coedil99.modello_di_dominio.FornitoreCriteria.class);
+		super(aDetachedCriteria, FornitoreCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		rda = new CollectionExpression("ORM_Rda", this.getDetachedCriteria());

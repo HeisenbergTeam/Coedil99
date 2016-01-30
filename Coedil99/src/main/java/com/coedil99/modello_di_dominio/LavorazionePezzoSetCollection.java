@@ -13,7 +13,8 @@
  */
 package com.coedil99.modello_di_dominio;
 
-import org.orm.*;
+import org.orm.PersistentException;
+import org.orm.PersistentManager;
 
 public class LavorazionePezzoSetCollection extends org.orm.util.ORMSet {
 	public LavorazionePezzoSetCollection(Object owner, org.orm.util.ORMAdapter adapter, int ownerKey, int targetKey, int collType) {
@@ -97,7 +98,7 @@ public class LavorazionePezzoSetCollection extends org.orm.util.ORMSet {
 	}
 	
 	protected PersistentManager getPersistentManager() throws PersistentException {
-		return com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance();
+		return Coedil99PersistentManager.instance();
 	}
 	
 }

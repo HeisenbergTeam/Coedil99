@@ -13,6 +13,11 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Destinazione {
 	public Destinazione() {
 	}
@@ -21,7 +26,7 @@ public class Destinazione {
 	
 	private String via;
 	
-	private com.coedil99.modello_di_dominio.Ordine ordine;
+	private Ordine ordine;
 	
 	public void setVia(String value) {
 		this.via = value;
@@ -34,7 +39,7 @@ public class Destinazione {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -43,9 +48,9 @@ public class Destinazione {
 		return getID();
 	}
 	
-	public void setOrdine(com.coedil99.modello_di_dominio.Ordine value) {
+	public void setOrdine(Ordine value) {
 		if (this.ordine != value) {
-			com.coedil99.modello_di_dominio.Ordine lordine = this.ordine;
+			Ordine lordine = this.ordine;
 			this.ordine = value;
 			if (value != null) {
 				ordine.setDestinazione(this);
@@ -55,8 +60,8 @@ public class Destinazione {
 			}
 		}
 	}
-	
-	public com.coedil99.modello_di_dominio.Ordine getOrdine() {
+	@XmlIDREF
+	public Ordine getOrdine() {
 		return ordine;
 	}
 	

@@ -13,13 +13,20 @@
  */
 package com.coedil99.modello_di_dominio;
 
+
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlRootElement
 public class Commessa {
 	public Commessa() {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
 		if (key == com.coedil99.modello_di_dominio.ORMConstants.KEY_COMMESSA_ORDINE) {
-			this.ordine = (com.coedil99.modello_di_dominio.Ordine) owner;
+			this.ordine = (Ordine) owner;
 		}
 		
 		else if (key == com.coedil99.modello_di_dominio.ORMConstants.KEY_COMMESSA_DISTINTA) {
@@ -38,7 +45,7 @@ public class Commessa {
 	
 	private int priorita;
 	
-	private com.coedil99.modello_di_dominio.Ordine ordine;
+	private Ordine ordine;
 	
 	private java.util.Date dataCreazione;
 	
@@ -47,7 +54,7 @@ public class Commessa {
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -72,7 +79,7 @@ public class Commessa {
 		return dataCreazione;
 	}
 	
-	public void setOrdine(com.coedil99.modello_di_dominio.Ordine value) {
+	public void setOrdine(Ordine value) {
 		if (ordine != null) {
 			ordine.commesse.remove(this);
 		}
@@ -80,19 +87,19 @@ public class Commessa {
 			value.commesse.add(this);
 		}
 	}
-	
-	public com.coedil99.modello_di_dominio.Ordine getOrdine() {
+	@XmlIDREF
+	public Ordine getOrdine() {
 		return ordine;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Ordine(com.coedil99.modello_di_dominio.Ordine value) {
+	public void setORM_Ordine(Ordine value) {
 		this.ordine = value;
 	}
-	
-	private com.coedil99.modello_di_dominio.Ordine getORM_Ordine() {
+	@XmlTransient
+	private Ordine getORM_Ordine() {
 		return ordine;
 	}
 	
@@ -108,7 +115,8 @@ public class Commessa {
 			}
 		}
 	}
-	
+
+	@XmlIDREF
 	public com.coedil99.modello_di_dominio.Distinta getDistinta() {
 		return distinta;
 	}

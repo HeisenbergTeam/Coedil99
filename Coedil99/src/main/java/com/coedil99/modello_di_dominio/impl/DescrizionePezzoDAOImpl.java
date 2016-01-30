@@ -13,11 +13,13 @@
  */
 package com.coedil99.modello_di_dominio.impl;
 
-import org.orm.*;
+import com.coedil99.modello_di_dominio.DescrizionePezzo;
+import com.coedil99.modello_di_dominio.DescrizionePezzoCriteria;
 import org.hibernate.Query;
-import org.hibernate.LockMode;
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+
 import java.util.List;
-import com.coedil99.modello_di_dominio.*;
 
 public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.dao.DescrizionePezzoDAO {
 	public DescrizionePezzo loadDescrizionePezzoByORMID(int ID) throws PersistentException {
@@ -30,7 +32,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo getDescrizionePezzoByORMID(int ID) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -41,7 +43,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo loadDescrizionePezzoByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -52,7 +54,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo getDescrizionePezzoByORMID(int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -63,7 +65,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo loadDescrizionePezzoByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (DescrizionePezzo) session.load(com.coedil99.modello_di_dominio.DescrizionePezzo.class, new Integer(ID));
@@ -73,7 +75,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo getDescrizionePezzoByORMID(PersistentSession session, int ID) throws PersistentException {
 		try {
 			return (DescrizionePezzo) session.get(com.coedil99.modello_di_dominio.DescrizionePezzo.class, new Integer(ID));
@@ -83,7 +85,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo loadDescrizionePezzoByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (DescrizionePezzo) session.load(com.coedil99.modello_di_dominio.DescrizionePezzo.class, new Integer(ID), lockMode);
@@ -93,7 +95,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo getDescrizionePezzoByORMID(PersistentSession session, int ID, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			return (DescrizionePezzo) session.get(com.coedil99.modello_di_dominio.DescrizionePezzo.class, new Integer(ID), lockMode);
@@ -103,7 +105,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryDescrizionePezzo(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -114,7 +116,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryDescrizionePezzo(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -125,7 +127,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo[] listDescrizionePezzoByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -136,7 +138,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo[] listDescrizionePezzoByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -147,7 +149,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryDescrizionePezzo(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.DescrizionePezzo as DescrizionePezzo");
 		if (condition != null)
@@ -163,7 +165,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public List queryDescrizionePezzo(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.DescrizionePezzo as DescrizionePezzo");
 		if (condition != null)
@@ -180,7 +182,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo[] listDescrizionePezzoByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		try {
 			List list = queryDescrizionePezzo(session, condition, orderBy);
@@ -191,7 +193,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo[] listDescrizionePezzoByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			List list = queryDescrizionePezzo(session, condition, orderBy, lockMode);
@@ -202,7 +204,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo loadDescrizionePezzoByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -213,7 +215,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo loadDescrizionePezzoByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -224,7 +226,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo loadDescrizionePezzoByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		DescrizionePezzo[] descrizionePezzos = listDescrizionePezzoByQuery(session, condition, orderBy);
 		if (descrizionePezzos != null && descrizionePezzos.length > 0)
@@ -232,7 +234,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 		else
 			return null;
 	}
-	
+
 	public DescrizionePezzo loadDescrizionePezzoByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		DescrizionePezzo[] descrizionePezzos = listDescrizionePezzoByQuery(session, condition, orderBy, lockMode);
 		if (descrizionePezzos != null && descrizionePezzos.length > 0)
@@ -240,7 +242,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 		else
 			return null;
 	}
-	
+
 	public java.util.Iterator iterateDescrizionePezzoByQuery(String condition, String orderBy) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -251,7 +253,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateDescrizionePezzoByQuery(String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession();
@@ -262,7 +264,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateDescrizionePezzoByQuery(PersistentSession session, String condition, String orderBy) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.DescrizionePezzo as DescrizionePezzo");
 		if (condition != null)
@@ -278,7 +280,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public java.util.Iterator iterateDescrizionePezzoByQuery(PersistentSession session, String condition, String orderBy, org.hibernate.LockMode lockMode) throws PersistentException {
 		StringBuffer sb = new StringBuffer("From com.coedil99.modello_di_dominio.DescrizionePezzo as DescrizionePezzo");
 		if (condition != null)
@@ -295,11 +297,11 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public DescrizionePezzo createDescrizionePezzo() {
 		return new com.coedil99.modello_di_dominio.DescrizionePezzo();
 	}
-	
+
 	public boolean save(com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().saveObject(descrizionePezzo);
@@ -310,7 +312,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean delete(com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().deleteObject(descrizionePezzo);
@@ -321,13 +323,13 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo)throws PersistentException {
 		try {
 			if (descrizionePezzo.getFornitore() != null) {
 				descrizionePezzo.getFornitore().descrizionePezzo.remove(descrizionePezzo);
 			}
-			
+
 			return delete(descrizionePezzo);
 		}
 		catch(Exception e) {
@@ -335,13 +337,13 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean deleteAndDissociate(com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo, org.orm.PersistentSession session)throws PersistentException {
 		try {
 			if (descrizionePezzo.getFornitore() != null) {
 				descrizionePezzo.getFornitore().descrizionePezzo.remove(descrizionePezzo);
 			}
-			
+
 			try {
 				session.delete(descrizionePezzo);
 				return true;
@@ -354,7 +356,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean refresh(com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().refresh(descrizionePezzo);
@@ -365,7 +367,7 @@ public class DescrizionePezzoDAOImpl implements com.coedil99.modello_di_dominio.
 			throw new PersistentException(e);
 		}
 	}
-	
+
 	public boolean evict(com.coedil99.modello_di_dominio.DescrizionePezzo descrizionePezzo) throws PersistentException {
 		try {
 			com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().evict(descrizionePezzo);

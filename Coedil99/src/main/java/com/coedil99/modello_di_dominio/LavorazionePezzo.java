@@ -13,13 +13,18 @@
  */
 package com.coedil99.modello_di_dominio;
 
+import javax.xml.bind.annotation.XmlID;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class LavorazionePezzo {
 	public LavorazionePezzo() {
 	}
 	
 	private void this_setOwner(Object owner, int key) {
-		if (key == com.coedil99.modello_di_dominio.ORMConstants.KEY_LAVORAZIONEPEZZO_SAGOMA) {
-			this.sagoma = (com.coedil99.modello_di_dominio.Sagoma) owner;
+		if (key == ORMConstants.KEY_LAVORAZIONEPEZZO_SAGOMA) {
+			this.sagoma = (Sagoma) owner;
 		}
 	}
 	
@@ -38,12 +43,12 @@ public class LavorazionePezzo {
 	
 	private float peso;
 	
-	private com.coedil99.modello_di_dominio.Sagoma sagoma;
+	private Sagoma sagoma;
 	
 	private void setID(int value) {
 		this.ID = value;
 	}
-	
+	@XmlID
 	public int getID() {
 		return ID;
 	}
@@ -76,9 +81,9 @@ public class LavorazionePezzo {
 		return peso;
 	}
 	
-	public void setSagoma(com.coedil99.modello_di_dominio.Sagoma value) {
+	public void setSagoma(Sagoma value) {
 		if (this.sagoma != value) {
-			com.coedil99.modello_di_dominio.Sagoma lsagoma = this.sagoma;
+			Sagoma lsagoma = this.sagoma;
 			this.sagoma = value;
 			if (value != null) {
 				sagoma.setLavorazionePezzo(this);
@@ -88,8 +93,8 @@ public class LavorazionePezzo {
 			}
 		}
 	}
-	
-	public com.coedil99.modello_di_dominio.Sagoma getSagoma() {
+	@XmlIDREF
+	public Sagoma getSagoma() {
 		return sagoma;
 	}
 	

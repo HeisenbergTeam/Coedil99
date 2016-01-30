@@ -17,24 +17,23 @@
       <children>
             <Label prefHeight="38.0" prefWidth="249.0" style="-fx-background-color: transparent;" text="-&gt; Commesse associate all'ordine selezionato" wrapText="false" />
             <Separator opacity="0.0" prefHeight="24.0" prefWidth="724.0" valignment="TOP" />
-            <TitledPane alignment="TOP_LEFT" animated="false" prefHeight="94.0" prefWidth="724.0" text="Informazioni sulla commessa selezionata">
+            <TitledPane fx:id="commessaPane" alignment="TOP_LEFT" animated="false" prefHeight="94.0" prefWidth="724.0" text="Informazioni sulla commessa selezionata">
                <content>
         <GridPane alignment="TOP_CENTER" maxHeight="200.0" prefHeight="45.0" prefWidth="685.0">
           <children>
-                        <Label GridPane.columnIndex="1" />
                         <TitledPane animated="false" text="Data di creazione della RDA">
                            <content>
-                              <Label minHeight="25.0" text="Data creazione" />
+                              <Label fx:id="dataCreazione" minHeight="25.0" />
                            </content>
                         </TitledPane>
                         <TitledPane animated="false" text="Data di arrivo prevista" GridPane.columnIndex="1">
                            <content>
-                              <Label minHeight="25.0" text="Data arrivo prevista" />
+                              <Label fx:id="dataPrevista" minHeight="25.0" />
                            </content>
                         </TitledPane>
                         <TitledPane animated="false" text="Data di arrivo effettiva" GridPane.columnIndex="2">
                            <content>
-                              <Label minHeight="25.0" text="Data arrivo effettiva" />
+                              <Label fx:id="dataArrivo" minHeight="25.0" />
                            </content>
                         </TitledPane>
           </children>
@@ -66,18 +65,18 @@
         <TableView fx:id="tableRda" prefHeight="660.0" prefWidth="300.0">
           <columns>
             <TableColumn id="tableOrdiniId" fx:id="tableRdaId" minWidth="80.0" prefWidth="160.0" text="Descrizione" />
-            <TableColumn id="tableOrdiniData" fx:id="tableRdaData" minWidth="27.0" prefWidth="138.0" text="Fornitore" />
+            <TableColumn id="tableOrdiniData" fx:id="tableRdaFornitore" minWidth="27.0" prefWidth="138.0" text="Fornitore" />
           </columns>
         </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="-1.0" prefWidth="-1.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#onNuovaRda" text="Nuovo">
+                  <Button fx:id="btnNewRda" mnemonicParsing="false" onAction="#onNuovaRda" text="Nuovo">
                      <HBox.margin>
                         <Insets right="10.0" fx:id="x11" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#onEditRda" text="Modifica" HBox.margin="$x11" />
-                  <Button mnemonicParsing="false" onMouseClicked="#onDeleteRda" text="Elimina" />
+                  <Button fx:id="btnEditRda" mnemonicParsing="false" onAction="#onEditRda" text="Modifica" HBox.margin="$x11" />
+                  <Button fx:id="btnDeleteRda" mnemonicParsing="false" onAction="#onDeleteRda" text="Elimina" />
                </children>
                <padding>
                   <Insets bottom="10.0" right="10.0" top="10.0" />

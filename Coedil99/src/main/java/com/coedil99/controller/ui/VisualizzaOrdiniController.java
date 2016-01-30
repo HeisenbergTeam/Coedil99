@@ -356,6 +356,8 @@ public class VisualizzaOrdiniController implements Initializable {
 		MainApplication.getInstance().goBack();
 	}
 
+	protected int currentCommessaId = 0;
+
 	/**
 	 * onNewCommessaAction
 	 */
@@ -363,7 +365,11 @@ public class VisualizzaOrdiniController implements Initializable {
 	protected void onNewCommessa() {
 
         log.i("nuova commessa");
-
+		Date now = new Date();
+		Ordine ordine = tableOrdini.getSelectionModel().getSelectedItem();
+		Commessa commessa = new Builder.CommessaBuilder().setDataCreazione(now).setOrdine(ordine).setPriorita(0).build();
+		Distinta distinta = new Builder.DistintaBuilder().setCommessa(commessa).setDataInizio(now).setElementoStrutturale("").setModello("").setRevisione(0).build();
+		loadTablePane(ordine);
 	}
 
 	/**
@@ -376,6 +382,8 @@ public class VisualizzaOrdiniController implements Initializable {
         //sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
 
 		 //MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
+
+
 
 	}
 
@@ -399,6 +407,26 @@ public class VisualizzaOrdiniController implements Initializable {
 	protected void onDeleteCommessa() {
 		log.i("delete commessa");
 
+		Ordine ordine = tableOrdini.getSelectionModel().getSelectedItem();
+		try {
+			Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().getCommessaByORMID(currentCommessaId);
+			System.out.print(currentCommessaId);
+
+			Distinta[] arrayDistinta = DAOFactory.getDAOFactory().getDistintaDAO().listDistintaByQuery(null,null);
+			System.out.print(arrayDistinta.length);
+			for (int i = 0; i < arrayDistinta.length; i++) {
+				if (arrayDistinta[i].getCommessa().getID() == currentCommessaId) {
+					System.out.print("deleting distinta " + arrayDistinta[i].getID());
+					DAOFactory.getDAOFactory().getDistintaDAO().deleteAndDissociate(arrayDistinta[i]);
+				}
+			}
+			DAOFactory.getDAOFactory().getCommessaDAO().deleteAndDissociate(commessa);
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		} finally {
+			loadTablePane(ordine);
+		}
+
 	}
 
 	/**
@@ -416,7 +444,7 @@ public class VisualizzaOrdiniController implements Initializable {
 	@FXML
 	protected void onEditOrdine() {
 		log.i("edit ordine");
-		tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
+		//tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
 		//setCellFactory(TextFieldTableCell.<StateData>forTableColumn());
 	}
 
@@ -439,6 +467,25 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	}
 
+	protected Map currentTab = new Hashtable();
+
+	ChangeListener<Number> tabListener = new ChangeListener<Number>() {
+		@Override
+		public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
+			System.out.printf(ov.getValue()+" "+oldValue+" "+newValue+"\n");
+			for(Object commessaId: currentTab.keySet()) {
+				//System.out.printf(commessaId+""+"\n");
+				if (newValue == (Integer) commessaId) {
+					System.out.printf("found "+currentTab.get(commessaId) + ""+"\n");
+					currentCommessaId = (Integer) currentTab.get(commessaId);
+					System.out.printf("found "+currentCommessaId+ ""+"\n");
+
+				}
+			}
+		}
+	};
+
+
 	/**
 	 * loadTablePane
 	 * 
@@ -449,13 +496,23 @@ public class VisualizzaOrdiniController implements Initializable {
 
 		commesseTabPane.getTabs().clear();
 
+		commesseTabPane.getSelectionModel().selectedIndexProperty().addListener(tabListener);
+
 		btnDeleteCommessa.setDisable(true);
 		btnEditCommessa.setDisable(true);
 		btnEditDistinta.setDisable(true);
 
+		currentTab.clear();
+
+		Integer tabId = 0;
 		for (Commessa c : commesse) {
 
 			commesseTabPane.getTabs().add(createCommessaTab(c));
+
+			currentTab.put(tabId, c.getID());
+			System.out.print(c.getID()+" "+tabId+"\n");
+
+			tabId += 1;
 
 			btnDeleteCommessa.setDisable(false);
 			btnEditCommessa.setDisable(false);

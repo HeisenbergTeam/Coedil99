@@ -12,7 +12,7 @@ public class Builder {
 
     /*
  * USAGE
- * Fornitore fornitore = new FornitoreBuilder().setNome("ItalTubi").build();
+ * Fornitore fornitore = new Builder.FornitoreBuilder().setNome("ItalTubi").build();
  */
     public static class FornitoreBuilder
     {

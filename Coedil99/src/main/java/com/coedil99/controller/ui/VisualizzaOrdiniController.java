@@ -1,7 +1,9 @@
 package com.coedil99.controller.ui;
 
+import com.coedil99.controller.builder.Builder;
 import com.coedil99.modello_di_dominio.Commessa;
 import com.coedil99.modello_di_dominio.DAOFactory;
+import com.coedil99.modello_di_dominio.Destinazione;
 import com.coedil99.modello_di_dominio.Ordine;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.utilita.UtilitaManager;
@@ -17,18 +19,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.util.Callback;
 import org.orm.PersistentException;
+import java.util.Date;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class VisualizzaOrdiniController implements Initializable {
 
@@ -38,51 +41,127 @@ public class VisualizzaOrdiniController implements Initializable {
 	private TableColumn<Ordine, String> tableOrdiniId;
 	@FXML
 	private TableColumn<Ordine, String> tableOrdiniData;
+	@FXML
+	private TableColumn<Ordine, String> tableOrdiniDestinazione;
+	@FXML
+	private TableColumn<Ordine, String> tableOrdiniCliente;
 
 	@FXML
 	private TabPane commesseTabPane;
+
+	@FXML
+	public Button btnNewOrdine;
+	public Button btnEditOrdine;
+	public Button btnDeleteOrdine;
+	public Button btnNewCommessa;
+	public Button btnEditCommessa;
+	public Button btnEditDistinta;
+	public Button btnDeleteCommessa;
+
 
 	protected Log log;
     protected Sessione sessione;
 	protected Ordine ordineCorrente = null;
 
-	public void setAction(int action) {
+	private boolean newOrdine = false;
 
+	public void setAction(int action) {
+		if (action == DefineControllerUi.MODIFICA_ORDINI) {
+
+		}
+		if (action == DefineControllerUi.NUOVO_ORDINE) {
+			newOrdine = true;
+		}
+	}
+
+	public ArrayList<Ordine> getOrdini() {
+		OrdineDAO ordineDAO = DAOFactory.getDAOFactory().getOrdineDAO();
+		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
+		try {
+			ordini = new
+					ArrayList<Ordine>(Arrays.asList(ordineDAO.listOrdineByQuery(null, null)));
+		} catch (PersistentException e) {}
+		return ordini;
+	}
+
+
+	final private ChangeListener changeListener = new ChangeListener<Object>() {
+
+		@Override
+		public void changed(ObservableValue<? extends Object> arg0,
+				Object arg1, Object arg2) {
+
+			Ordine ao = getOrdini().get((Integer) arg2);
+			System.out.print(ao.getID());
+			VisualizzaOrdiniController.this.ordineCorrente = ao;
+			VisualizzaOrdiniController.this.loadTablePane(ao);
+
+		}
+	};
+
+	private void refreshListaOrdini() {
+
+		//final ArrayList<Ordine> ordiniEmpty = new ArrayList<Ordine>();
+		//this.loadOrdiniTable(ordiniEmpty);
+		//tableOrdini.setItems(ordini);
+
+		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
+		log = (Log) gsp.getServizio("LogStdout");
+		sessione = (Sessione) gsp.getServizio("SessionePrototipo");
+
+		tableOrdini.getSelectionModel().selectedIndexProperty()
+				.removeListener(changeListener);
+
+			this.loadOrdiniTable(getOrdini());
+			// ListenerOrdini
+
+			tableOrdini.getSelectionModel().selectedIndexProperty()
+					.addListener(changeListener);
+
+	}
+
+	private void nuovoOrdine() {
+		Date now = new Date();
+		Destinazione destinazione = new Builder.DestinazioneBuilder().setVia("").build();
+		Ordine ordine = new Builder.OrdineBuilder().setDataCreazione(now).setDestinazione(destinazione).build();
+		//tableOrdini.getSelectionModel().clearSelection();
+		refreshListaOrdini();
+		tableOrdini.getSelectionModel().selectLast();
+		//tableOrdini.requestFocus();
+		//System.out.print(tableOrdini.getSelectionModel().getTableView().refresh();//.getSelectedItem(ordine));
+		//tableOrdini.getSelectionModel().getTableView().refresh();
+		//tableOrdini.refresh();
+		//tableOrdini.getSelectionModel().clearSelection();
+		//tableOrdini.getSelectionModel().selectLast();
+		//tableOrdini.getSelectionModel().select( tableOrdini.getSelectionModel().getSelectedIndices().size()-1);
+		//tableOrdini.getFocusModel().fo.focus(0);
+		btnNewOrdine.setDisable(false);
+		btnEditOrdine.setDisable(false);
+		btnDeleteOrdine.setDisable(false);
+		btnNewCommessa.setDisable(false);
+		btnEditCommessa.setDisable(true);
+		btnEditDistinta.setDisable(true);
+		btnDeleteCommessa.setDisable(true);
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
-		OrdineDAO ordineDAO = DAOFactory.getDAOFactory().getOrdineDAO();
-		log = (Log) gsp.getServizio("LogStdout");
-        sessione = (Sessione) gsp.getServizio("SessionePrototipo");
+		refreshListaOrdini();
 
+		commesseTabPane.getTabs().clear();
 
-        final ArrayList<Ordine> ordini;
-        try {
-            ordini = new
-                    ArrayList<Ordine>(Arrays.asList(ordineDAO.listOrdineByQuery(null, null)));
-            this.loadOrdiniTable(ordini);
-            // ListenerOrdini
+		btnNewOrdine.setDisable(false);
+		btnEditOrdine.setDisable(true);
+		btnDeleteOrdine.setDisable(true);
+		btnNewCommessa.setDisable(true);
+		btnEditCommessa.setDisable(true);
+		btnEditDistinta.setDisable(true);
+		btnDeleteCommessa.setDisable(true);
 
-            tableOrdini.getSelectionModel().selectedIndexProperty()
-                    .addListener(new ChangeListener<Object>() {
-
-                        @Override
-                        public void changed(ObservableValue<? extends Object> arg0,
-                                            Object arg1, Object arg2) {
-
-                            Ordine ao = ordini.get((Integer) arg2);
-                            VisualizzaOrdiniController.this.ordineCorrente = ao;
-                            VisualizzaOrdiniController.this.loadTablePane(ao);
-
-                        }
-                    });
-        } catch (PersistentException e) {
-            e.printStackTrace();
-        }
-
+		if (newOrdine) {
+			nuovoOrdine();
+		}
 
 	}
 
@@ -117,9 +196,45 @@ public class VisualizzaOrdiniController implements Initializable {
 						SimpleStringProperty s = new SimpleStringProperty();
 
 						if (arg0.getValue() == null) {
-							s.set("ciao");
+							s.set("?");
 						} else {
 							s.set(arg0.getValue().getDataCreazione().toString());
+						}
+						return s;
+					}
+				});
+
+		tableOrdiniDestinazione
+				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
+
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Ordine, String> arg0) {
+						// TODO Auto-generated method stub
+						SimpleStringProperty s = new SimpleStringProperty();
+
+						if (arg0.getValue() == null) {
+							s.set("ciao");
+						} else {
+							s.set(arg0.getValue().getDestinazione().getVia());
+						}
+						return s;
+					}
+				});
+
+		tableOrdiniCliente
+				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
+
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Ordine, String> arg0) {
+						// TODO Auto-generated method stub
+						SimpleStringProperty s = new SimpleStringProperty();
+
+						if (arg0.getValue() == null) {
+							s.set("PROSSIMA ITERAZIONE");
+						} else {
+							s.set("PROSSIMA ITERAZIONE");
 						}
 						return s;
 					}
@@ -155,9 +270,22 @@ public class VisualizzaOrdiniController implements Initializable {
 	protected void onEditCommessa() {
 		log.i("modifica commessa");
 
-        sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
+        //sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
 
-		 MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
+		 //MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
+
+	}
+
+	/**
+	 * onEditCommessaDistinta action
+	 */
+	@FXML
+	protected void onEditCommessaDistinta() {
+		log.i("modifica distinta");
+
+		sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
+
+		MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
 
 	}
 
@@ -171,6 +299,33 @@ public class VisualizzaOrdiniController implements Initializable {
 	}
 
 	/**
+	 * onDeleteCommessa action
+	 */
+	@FXML
+	protected void onNewOrdine() {
+		log.i("new ordine");
+		nuovoOrdine();
+	}
+
+	/**
+	 * onDeleteCommessa action
+	 */
+	@FXML
+	protected void onEditOrdine() {
+		log.i("edit ordine");
+
+	}
+
+	/**
+	 * onDeleteCommessa action
+	 */
+	@FXML
+	protected void onDeleteOrdine() {
+		log.i("delete ordine");
+
+	}
+
+	/**
 	 * loadTablePane
 	 * 
 	 * @param ordine
@@ -180,10 +335,17 @@ public class VisualizzaOrdiniController implements Initializable {
 
 		commesseTabPane.getTabs().clear();
 
+		btnDeleteCommessa.setDisable(true);
+		btnEditCommessa.setDisable(true);
+		btnEditDistinta.setDisable(true);
+
 		for (Commessa c : commesse) {
 
 			commesseTabPane.getTabs().add(createCommessaTab(c));
 
+			btnDeleteCommessa.setDisable(false);
+			btnEditCommessa.setDisable(false);
+			btnEditDistinta.setDisable(false);
 		}
 	}
 
@@ -195,25 +357,63 @@ public class VisualizzaOrdiniController implements Initializable {
 	 */
 	private Tab createCommessaTab(Commessa commessa) {
 		Tab tab = new Tab();
-		tab.setText(String.valueOf(commessa.getID()));
+		tab.setText(" "+String.valueOf(commessa.getID())+" ");
+
+		TitledPane titledPane = new TitledPane();
+		titledPane.setAlignment(Pos.TOP_LEFT);
+		titledPane.setAnimated(false);
+		titledPane.setPrefHeight(94);
+		titledPane.setPrefWidth(724);
+		titledPane.setStyle("");
 
 		GridPane gridPane = new GridPane();
+		gridPane.setAlignment(Pos.TOP_LEFT);
+		gridPane.setMaxHeight(200);
+		gridPane.setPrefHeight(45);
+		gridPane.setPrefWidth(685);
 
 		ColumnConstraints column1 = new ColumnConstraints();
-		column1.setPercentWidth(50);
+		column1.setHgrow(Priority.SOMETIMES);
+		column1.setMinWidth(10);
+		column1.setPrefWidth(100);
+
 		ColumnConstraints column2 = new ColumnConstraints();
-		column2.setPercentWidth(50);
+		column2.setHgrow(Priority.SOMETIMES);
+		column2.setMinWidth(10);
+		column2.setPrefWidth(100);
+
+		RowConstraints row = new RowConstraints();
+		row.setVgrow(Priority.SOMETIMES);
+		row.setMinHeight(10);
+		row.setPrefHeight(30);
 
 		gridPane.getColumnConstraints().addAll(column1, column2);
 
-		gridPane.add(new Label("Stato"), 0, 0);
-		gridPane.add(new Label("Data creazione"), 0, 1);
+		Label data = new Label();
+		data.setMinHeight(25);
+		data.setText(commessa.getDataCreazione().toString());
 
-		gridPane.add(new Label(commessa.getDataCreazione().toString()), 1, 1);
+		TitledPane titledPaneData = new TitledPane();
+		titledPaneData.setAnimated(false);
+		titledPaneData.setText("Data di creazione della commessa");
+		titledPaneData.setContent(data);
+
+		Label priorita = new Label();
+		priorita.setMinHeight(25);
+		priorita.setText(commessa.getPriorita()+"");
+
+		TitledPane titledPanePriorita = new TitledPane();
+		titledPanePriorita.setAnimated(false);
+		titledPanePriorita.setText("Priorità della commessa");
+		titledPanePriorita.setContent(priorita);
+
+		gridPane.add(titledPaneData, 0, 0);
+		gridPane.add(titledPanePriorita, 1, 0);
 
 		gridPane.setPadding(new Insets(10, 10, 10, 10));
 
-		tab.setContent(gridPane);
+		titledPane.setContent(gridPane);
+		tab.setContent(titledPane);
 
 		return tab;
 

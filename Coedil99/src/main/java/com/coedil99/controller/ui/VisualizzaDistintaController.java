@@ -744,10 +744,11 @@ public class VisualizzaDistintaController implements Initializable {
         public void onBtnModificaSagoma(){
 
             log.i("selezione_sagoma");
-
+            //Parent root =
             final FileChooser fileChooser = new FileChooser();
             fileChooser.setInitialDirectory(new File(".\\Coedil99\\src\\main\\resources\\blobs\\sagoma\\"));
-            File file = fileChooser.showOpenDialog(null);
+            Stage stage = (Stage) img_sagoma.getScene().getWindow();
+            File file = fileChooser.showOpenDialog(stage);
             if (file != null) {
                 int start = (file.getAbsolutePath().indexOf("Coedil99\\src\\main\\resources\\blobs\\sagoma\\"));
 

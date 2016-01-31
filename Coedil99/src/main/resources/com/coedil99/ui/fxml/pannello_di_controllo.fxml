@@ -78,7 +78,7 @@
                         </Label>
                         <HBox alignment="CENTER" maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="150.0" prefWidth="300.0">
                            <children>
-                              <Button maxHeight="100.0" maxWidth="220.0" minHeight="100.0" minWidth="220.0" mnemonicParsing="false" onAction="#creaOrdine" prefHeight="100.0" prefWidth="220.0" text="Nuova RDA">
+                              <Button maxHeight="100.0" maxWidth="220.0" minHeight="100.0" minWidth="220.0" mnemonicParsing="false" onAction="#nuovaRDA" prefHeight="100.0" prefWidth="220.0" text="Nuova RDA">
                                  <graphic>
                                     <ImageView id="nuovo.png" fitHeight="100.0" fitWidth="236.0" preserveRatio="true" smooth="true">
                                        <image>
@@ -110,7 +110,7 @@
                         </HBox>
                         <HBox alignment="CENTER" maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="150.0" prefWidth="300.0">
                            <children>
-                              <Button maxHeight="100.0" maxWidth="220.0" minHeight="100.0" minWidth="220.0" mnemonicParsing="false" onAction="#gestisciRDA" prefHeight="100.0" prefWidth="220.0" text="Gestisci Fornitori">
+                              <Button maxHeight="100.0" maxWidth="220.0" minHeight="100.0" minWidth="220.0" mnemonicParsing="false" onAction="#gestisciFornitori" prefHeight="100.0" prefWidth="220.0" text="Gestisci Fornitori">
                                  <graphic>
                                     <ImageView id="gestisci.png" fitHeight="89.0" fitWidth="89.0" mouseTransparent="true" preserveRatio="true">
                                        <image>

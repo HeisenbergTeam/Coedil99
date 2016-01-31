@@ -43,5 +43,16 @@ public class PannelloControlloController {
 		MainApplication.getInstance().loadPage("visualizza_rda", "com.coedil99.controller.ui.VisualizzaRdaController", 0);
     }
 
+	@FXML protected void nuovaRDA(ActionEvent action)
+	{
+		//fx:controller="com.coedil99.controller.ui.VisualizzaRdaController"
+		MainApplication.getInstance().loadPage("visualizza_rda", "com.coedil99.controller.ui.VisualizzaRdaController", 0);
+	}
+
+	@FXML protected void gestisciFornitori(ActionEvent action)
+	{
+		//fx:controller="com.coedil99.controller.ui.VisualizzaRdaController"
+		MainApplication.getInstance().loadPage("fornitore", "com.coedil99.controller.ui.FornitoreController", 0);
+	}
 	
 }

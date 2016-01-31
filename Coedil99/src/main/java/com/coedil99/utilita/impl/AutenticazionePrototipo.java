@@ -38,7 +38,7 @@ public class AutenticazionePrototipo implements Autenticazione {
 
         if(!password.equals("admin"))
             return false;
-		
+
 		return true;
 	}
 

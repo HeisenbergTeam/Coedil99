@@ -1,7 +1,7 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.modello_di_dominio.DAOFactory;
-import com.coedil99.modello_di_dominio.RDA;
+import com.coedil99.modello_di_dominio.*;
+import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.modello_di_dominio.dao.RDADAO;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
@@ -9,16 +9,15 @@ import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.ui.MainApplication;
 import com.coedil99.controller.ui.DefineControllerUi;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableView;
 import javafx.util.Callback;
 import org.orm.PersistentException;
 
@@ -35,10 +34,28 @@ public class VisualizzaRdaController implements Initializable {
     @FXML
     private TableColumn<RDA, String> tableRdaId;
     @FXML
-    private TableColumn<RDA, String> tableRdaData;
+    private TableColumn<RDA, String> tableRdaFornitore;
 
     @FXML
     private TabPane rdaTabPane;
+
+    @FXML
+    public TitledPane commessaPane;
+
+    @FXML
+    public Label dataCreazione;
+    @FXML
+    public Label dataPrevista;
+    @FXML
+    public Label dataArrivo;
+
+    @FXML
+    public Button btnNewRda;
+    @FXML
+    public Button btnEditRda;
+    @FXML
+    public Button btnDeleteRda;
+
 
     protected Log log;
     protected RDA rdaCorrente = null;
@@ -47,6 +64,39 @@ public class VisualizzaRdaController implements Initializable {
 
     }
 
+    public ArrayList<RDA> getRDAList() {
+        RDADAO rdaDAO = DAOFactory.getDAOFactory().getRDADAO();
+        ArrayList<RDA> rdas = null;
+        try {
+            rdas = new ArrayList<RDA>(
+                    Arrays.asList(rdaDAO.listRDAByQuery(null,null)));
+
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        }
+        return rdas;
+    }
+
+    final private ChangeListener changeListener = new ChangeListener<Object>() {
+
+        @Override
+        public void changed(ObservableValue<? extends Object> arg0,
+                            Object arg1, Object arg2) {
+
+            Integer index = (Integer)arg2;
+            if (index >= 0 ) {
+                commessaPane.setDisable(false);
+                RDA rda = getRDAList().get(index);
+                dataArrivo.setText(rda.getDataArrivoEffettiva().toString());
+                dataCreazione.setText(rda.getDataCreazione().toString());
+                dataPrevista.setText(rda.getDataArrivoPrevista().toString());
+
+                btnEditRda.setDisable(false);
+                btnDeleteRda.setDisable(false);
+            }
+        }
+    };
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -54,17 +104,15 @@ public class VisualizzaRdaController implements Initializable {
         RDADAO rdaDAO = DAOFactory.getDAOFactory().getRDADAO();
         log = (Log) gsp.getServizio("LogStdout");
 
+        ArrayList<RDA> rdas = getRDAList();
 
-        ArrayList<RDA> rdas = null;
-        try {
-            rdas = new ArrayList<RDA>(
-                    Arrays.asList(rdaDAO.listRDAByQuery(null,null)));
-            this.loadRdaTable(rdas);
-        } catch (PersistentException e) {
-            e.printStackTrace();
-        }
+        commessaPane.setDisable(true);
 
+        refreshRdaTable();
 
+        btnNewRda.setDisable(false);
+        btnEditRda.setDisable(true);
+        btnDeleteRda.setDisable(true);
 
 		// ListenerOrdini
 
@@ -95,6 +143,17 @@ public class VisualizzaRdaController implements Initializable {
 		 */
     }
 
+    protected void refreshRdaTable() {
+        tableRda.getSelectionModel().selectedIndexProperty()
+                .removeListener(changeListener);
+
+        this.loadRdaTable(getRDAList());
+        // ListenerOrdini
+
+        tableRda.getSelectionModel().selectedIndexProperty()
+                .addListener(changeListener);
+    }
+
     /**
      * loadOrdiniTable
      *
@@ -116,7 +175,7 @@ public class VisualizzaRdaController implements Initializable {
                     }
                 });
 
-        tableRdaData
+        tableRdaFornitore
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDA, String>, ObservableValue<String>>() {
 
                     @Override
@@ -128,7 +187,7 @@ public class VisualizzaRdaController implements Initializable {
                         if (arg0.getValue() == null) {
                             s.set("ciao");
                         } else {
-                            s.set(arg0.getValue().getDataCreazione().toString());
+                            s.set(arg0.getValue().getFornitore().getNome());
                         }
                         return s;
                     }
@@ -136,6 +195,8 @@ public class VisualizzaRdaController implements Initializable {
 
         ObservableList<RDA> list = FXCollections.observableList(ordini);
         tableRda.setItems(list);
+
+
 
     }
 
@@ -153,7 +214,23 @@ public class VisualizzaRdaController implements Initializable {
 
     @FXML
     public void onDeleteRda(ActionEvent actionEvent) {
+        RDA rda = tableRda.getSelectionModel().getSelectedItem();
+        try {
 
+            RigaRDA[] arrayRigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().listRigaRDAByQuery(null,null);
+            for (int i = 0; i < arrayRigaRDA.length; i++) {
+                if (arrayRigaRDA[i].getRda().getID() == rda.getID()) {
+                    System.out.print("deleting rigarda " + arrayRigaRDA[i].getID());
+                    DAOFactory.getDAOFactory().getRigaRDADAO().deleteAndDissociate(arrayRigaRDA[i]);
+                }
+            }
+
+            DAOFactory.getDAOFactory().getRDADAO().deleteAndDissociate(rda);
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        } finally {
+            refreshRdaTable();
+        }
     }
 
     @FXML

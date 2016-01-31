@@ -32,13 +32,16 @@ public class AutenticazionePrototipo implements Autenticazione {
 		
 		log.i("Username loggato: " + username);
         log.i("Password loggato: " + password);
+
+		// TODO REMOVE COMMENT
+		/*
         if(!username.equals("admin"))
             return false;
 
         if(!password.equals("admin"))
             return false;
 
-
+*/
 		
 		return true;
 	}

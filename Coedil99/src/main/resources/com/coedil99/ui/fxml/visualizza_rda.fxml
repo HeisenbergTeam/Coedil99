@@ -23,17 +23,17 @@
           <children>
                         <TitledPane animated="false" text="Data di creazione della RDA">
                            <content>
-                              <Label fx:id="dataCreazione" minHeight="25.0" />
+                              <TextField fx:id="dataCreazione" alignment="CENTER" editable="false" minHeight="25.0" style="-fx-background-color: #eeeeee;" />
                            </content>
                         </TitledPane>
                         <TitledPane animated="false" text="Data di arrivo prevista" GridPane.columnIndex="1">
                            <content>
-                              <Label fx:id="dataPrevista" minHeight="25.0" />
+                              <TextField fx:id="dataPrevista" alignment="CENTER" editable="false" minHeight="25.0" style="-fx-background-color: #eeeeee;" />
                            </content>
                         </TitledPane>
                         <TitledPane animated="false" text="Data di arrivo effettiva" GridPane.columnIndex="2">
                            <content>
-                              <Label fx:id="dataArrivo" minHeight="25.0" />
+                              <TextField fx:id="dataArrivo" alignment="CENTER" minHeight="25.0" style="-fx-background-color: #eeeeee;" />
                            </content>
                         </TitledPane>
           </children>

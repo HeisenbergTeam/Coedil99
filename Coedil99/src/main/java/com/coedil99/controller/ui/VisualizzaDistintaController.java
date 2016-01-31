@@ -103,6 +103,8 @@ public class VisualizzaDistintaController implements Initializable {
     private Boolean modificandoDistinta = false;
     private Boolean modificandoRigaDistinta = false;
 
+    public int currentDistintaId = 0;
+
     private int oldIndex = -1;
     
     final ObservableList<RigaDistinta> listaPezzi = FXCollections.observableArrayList();
@@ -110,7 +112,7 @@ public class VisualizzaDistintaController implements Initializable {
     static public final String DISTINTA_CORRENTE = "distinta_corrente";
 
     public void setAction(int action) {
-
+        currentDistintaId = action;
     }
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -502,14 +504,17 @@ public class VisualizzaDistintaController implements Initializable {
 	
 	private void refreshCommonDataDistinta() {
 
+
         try {
-            ordine = ordineDao.getOrdineByORMID(1);
+            distinta = distintaDAO.getDistintaByORMID(currentDistintaId);
+            Commessa commessa = distinta.getCommessa();
+            ordine = commessa.getOrdine();
         } catch (PersistentException e) {
             e.printStackTrace();
         }
 
 
-			
+			/*
 		//TODO: modifica a getCommessaID(id)
 		commesse = ordine.commesse.toArray();
 				
@@ -518,7 +523,7 @@ public class VisualizzaDistintaController implements Initializable {
 		}
 		
 		distinta = commesse[0].getDistinta();
-		
+		*/
 	}
 	
 	private void refreshDistinta() {

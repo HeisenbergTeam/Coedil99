@@ -372,6 +372,9 @@ public class VisualizzaOrdiniController implements Initializable {
 		loadTablePane(ordine);
 	}
 
+	public Map txtDataMap = new Hashtable();
+	public Map txtPrioritaMap = new Hashtable();
+
 	/**
 	 * onEditCommessa action
 	 */
@@ -382,8 +385,29 @@ public class VisualizzaOrdiniController implements Initializable {
         //sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
 
 		 //MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
+		//currentCommessaId
+		for(Object commessaId: txtDataMap.keySet()) {
+			//System.out.printf(commessaId+""+"\n");
+			if (currentCommessaId == (Integer) commessaId) {
+				System.out.printf("found "+txtDataMap.get(commessaId) + ""+"\n");
+				System.out.printf("found "+txtPrioritaMap.get(commessaId) + ""+"\n");
+				System.out.printf("found "+currentCommessaId+ ""+"\n");
 
+				TextField currentPriorita = (TextField)txtPrioritaMap.get(commessaId);
+				TextField currentData = (TextField)txtDataMap.get(commessaId);
 
+				currentPriorita.setEditable(true);
+				currentPriorita.setStyle("-fx-background-color: #FFFFFF;");
+				currentPriorita.textProperty().addListener((observable, oldValue, newValue) -> {
+					System.out.println("currentPriorita changed from " + oldValue + " to " + newValue);
+				});
+				currentData.setEditable(true);
+				currentData.setStyle("-fx-background-color: #FFFFFF;");
+				currentData.textProperty().addListener((observable, oldValue, newValue) -> {
+					System.out.println("currentData changed from " + oldValue + " to " + newValue);
+				});
+			}
+		}
 
 	}
 
@@ -396,7 +420,20 @@ public class VisualizzaOrdiniController implements Initializable {
 
 		sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
 
-		MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
+		try {
+			//Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().getCommessaByORMID(currentCommessaId);
+			Distinta[] arrayDistinta = DAOFactory.getDAOFactory().getDistintaDAO().listDistintaByQuery("CommessaID = "+currentCommessaId,null);
+			for (int i = 0; i < arrayDistinta.length; i++) {
+				System.out.print(currentCommessaId+" "+arrayDistinta[i].getCommessa().getID()+"\n");
+				if (arrayDistinta[i].getCommessa().getID() == currentCommessaId) {
+					MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", (arrayDistinta[i].getID()));
+				}
+			}
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+
+
 
 	}
 
@@ -412,7 +449,7 @@ public class VisualizzaOrdiniController implements Initializable {
 			Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().getCommessaByORMID(currentCommessaId);
 			System.out.print(currentCommessaId);
 
-			Distinta[] arrayDistinta = DAOFactory.getDAOFactory().getDistintaDAO().listDistintaByQuery(null,null);
+			Distinta[] arrayDistinta = DAOFactory.getDAOFactory().getDistintaDAO().listDistintaByQuery("CommessaID = "+currentCommessaId,null);
 			System.out.print(arrayDistinta.length);
 			for (int i = 0; i < arrayDistinta.length; i++) {
 				if (arrayDistinta[i].getCommessa().getID() == currentCommessaId) {
@@ -496,6 +533,9 @@ public class VisualizzaOrdiniController implements Initializable {
 
 		commesseTabPane.getTabs().clear();
 
+		txtDataMap.clear();
+		txtPrioritaMap.clear();
+
 		commesseTabPane.getSelectionModel().selectedIndexProperty().addListener(tabListener);
 
 		btnDeleteCommessa.setDisable(true);
@@ -506,6 +546,9 @@ public class VisualizzaOrdiniController implements Initializable {
 
 		Integer tabId = 0;
 		for (Commessa c : commesse) {
+
+			if (tabId == 0)
+				currentCommessaId = c.getID();
 
 			commesseTabPane.getTabs().add(createCommessaTab(c));
 
@@ -560,18 +603,30 @@ public class VisualizzaOrdiniController implements Initializable {
 
 		gridPane.getColumnConstraints().addAll(column1, column2);
 
-		Label data = new Label();
+
+		TextField data = new TextField();
 		data.setMinHeight(25);
+		data.setStyle("-fx-background-color: #EEEEEE;");
 		data.setText(commessa.getDataCreazione().toString());
+		data.setAlignment(Pos.CENTER);
+		data.setEditable(false);
+		data.setId("txtData_"+commessa.getID());
 
 		TitledPane titledPaneData = new TitledPane();
 		titledPaneData.setAnimated(false);
 		titledPaneData.setText("Data di creazione della commessa");
 		titledPaneData.setContent(data);
 
-		Label priorita = new Label();
+		TextField priorita = new TextField();
 		priorita.setMinHeight(25);
+		priorita.setStyle("-fx-background-color: #EEEEEE;");
 		priorita.setText(commessa.getPriorita()+"");
+		priorita.setAlignment(Pos.CENTER);
+		priorita.setEditable(false);
+		priorita.setId("txtPriorita_"+commessa.getID());
+
+		txtDataMap.put((Integer)commessa.getID(),data);
+		txtPrioritaMap.put((Integer)commessa.getID(),priorita);
 
 		TitledPane titledPanePriorita = new TitledPane();
 		titledPanePriorita.setAnimated(false);

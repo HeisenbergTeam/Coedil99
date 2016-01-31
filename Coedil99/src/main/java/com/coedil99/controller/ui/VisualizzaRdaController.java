@@ -43,11 +43,11 @@ public class VisualizzaRdaController implements Initializable {
     public TitledPane commessaPane;
 
     @FXML
-    public Label dataCreazione;
+    public TextField dataCreazione;
     @FXML
-    public Label dataPrevista;
+    public TextField dataPrevista;
     @FXML
-    public Label dataArrivo;
+    public TextField dataArrivo;
 
     @FXML
     public Button btnNewRda;

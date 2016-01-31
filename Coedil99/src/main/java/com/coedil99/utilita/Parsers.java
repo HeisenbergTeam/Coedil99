@@ -1,5 +1,6 @@
 package com.coedil99.utilita;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -15,6 +16,17 @@ public final class Parsers {
     public static String printItalianDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         return sdf.format(date);
+    }
+
+    public static Date italianDateStringToDate(String string) {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date date = format.parse(string);
+            return date;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new Date();
     }
 
     public static int getNumbers(String str) {

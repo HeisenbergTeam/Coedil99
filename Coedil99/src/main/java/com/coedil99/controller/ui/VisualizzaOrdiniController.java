@@ -3,6 +3,7 @@ package com.coedil99.controller.ui;
 import com.coedil99.controller.builder.Builder;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
+import com.coedil99.utilita.Parsers;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.Sessione;
@@ -207,7 +208,7 @@ public class VisualizzaOrdiniController implements Initializable {
 						if (arg0.getValue() == null) {
 							s.set("?");
 						} else {
-							s.set(arg0.getValue().getDataCreazione().toString());
+							s.set(Parsers.printItalianDate(arg0.getValue().getDataCreazione()));
 						}
 						return s;
 					}
@@ -225,7 +226,7 @@ public class VisualizzaOrdiniController implements Initializable {
 								t.getTablePosition().getRow())
 						);
 
-						ordineCorrenet.setDataCreazione(new Date());
+						ordineCorrenet.setDataCreazione(Parsers.italianDateStringToDate(t.getNewValue()));
 
 						try {
 
@@ -272,8 +273,6 @@ public class VisualizzaOrdiniController implements Initializable {
 						);
 
 						Destinazione oldDest = ordineCorrenet.getDestinazione();
-
-
 
 						Destinazione dest = new Builder.DestinazioneBuilder().setVia(t.getNewValue()).build();
 
@@ -375,6 +374,7 @@ public class VisualizzaOrdiniController implements Initializable {
 	public Map txtDataMap = new Hashtable();
 	public Map txtPrioritaMap = new Hashtable();
 
+	public boolean modificaOn = false;
 	/**
 	 * onEditCommessa action
 	 */
@@ -382,8 +382,16 @@ public class VisualizzaOrdiniController implements Initializable {
 	protected void onEditCommessa() {
 		log.i("modifica commessa");
 
+		/*
         //sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
-
+		btnNewOrdine.setDisable(false);
+		//btnEditOrdine.setDisable(false);
+		btnDeleteOrdine.setDisable(false);
+		btnNewCommessa.setDisable(false);
+		btnEditCommessa.setDisable(true);
+		btnEditDistinta.setDisable(true);
+		btnDeleteCommessa.setDisable(true);
+*/
 		 //MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
 		//currentCommessaId
 		for(Object commessaId: txtDataMap.keySet()) {
@@ -396,16 +404,55 @@ public class VisualizzaOrdiniController implements Initializable {
 				TextField currentPriorita = (TextField)txtPrioritaMap.get(commessaId);
 				TextField currentData = (TextField)txtDataMap.get(commessaId);
 
-				currentPriorita.setEditable(true);
-				currentPriorita.setStyle("-fx-background-color: #FFFFFF;");
-				currentPriorita.textProperty().addListener((observable, oldValue, newValue) -> {
-					System.out.println("currentPriorita changed from " + oldValue + " to " + newValue);
-				});
-				currentData.setEditable(true);
-				currentData.setStyle("-fx-background-color: #FFFFFF;");
-				currentData.textProperty().addListener((observable, oldValue, newValue) -> {
-					System.out.println("currentData changed from " + oldValue + " to " + newValue);
-				});
+				if(modificaOn) {
+					try {
+						Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().getCommessaByORMID(currentCommessaId);
+						commessa.setDataCreazione(Parsers.italianDateStringToDate(currentData.getText()));
+						commessa.setPriorita(Integer.parseInt(currentPriorita.getText()));
+						DAOFactory.getDAOFactory().getCommessaDAO().save(commessa);
+					} catch (PersistentException e) {
+						e.printStackTrace();
+					}
+					//currentPriorita.getText();
+					//currentData.getText();
+
+					currentPriorita.setEditable(false);
+					currentPriorita.setStyle("-fx-background-color: #EEEEEE;");
+					currentData.setEditable(false);
+					currentData.setStyle("-fx-background-color: #EEEEEE;");
+
+					modificaOn = false;
+					btnNewOrdine.setDisable(false);
+					//btnEditOrdine.setDisable(false);
+					btnDeleteOrdine.setDisable(false);
+					btnNewCommessa.setDisable(false);
+					btnEditCommessa.setDisable(false);
+					btnEditCommessa.setText("Modifica commessa");
+					btnEditDistinta.setDisable(false);
+					btnDeleteCommessa.setDisable(false);
+				} else {
+
+					currentPriorita.setEditable(true);
+					currentPriorita.setStyle("-fx-background-color: #FFFFFF;");
+					//currentPriorita.textProperty().addListener((observable, oldValue, newValue) -> {
+					//	System.out.println("currentPriorita changed from " + oldValue + " to " + newValue);
+					//});
+					currentData.setEditable(true);
+					currentData.setStyle("-fx-background-color: #FFFFFF;");
+					//currentData.textProperty().addListener((observable, oldValue, newValue) -> {
+					//	System.out.println("currentData changed from " + oldValue + " to " + newValue);
+					//});
+
+					modificaOn = true;
+					btnNewOrdine.setDisable(true);
+					//btnEditOrdine.setDisable(false);
+					btnDeleteOrdine.setDisable(true);
+					btnNewCommessa.setDisable(true);
+					btnEditCommessa.setDisable(false);
+					btnEditCommessa.setText("Salva commessa");
+					btnEditDistinta.setDisable(true);
+					btnDeleteCommessa.setDisable(true);
+				}
 			}
 		}
 
@@ -607,7 +654,7 @@ public class VisualizzaOrdiniController implements Initializable {
 		TextField data = new TextField();
 		data.setMinHeight(25);
 		data.setStyle("-fx-background-color: #EEEEEE;");
-		data.setText(commessa.getDataCreazione().toString());
+		data.setText(Parsers.printItalianDate(commessa.getDataCreazione()));
 		data.setAlignment(Pos.CENTER);
 		data.setEditable(false);
 		data.setId("txtData_"+commessa.getID());

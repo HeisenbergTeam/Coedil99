@@ -128,7 +128,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	private void nuovoOrdine() {
 		Date now = new Date();
-		Destinazione destinazione = new Builder.DestinazioneBuilder().setVia("").build();
+		Destinazione destinazione = new Builder.DestinazioneBuilder().setVia("Nuova destinazione").build();
 		Ordine ordine = new Builder.OrdineBuilder().setDataCreazione(now).setDestinazione(destinazione).build();
 		//tableOrdini.getSelectionModel().clearSelection();
 		refreshListaOrdini();
@@ -367,7 +367,7 @@ public class VisualizzaOrdiniController implements Initializable {
 		Date now = new Date();
 		Ordine ordine = tableOrdini.getSelectionModel().getSelectedItem();
 		Commessa commessa = new Builder.CommessaBuilder().setDataCreazione(now).setOrdine(ordine).setPriorita(0).build();
-		Distinta distinta = new Builder.DistintaBuilder().setCommessa(commessa).setDataInizio(now).setElementoStrutturale("").setModello("").setRevisione(0).build();
+		Distinta distinta = new Builder.DistintaBuilder().setCommessa(commessa).setDataInizio(now).setElementoStrutturale("Nuovo elemento strutturale").setModello("Nuovo modello").setRevisione(0).build();
 		loadTablePane(ordine);
 	}
 

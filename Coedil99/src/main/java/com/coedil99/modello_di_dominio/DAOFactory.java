@@ -17,10 +17,12 @@ import com.coedil99.modello_di_dominio.dao.*;
 
 public abstract class DAOFactory {
 	private static DAOFactory _factory = new DAOFactoryImpl();
+	private static DAOFactory _restFactory = new DAOFactoryRestImpl();
 	
 	public static DAOFactory getDAOFactory() {
 		return _factory;
 	}
+	public static DAOFactory getRestDAOFactory() {return _restFactory; }
 	
 	public abstract CommessaDAO getCommessaDAO();
 	public abstract DistintaDAO getDistintaDAO();

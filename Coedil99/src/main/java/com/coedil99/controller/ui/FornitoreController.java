@@ -165,7 +165,7 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_nome.setCellFactory(TextFieldTableCell.forTableColumn());
+        //tc_nome.setCellFactory(TextFieldTableCell.forTableColumn());
         tc_nome.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<DescrizionePezzo, String>>() {
 
@@ -211,7 +211,7 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_peso.setCellFactory(TextFieldTableCell.forTableColumn());
+        //tc_peso.setCellFactory(TextFieldTableCell.forTableColumn());
         tc_peso.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<DescrizionePezzo, String>>() {
 
@@ -257,7 +257,7 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_diametro.setCellFactory(TextFieldTableCell.forTableColumn());
+        //tc_diametro.setCellFactory(TextFieldTableCell.forTableColumn());
         tc_diametro.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<DescrizionePezzo, String>>() {
 
@@ -310,7 +310,7 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_nomeFornitore.setCellFactory(TextFieldTableCell.forTableColumn());
+        //tc_nomeFornitore.setCellFactory(TextFieldTableCell.forTableColumn());
         tc_nomeFornitore.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Fornitore, String>>() {
 

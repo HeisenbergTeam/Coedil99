@@ -214,7 +214,7 @@ public class VisualizzaOrdiniController implements Initializable {
 					}
 				});
 
-		//tableOrdiniData.setCellFactory(TextFieldTableCell.forTableColumn());
+		tableOrdiniData.setCellFactory(TextFieldTableCell.forTableColumn());
 		tableOrdiniData.setOnEditCommit(
 				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
 
@@ -260,7 +260,7 @@ public class VisualizzaOrdiniController implements Initializable {
 					}
 				});
 
-		//tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
+		tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
 		tableOrdiniDestinazione.setOnEditCommit(
 				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
 

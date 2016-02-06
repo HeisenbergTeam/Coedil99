@@ -95,7 +95,7 @@
                                             </HBox>
                                                 <TableView fx:id="tblFornitore" prefHeight="576.0">
                                                   <columns>
-                                                    <TableColumn fx:id="tc_nomeFornitore" prefWidth="304.0" text="Nome" />
+                                                    <TableColumn fx:id="tc_nomeFornitore" prefWidth="304.0" sortable="false" text="Nome" />
                                                   </columns>
                                                 </TableView>
                                              </children>
@@ -132,9 +132,9 @@
                                                 </HBox>
                                                 <TableView fx:id="tblPezzi" prefHeight="576.0">
                                                    <columns>
-                                                      <TableColumn fx:id="tc_nome" prefWidth="300.0" text="Nome" />
-                                                      <TableColumn fx:id="tc_peso" prefWidth="172.0" text="Peso" />
-                                                      <TableColumn fx:id="tc_diametro" prefWidth="172.0" text="Diametro" />
+                                                      <TableColumn fx:id="tc_nome" prefWidth="300.0" sortable="false" text="Nome" />
+                                                      <TableColumn fx:id="tc_peso" prefWidth="172.0" sortable="false" text="Peso" />
+                                                      <TableColumn fx:id="tc_diametro" prefWidth="172.0" sortable="false" text="Diametro" />
                                                    </columns>
                                                 </TableView>
                                              </children>

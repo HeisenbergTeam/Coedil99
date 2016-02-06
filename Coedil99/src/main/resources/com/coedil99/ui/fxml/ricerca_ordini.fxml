@@ -39,8 +39,8 @@
               <center>
                 <TableView prefHeight="200.0" prefWidth="200.0">
                   <columns>
-                    <TableColumn prefWidth="75.0" text="Column X" />
-                    <TableColumn prefWidth="75.0" text="Column X" />
+                    <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
+                    <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
                   </columns>
                 </TableView>
               </center>

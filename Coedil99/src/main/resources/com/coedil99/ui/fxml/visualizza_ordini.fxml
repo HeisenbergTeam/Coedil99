@@ -88,10 +88,10 @@
         </Label>
         <TableView fx:id="tableOrdini" prefHeight="660.0" prefWidth="300.0">
           <columns>
-            <TableColumn id="tableOrdiniId" fx:id="tableOrdiniId" minWidth="80.0" text="Id" />
-            <TableColumn id="tableOrdiniData" fx:id="tableOrdiniData" minWidth="80.0" text="Data" />
-                  <TableColumn id="tableOrdiniData" fx:id="tableOrdiniDestinazione" minWidth="138.0" prefWidth="138.0" text="Destinazione" />
-                  <TableColumn id="tableOrdiniData" fx:id="tableOrdiniCliente" minWidth="138.0" prefWidth="138.0" text="Cliente" />
+            <TableColumn id="tableOrdiniId" fx:id="tableOrdiniId" minWidth="80.0" sortable="false" text="Id" />
+            <TableColumn id="tableOrdiniData" fx:id="tableOrdiniData" minWidth="80.0" sortable="false" text="Data" />
+                  <TableColumn id="tableOrdiniData" fx:id="tableOrdiniDestinazione" minWidth="138.0" prefWidth="138.0" sortable="false" text="Destinazione" />
+                  <TableColumn id="tableOrdiniData" fx:id="tableOrdiniCliente" minWidth="138.0" prefWidth="138.0" sortable="false" text="Cliente" />
           </columns>
         </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="-1.0" prefWidth="-1.0">

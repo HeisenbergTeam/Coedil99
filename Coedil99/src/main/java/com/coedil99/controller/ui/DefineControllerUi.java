@@ -8,7 +8,6 @@ public class DefineControllerUi {
     static public int NUOVO_ORDINE = 111;
     static public int MODIFICA_ORDINI = 222;
 
-    static public int ELABORA_RDA_NUOVA = 666;
-    static public int ELABORA_RDA_LISTA = 999;
+    static public int ELABORA_RDA_NUOVA = -1;
 
 }

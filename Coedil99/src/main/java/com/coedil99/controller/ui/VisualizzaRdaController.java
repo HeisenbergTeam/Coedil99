@@ -1,8 +1,10 @@
 package com.coedil99.controller.ui;
 
+import com.coedil99.controller.builder.Builder;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.modello_di_dominio.dao.RDADAO;
+import com.coedil99.utilita.Parsers;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
@@ -22,10 +24,7 @@ import javafx.util.Callback;
 import org.orm.PersistentException;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class VisualizzaRdaController implements Initializable {
 
@@ -203,13 +202,16 @@ public class VisualizzaRdaController implements Initializable {
     @FXML
     public void onNuovaRda(ActionEvent actionEvent) {
         //fx:controller="com.coedil99.controller.ui.ElaboraRDAController"
-        MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", DefineControllerUi.ELABORA_RDA_NUOVA);
+        String nowStr = Parsers.printItalianDate(new Date());
+        Date now = Parsers.italianDateStringToDate(nowStr);
+        RDA nuovaRda = new Builder.RDABuilder().setDataArrivoEffettiva(now).setDataArrivoPrevista(now).setDataCreazione(now).setDescrizione("").setFornitore(null).build();
+        MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", nuovaRda.getID());
     }
 
     @FXML
     public void onEditRda(ActionEvent actionEvent) {
         //fx:controller="com.coedil99.controller.ui.ElaboraRDAController"
-        MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", DefineControllerUi.ELABORA_RDA_LISTA);
+        MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", rdaCorrente.getID());
     }
 
     @FXML

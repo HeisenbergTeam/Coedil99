@@ -41,16 +41,8 @@
                         <children>
                           <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" prefWidth="-1.0" text="Ordine" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                        <content>
-                                          <Label fx:id="lbl_ordine_rda" minHeight="25.0" text="lbl_ordine_rda">
-                                             <graphic>
-                                                <TextField fx:id="txt_ordine_rda" minHeight="25.0" text="txt_ordine_rda" />
-                                             </graphic></Label>
+                                           <TextField fx:id="txt_ordine_rda" minHeight="25.0" text="txt_ordine_rda" />
                                        </content>
-                          </TitledPane>
-                          <TitledPane fx:id="title_fornitore_rda_lbl" animated="false" collapsible="false" expanded="true" text="Fornitore" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                            <content>
-                              <Label fx:id="lbl_fornitore_rda" alignment="CENTER" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" text="lbl_fornitore_rda" />
-                            </content>
                           </TitledPane>
                             <TitledPane fx:id="title_fornitore_rda_txt" animated="false" collapsible="false" expanded="true" text="Fornitore" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                 <content>
@@ -70,20 +62,17 @@
                         <children>
                                     <TitledPane animated="false" collapsible="false" expanded="true" text="Data di consegna prevista">
                                        <content>
-                                          <Label fx:id="lbl_data_consegna_prevista_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data_consegna_prevista_rda" />
-                                           <TextField fx:id="txt_data_consegna_prevista_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_data_consegna_prevista_rda" />
+                                          <TextField fx:id="txt_data_consegna_prevista_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_data_consegna_prevista_rda" />
                                        </content>
                                     </TitledPane>
                                     <TitledPane animated="false" collapsible="false" expanded="true" text="Data di consegna effettiva" GridPane.columnIndex="1">
                                        <content>
-                                          <Label fx:id="lbl_data_consegna_effettiva_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data_consegna_effettiva_rda" />
-                                           <TextField fx:id="txt_data_consegna_effettiva_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_data_consegna_effettiva_rda" />
+                                          <TextField fx:id="txt_data_consegna_effettiva_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_data_consegna_effettiva_rda" />
                                        </content>
                                     </TitledPane>
                                     <TitledPane animated="false" collapsible="false" expanded="true" text="Giorni di ritardo (o anticipo)" GridPane.columnIndex="2">
                                        <content>
-                                          <Label fx:id="lbl_ritardo_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_ritardo_rda" />
-                                           <TextField fx:id="txt_ritardo_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_ritardo_rda" />
+                                          <TextField fx:id="txt_ritardo_rda" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_ritardo_rda" />
                                        </content>
                                     </TitledPane>
                         </children>
@@ -169,8 +158,8 @@
                                                   </HBox>
                                                       <TableView fx:id="tbl_righeRDA" prefHeight="200.0" prefWidth="200.0">
                                                         <columns>
-                                                          <TableColumn fx:id="cl_indicazione" prefWidth="231.0" text="Indicazione" />
-                                                          <TableColumn fx:id="cl_quantita" prefWidth="73.0" text="Quantità" />
+                                                          <TableColumn fx:id="cl_indicazione" prefWidth="231.0" sortable="false" text="Indicazione" />
+                                                          <TableColumn fx:id="cl_quantita" prefWidth="73.0" sortable="false" text="Quantità" />
                                                         </columns>
                                                       </TableView>
                                                    </children>
@@ -201,14 +190,12 @@
                                                          <children>
                                                             <TitledPane animated="false" collapsible="false" text="Codice del pezzo" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                                <content>
-                                                                  <Label fx:id="lbl_codice_pezzo" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                    <TextField fx:id="txt_codice_pezzo" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                </content>
                                                             </TitledPane>
                                                             <TitledPane animated="false" collapsible="false" text="Quantità" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                                <content>
-                                                                  <Label fx:id="lbl_pezzo_quantita" minHeight="25.0" text="Nessuna riga selezionata" />
-                                                                   <TextField fx:id="txt_pezzo_quantita" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                                  <TextField fx:id="txt_pezzo_quantita" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                </content>
                                                             </TitledPane>
                                                          </children>
@@ -291,20 +278,17 @@
                                  <children>
                                     <TitledPane animated="false" collapsible="false" expanded="true" text="Numero">
                                        <content>
-                                          <Label fx:id="lbl_numero_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_numero_ddt" />
-                                           <TextField fx:id="txt_numero_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_numero_ddt" />
+                                          <TextField fx:id="txt_numero_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_numero_ddt" />
                                        </content>
                                     </TitledPane>
                                     <TitledPane animated="false" collapsible="false" expanded="true" text="Data" GridPane.columnIndex="1">
                                        <content>
-                                          <Label fx:id="lbl_data_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data_ddt" />
                                            <TextField fx:id="txt_data_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_data_ddt" />
                                        </content>
                                     </TitledPane>
                                     <TitledPane animated="false" collapsible="false" expanded="true" text="Codice colata" GridPane.columnIndex="2">
                                        <content>
-                                          <Label fx:id="lbl_codice_colata_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_codice_colata_ddt" />
-                                           <TextField fx:id="txt_codice_colata_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_codice_colata_ddt" />
+                                          <TextField fx:id="txt_codice_colata_ddt" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_codice_colata_ddt" />
                                        </content>
                                     </TitledPane>
                                     <Button fx:id="modificaDDTButton" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#modificaDatiDDT" prefWidth="70.0" text="Modifica" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />

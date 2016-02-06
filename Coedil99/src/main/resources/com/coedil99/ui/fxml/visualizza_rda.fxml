@@ -64,8 +64,8 @@
         </Label>
         <TableView fx:id="tableRda" prefHeight="660.0" prefWidth="300.0">
           <columns>
-            <TableColumn id="tableOrdiniId" fx:id="tableRdaId" minWidth="80.0" prefWidth="160.0" text="Descrizione" />
-            <TableColumn id="tableOrdiniData" fx:id="tableRdaFornitore" minWidth="27.0" prefWidth="138.0" text="Fornitore" />
+            <TableColumn id="tableOrdiniId" fx:id="tableRdaId" minWidth="80.0" prefWidth="160.0" sortable="false" text="Descrizione" />
+            <TableColumn id="tableOrdiniData" fx:id="tableRdaFornitore" minWidth="27.0" prefWidth="138.0" sortable="false" text="Fornitore" />
           </columns>
         </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="-1.0" prefWidth="-1.0">

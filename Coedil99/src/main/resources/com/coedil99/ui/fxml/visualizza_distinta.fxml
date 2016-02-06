@@ -38,22 +38,22 @@
                         <children>
                           <TitledPane animated="false" collapsible="false" contentDisplay="LEFT" expanded="true" graphicTextGap="4.0" prefWidth="-1.0" text="Modulo" textAlignment="LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                        <content>
-                                          <Label fx:id="lbl_modulo" minHeight="25.0" text="lbl_modulo" />
+                                          <TextField fx:id="txt_modulo" minHeight="25.0" text="txt_modulo" />
                                        </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Revisione" GridPane.columnIndex="1" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_revisione" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" text="lbl_revisione" />
+                              <TextField fx:id="txt_revisione" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" text="txt_revisione" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Data" GridPane.columnIndex="2" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_data" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_data" />
+                              <TextField fx:id="txt_data" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_data" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Cliente/Impresa" GridPane.columnIndex="3" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_cliente" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cliente" />
+                              <TextField fx:id="txt_cliente" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_cliente" />
                             </content>
                           </TitledPane>
                         </children>
@@ -71,17 +71,17 @@
                         <children>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Destinazione materiale" GridPane.columnIndex="0" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_destinazione" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_destinazione" />
+                              <TextField fx:id="txt_destinazione" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_destinazione" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Elemento strutturale" GridPane.columnIndex="1" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_elemstrutturale" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_elemstrutturale" />
+                              <TextField fx:id="txt_elemstrutturale" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_elemstrutturale" />
                             </content>
                           </TitledPane>
                           <TitledPane animated="false" collapsible="false" expanded="true" text="Cartellino" GridPane.columnIndex="2" GridPane.rowIndex="0">
                             <content>
-                              <Label fx:id="lbl_cartellino" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="lbl_cartellino" />
+                              <TextField fx:id="txt_cartellino" maxWidth="-1.0" minHeight="25.0" minWidth="-1.0" prefWidth="-1.0" text="txt_cartellino" />
                             </content>
                           </TitledPane>
                         </children>
@@ -203,12 +203,12 @@
                                               <children>
                                                 <TitledPane animated="false" collapsible="false" text="Diametro (cm)" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_diametro" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                    <TextField fx:id="txt_diametro" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                                 <TitledPane animated="false" collapsible="false" text="Peso del pezzo non lavorato (Kg)" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_peso_originale" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                    <TextField fx:id="txt_peso_originale" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                               </children>
@@ -224,12 +224,12 @@
                                               <children>
                                                 <TitledPane animated="false" collapsible="false" text="Quantità utilizzate" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_n_pezzi" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                    <TextField fx:id="txt_n_pezzi" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                                 <TitledPane animated="false" collapsible="false" text="Peso del pezzo lavorato (Kg)" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_peso_lavorato" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                    <TextField fx:id="txt_peso_lavorato" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                               </children>
@@ -245,12 +245,12 @@
                                               <children>
                                                 <TitledPane animated="false" collapsible="false" text="Fornitore">
                                                   <content>
-                                                    <Label fx:id="lbl_fornitore" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                    <TextField fx:id="txt_fornitore" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                                 <TitledPane animated="false" collapsible="false" text="Data di arrivo" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                   <content>
-                                                    <Label fx:id="lbl_data_arrivo" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                    <TextField fx:id="txt_data_arrivo" minHeight="25.0" text="Nessuna riga selezionata" />
                                                   </content>
                                                 </TitledPane>
                                               </children>
@@ -311,12 +311,12 @@
                                                          <children>
                                                             <TitledPane animated="false" collapsible="false" text="Misura del taglio (cm)" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                                <content>
-                                                                  <Label fx:id="lbl_misura_taglio" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                                  <TextField fx:id="txt_misura_taglio" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                </content>
                                                             </TitledPane>
                                                             <TitledPane animated="false" collapsible="false" text="Tipo di lavorazione" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                                <content>
-                                                                  <Label fx:id="lbl_lavorazione" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                                  <TextField fx:id="txt_lavorazione" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                </content>
                                                             </TitledPane>
                                                          </children>
@@ -332,12 +332,12 @@
                                                          <children>
                                                             <TitledPane animated="false" collapsible="false" text="Nome del pezzo nella riga della distinta" GridPane.columnIndex="0" GridPane.rowIndex="0">
                                                                <content>
-                                                                  <Label fx:id="lbl_indicazione" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                                  <TextField fx:id="txt_indicazione" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                </content>
                                                             </TitledPane>
                                                             <TitledPane animated="false" collapsible="false" text="Codice del pezzo" GridPane.columnIndex="1" GridPane.rowIndex="0">
                                                                <content>
-                                                                  <Label fx:id="lbl_codice_pezzo" minHeight="25.0" text="Nessuna riga selezionata" />
+                                                                  <TextField fx:id="txt_codice_pezzo" minHeight="25.0" text="Nessuna riga selezionata" />
                                                                </content>
                                                             </TitledPane>
                                                          </children>

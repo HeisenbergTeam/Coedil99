@@ -29,6 +29,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.util.Callback;
 import org.orm.PersistentException;
+
+import java.text.ParseException;
 import java.util.Date;
 
 import java.net.URL;
@@ -226,7 +228,11 @@ public class VisualizzaOrdiniController implements Initializable {
 								t.getTablePosition().getRow())
 						);
 
-						ordineCorrenet.setDataCreazione(Parsers.italianDateStringToDate(t.getNewValue()));
+						try {
+							ordineCorrenet.setDataCreazione(Parsers.italianDateStringToDate(t.getNewValue()));
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
 
 						try {
 
@@ -411,6 +417,8 @@ public class VisualizzaOrdiniController implements Initializable {
 						commessa.setPriorita(Integer.parseInt(currentPriorita.getText()));
 						DAOFactory.getDAOFactory().getCommessaDAO().save(commessa);
 					} catch (PersistentException e) {
+						e.printStackTrace();
+					} catch (ParseException e) {
 						e.printStackTrace();
 					}
 					//currentPriorita.getText();

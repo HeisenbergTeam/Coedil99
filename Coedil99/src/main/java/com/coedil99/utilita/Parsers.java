@@ -18,15 +18,10 @@ public final class Parsers {
         return sdf.format(date);
     }
 
-    public static Date italianDateStringToDate(String string) {
+    public static Date italianDateStringToDate(String string) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            Date date = format.parse(string);
-            return date;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return new Date();
+        Date date = format.parse(string);
+        return date;
     }
 
     public static int getNumbers(String str) {

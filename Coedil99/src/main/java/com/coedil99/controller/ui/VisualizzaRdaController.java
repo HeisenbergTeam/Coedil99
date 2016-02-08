@@ -5,6 +5,7 @@ import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.modello_di_dominio.dao.RDADAO;
 import com.coedil99.utilita.Parsers;
+import com.coedil99.utilita.Sessione;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
@@ -17,9 +18,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.orm.PersistentException;
 
@@ -57,6 +63,7 @@ public class VisualizzaRdaController implements Initializable {
 
 
     protected Log log;
+    protected Sessione session;
     protected RDA rdaCorrente = null;
 
     public void setAction(int action) {
@@ -102,6 +109,7 @@ public class VisualizzaRdaController implements Initializable {
         UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
         RDADAO rdaDAO = DAOFactory.getDAOFactory().getRDADAO();
         log = (Log) gsp.getServizio("LogStdout");
+        session = (Sessione) gsp.getServizio("SessionePrototipo");
 
         ArrayList<RDA> rdas = getRDAList();
 
@@ -200,12 +208,54 @@ public class VisualizzaRdaController implements Initializable {
     }
 
     @FXML
-    public void onNuovaRda(ActionEvent actionEvent) {
+    public void onNuovaRda(ActionEvent actionEvent) throws PersistentException {
+
+            log.i("Aggiungi rda");
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            Parent root = null;
+            try {
+                FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("fxml/aggiungi_rda.fxml"));
+
+                //"com.coedil99.controller.ui.AggiungiPezzoController"
+                AggiungiRDAController controller = new AggiungiRDAController();
+
+                // Set it in the FXMLLoader
+                loader.setController(controller);
+
+                root = loader.load();
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            //blocking
+            popupStage.showAndWait();
+
+            Fornitore fornitoreSelezionato = (Fornitore) session.get("fornitore_selezionato");
+
+        Date dateP = (Date) session.get("dataPP");
+        Date dateE = (Date) session.get("dataEE");
+        Date dateR = (Date) session.get("dataRR");
+
+        RDA nuovaRda = new Builder.RDABuilder().setDataArrivoEffettiva(dateE).setDataArrivoPrevista(dateP).setDataCreazione(dateR).setDescrizione("").setFornitore(fornitoreSelezionato).build();
+
+
+
+
+
         //fx:controller="com.coedil99.controller.ui.ElaboraRDAController"
+        /*
         String nowStr = Parsers.printItalianDate(new Date());
         Date now = Parsers.italianDateStringToDate(nowStr);
         RDA nuovaRda = new Builder.RDABuilder().setDataArrivoEffettiva(now).setDataArrivoPrevista(now).setDataCreazione(now).setDescrizione("").setFornitore(null).build();
         MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", nuovaRda.getID());
+        */
     }
 
     @FXML

@@ -39,8 +39,7 @@ public class AggiungiRDAController implements Initializable {
 /**
  * 
  */
-    @FXML protected Pane listaFornitoreParent;
-	@FXML private ListView<Fornitore> listaFornitore;
+    @FXML private ListView<Fornitore> listaFornitore;
 	@FXML private TextField dataRichiesta;
     @FXML private TextField dataPrevista;
     @FXML private TextField dataEffettiva;
@@ -115,7 +114,6 @@ public class AggiungiRDAController implements Initializable {
         ObservableList<Fornitore> list = FXCollections.observableList(fornitori);
         listaFornitore.setItems(list);
 
-
     }
 
     public ArrayList<Fornitore> getFornitori() {
@@ -131,12 +129,10 @@ public class AggiungiRDAController implements Initializable {
     private void refreshListaFornitore()
     {
 
-        //Parent listaFornitoreParent = listaFornitore.getParent();
+        Parent listaFornitoreParent = listaFornitore.getParent();
 
         Pane tps = (Pane) listaFornitoreParent;
-            tps.getChildren().remove(listaFornitore);
-
-
+        tps.getChildren().remove(listaFornitore);
 
         loadFornitori(getFornitori());
 
@@ -204,7 +200,7 @@ public class AggiungiRDAController implements Initializable {
             blocca4 = false;
         }
 
-        if (blocca1 && blocca2 && blocca3 && blocca4) {
+        if (!blocca1 && !blocca2 && !blocca3 && !blocca4) {
             sessione.set("fornitore_selezionato",fornitoreScelto);
             sessione.set("data_prevista",dataPP);
             sessione.set("data_effettiva",dataEE);

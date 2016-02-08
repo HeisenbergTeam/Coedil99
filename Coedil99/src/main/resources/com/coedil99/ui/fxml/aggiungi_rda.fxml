@@ -49,7 +49,7 @@
                <content>
                   <Pane fx:id="listaFornitoreParent" maxHeight="452.0" maxWidth="300.0" minHeight="452.0" minWidth="300.0" prefHeight="452.0" prefWidth="300.0">
                      <children>
-                    <ListView id="listPezziDistinta" fx:id="listaFornitori" layoutY="1.0" maxHeight="452.0" maxWidth="300.0" minHeight="452.0" minWidth="300.0" prefHeight="452.0" prefWidth="300.0" />
+                    <ListView id="listPezziDistinta" fx:id="listaFornitore" layoutY="1.0" maxHeight="452.0" maxWidth="300.0" minHeight="452.0" minWidth="300.0" prefHeight="452.0" prefWidth="300.0" />
                      </children>
                   </Pane>
                </content>

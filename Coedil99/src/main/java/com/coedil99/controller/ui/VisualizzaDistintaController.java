@@ -1,5 +1,7 @@
 package com.coedil99.controller.ui;
 
+import com.coedil99.controller.builder.Builder;
+import com.coedil99.controller.builder.Editor;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.DistintaDAO;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
@@ -36,6 +38,7 @@ import org.orm.PersistentException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -207,6 +210,9 @@ public class VisualizzaDistintaController implements Initializable {
 		if(modificandoDistinta != false){
 			modificandoDistinta = false;
 			modificaDistButton.setText("Modifica");
+            setTextEdit(txt_revisione,false);
+            setTextEdit(txt_data,false);
+            setTextEdit(txt_elemstrutturale,false);
 			salvaDatiDistinta();
 			return;
 		}
@@ -525,6 +531,19 @@ public class VisualizzaDistintaController implements Initializable {
 			refreshDistinta();
 			return;
 		}
+        Distinta distinta = null;
+        try {
+            distinta = distintaDAO.getDistintaByORMID(currentDistintaId);
+            new Editor().modificaDistinta(distinta,Parsers.italianDateStringToDate(txt_data.getText()), null, null,Integer.parseInt(txt_revisione.getText()),txt_elemstrutturale.getText());
+        } catch (PersistentException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        setTextEdit(txt_revisione,false);
+        setTextEdit(txt_data,false);
+        setTextEdit(txt_elemstrutturale,false);
 
         //TODO:modifica distinta
 		//distintaDAO.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), Parsers.getNumbers(txt_revisione.getText()), distinta.getModello(), txt_elemstrutturale.getText());

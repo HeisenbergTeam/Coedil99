@@ -3,9 +3,11 @@ package com.coedil99.controller.ui;
 import com.coedil99.modello_di_dominio.DAOFactory;
 import com.coedil99.modello_di_dominio.LavorazionePezzo;
 import com.coedil99.modello_di_dominio.Pezzo;
+import com.coedil99.modello_di_dominio.RigaRDA;
 import com.coedil99.modello_di_dominio.dao.LavorazionePezzoDAO;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
+import com.coedil99.modello_di_dominio.dao.RigaRDADAO;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.Sessione;
@@ -157,7 +159,12 @@ public class AggiungiPezzoController implements Initializable {
     {
         try
         {
-            pezzi = pezzoDAO.listPezzoByQuery(null,null);
+            RigaRDADAO rigaRDADAO = DAOFactory.getDAOFactory().getRigaRDADAO();
+            RigaRDA[] arrayRigheRDA = rigaRDADAO.listRigaRDAByQuery(null,null);
+            pezzi = new Pezzo[arrayRigheRDA.length];
+            for (int i=0; i<arrayRigheRDA.length; i++) {
+                pezzi[i] = arrayRigheRDA[i].getPezzo();
+            }
         }catch(PersistentException e)
         {
             e.printStackTrace();

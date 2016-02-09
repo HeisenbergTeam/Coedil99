@@ -1,16 +1,13 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.controller.builder.Builder;
+import com.coedil99.dominio.builder.Builder;
 import com.coedil99.modello_di_dominio.*;
-import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.modello_di_dominio.dao.RDADAO;
-import com.coedil99.utilita.Parsers;
 import com.coedil99.utilita.Sessione;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import com.coedil99.ui.MainApplication;
-import com.coedil99.controller.ui.DefineControllerUi;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -93,6 +90,7 @@ public class VisualizzaRdaController implements Initializable {
             if (index >= 0 ) {
                 commessaPane.setDisable(false);
                 RDA rda = getRDAList().get(index);
+                rdaCorrente = rda;
                 dataArrivo.setText(rda.getDataArrivoEffettiva().toString());
                 dataCreazione.setText(rda.getDataCreazione().toString());
                 dataPrevista.setText(rda.getDataArrivoPrevista().toString());
@@ -244,6 +242,7 @@ public class VisualizzaRdaController implements Initializable {
 
         if (fornitoreSelezionato != null && dateP != null && dateE != null && dateR != null) {
             RDA nuovaRda = new Builder.RDABuilder().setDataArrivoEffettiva(dateE).setDataArrivoPrevista(dateP).setDataCreazione(dateR).setDescrizione("").setFornitore(fornitoreSelezionato).build();
+            refreshRdaTable();
             MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", nuovaRda.getID());
         }
     }

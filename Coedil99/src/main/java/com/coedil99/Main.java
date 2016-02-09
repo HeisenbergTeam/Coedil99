@@ -1,18 +1,13 @@
 package com.coedil99;
 
 import com.coedil99.modello_di_dominio.*;
-import com.coedil99.modello_di_dominio.dao.RDADAO;
-import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
-import com.coedil99.modello_di_dominio.dao.RigaRDADAO;
 import com.coedil99.utilita.UtilitaManager;
 import com.coedil99.utilita.Log;
 import com.coedil99.utilita.Sessione;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
-import com.coedil99.controller.builder.Builder;
+import com.coedil99.dominio.builder.Builder;
 import org.orm.PersistentException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 

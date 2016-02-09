@@ -1,7 +1,6 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.controller.builder.Builder;
-import com.coedil99.controller.builder.Editor;
+import com.coedil99.dominio.builder.Editor;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.DistintaDAO;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
@@ -20,7 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -32,15 +30,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.util.StringConverter;
 import org.orm.PersistentException;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class VisualizzaDistintaController implements Initializable {

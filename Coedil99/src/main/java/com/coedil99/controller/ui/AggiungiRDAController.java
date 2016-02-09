@@ -1,36 +1,24 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.controller.builder.Builder;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.Fornitore;
 import com.coedil99.modello_di_dominio.dao.FornitoreDAO;
-import com.coedil99.modello_di_dominio.dao.OrdineDAO;
-import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
 import com.coedil99.utilita.*;
 import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.orm.PersistentException;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.*;

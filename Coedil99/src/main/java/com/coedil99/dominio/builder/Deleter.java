@@ -1,4 +1,4 @@
-package com.coedil99.controller.builder;
+package com.coedil99.dominio.builder;
 
 import com.coedil99.modello_di_dominio.*;
 import org.orm.PersistentException;

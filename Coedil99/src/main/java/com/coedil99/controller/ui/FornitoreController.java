@@ -1,19 +1,15 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.controller.builder.Builder;
+import com.coedil99.dominio.builder.Builder;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.*;
 import com.coedil99.ui.MainApplication;
 import com.coedil99.utilita.Log;
-import com.coedil99.utilita.Parsers;
-import com.coedil99.utilita.UtilitaManager;
-import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

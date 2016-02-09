@@ -1,6 +1,6 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.controller.builder.Builder;
+import com.coedil99.dominio.builder.Builder;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.utilita.Parsers;
@@ -21,7 +21,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;

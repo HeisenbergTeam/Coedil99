@@ -1,6 +1,7 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.controller.builder.Builder;
+import com.coedil99.dominio.builder.Builder;
+import com.coedil99.dominio.builder.Editor;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.OrdineDAO;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
@@ -24,16 +25,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.util.StringConverter;
 import org.orm.PersistentException;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
 import java.util.*;
 
 public class ElaboraRDAController implements Initializable {
@@ -142,6 +140,22 @@ public class ElaboraRDAController implements Initializable {
         }
     }
 
+    public void  refreshCampi()
+    {
+        setTextEdit(txt_ordine_rda,false);
+        setTextEdit(txt_fornitore_rda,false);
+        setTextEdit(txt_data_consegna_prevista_rda,false);
+        setTextEdit(txt_data_consegna_effettiva_rda,false);
+        setTextEdit(txt_ritardo_rda,false);
+
+        setTextEdit(txt_codice_pezzo,false);
+        setTextEdit(txt_pezzo_quantita,false);
+
+        txt_fornitore_rda.setText(rda.getFornitore().getNome());
+        txt_data_consegna_prevista_rda.setText(Parsers.printItalianDate(rda.getDataArrivoPrevista()));
+        txt_data_consegna_effettiva_rda.setText(Parsers.printItalianDate(rda.getDataArrivoEffettiva()));
+        txt_ritardo_rda.setText((rda.getDataArrivoEffettiva().getTime()-rda.getDataArrivoPrevista().getTime())/ 24 / 3600 / 1000+" giorni");
+    }
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -152,6 +166,11 @@ public class ElaboraRDAController implements Initializable {
 		salvaDistButton.setDisable(true);
 		//modificaPezzoButton.setDisable(true);
 		btn_rimuoviPezzo.setDisable(true);
+
+        refreshCampi();
+
+
+
 
         setTextEdit(txt_numero_ddt,false);
         txt_numero_ddt.setText("PROSSIMA ITERAZIONE");
@@ -256,6 +275,8 @@ public class ElaboraRDAController implements Initializable {
 	protected void modificaDatiRDA(){
         log.i("Modifica dei dati della RDA");
 
+
+
         //Check
         if(modificandoDatiRDA != false){
             modificandoDatiRDA = false;
@@ -263,6 +284,10 @@ public class ElaboraRDAController implements Initializable {
             salvaDatiRDA();
             return;
         }
+
+        //setTextEdit(txt_fornitore_rda,true);
+        setTextEdit(txt_data_consegna_prevista_rda,true);
+        setTextEdit(txt_data_consegna_effettiva_rda,true);
 
 /*
         Set<Map.Entry<String, Label>> insieme = rdaLabels.entrySet();
@@ -390,7 +415,11 @@ public class ElaboraRDAController implements Initializable {
         }
 
         //TODO: Aggiornare l'rda anche sul db amico
-
+        try {
+            new Editor().modificaRDA(rda,null,null,Parsers.italianDateStringToDate(txt_data_consegna_effettiva_rda.getText()),Parsers.italianDateStringToDate(txt_data_consegna_prevista_rda.getText()),null);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         refreshRDA();
 
 
@@ -402,7 +431,7 @@ public class ElaboraRDAController implements Initializable {
 	}
 	
 	private void refreshCommonDataRDA() {
-		
+		refreshCampi();
 	}
 	
 	private void refreshRDA() {
@@ -485,6 +514,8 @@ public class ElaboraRDAController implements Initializable {
         float quantita = (Float) session.get(AggiungiRigaRdaController.QUANTITA_RIGA_RDA);
         if (pezzoSelezionato!=null && quantita!=0 && indicazione!=null) {
 
+            RigaRDA rigaRDA = new Builder.RigaRDABuilder().setRda(rda).setIndicazione(indicazione).setPezzo(pezzoSelezionato).build();
+            /*
             RigaRDA rigaRDA = rigaRDADAO.createRigaRDA();
             rigaRDA.setIndicazione(indicazione);
             rigaRDA.setPezzo(pezzoSelezionato);
@@ -494,7 +525,7 @@ public class ElaboraRDAController implements Initializable {
 
             pezzoDAO.save(pezzoSelezionato);
             rigaRDADAO.save(rigaRDA);
-
+            */
         }
 
         refreshTable();
@@ -516,6 +547,7 @@ public class ElaboraRDAController implements Initializable {
         if(modificandoDDTRDA != false){
             modificandoDDTRDA = false;
             modificaDDTButton.setText("Modifica");
+            salvaDatiRDA();
             salvaDatiDDT();
             return;
         }

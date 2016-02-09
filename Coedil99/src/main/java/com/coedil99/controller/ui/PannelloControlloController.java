@@ -1,6 +1,6 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.controller.builder.Builder;
+import com.coedil99.dominio.builder.Builder;
 import com.coedil99.modello_di_dominio.*;
 import com.coedil99.ui.MainApplication;
 import com.coedil99.utilita.Sessione;
@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 

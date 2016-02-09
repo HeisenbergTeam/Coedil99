@@ -115,14 +115,14 @@ public class VisualizzaDistintaController implements Initializable {
     }
 
     public void setTextEdit(TextField txtField, Boolean enabled){
-        System.out.println(txtField.toString());
+        log.i(txtField.toString());
+
+        txtField.setStyle("-fx-background-color: #EEEEEE;");
+        txtField.setAlignment(Pos.CENTER);
+
         if(enabled) {
-            txtField.setStyle("-fx-background-color: #FFFFFF;");
-            txtField.setAlignment(Pos.CENTER);
             txtField.setEditable(true);
         }else{
-            txtField.setStyle("-fx-background-color: #EEEEEE;");
-            txtField.setAlignment(Pos.CENTER);
             txtField.setEditable(false);
         }
     }
@@ -650,7 +650,7 @@ public class VisualizzaDistintaController implements Initializable {
 
 	protected void aggiornaCampiRigaDistinta() {
 		if (listPezziDistinta.getSelectionModel().getSelectedItem()!=null) {
-            System.out.println("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
+           log.i("clicked on " + listPezziDistinta.getSelectionModel().getSelectedItem());
             
             rigaSelezionata = listPezziDistinta.getSelectionModel().getSelectedItem();
             
@@ -782,7 +782,7 @@ public class VisualizzaDistintaController implements Initializable {
 
             File file2 = new File(pathSagoma);
             try {
-                System.out.println(file2.getCanonicalPath());
+                log.i(file2.getCanonicalPath());
                 img_sagoma.setImage(new Image("file:///" + file2.getCanonicalPath()));
             } catch (Exception e) {
                 e.printStackTrace();

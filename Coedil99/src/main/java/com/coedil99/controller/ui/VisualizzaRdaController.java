@@ -82,7 +82,6 @@ public class VisualizzaRdaController implements Initializable {
 
     final private ChangeListener changeListener = new ChangeListener<Object>() {
 
-        @Override
         public void changed(ObservableValue<? extends Object> arg0,
                             Object arg1, Object arg2) {
 
@@ -101,7 +100,6 @@ public class VisualizzaRdaController implements Initializable {
         }
     };
 
-    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
@@ -119,33 +117,6 @@ public class VisualizzaRdaController implements Initializable {
         btnEditRda.setDisable(true);
         btnDeleteRda.setDisable(true);
 
-		// ListenerOrdini
-
-//		tableOrdini.getSelectionModel().selectedIndexProperty()
-//				.addListener(new ChangeListener<Object>() {
-//
-//					@Override
-//					public void changed(ObservableValue<? extends Object> arg0,
-//							Object arg1, Object arg2) {
-//
-//						Ordine ao = ordini.get((Integer) arg2);
-//						VisualizzaOrdiniController.this.ordineCorrente = ao;
-//						VisualizzaOrdiniController.this.loadTablePane(ao);
-//
-//					}
-//				});
-
-        // Listener commesse
-		/*
-		 * tableCommesse.setOnMouseClicked((new EventHandler<MouseEvent>() {
-		 * 
-		 * @Override public void handle(MouseEvent mouseEvent) {
-		 * if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
-		 * if(mouseEvent.getClickCount() == 2){
-		 * System.out.println("Double clicked"); } }
-		 * 
-		 * } }));
-		 */
     }
 
     protected void refreshRdaTable() {
@@ -153,7 +124,6 @@ public class VisualizzaRdaController implements Initializable {
                 .removeListener(changeListener);
 
         this.loadRdaTable(getRDAList());
-        // ListenerOrdini
 
         tableRda.getSelectionModel().selectedIndexProperty()
                 .addListener(changeListener);
@@ -170,12 +140,12 @@ public class VisualizzaRdaController implements Initializable {
         tableRdaId
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDA, String>, ObservableValue<String>>() {
 
-                    @Override
+
                     public ObservableValue<String> call(
                             CellDataFeatures<RDA, String> arg0) {
-                        // TODO Auto-generated method stub
+
                         SimpleStringProperty s = new SimpleStringProperty();
-                        s.set(((Integer) arg0.getValue().getID()).toString());
+                        s.set(""+(arg0.getValue().getID()));
                         return s;
                     }
                 });
@@ -183,10 +153,10 @@ public class VisualizzaRdaController implements Initializable {
         tableRdaFornitore
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RDA, String>, ObservableValue<String>>() {
 
-                    @Override
+
                     public ObservableValue<String> call(
                             CellDataFeatures<RDA, String> arg0) {
-                        // TODO Auto-generated method stub
+
                         SimpleStringProperty s = new SimpleStringProperty();
 
                         if (arg0.getValue() == null) {
@@ -250,22 +220,12 @@ public class VisualizzaRdaController implements Initializable {
     @FXML
     public void onNuovaRda(ActionEvent actionEvent) throws PersistentException {
 
-
         nuovaRDA();
-
-
-        //fx:controller="com.coedil99.controller.ui.ElaboraRDAController"
-        /*
-        String nowStr = Parsers.printItalianDate(new Date());
-        Date now = Parsers.italianDateStringToDate(nowStr);
-        RDA nuovaRda = new Builder.RDABuilder().setDataArrivoEffettiva(now).setDataArrivoPrevista(now).setDataCreazione(now).setDescrizione("").setFornitore(null).build();
-        MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", nuovaRda.getID());
-        */
     }
 
     @FXML
     public void onEditRda(ActionEvent actionEvent) {
-        //fx:controller="com.coedil99.controller.ui.ElaboraRDAController"
+
         MainApplication.getInstance().loadPage("elabora_rda", "com.coedil99.controller.ui.ElaboraRDAController", rdaCorrente.getID());
     }
 
@@ -277,7 +237,7 @@ public class VisualizzaRdaController implements Initializable {
             RigaRDA[] arrayRigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().listRigaRDAByQuery(null,null);
             for (int i = 0; i < arrayRigaRDA.length; i++) {
                 if (arrayRigaRDA[i].getRda().getID() == rda.getID()) {
-                    System.out.print("deleting rigarda " + arrayRigaRDA[i].getID());
+                    log.i("deleting rigarda " + arrayRigaRDA[i].getID());
                     DAOFactory.getDAOFactory().getRigaRDADAO().deleteAndDissociate(arrayRigaRDA[i]);
                 }
             }

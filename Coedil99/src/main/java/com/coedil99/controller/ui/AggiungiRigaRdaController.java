@@ -84,7 +84,7 @@ public class AggiungiRigaRdaController implements Initializable {
 
         listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
                                                  ListCell<Pezzo>>() {
-                                     @Override
+
                                      public ListCell<Pezzo> call(ListView<Pezzo> list) {
                                          return new PezzoCell();
                                      }
@@ -93,7 +93,6 @@ public class AggiungiRigaRdaController implements Initializable {
 
         listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
 
-            @Override
             public void changed(ObservableValue<? extends Pezzo> arg0,
                                 Pezzo arg1, Pezzo arg2) {
 
@@ -146,7 +145,6 @@ public class AggiungiRigaRdaController implements Initializable {
         oldString=cercaPezzo.getText();
     }
 
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         aggiungiPezzo.setDisable(true);
@@ -159,16 +157,6 @@ public class AggiungiRigaRdaController implements Initializable {
         lavorazionePezzoDAO = DAOFactory.getDAOFactory().getLavorazionePezzoDAO();
 
         refreshListaPezzi();
-    }
-
-    static class PezzoCell extends ListCell<Pezzo> {
-        @Override
-        public void updateItem(Pezzo item, boolean empty) {
-            super.updateItem(item, empty);
-            if(item != null){
-                setText(item.getDescrizionePezzo().getNome());
-            }
-        }
     }
 
 
@@ -217,7 +205,7 @@ public class AggiungiRigaRdaController implements Initializable {
 
         listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
                                          ListCell<Pezzo>>() {
-                                     @Override
+
                                      public ListCell<Pezzo> call(ListView<Pezzo> list) {
                                          return new PezzoCell();
                                      }
@@ -226,7 +214,6 @@ public class AggiungiRigaRdaController implements Initializable {
 
         listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
 
-            @Override
             public void changed(ObservableValue<? extends Pezzo> arg0,
                                 Pezzo arg1, Pezzo arg2) {
 
@@ -237,7 +224,15 @@ public class AggiungiRigaRdaController implements Initializable {
 
     }
 
-
+    static class PezzoCell extends ListCell<Pezzo> {
+        @Override
+        public void updateItem(Pezzo item, boolean empty) {
+            super.updateItem(item, empty);
+            if(item != null){
+                setText(item.getDescrizionePezzo().getNome());
+            }
+        }
+    }
 
 
 }

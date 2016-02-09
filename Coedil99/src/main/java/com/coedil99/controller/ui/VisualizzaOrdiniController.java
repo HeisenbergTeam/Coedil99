@@ -89,7 +89,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	final private ChangeListener changeListener = new ChangeListener<Object>() {
 
-		@Override
+
 		public void changed(ObservableValue<? extends Object> arg0,
 				Object arg1, Object arg2) {
 
@@ -152,18 +152,14 @@ public class VisualizzaOrdiniController implements Initializable {
 		btnDeleteCommessa.setDisable(true);
 	}
 
-	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		tableOrdini.setEditable(true);//.setCellFactory(TextFieldTableCell.forTableColumn());
-		//tableOrdiniCliente.setCellFactory(TextFieldTableCell.forTableColumn());
-		//tableOrdiniCliente.setEditable(true);
+		tableOrdini.setEditable(true);
 		refreshListaOrdini();
 
 		commesseTabPane.getTabs().clear();
 
 		btnNewOrdine.setDisable(false);
-		//btnEditOrdine.setDisable(true);
 		btnDeleteOrdine.setDisable(true);
 		btnNewCommessa.setDisable(true);
 		btnEditCommessa.setDisable(true);
@@ -176,21 +172,16 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	}
 
-	/**
-	 * loadOrdiniTable
-	 * 
-	 * @param ordini
-	 */
 	protected void loadOrdiniTable(List<Ordine> ordini) {
 
-		// TODO Auto-generated method stub
+
 		tableOrdiniId
 				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
 
-					@Override
+
 					public ObservableValue<String> call(
 							CellDataFeatures<Ordine, String> arg0) {
-						// TODO Auto-generated method stub
+
 						SimpleStringProperty s = new SimpleStringProperty();
 						s.set(((Integer) arg0.getValue().getID()).toString());
 						return s;
@@ -200,10 +191,10 @@ public class VisualizzaOrdiniController implements Initializable {
 		tableOrdiniData
 				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
 
-					@Override
+
 					public ObservableValue<String> call(
 							CellDataFeatures<Ordine, String> arg0) {
-						// TODO Auto-generated method stub
+
 						SimpleStringProperty s = new SimpleStringProperty();
 
 						if (arg0.getValue() == null) {
@@ -215,11 +206,11 @@ public class VisualizzaOrdiniController implements Initializable {
 					}
 				});
 
-		tableOrdiniData.setCellFactory(TextFieldTableCell.forTableColumn());
+		tableOrdiniData.setCellFactory(TextFieldTableCell.<Ordine>forTableColumn());
 		tableOrdiniData.setOnEditCommit(
 				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
 
-					@Override
+
 					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
 						System.out.print(t.getNewValue());
 
@@ -250,7 +241,6 @@ public class VisualizzaOrdiniController implements Initializable {
 		tableOrdiniDestinazione
 				.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
 
-					@Override
 					public ObservableValue<String> call(
 							CellDataFeatures<Ordine, String> arg0) {
 						// TODO Auto-generated method stub
@@ -265,11 +255,11 @@ public class VisualizzaOrdiniController implements Initializable {
 					}
 				});
 
-		tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
+		tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.<Ordine>forTableColumn());
 		tableOrdiniDestinazione.setOnEditCommit(
 				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
 
-					@Override
+
 					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
 						System.out.print(t.getNewValue());
 
@@ -278,70 +268,41 @@ public class VisualizzaOrdiniController implements Initializable {
 						);
 
 						Destinazione oldDest = ordineCorrenet.getDestinazione();
-
 						Destinazione dest = new Builder.DestinazioneBuilder().setVia(t.getNewValue()).build();
-
 						ordineCorrenet.setDestinazione(dest);
 
 						try {
 
 							DAOFactory.getDAOFactory().getOrdineDAO().save(ordineCorrenet);
+							DAOFactory.getDAOFactory().getDestinazioneDAO().deleteAndDissociate(oldDest);
 						} catch (PersistentException e) {
 							e.printStackTrace();
 						} finally {
 							refreshListaOrdini();
 						}
 
-						try {
-
-							DAOFactory.getDAOFactory().getDestinazioneDAO().deleteAndDissociate(oldDest);
-						} catch (PersistentException e) {
-							e.printStackTrace();
-						}
 
 					}
 				}
 		);
 		tableOrdiniDestinazione.setEditable(true);
 
-
-/*
-		Callback<TableColumn<Ordine,String>, TableCell<Ordine,String>> cellFactory =
-				new Callback<TableColumn<Ordine,String>, TableCell<Ordine,String>>() {
-					public TableCell call(TableColumn p) {
-						return new EditingCell();
-					}
-				};
-*/
 		tableOrdiniCliente.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Ordine, String>, ObservableValue<String>>() {
 
-					@Override
+
 					public ObservableValue<String> call(
 							CellDataFeatures<Ordine, String> arg0) {
-						// TODO Auto-generated method stub
 						SimpleStringProperty s = new SimpleStringProperty();
-
-						if (arg0.getValue() == null) {
-							s.set("PROSSIMA ITERAZIONE");
-						} else {
-							s.set("PROSSIMA ITERAZIONE");
-						}
+						s.set("PROSSIMA ITERAZIONE");
 						return s;
 					}
 				});
 
-		//tableOrdiniCliente.setCellFactory(TextFieldTableCell.forTableColumn());
 		tableOrdiniCliente.setOnEditCommit(
 				new EventHandler<TableColumn.CellEditEvent<Ordine, String>>() {
 
-					@Override
 					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
-						System.out.print(t.getNewValue());
-						/*
-						((Ordine) t.getTableView().getItems().get(
-								t.getTablePosition().getRow())
-						).setDestinazione(t.getNewValue());
-						*/
+						log.i(t.getNewValue());
 					}
 				}
 		);
@@ -387,24 +348,13 @@ public class VisualizzaOrdiniController implements Initializable {
 	protected void onEditCommessa() {
 		log.i("modifica commessa");
 
-		/*
-        //sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
-		btnNewOrdine.setDisable(false);
-		//btnEditOrdine.setDisable(false);
-		btnDeleteOrdine.setDisable(false);
-		btnNewCommessa.setDisable(false);
-		btnEditCommessa.setDisable(true);
-		btnEditDistinta.setDisable(true);
-		btnDeleteCommessa.setDisable(true);
-*/
-		 //MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", 0);
-		//currentCommessaId
+
 		for(Object commessaId: txtDataMap.keySet()) {
-			//System.out.printf(commessaId+""+"\n");
+
 			if (currentCommessaId == (Integer) commessaId) {
-				System.out.printf("found "+txtDataMap.get(commessaId) + ""+"\n");
-				System.out.printf("found "+txtPrioritaMap.get(commessaId) + ""+"\n");
-				System.out.printf("found "+currentCommessaId+ ""+"\n");
+				log.i("found "+txtDataMap.get(commessaId) + ""+"\n");
+				log.i("found "+txtPrioritaMap.get(commessaId) + ""+"\n");
+				log.i("found "+currentCommessaId+ ""+"\n");
 
 				TextField currentPriorita = (TextField)txtPrioritaMap.get(commessaId);
 				TextField currentData = (TextField)txtDataMap.get(commessaId);
@@ -420,8 +370,7 @@ public class VisualizzaOrdiniController implements Initializable {
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-					//currentPriorita.getText();
-					//currentData.getText();
+
 
 					currentPriorita.setEditable(false);
 					currentPriorita.setStyle("-fx-background-color: #EEEEEE;");
@@ -430,7 +379,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
 					modificaOn = false;
 					btnNewOrdine.setDisable(false);
-					//btnEditOrdine.setDisable(false);
+
 					btnDeleteOrdine.setDisable(false);
 					btnNewCommessa.setDisable(false);
 					btnEditCommessa.setDisable(false);
@@ -441,14 +390,10 @@ public class VisualizzaOrdiniController implements Initializable {
 
 					currentPriorita.setEditable(true);
 					currentPriorita.setStyle("-fx-background-color: #FFFFFF;");
-					//currentPriorita.textProperty().addListener((observable, oldValue, newValue) -> {
-					//	System.out.println("currentPriorita changed from " + oldValue + " to " + newValue);
-					//});
+
 					currentData.setEditable(true);
 					currentData.setStyle("-fx-background-color: #FFFFFF;");
-					//currentData.textProperty().addListener((observable, oldValue, newValue) -> {
-					//	System.out.println("currentData changed from " + oldValue + " to " + newValue);
-					//});
+
 
 					modificaOn = true;
 					btnNewOrdine.setDisable(true);
@@ -475,7 +420,7 @@ public class VisualizzaOrdiniController implements Initializable {
 		sessione.set(VisualizzaDistintaController.DISTINTA_CORRENTE,null);
 
 		try {
-			//Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().getCommessaByORMID(currentCommessaId);
+
 			Distinta[] arrayDistinta = DAOFactory.getDAOFactory().getDistintaDAO().listDistintaByQuery("CommessaID = "+currentCommessaId,null);
 			for (int i = 0; i < arrayDistinta.length; i++) {
 				System.out.print(currentCommessaId+" "+arrayDistinta[i].getCommessa().getID()+"\n");
@@ -535,8 +480,6 @@ public class VisualizzaOrdiniController implements Initializable {
 	@FXML
 	protected void onEditOrdine() {
 		log.i("edit ordine");
-		//tableOrdiniDestinazione.setCellFactory(TextFieldTableCell.forTableColumn());
-		//setCellFactory(TextFieldTableCell.<StateData>forTableColumn());
 	}
 
 	/**
@@ -561,27 +504,20 @@ public class VisualizzaOrdiniController implements Initializable {
 	protected Map currentTab = new Hashtable();
 
 	ChangeListener<Number> tabListener = new ChangeListener<Number>() {
-		@Override
+
 		public void changed(ObservableValue<? extends Number> ov, Number oldValue, Number newValue) {
-			System.out.printf(ov.getValue()+" "+oldValue+" "+newValue+"\n");
 			for(Object commessaId: currentTab.keySet()) {
-				//System.out.printf(commessaId+""+"\n");
-				if (newValue == (Integer) commessaId) {
-					System.out.printf("found "+currentTab.get(commessaId) + ""+"\n");
+
+				if (newValue == commessaId) {
+
 					currentCommessaId = (Integer) currentTab.get(commessaId);
-					System.out.printf("found "+currentCommessaId+ ""+"\n");
+					log.i("found "+currentCommessaId+ ""+"\n");
 
 				}
 			}
 		}
 	};
 
-
-	/**
-	 * loadTablePane
-	 * 
-	 * @param ordine
-	 */
 	protected void loadTablePane(Ordine ordine) {
 		Commessa[] commesse = ordine.commesse.toArray();
 
@@ -607,7 +543,6 @@ public class VisualizzaOrdiniController implements Initializable {
 			commesseTabPane.getTabs().add(createCommessaTab(c));
 
 			currentTab.put(tabId, c.getID());
-			System.out.print(c.getID()+" "+tabId+"\n");
 
 			tabId += 1;
 
@@ -679,8 +614,8 @@ public class VisualizzaOrdiniController implements Initializable {
 		priorita.setEditable(false);
 		priorita.setId("txtPriorita_"+commessa.getID());
 
-		txtDataMap.put((Integer)commessa.getID(),data);
-		txtPrioritaMap.put((Integer)commessa.getID(),priorita);
+		txtDataMap.put(commessa.getID(),data);
+		txtPrioritaMap.put(commessa.getID(),priorita);
 
 		TitledPane titledPanePriorita = new TitledPane();
 		titledPanePriorita.setAnimated(false);
@@ -699,70 +634,4 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	}
 }
-/*
-class EditingCell extends TableCell<Ordine, String> {
 
-	private TextField textField;
-
-	public EditingCell() {
-	}
-
-	@Override
-	public void startEdit() {
-		if (!isEmpty()) {
-			super.startEdit();
-			createTextField();
-			setText(null);
-			setGraphic(textField);
-			textField.selectAll();
-		}
-	}
-
-	@Override
-	public void cancelEdit() {
-		super.cancelEdit();
-
-		setText((String) getItem());
-		setGraphic(null);
-	}
-
-	@Override
-	public void updateItem(String item, boolean empty) {
-		super.updateItem(item, empty);
-
-		if (empty) {
-			setText(null);
-			setGraphic(null);
-		} else {
-			if (isEditing()) {
-				if (textField != null) {
-					textField.setText(getString());
-				}
-				setText(null);
-				setGraphic(textField);
-			} else {
-				setText(getString());
-				setGraphic(null);
-			}
-		}
-	}
-
-	private void createTextField() {
-		textField = new TextField(getString());
-		textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
-		textField.focusedProperty().addListener(new ChangeListener<Boolean>(){
-			@Override
-			public void changed(ObservableValue<? extends Boolean> arg0,
-								Boolean arg1, Boolean arg2) {
-				if (!arg2) {
-					commitEdit(textField.getText());
-				}
-			}
-		});
-	}
-
-	private String getString() {
-		return getItem() == null ? "" : getItem().toString();
-	}
-}
-*/

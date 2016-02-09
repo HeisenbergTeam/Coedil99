@@ -38,9 +38,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AggiungiPezzoController implements Initializable {
-/**
- * 
- */
+
 	@FXML private ListView<Pezzo> listPezzi;
 	@FXML private TextField cercaPezzo;
     @FXML private TextField indicazioneRigaDistinta;
@@ -71,15 +69,9 @@ public class AggiungiPezzoController implements Initializable {
 
     }
 
-    /**
- * 
- */
-	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		
 		aggiungiPezzo.setDisable(true);
-
         gsp = UtilitaManagerPrototipo.getGestoreServizi();
         pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
 		log = (Log) UtilitaManager.getGestoreServizi().getServizio("LogStdout");
@@ -121,7 +113,6 @@ public class AggiungiPezzoController implements Initializable {
 
             if ( match ) {
                 subentries.add(entry);
-                //System.out.println(entry.getDescrizionePezzo().getNome());
             }
         }
 
@@ -135,7 +126,7 @@ public class AggiungiPezzoController implements Initializable {
 
         listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
                                          ListCell<Pezzo>>() {
-                                     @Override
+
                                      public ListCell<Pezzo> call(ListView<Pezzo> list) {
                                          return new PezzoCell();
                                      }
@@ -144,7 +135,6 @@ public class AggiungiPezzoController implements Initializable {
 
         listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
 
-            @Override
             public void changed(ObservableValue<? extends Pezzo> arg0,
                                 Pezzo arg1, Pezzo arg2) {
 
@@ -182,11 +172,9 @@ public class AggiungiPezzoController implements Initializable {
 
         tps.getChildren().add(listPezzi);
 
-        //listPezzi.setItems(obsPezzi);
-
         listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
                                          ListCell<Pezzo>>() {
-                                     @Override
+
                                      public ListCell<Pezzo> call(ListView<Pezzo> list) {
                                          return new PezzoCell();
                                      }
@@ -195,7 +183,7 @@ public class AggiungiPezzoController implements Initializable {
 
         listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
 
-            @Override
+
             public void changed(ObservableValue<? extends Pezzo> arg0,
                                 Pezzo arg1, Pezzo arg2) {
 
@@ -205,9 +193,7 @@ public class AggiungiPezzoController implements Initializable {
         });
     }
 
-    /**
-     *
-     */
+
     @FXML
     private void instaSearch()
     {
@@ -216,9 +202,6 @@ public class AggiungiPezzoController implements Initializable {
         oldString=cercaPezzo.getText();
     }
 
-    /**
-     *
-     */
     @FXML
     public void onBtnAggiungiSagoma(){
 
@@ -226,7 +209,7 @@ public class AggiungiPezzoController implements Initializable {
 
         final FileChooser fileChooser = new FileChooser();
 
-        File file = fileChooser.showOpenDialog(((Stage) cercaPezzo.getScene().getWindow()));
+        File file = fileChooser.showOpenDialog(cercaPezzo.getScene().getWindow());
         if (file != null) {
 
             File newfile = new File(".\\Coedil99\\blobs\\sagoma\\"+file.getName());
@@ -245,7 +228,7 @@ public class AggiungiPezzoController implements Initializable {
 
             File file2 = new File(pathSagoma);
             try {
-                System.out.println(file2.getCanonicalPath());
+                log.i(file2.getCanonicalPath());
                 imgSagoma.setImage(new Image("file:///"+file2.getCanonicalPath()));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -254,9 +237,6 @@ public class AggiungiPezzoController implements Initializable {
 
     }
 
-    /**
-     *
-     */
     @FXML
     public void onBtnModificaSagoma(){
 
@@ -264,7 +244,7 @@ public class AggiungiPezzoController implements Initializable {
 
         final FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(new File(".\\Coedil99\\blobs\\sagoma\\"));
-        File file = fileChooser.showOpenDialog(((Stage) cercaPezzo.getScene().getWindow()));
+        File file = fileChooser.showOpenDialog(cercaPezzo.getScene().getWindow());
         if (file != null) {
             int start = (file.getAbsolutePath().indexOf("Coedil99\\blobs\\sagoma\\"));
 
@@ -274,7 +254,7 @@ public class AggiungiPezzoController implements Initializable {
 
             File file2 = new File(pathSagoma);
             try {
-                System.out.println(file2.getCanonicalPath());
+                log.i(file2.getCanonicalPath());
                 imgSagoma.setImage(new Image("file:///"+file2.getCanonicalPath()));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -282,9 +262,7 @@ public class AggiungiPezzoController implements Initializable {
         }
 
     }
-    /**
-     *
-     */
+
     @FXML
     public void onBtnRimuoviSagoma(){
 
@@ -295,18 +273,14 @@ public class AggiungiPezzoController implements Initializable {
 
 
     }
-/**
- * 
- */
+
 	@FXML
 	public void onAggiungiPezzo(){
 		
 		log.i("pezzo aggiunto");
 		
-		//Pezzo scelto
-		Pezzo pezzoScelto = listPezzi.getSelectionModel().getSelectedItem();
 
-		//Sagoma sagoma = rigaDistintaDAO.creaSagoma(pathSagoma);
+		Pezzo pezzoScelto = listPezzi.getSelectionModel().getSelectedItem();
 
         descrizione = descrizioneTipoLavorazione.getText();
         indicazione = indicazioneRigaDistinta.getText();
@@ -332,27 +306,17 @@ public class AggiungiPezzoController implements Initializable {
         sessione.set("pezzo_selezionato",pezzoScelto);
         sessione.set("lavorazionePezzo_selezionato", lavorazionePezzo);
 
-        boolean blocca = false;
-
         if (indicazioneRigaDistinta.getText().matches("") || indicazioneRigaDistinta.getText() == null) {
-            blocca = true;
             indicazioneRigaDistinta.setStyle("-fx-border-color: red");
             indicazioneRigaDistinta.setPromptText("Riempi questo campo");
         } else {
-            blocca = false;
             sessione.set("indicazione_rigaDistinta", indicazione);
-
-            //Chiudo la finestra
             ((Stage) cercaPezzo.getScene().getWindow()).close();
         }
 	}
-/**
- * 
- * @author mw
- *
- */
+
 	static class PezzoCell extends ListCell<Pezzo> {
-        @Override
+
         public void updateItem(Pezzo item, boolean empty) {
             super.updateItem(item, empty);
             if(item != null){

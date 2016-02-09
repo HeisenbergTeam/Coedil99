@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
+import javassist.runtime.Desc;
 import org.orm.PersistentException;
 
 import java.net.URL;
@@ -43,7 +44,6 @@ public class FornitoreController implements Initializable {
 
     }
 
-    @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         tblFornitore.setEditable(true);
         tblPezzi.setEditable(true);
@@ -109,7 +109,6 @@ public class FornitoreController implements Initializable {
 
     final private ChangeListener changeListenerPezzi = new ChangeListener<Object>() {
 
-        @Override
         public void changed(ObservableValue<? extends Object> arg0,
                             Object arg1, Object arg2) {
 
@@ -125,7 +124,6 @@ public class FornitoreController implements Initializable {
 
     final private ChangeListener changeListener = new ChangeListener<Object>() {
 
-        @Override
         public void changed(ObservableValue<? extends Object> arg0,
                             Object arg1, Object arg2) {
 
@@ -146,7 +144,6 @@ public class FornitoreController implements Initializable {
         tc_nome
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DescrizionePezzo, String>, ObservableValue<String>>() {
 
-                    @Override
                     public ObservableValue<String> call(
                             CellDataFeatures<DescrizionePezzo, String> arg0) {
                         // TODO Auto-generated method stub
@@ -161,13 +158,11 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_nome.setCellFactory(TextFieldTableCell.forTableColumn());
+        tc_nome.setCellFactory(TextFieldTableCell.<DescrizionePezzo>forTableColumn());
         tc_nome.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<DescrizionePezzo, String>>() {
 
-                    @Override
                     public void handle(TableColumn.CellEditEvent<DescrizionePezzo, String> t) {
-                        System.out.print(t.getNewValue());
 
                         DescrizionePezzo pezzoCorrente = ((DescrizionePezzo) t.getTableView().getItems().get(
                                 t.getTablePosition().getRow())
@@ -192,7 +187,6 @@ public class FornitoreController implements Initializable {
         tc_peso
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DescrizionePezzo, String>, ObservableValue<String>>() {
 
-                    @Override
                     public ObservableValue<String> call(
                             CellDataFeatures<DescrizionePezzo, String> arg0) {
                         // TODO Auto-generated method stub
@@ -207,13 +201,11 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_peso.setCellFactory(TextFieldTableCell.forTableColumn());
+        tc_peso.setCellFactory(TextFieldTableCell.<DescrizionePezzo>forTableColumn());
         tc_peso.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<DescrizionePezzo, String>>() {
 
-                    @Override
                     public void handle(TableColumn.CellEditEvent<DescrizionePezzo, String> t) {
-                        System.out.print(t.getNewValue());
 
                         DescrizionePezzo pezzoCorrente = ((DescrizionePezzo) t.getTableView().getItems().get(
                                 t.getTablePosition().getRow())
@@ -238,7 +230,6 @@ public class FornitoreController implements Initializable {
         tc_diametro
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DescrizionePezzo, String>, ObservableValue<String>>() {
 
-                    @Override
                     public ObservableValue<String> call(
                             CellDataFeatures<DescrizionePezzo, String> arg0) {
                         // TODO Auto-generated method stub
@@ -253,20 +244,16 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_diametro.setCellFactory(TextFieldTableCell.forTableColumn());
+        tc_diametro.setCellFactory(TextFieldTableCell.<DescrizionePezzo>forTableColumn());
         tc_diametro.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<DescrizionePezzo, String>>() {
 
-                    @Override
                     public void handle(TableColumn.CellEditEvent<DescrizionePezzo, String> t) {
-                        System.out.print(t.getNewValue());
 
                         DescrizionePezzo pezzoCorrente = ((DescrizionePezzo) t.getTableView().getItems().get(
                                 t.getTablePosition().getRow())
                         );
-
                         pezzoCorrente.setDiametro(Float.parseFloat(t.getNewValue()));
-
                         try {
 
                             DAOFactory.getDAOFactory().getDescrizionePezzoDAO().save(pezzoCorrente);
@@ -287,14 +274,11 @@ public class FornitoreController implements Initializable {
 
     protected void loadFornitoriTable(List<Fornitore> fornitori) {
 
-        // TODO Auto-generated method stub
         tc_nomeFornitore
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Fornitore, String>, ObservableValue<String>>() {
 
-                    @Override
                     public ObservableValue<String> call(
                             CellDataFeatures<Fornitore, String> arg0) {
-                        // TODO Auto-generated method stub
                         SimpleStringProperty s = new SimpleStringProperty();
 
                         if (arg0.getValue() == null) {
@@ -306,17 +290,14 @@ public class FornitoreController implements Initializable {
                     }
                 });
 
-        tc_nomeFornitore.setCellFactory(TextFieldTableCell.forTableColumn());
+        tc_nomeFornitore.setCellFactory(TextFieldTableCell.<Fornitore>forTableColumn());
         tc_nomeFornitore.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Fornitore, String>>() {
 
-                    @Override
                     public void handle(TableColumn.CellEditEvent<Fornitore, String> t) {
-                        System.out.print(t.getNewValue());
 
-                        Fornitore fornitoreCorrente = ((Fornitore) t.getTableView().getItems().get(
-                                t.getTablePosition().getRow())
-                        );
+                        Fornitore fornitoreCorrente = t.getTableView().getItems().get(
+                                t.getTablePosition().getRow());
 
                         fornitoreCorrente.setNome(t.getNewValue());
 
@@ -366,7 +347,7 @@ public class FornitoreController implements Initializable {
     {
         try {
             DescrizionePezzo[] arrayDescPezzo = DAOFactory.getDAOFactory().getDescrizionePezzoDAO().listDescrizionePezzoByQuery("FornitoreID = "+currentFornitore,null);
-            System.out.print(arrayDescPezzo.length);
+
             for (int i = 0; i < arrayDescPezzo.length; i++) {
                 if (arrayDescPezzo[i].getFornitore().getID() == currentFornitore.getID()) {
                     System.out.print("deleting descrizione pezzo " + arrayDescPezzo[i].getID());
@@ -389,7 +370,7 @@ public class FornitoreController implements Initializable {
                             System.out.print(arrayRigaDistinta.length+"\n");
                             for (int k = 0; k < arrayRigaDistinta.length; k++) {
                                 if (arrayRigaDistinta[k].getPezzo().getID() == arrayPezzo[j].getID()) {
-                                    System.out.print("deleting rigadistinta " + arrayRigaDistinta[k].getID()+"\n");
+                                    log.i("deleting rigadistinta " + arrayRigaDistinta[k].getID()+"\n");
                                     DAOFactory.getDAOFactory().getRigaDistintaDAO().deleteAndDissociate(arrayRigaDistinta[k]);
                                 }
                             }
@@ -420,33 +401,33 @@ public class FornitoreController implements Initializable {
     {
         try {
 
-                    Pezzo[] arrayPezzo = DAOFactory.getDAOFactory().getPezzoDAO().listPezzoByQuery("DescrizionePezzoID = "+currentPezzo.getID(),null);
-                    System.out.print(arrayPezzo.length+"\n");
-                    for (int j = 0; j < arrayPezzo.length; j++) {
-                        if (arrayPezzo[j].getDescrizionePezzo().getID() == currentPezzo.getID()) {
-                            System.out.print("deleting pezzo " + arrayPezzo[j].getID()+"\n");
+            Pezzo[] arrayPezzo = DAOFactory.getDAOFactory().getPezzoDAO().listPezzoByQuery("DescrizionePezzoID = "+currentPezzo.getID(),null);
+            log.i(arrayPezzo.length+"\n");
+            for (int j = 0; j < arrayPezzo.length; j++) {
+                if (arrayPezzo[j].getDescrizionePezzo().getID() == currentPezzo.getID()) {
+                    log.i("deleting pezzo " + arrayPezzo[j].getID()+"\n");
 
-                            RigaRDA[] arrayRigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().listRigaRDAByQuery("PezzoID = "+arrayPezzo[j].getID(),null);
-                            System.out.print(arrayRigaRDA.length+"\n");
-                            for (int k = 0; k < arrayRigaRDA.length; k++) {
-                                if (arrayRigaRDA[k].getPezzo().getID() == arrayPezzo[j].getID()) {
-                                    System.out.print("deleting rigarda " + arrayRigaRDA[k].getID()+"\n");
-                                    DAOFactory.getDAOFactory().getRigaRDADAO().deleteAndDissociate(arrayRigaRDA[k]);
-                                }
-                            }
-
-                            RigaDistinta[] arrayRigaDistinta = DAOFactory.getDAOFactory().getRigaDistintaDAO().listRigaDistintaByQuery("PezzoID = "+arrayPezzo[j].getID(),null);
-                            System.out.print(arrayRigaDistinta.length+"\n");
-                            for (int k = 0; k < arrayRigaDistinta.length; k++) {
-                                if (arrayRigaDistinta[k].getPezzo().getID() == arrayPezzo[j].getID()) {
-                                    System.out.print("deleting rigadistinta " + arrayRigaDistinta[k].getID()+"\n");
-                                    DAOFactory.getDAOFactory().getRigaDistintaDAO().deleteAndDissociate(arrayRigaDistinta[k]);
-                                }
-                            }
-                            DAOFactory.getDAOFactory().getPezzoDAO().deleteAndDissociate(arrayPezzo[j]);
+                    RigaRDA[] arrayRigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().listRigaRDAByQuery("PezzoID = "+arrayPezzo[j].getID(),null);
+                    log.i(arrayRigaRDA.length+"\n");
+                    for (int k = 0; k < arrayRigaRDA.length; k++) {
+                        if (arrayRigaRDA[k].getPezzo().getID() == arrayPezzo[j].getID()) {
+                            System.out.print("deleting rigarda " + arrayRigaRDA[k].getID()+"\n");
+                            DAOFactory.getDAOFactory().getRigaRDADAO().deleteAndDissociate(arrayRigaRDA[k]);
                         }
                     }
-                    DAOFactory.getDAOFactory().getDescrizionePezzoDAO().deleteAndDissociate(currentPezzo);
+
+                    RigaDistinta[] arrayRigaDistinta = DAOFactory.getDAOFactory().getRigaDistintaDAO().listRigaDistintaByQuery("PezzoID = "+arrayPezzo[j].getID(),null);
+                    log.i(arrayRigaDistinta.length+"\n");
+                    for (int k = 0; k < arrayRigaDistinta.length; k++) {
+                        if (arrayRigaDistinta[k].getPezzo().getID() == arrayPezzo[j].getID()) {
+                            System.out.print("deleting rigadistinta " + arrayRigaDistinta[k].getID()+"\n");
+                            DAOFactory.getDAOFactory().getRigaDistintaDAO().deleteAndDissociate(arrayRigaDistinta[k]);
+                        }
+                    }
+                    DAOFactory.getDAOFactory().getPezzoDAO().deleteAndDissociate(arrayPezzo[j]);
+                }
+            }
+            DAOFactory.getDAOFactory().getDescrizionePezzoDAO().deleteAndDissociate(currentPezzo);
 
         } catch (PersistentException e) {
             e.printStackTrace();

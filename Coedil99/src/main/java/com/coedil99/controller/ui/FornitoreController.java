@@ -5,6 +5,8 @@ import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.*;
 import com.coedil99.ui.MainApplication;
 import com.coedil99.utilita.Log;
+import com.coedil99.utilita.UtilitaManager;
+import com.coedil99.utilita.impl.UtilitaManagerPrototipo;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -37,6 +39,7 @@ public class FornitoreController implements Initializable {
 
     protected Log log;
 
+
     protected Fornitore currentFornitore;
     protected DescrizionePezzo currentPezzo;
 
@@ -45,6 +48,8 @@ public class FornitoreController implements Initializable {
     }
 
     public void initialize(URL arg0, ResourceBundle arg1) {
+        UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
+        log = (Log) gsp.getServizio("LogStdout");
         tblFornitore.setEditable(true);
         tblPezzi.setEditable(true);
         refreshListaFornitori();
@@ -116,7 +121,7 @@ public class FornitoreController implements Initializable {
             if (index >= 0 ) {
                 DescrizionePezzo pezzoC = getPezzi(currentFornitore).get(index);
                 currentPezzo = pezzoC;
-                System.out.print("current pezzo"+currentPezzo.getNome()+" id "+currentPezzo.getID());
+                log.i("current pezzo"+currentPezzo.getNome()+" id "+currentPezzo.getID());
 
             }
         }
@@ -131,7 +136,6 @@ public class FornitoreController implements Initializable {
             if (index >= 0 ) {
                 Fornitore forn = getFornitori().get(index);
                 currentFornitore = forn;
-                System.out.print("current fornitore"+currentFornitore.getNome()+" id "+currentFornitore.getID());
                 refreshListaPezzi(currentFornitore);
             }
         }
@@ -350,24 +354,24 @@ public class FornitoreController implements Initializable {
 
             for (int i = 0; i < arrayDescPezzo.length; i++) {
                 if (arrayDescPezzo[i].getFornitore().getID() == currentFornitore.getID()) {
-                    System.out.print("deleting descrizione pezzo " + arrayDescPezzo[i].getID());
+                    log.i("deleting descrizione pezzo " + arrayDescPezzo[i].getID());
 
                     Pezzo[] arrayPezzo = DAOFactory.getDAOFactory().getPezzoDAO().listPezzoByQuery("DescrizionePezzoID = "+arrayDescPezzo[i].getID(),null);
-                    System.out.print(arrayPezzo.length);
+
                     for (int j = 0; j < arrayPezzo.length; j++) {
                         if (arrayPezzo[j].getDescrizionePezzo().getID() == arrayDescPezzo[i].getID()) {
-                            System.out.print("deleting pezzo " + arrayPezzo[j].getID());
+                            log.i("deleting pezzo " + arrayPezzo[j].getID());
 
                             RigaRDA[] arrayRigaRDA = DAOFactory.getDAOFactory().getRigaRDADAO().listRigaRDAByQuery("PezzoID = "+arrayPezzo[j].getID(),null);
                             for (int k = 0; k < arrayRigaRDA.length; k++) {
                                 if (arrayRigaRDA[k].getPezzo().getID() == arrayPezzo[j].getID()) {
-                                    System.out.print("deleting rigarda " + arrayRigaRDA[k].getID());
+                                    log.i("deleting rigarda " + arrayRigaRDA[k].getID());
                                     DAOFactory.getDAOFactory().getRigaRDADAO().deleteAndDissociate(arrayRigaRDA[k]);
                                 }
                             }
 
                             RigaDistinta[] arrayRigaDistinta = DAOFactory.getDAOFactory().getRigaDistintaDAO().listRigaDistintaByQuery("PezzoID = "+arrayPezzo[j].getID(),null);
-                            System.out.print(arrayRigaDistinta.length+"\n");
+
                             for (int k = 0; k < arrayRigaDistinta.length; k++) {
                                 if (arrayRigaDistinta[k].getPezzo().getID() == arrayPezzo[j].getID()) {
                                     log.i("deleting rigadistinta " + arrayRigaDistinta[k].getID()+"\n");
@@ -411,7 +415,7 @@ public class FornitoreController implements Initializable {
                     log.i(arrayRigaRDA.length+"\n");
                     for (int k = 0; k < arrayRigaRDA.length; k++) {
                         if (arrayRigaRDA[k].getPezzo().getID() == arrayPezzo[j].getID()) {
-                            System.out.print("deleting rigarda " + arrayRigaRDA[k].getID()+"\n");
+                            log.i("deleting rigarda " + arrayRigaRDA[k].getID()+"\n");
                             DAOFactory.getDAOFactory().getRigaRDADAO().deleteAndDissociate(arrayRigaRDA[k]);
                         }
                     }
@@ -420,7 +424,7 @@ public class FornitoreController implements Initializable {
                     log.i(arrayRigaDistinta.length+"\n");
                     for (int k = 0; k < arrayRigaDistinta.length; k++) {
                         if (arrayRigaDistinta[k].getPezzo().getID() == arrayPezzo[j].getID()) {
-                            System.out.print("deleting rigadistinta " + arrayRigaDistinta[k].getID()+"\n");
+                            log.i("deleting rigadistinta " + arrayRigaDistinta[k].getID()+"\n");
                             DAOFactory.getDAOFactory().getRigaDistintaDAO().deleteAndDissociate(arrayRigaDistinta[k]);
                         }
                     }

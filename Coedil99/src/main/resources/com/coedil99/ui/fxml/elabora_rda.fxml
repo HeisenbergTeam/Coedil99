@@ -338,9 +338,7 @@
       </rowConstraints>
     </GridPane>
   </center>
-  <stylesheets>
-    <URL value="@../css/visualizza_rda.css" />
-  </stylesheets>
+
   <top>
       <HBox prefHeight="-1.0" prefWidth="200.0" style="-fx-background-color: #292929;">
       <children>

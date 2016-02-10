@@ -28,7 +28,9 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.hibernate.Transaction;
 import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
 
 import java.net.URL;
 import java.text.ParseException;
@@ -103,7 +105,7 @@ public class ElaboraRDAController implements Initializable {
             nuovaRda = true;
 
         } else {
-            log.i("id rda:"+action);
+
             try {
                 rda = DAOFactory.getDAOFactory().getRDADAO().getRDAByORMID(action);
             } catch (PersistentException e) {
@@ -151,6 +153,8 @@ public class ElaboraRDAController implements Initializable {
     }
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
+        log = (Log) gsp.getServizio("LogStdout");
 
         text_area_rda.setDisable(true);
         modificandoDatiRDA = false;
@@ -168,13 +172,13 @@ public class ElaboraRDAController implements Initializable {
         modificaDDTButton.setDisable(true);
         salvaDDTButton.setDisable(true);
 		//Caricamento servizi
-		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
+
 		ordineDao = DAOFactory.getDAOFactory().getOrdineDAO();
         rigaRDADAO = DAOFactory.getDAOFactory().getRigaRDADAO();
         rdaDAO = DAOFactory.getDAOFactory().getRDADAO();
         pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
 
-        log = (Log) gsp.getServizio("LogStdout");
+
 		session = (Sessione) gsp.getServizio("SessionePrototipo");
 
         tbl_righeRDA.getSelectionModel().selectedIndexProperty()
@@ -184,13 +188,13 @@ public class ElaboraRDAController implements Initializable {
                                         Object arg1, Object arg2) {
 
 
-                        if((Integer) arg2 > 0 && (Integer) arg2 < rda.righeRDA.size())
+                        if((Integer) arg2 >= 0 && (Integer) arg2 < rda.righeRDA.size())
                         {
                             ElaboraRDAController.this.rigaSelezionata = rda.righeRDA.toArray()[(Integer)arg2];
                             ElaboraRDAController.this.btn_rimuoviPezzo.setDisable(false);
 
                             ElaboraRDAController.this.txt_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
-                            //ElaboraRDAController.this.txt_pezzo_quantita.setText(String.valueOf(rigaSelezionata.getPezzo().getQuantita()));
+                            ElaboraRDAController.this.txt_pezzo_quantita.setText(""+String.valueOf(rigaSelezionata.getPezzo().getQuantitaOrdinate()));
                         }
 
                     }
@@ -251,7 +255,6 @@ public class ElaboraRDAController implements Initializable {
             return;
         }
 
-        //TODO: Aggiornare l'rda anche sul db amico
         try {
             new Editor().modificaRDA(rda,null,null,Parsers.italianDateStringToDate(txt_data_consegna_effettiva_rda.getText()),Parsers.italianDateStringToDate(txt_data_consegna_prevista_rda.getText()),null);
         } catch (ParseException e) {
@@ -278,28 +281,40 @@ public class ElaboraRDAController implements Initializable {
 	}
 	
 	private void refreshTable() {
+
+        ElaboraRDAController.this.txt_codice_pezzo.setText("");
+        ElaboraRDAController.this.txt_pezzo_quantita.setText("");
+
         cl_indicazione
                 .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RigaRDA, String>, ObservableValue<String>>() {
 
                     public ObservableValue<String> call(
                             TableColumn.CellDataFeatures<RigaRDA, String> arg0) {
-                        // TODO Auto-generated method stub
+
                         SimpleStringProperty s = new SimpleStringProperty();
                         s.set(arg0.getValue().getIndicazione());
                         return s;
                     }
                 });
 
-        if (rda.righeRDA.size() != 0) {
+        cl_quantita
+                .setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RigaRDA, String>, ObservableValue<String>>() {
+
+                    public ObservableValue<String> call(
+                            TableColumn.CellDataFeatures<RigaRDA, String> arg0) {
+
+                        SimpleStringProperty s = new SimpleStringProperty();
+                        s.set(""+arg0.getValue().getPezzo().getQuantitaOrdinate());
+                        return s;
+                    }
+                });
+
+        if (rda.righeRDA.size() >= 0) {
             ObservableList<RigaRDA> list = FXCollections.observableList(Arrays.asList(rda.righeRDA.toArray()));
             tbl_righeRDA.setItems(list);
         }
 	}
 
-
-/**
- *  aggiungiPezzo
- */
 	@FXML 
 	protected void aggiungiPezzo() throws PersistentException {
         log.i("Aggiungi pezzo");
@@ -322,18 +337,18 @@ public class ElaboraRDAController implements Initializable {
         Scene scene = new Scene(root);
         popupStage.setScene(scene);
 
-        //blocking
         popupStage.showAndWait();
 
-        Pezzo pezzoSelezionato = (Pezzo) session.get(AggiungiRigaRdaController.PEZZO_RIGA_RDA);
-        String indicazione = (String) session.get(
-                AggiungiRigaRdaController.INDICAZIONE_RIGA_RDA
-        );
+        DescrizionePezzo descrizionePezzo = (DescrizionePezzo) session.get(AggiungiRigaRdaController.PEZZO_RIGA_RDA);
+        String indicazione = (String) session.get(AggiungiRigaRdaController.INDICAZIONE_RIGA_RDA);
+
         float quantita = (Float) session.get(AggiungiRigaRdaController.QUANTITA_RIGA_RDA);
-        if (pezzoSelezionato!=null && quantita!=0 && indicazione!=null) {
-
-            RigaRDA rigaRDA = new Builder.RigaRDABuilder().setRda(rda).setIndicazione(indicazione).setPezzo(pezzoSelezionato).build();
-
+        if (descrizionePezzo!=null && quantita!=0 && indicazione!=null) {
+            PersistentTransaction t = Coedil99PersistentManager.instance().getSession().beginTransaction();
+            Pezzo pezzo = new Builder.PezzoBuilder().setDescrizionePezzo(descrizionePezzo)
+                    .setQuantitaOrdinate(Math.round(quantita)).build();
+            new Builder.RigaRDABuilder().setRda(rda).setIndicazione(indicazione).setPezzo(pezzo).build();
+            t.commit();
         }
 
         refreshTable();
@@ -394,9 +409,12 @@ public class ElaboraRDAController implements Initializable {
     @FXML
     protected void rimuoviPezzo() throws PersistentException {
 
+        rda.righeRDA.remove(rigaSelezionata);
         rigaRDADAO.deleteAndDissociate(rigaSelezionata);
-        //rda = rdaDAO.getRDAByORMID(1);
-        rda = null;
+
+        rigaSelezionata = null;
+        btn_rimuoviPezzo.setDisable(true);
+
         refreshTable();
 
     }

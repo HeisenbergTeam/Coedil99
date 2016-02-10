@@ -66,10 +66,10 @@ public class VisualizzaDistintaController implements Initializable {
     @FXML private Button modificaDistButton;
     @FXML private Button salvaDistButton;
     @FXML private Button aggiungiPezzoButton;
-    @FXML private Button modificaPezzoButton;
+    //@FXML private Button modificaPezzoButton;
     @FXML private Button rimuoviPezzoButton;
     @FXML private Button btn_aggiungi_sagoma;
-    @FXML private Button btn_modifica_sagoma;
+    //@FXML private Button btn_modifica_sagoma;
     @FXML private Button btn_rimuovi_sagoma;
     
     @FXML private TitledPane righe_distinta;
@@ -130,10 +130,10 @@ public class VisualizzaDistintaController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		salvaDistButton.setDisable(true);
-		modificaPezzoButton.setDisable(true);
+		//modificaPezzoButton.setDisable(true);
 		rimuoviPezzoButton.setDisable(true);
         btn_aggiungi_sagoma.setDisable(true);
-        btn_modifica_sagoma.setDisable(true);
+        //btn_modifica_sagoma.setDisable(true);
         btn_rimuovi_sagoma.setDisable(true);
 
 
@@ -168,29 +168,7 @@ public class VisualizzaDistintaController implements Initializable {
         setTextEdit(txt_codice_pezzo,false);
         setTextEdit(txt_fornitore,false);
 
-	    /*
-	    distintaLabels = new HashMap<String,Label>();
-	    //distintaLabels.put("modulo",txt_modulo);
-	    distintaLabels.put("revisione",txt_revisione);
-	    //distintaLabels.put("data",txt_data);
-	    //distintaLabels.put("cliente",txt_cliente);
-	    distintaLabels.put("destinazione",txt_destinazione);
-	    distintaLabels.put("elemstrutturale",txt_elemstrutturale);
-	    //distintaLabels.put("cartellino",txt_cartellino);
-	    
-	    //rigaDistinta nodes
-	    
-	    rigaDistintaNodes = new HashMap<String,Object>();
-	    rigaDistintaNodes.put("codice", txt_codice_pezzo);
-	    rigaDistintaNodes.put("n_pezzi", txt_n_pezzi);
-	    rigaDistintaNodes.put("diametro", txt_diametro);
-	    rigaDistintaNodes.put("peso", txt_peso_originale);
-	    rigaDistintaNodes.put("peso_lavorato", txt_peso_lavorato);
-	    rigaDistintaNodes.put("lavorazione", txt_lavorazione);
-	    rigaDistintaNodes.put("misura_taglio", txt_misura_taglio);
-	    rigaDistintaNodes.put("fornitore", txt_fornitore);
-	    rigaDistintaNodes.put("indicazione", txt_indicazione);
-	    */
+
 	}
 	
 /**
@@ -215,64 +193,7 @@ public class VisualizzaDistintaController implements Initializable {
         setTextEdit(txt_revisione,true);
         setTextEdit(txt_data,true);
         setTextEdit(txt_elemstrutturale,true);
-		/*
-		Set<Map.Entry<String, Label>> insieme = distintaLabels.entrySet(); 
-		Iterator<Map.Entry<String, Label>> iterator = insieme.iterator();
-		
-		distintaTextFields = new HashMap<String, TextField>();
-		
-		while(iterator.hasNext() != false){
-			
-			Map.Entry<String, Label> entry = iterator.next();
-			
-			Parent p = entry.getValue().getParent();
-			TextField tf = new TextField();
-			tf.setText(entry.getValue().getText());
-			Pane tps = (Pane) p;
-			tps.getChildren().remove(entry.getValue());
-			tps.getChildren().add(tf);
-			
-			distintaTextFields.put(entry.getKey(), tf);
-		}
 
-		String current_date = txt_data.getText();
-		Parent datePickParent = txt_data.getParent();
-		
-		final String pattern = "dd-MM-yyyy";
-
-		datePicker.setPromptText(pattern.toLowerCase());
-
-		datePicker.setConverter(new StringConverter<LocalDate>() {
-		     DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
-
-		     @Override 
-		     public String toString(LocalDate date) {
-		         if (date != null) {
-		             return dateFormatter.format(date);
-		         } else {
-		             return "";
-		         }
-		     }
-
-		     @Override 
-		     public LocalDate fromString(String string) {
-		         if (string != null && !string.isEmpty()) {
-		             return LocalDate.parse(string, dateFormatter);
-		         } else {
-		             return null;
-		         }
-		     }
-		 });
-		String[] split = current_date.split("-");
-		LocalDate ld = LocalDate.of(Integer.parseInt(split[2]),Integer.parseInt(split[1]),Integer.parseInt(split[0]));
-			//	new LocalDate(getNumber(split[0]),getNumber(split[1]),getNumber(split[2]))
-		datePicker.setValue(ld);
-		
-		Pane tps = (Pane) datePickParent;
-		tps.getChildren().remove(txt_data);
-		tps.getChildren().add(datePicker);
-        datePicker.setMaxWidth(Double.MAX_VALUE);
-*/
         //Flag
 		modificandoDistinta = true;
 		//Disabilito le modifiche
@@ -284,122 +205,35 @@ public class VisualizzaDistintaController implements Initializable {
 		//Abilito il salvataggio
 		salvaDistButton.setDisable(false);
 	}
-/**
- * 
- */
+
 	@FXML
 	protected void modificaRigaDistinta(){
 		
 		log.i("Modifica della riga distinta");
 		
 		if(modificandoRigaDistinta != true){
-		/*
-			Set<Map.Entry<String, Object>> insieme = rigaDistintaNodes.entrySet();
-			Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
-			
-			rigaDistintaTextFields = new HashMap<String,Object>();
-			
-			while(iterator.hasNext()){
-				
-				Map.Entry<String, Object> entry = iterator.next();
-				
-				Parent p = ((Node) entry.getValue()).getParent();
-				TextField tf = new TextField();
-				tf.setText(((Label) entry.getValue()).getText());
-				Pane tps = (Pane) p;
-				System.out.println(entry.getKey());
-				tps.getChildren().remove(entry.getValue());
-				tps.getChildren().add(tf);
-				
-				rigaDistintaTextFields.put(entry.getKey(), tf);
-                System.out.println(entry.getKey());
-			}
 
-            String current_date = txt_data_arrivo.getText();
-            Parent datePickParent = txt_data_arrivo.getParent();
-
-            final String pattern = "dd-MM-yyyy";
-
-            dateConsegnaPicker.setPromptText(pattern.toLowerCase());
-
-            dateConsegnaPicker.setConverter(new StringConverter<LocalDate>() {
-                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
-
-                @Override
-                public String toString(LocalDate date) {
-                    if (date != null) {
-                        return dateFormatter.format(date);
-                    } else {
-                        return "";
-                    }
-                }
-
-                @Override
-                public LocalDate fromString(String string) {
-                    if (string != null && !string.isEmpty()) {
-                        return LocalDate.parse(string, dateFormatter);
-                    } else {
-                        return null;
-                    }
-                }
-            });
-            String[] split = current_date.split("-");
-            LocalDate ld = LocalDate.of(Integer.parseInt(split[2]),Integer.parseInt(split[1]),Integer.parseInt(split[0]));
-            //	new LocalDate(getNumber(split[0]),getNumber(split[1]),getNumber(split[2]))
-            dateConsegnaPicker.setValue(ld);
-
-            Pane tps = (Pane) datePickParent;
-            tps.getChildren().remove(txt_data_arrivo);
-            tps.getChildren().add(dateConsegnaPicker);
-            dateConsegnaPicker.setMaxWidth(Double.MAX_VALUE);
-*/
             aggiungiPezzoButton.setDisable(true);
-			modificaPezzoButton.setText("Annulla");
+			//modificaPezzoButton.setText("Annulla");
 			rimuoviPezzoButton.setText("Salva");
             listPezziDistinta.setDisable(true);
             btn_aggiungi_sagoma.setDisable(false);
-            btn_modifica_sagoma.setDisable(false);
+            //btn_modifica_sagoma.setDisable(false);
             btn_rimuovi_sagoma.setDisable(false);
 
 
 			modificandoRigaDistinta = true;
 			
 		}else{
-            /*
-            Set<Map.Entry<String, Object>> insieme = rigaDistintaTextFields.entrySet();
-            Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
 
-            while(iterator.hasNext()){
-
-                Map.Entry<String, Object> entry = iterator.next();
-                Parent p = ((Node) entry.getValue()).getParent();
-
-                Pane tps = (Pane) p;
-                System.out.println(entry.getKey());
-                tps.getChildren().remove(entry.getValue());
-                tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
-
-            }
-
-            Parent datePickParent = dateConsegnaPicker.getParent();
-            LocalDate ld = dateConsegnaPicker.getValue();
-
-            Pane tps = (Pane) datePickParent;
-            tps.getChildren().remove(dateConsegnaPicker);
-            tps.getChildren().add(txt_data_arrivo);
-
-            Calendar cal = Calendar.getInstance();
-            cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
-            Date dt = cal.getTime();
-*/
             aggiornaCampiRigaDistinta();
 
             aggiungiPezzoButton.setDisable(false);
-            modificaPezzoButton.setText("Modifica");
+            //modificaPezzoButton.setText("Modifica");
             rimuoviPezzoButton.setText("Rimuovi");
             listPezziDistinta.setDisable(false);
             btn_aggiungi_sagoma.setDisable(true);
-            btn_modifica_sagoma.setDisable(true);
+            //btn_modifica_sagoma.setDisable(true);
             btn_rimuovi_sagoma.setDisable(true);
             modificandoRigaDistinta=false;
             return;
@@ -430,54 +264,33 @@ public class VisualizzaDistintaController implements Initializable {
             } catch (PersistentException e) {
                 e.printStackTrace();
             }
+
+            //Aggiorno campi
+            txt_indicazione.setText("");
+            txt_codice_pezzo.setText("");
+            txt_fornitore.setText("");
+            txt_n_pezzi.setText("");
+            txt_diametro.setText("");
+            txt_misura_taglio.setText("");
+            txt_peso_originale.setText("");
+            txt_peso_lavorato.setText("");
+            txt_lavorazione.setText("");
+
+
         } else {
-/*
-            Set<Map.Entry<String, Object>> insieme = rigaDistintaTextFields.entrySet();
-            Iterator<Map.Entry<String, Object>> iterator = insieme.iterator();
 
-            while(iterator.hasNext()){
 
-                Map.Entry<String, Object> entry = iterator.next();
-                Parent p = ((Node) entry.getValue()).getParent();
-
-                Pane tps = (Pane) p;
-                tps.getChildren().remove(entry.getValue());
-
-                ((Label) rigaDistintaNodes.get(entry.getKey())).setText(((TextField) entry.getValue()).getText());
-
-                tps.getChildren().add((Node) rigaDistintaNodes.get(entry.getKey()));
-
-            }
-
-            Parent datePickParent = dateConsegnaPicker.getParent();
-            LocalDate ld = dateConsegnaPicker.getValue();
-
-            Pane tps = (Pane) datePickParent;
-            tps.getChildren().remove(dateConsegnaPicker);
-            tps.getChildren().add(txt_data_arrivo);
-
-            Calendar cal = Calendar.getInstance();
-            cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
-            Date dt = cal.getTime();
-*/
-            //TODO: Reimpostare
-            //gestoreRigaDistinta.modificaLavorazionePezzoByRigaDistinta(rigaSelezionata, txt_lavorazione.getText(), Parsers.getFloat(txt_misura_taglio.getText()), Parsers.getFloat(txt_peso_lavorato.getText()), rigaSelezionata.getLavorazionePezzo().getSagoma());
-            //gestoreRigaDistinta.modificaRigaDistintaBYID(rigaSelezionata.getID(), rigaSelezionata.getPezzo(), distinta, rigaSelezionata.getLavorazionePezzo(), txt_indicazione.getText());
-            //gestoreRigaDistinta.modificaSagomaByRigaDistinta(rigaSelezionata,pathSagoma);
-            //TODO: Aggiornare la descrizione del pezzo
-            //pezzoDao.modificaDescrizionePezzo(rigaSelezionata.getPezzo().getDescrizionePezzo(), txt_codice_pezzo.getText(), Parsers.getFloat(txt_peso_originale.getText()), Parsers.getFloat(txt_diametro.getText()), txt_fornitore.getText());
-            //TODO: Aggiornare il pezzo
-            //pezzoDao.modificaPezzo(rigaSelezionata.getPezzo(), rigaSelezionata.getPezzo().getDescrizionePezzo(), dt, Integer.parseInt(txt_n_pezzi.getText()));
 
             refreshList();
 
             aggiungiPezzoButton.setDisable(false);
-            modificaPezzoButton.setText("Modifica");
+            //modificaPezzoButton.setText("Modifica");
             rimuoviPezzoButton.setText("Rimuovi");
+            rimuoviPezzoButton.setDisable(true);
             listPezziDistinta.setDisable(false);
             rimuoviPezzoButton.setDisable(false);
             btn_aggiungi_sagoma.setDisable(true);
-            btn_modifica_sagoma.setDisable(true);
+            //btn_modifica_sagoma.setDisable(true);
             btn_rimuovi_sagoma.setDisable(true);
             modificandoRigaDistinta = false;
 
@@ -493,35 +306,7 @@ public class VisualizzaDistintaController implements Initializable {
 		log.i("Salvataggio dati distinta");
 
         salvaDistButton.setDisable(true);
-					/*
-		Set<Map.Entry<String, TextField>> insieme = distintaTextFields.entrySet(); 
-		Iterator<Map.Entry<String, TextField>> iterator = insieme.iterator();
-		
-		while(iterator.hasNext()){
-			
-			Map.Entry<String, TextField> entry = iterator.next();
-			Parent p = entry.getValue().getParent();
-			
-			Pane tps = (Pane) p;
-            System.out.println(entry.toString());
-			tps.getChildren().remove(entry.getValue());
-			distintaLabels.get(entry.getKey()).setText(entry.getValue().getText());
-			
-			tps.getChildren().add(distintaLabels.get(entry.getKey()));
-			
-		}
-		
-		Parent datePickParent = datePicker.getParent();
-		LocalDate ld = datePicker.getValue();
-		
-		Pane tps = (Pane) datePickParent;
-		tps.getChildren().remove(datePicker);
-		tps.getChildren().add(txt_data);
 
-		Calendar cal = Calendar.getInstance();
-		cal.set(ld.getYear(), ld.getMonthValue()-1, ld.getDayOfMonth()); //year is as expected, month is zero based, date is as expected
-		Date dt = cal.getTime();
-*/
         if(modificandoDistinta != true){
 			refreshDistinta();
 			return;
@@ -544,7 +329,7 @@ public class VisualizzaDistintaController implements Initializable {
 		//distintaDAO.modificaDistintaByID(distinta.getID(), dt, distinta.getCommessa(), Parsers.getNumbers(txt_revisione.getText()), distinta.getModello(), txt_elemstrutturale.getText());
 		//TODO:Modifica destinazione ordine
         //ordine.setDestinazione();
-		//ordineDao.modificaDestinazione(ordine, txt_destinazione.getText());
+
 
         refreshDistinta();
 
@@ -566,17 +351,6 @@ public class VisualizzaDistintaController implements Initializable {
             e.printStackTrace();
         }
 
-
-			/*
-		//TODO: modifica a getCommessaID(id)
-		commesse = ordine.commesse.toArray();
-				
-		for (int i=0; i < commesse.length; i++) {
-			log.i(commesse[i].getID()+" "+commesse[i].getDistinta());
-		}
-		
-		distinta = commesse[0].getDistinta();
-		*/
 	}
 	
 	private void refreshDistinta() {
@@ -636,7 +410,7 @@ public class VisualizzaDistintaController implements Initializable {
 
                 if(oldIndex == -1)
                 {
-                    modificaPezzoButton.setDisable(false);
+                    //modificaPezzoButton.setDisable(false);
                     rimuoviPezzoButton.setDisable(false);
                 }
 
@@ -658,8 +432,8 @@ public class VisualizzaDistintaController implements Initializable {
             txt_indicazione.setText(rigaSelezionata.getIndicazione());
             txt_codice_pezzo.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getNome());
             txt_fornitore.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getFornitore().getNome());
-            txt_data_arrivo.setText(Parsers.printItalianDate(rigaSelezionata.getPezzo().getRigaRDA().getRda().getDataArrivoEffettiva()));
-            txt_n_pezzi.setText(rigaSelezionata.getQuantitaRigaDistinta()+"");
+            //txt_data_arrivo.setText(Parsers.printItalianDate(rigaSelezionata.getPezzo().getRigaRDA().getRda().getDataArrivoEffettiva()));
+            txt_n_pezzi.setText(rigaSelezionata.getPezzo().getQuantitaOrdinate()+"");
             txt_diametro.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getDiametro()+"");
             txt_misura_taglio.setText(rigaSelezionata.getLavorazionePezzo().getMisuraDiTaglio()+"");
             txt_peso_originale.setText(rigaSelezionata.getPezzo().getDescrizionePezzo().getPeso()+"");
@@ -674,7 +448,7 @@ public class VisualizzaDistintaController implements Initializable {
                 //e.printStackTrace();
             }
 
-            btn_modifica_sagoma.setDisable(false);
+            //btn_modifica_sagoma.setDisable(false);
             btn_rimuovi_sagoma.setDisable(false);
     	}
 	}
@@ -761,18 +535,12 @@ public class VisualizzaDistintaController implements Initializable {
 
             File newfile = new File(".\\Coedil99\\src\\main\\resources\\blobs\\sagoma\\" + file.getName());
 
-            //try {
-            //    Files.copy(file.toPath(), newfile.toPath());
-            //} catch (IOException e) {
-            //    e.printStackTrace();
-            //}
             try {
                 FilesOp.copyFileUsingStream(file, newfile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            //FileUtils.copyFile(source, dest);
 
             int start = (newfile.getAbsolutePath().indexOf("Coedil99\\src\\main\\resources\\blobs\\sagoma\\"));
 

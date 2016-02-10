@@ -171,10 +171,6 @@
                                                           <Insets left="5.0" top="5.0" fx:id="x1" />
                                                         </HBox.margin>
                                                       </Button>
-                                                      <Button fx:id="modificaPezzoButton" mnemonicParsing="false" onAction="#modificaRigaDistinta" text="Modifica">
-                                                               <HBox.margin>
-                                                                  <Insets left="5.0" top="5.0" />
-                                                               </HBox.margin></Button>
                                                       <Button fx:id="rimuoviPezzoButton" mnemonicParsing="false" onAction="#rimuoviPezzo" text="Rimuovi">
                                                                <HBox.margin>
                                                                   <Insets left="5.0" top="5.0" />
@@ -284,11 +280,6 @@
                                                                         <VBox alignment="BOTTOM_RIGHT" GridPane.columnIndex="1">
                                                                            <children>
                                                                               <Button fx:id="btn_aggiungi_sagoma" minWidth="80.0" mnemonicParsing="false" onAction="#onBtnAggiungiSagoma" text="Aggiungi">
-                                                                                 <VBox.margin>
-                                                                                    <Insets top="5.0" />
-                                                                                 </VBox.margin>
-                                                                              </Button>
-                                                                              <Button fx:id="btn_modifica_sagoma" minWidth="80.0" mnemonicParsing="false" onAction="#onBtnModificaSagoma" text="Modifica">
                                                                                  <VBox.margin>
                                                                                     <Insets top="5.0" />
                                                                                  </VBox.margin>

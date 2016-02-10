@@ -42,7 +42,6 @@ public class AggiungiRDAController implements Initializable {
     private String dataP;
     private String dataE;
 
-    private String oldString = null;
 
     private Fornitore[] fornitore;
     private ObservableList<Fornitore> obsFornitore;
@@ -54,7 +53,7 @@ public class AggiungiRDAController implements Initializable {
     /**
  * 
  */
-	@Override
+
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
         String nowStr = Parsers.printItalianDate(new Date());
@@ -81,7 +80,7 @@ public class AggiungiRDAController implements Initializable {
 
         listaFornitore.setCellFactory(new Callback<ListView<Fornitore>,
                                               ListCell<Fornitore>>() {
-                                          @Override
+
                                           public ListCell<Fornitore> call(ListView<Fornitore> list) {
                                               return new FornitoreCell();
                                           }
@@ -90,7 +89,7 @@ public class AggiungiRDAController implements Initializable {
 
         listaFornitore.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Fornitore>() {
 
-            @Override
+
             public void changed(ObservableValue<? extends Fornitore> arg0,
                                 Fornitore arg1, Fornitore arg2) {
 

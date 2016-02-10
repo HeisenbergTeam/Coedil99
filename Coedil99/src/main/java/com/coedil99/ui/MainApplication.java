@@ -92,13 +92,13 @@ public class MainApplication extends Application {
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/"+name+".fxml"));
 
-			try {
-				Class classController = Class.forName(strControllerName);
-				Class reflectionParameters[] = new Class[1];
-				reflectionParameters[0] = Integer.TYPE;
-				Object istanceController = classController.newInstance();
-				Method meth = classController.getMethod(
-						"setAction", reflectionParameters);
+				try {
+					Class classController = Class.forName(strControllerName);
+					Class reflectionParameters[] = new Class[1];
+					reflectionParameters[0] = Integer.TYPE;
+					Object istanceController = classController.newInstance();
+					Method meth = classController.getMethod(
+							"setAction", reflectionParameters);
 				meth.invoke(istanceController, intAction);
 				loader.setController(istanceController);
 			} catch (ClassNotFoundException e) {

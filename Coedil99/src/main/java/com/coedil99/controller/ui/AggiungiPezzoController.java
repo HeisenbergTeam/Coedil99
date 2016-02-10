@@ -1,9 +1,6 @@
 package com.coedil99.controller.ui;
 
-import com.coedil99.modello_di_dominio.DAOFactory;
-import com.coedil99.modello_di_dominio.LavorazionePezzo;
-import com.coedil99.modello_di_dominio.Pezzo;
-import com.coedil99.modello_di_dominio.RigaRDA;
+import com.coedil99.modello_di_dominio.*;
 import com.coedil99.modello_di_dominio.dao.LavorazionePezzoDAO;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
@@ -30,11 +27,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.hibernate.Query;
 import org.orm.PersistentException;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AggiungiPezzoController implements Initializable {
@@ -149,11 +148,23 @@ public class AggiungiPezzoController implements Initializable {
     {
         try
         {
-            RigaRDADAO rigaRDADAO = DAOFactory.getDAOFactory().getRigaRDADAO();
-            RigaRDA[] arrayRigheRDA = rigaRDADAO.listRigaRDAByQuery(null,null);
-            pezzi = new Pezzo[arrayRigheRDA.length];
-            for (int i=0; i<arrayRigheRDA.length; i++) {
-                pezzi[i] = arrayRigheRDA[i].getPezzo();
+            //RigaRDADAO rigaRDADAO = DAOFactory.getDAOFactory().getRigaRDADAO();
+            //RigaRDA[] arrayRigheRDA = rigaRDADAO.listRigaRDAByQuery(null,null);
+            Query query = com.coedil99.modello_di_dominio.Coedil99PersistentManager.instance().getSession().createQuery(
+                    "FROM RigaRDA R WHERE R.pezzo NOT IN (SELECT F.pezzo FROM RigaDistinta F)"
+            );
+            List<RigaRDA> righeRDA = query.list();
+            if(righeRDA.size() == 0)
+            {
+                return;
+            }
+
+            pezzi = new Pezzo[righeRDA.size()];
+            int j = 0;
+            for (RigaRDA i :righeRDA) {
+
+                pezzi[j] = i.getPezzo();
+                j++;
             }
         }catch(PersistentException e)
         {
@@ -174,7 +185,6 @@ public class AggiungiPezzoController implements Initializable {
 
         listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
                                          ListCell<Pezzo>>() {
-
                                      public ListCell<Pezzo> call(ListView<Pezzo> list) {
                                          return new PezzoCell();
                                      }
@@ -316,7 +326,6 @@ public class AggiungiPezzoController implements Initializable {
 	}
 
 	static class PezzoCell extends ListCell<Pezzo> {
-
         public void updateItem(Pezzo item, boolean empty) {
             super.updateItem(item, empty);
             if(item != null){

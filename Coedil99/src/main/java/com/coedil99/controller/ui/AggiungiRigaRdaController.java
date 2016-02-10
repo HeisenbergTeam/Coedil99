@@ -1,7 +1,9 @@
 package com.coedil99.controller.ui;
 
 import com.coedil99.modello_di_dominio.DAOFactory;
+import com.coedil99.modello_di_dominio.DescrizionePezzo;
 import com.coedil99.modello_di_dominio.Pezzo;
+import com.coedil99.modello_di_dominio.dao.DescrizionePezzoDAO;
 import com.coedil99.modello_di_dominio.dao.LavorazionePezzoDAO;
 import com.coedil99.modello_di_dominio.dao.PezzoDAO;
 import com.coedil99.modello_di_dominio.dao.RigaDistintaDAO;
@@ -37,14 +39,14 @@ public class AggiungiRigaRdaController implements Initializable {
     static final public String INDICAZIONE_RIGA_RDA = "indicazione_riga_rda";
     static final public String QUANTITA_RIGA_RDA = "quantita_riga_rda";
 
-    @FXML private ListView<Pezzo> listPezzi;
+    @FXML private ListView<DescrizionePezzo> listPezzi;
     @FXML private Button aggiungiPezzo;
     @FXML private TextField txt_indicazione_rda;
     @FXML private TextField txt_quantita;
 
-    private PezzoDAO pezzoDAO;
-    private Pezzo[] pezzi;
-    private ObservableList<Pezzo> obsPezzi;
+    private DescrizionePezzoDAO pezzoDAO;
+    private DescrizionePezzo[] pezzi;
+    private ObservableList<DescrizionePezzo> obsPezzi;
 
     private UtilitaManager gsp;
     private Log log;
@@ -63,7 +65,7 @@ public class AggiungiRigaRdaController implements Initializable {
     {
         try
         {
-            pezzi = pezzoDAO.listPezzoByQuery(null,null);
+            pezzi = pezzoDAO.listDescrizionePezzoByQuery(null,null);
         }catch(PersistentException e)
         {
             e.printStackTrace();
@@ -82,19 +84,19 @@ public class AggiungiRigaRdaController implements Initializable {
 
         tps.getChildren().add(listPezzi);
 
-        listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
-                                                 ListCell<Pezzo>>() {
+        listPezzi.setCellFactory(new Callback<ListView<DescrizionePezzo>,
+                                                 ListCell<DescrizionePezzo>>() {
 
-                                     public ListCell<Pezzo> call(ListView<Pezzo> list) {
+                                     public ListCell<DescrizionePezzo> call(ListView<DescrizionePezzo> list) {
                                          return new PezzoCell();
                                      }
                                  }
         );
 
-        listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
+        listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<DescrizionePezzo>() {
 
-            public void changed(ObservableValue<? extends Pezzo> arg0,
-                                Pezzo arg1, Pezzo arg2) {
+            public void changed(ObservableValue<? extends DescrizionePezzo> arg0,
+                                DescrizionePezzo arg1, DescrizionePezzo arg2) {
 
                 aggiungiPezzo.setDisable(false);
 
@@ -108,7 +110,7 @@ public class AggiungiRigaRdaController implements Initializable {
         log.i("pezzo aggiunto");
 
         //Pezzo scelto
-        Pezzo pezzoScelto = listPezzi.getSelectionModel().getSelectedItem();
+        DescrizionePezzo pezzoScelto = listPezzi.getSelectionModel().getSelectedItem();
 
         if (txt_indicazione_rda.getText().matches("") || txt_indicazione_rda.getText() == null) {
 
@@ -126,8 +128,8 @@ public class AggiungiRigaRdaController implements Initializable {
 
         if(quantita < 0)
         {
-            txt_indicazione_rda.setStyle("-fx-border-color: red");
-            txt_indicazione_rda.setPromptText("Riempi questo campo");
+            txt_quantita.setStyle("-fx-border-color: red");
+            txt_quantita.setPromptText("Riempi questo campo");
             return;
         }
 
@@ -150,7 +152,7 @@ public class AggiungiRigaRdaController implements Initializable {
         aggiungiPezzo.setDisable(true);
 
         gsp = UtilitaManagerPrototipo.getGestoreServizi();
-        pezzoDAO = DAOFactory.getDAOFactory().getPezzoDAO();
+        pezzoDAO = DAOFactory.getDAOFactory().getDescrizionePezzoDAO();
         log = (Log) UtilitaManager.getGestoreServizi().getServizio("LogStdout");
         sessione = (Sessione) UtilitaManager.getGestoreServizi().getServizio("SessionePrototipo");
         rigaDistintaDAO = DAOFactory.getDAOFactory().getRigaDistintaDAO();
@@ -174,10 +176,10 @@ public class AggiungiRigaRdaController implements Initializable {
         String[] parts = newVal.toUpperCase().split(" ");
 
         // Filter out the entries that don't contain the entered text
-        ObservableList<Pezzo> subentries = FXCollections.observableArrayList();
-        for ( Pezzo entry: listPezzi.getItems() ) {
+        ObservableList<DescrizionePezzo> subentries = FXCollections.observableArrayList();
+        for ( DescrizionePezzo entry: listPezzi.getItems() ) {
             boolean match = true;
-            String entryText = (String)entry.getDescrizionePezzo().getNome();
+            String entryText = (String)entry.getNome();
 
             for ( String part: parts ) {
                 // The entry needs to contain all portions of the
@@ -203,19 +205,19 @@ public class AggiungiRigaRdaController implements Initializable {
 
         tps.getChildren().add(listPezzi);
 
-        listPezzi.setCellFactory(new Callback<ListView<Pezzo>,
-                                         ListCell<Pezzo>>() {
+        listPezzi.setCellFactory(new Callback<ListView<DescrizionePezzo>,
+                                         ListCell<DescrizionePezzo>>() {
 
-                                     public ListCell<Pezzo> call(ListView<Pezzo> list) {
+                                     public ListCell<DescrizionePezzo> call(ListView<DescrizionePezzo> list) {
                                          return new PezzoCell();
                                      }
                                  }
         );
 
-        listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Pezzo>() {
+        listPezzi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<DescrizionePezzo>() {
 
-            public void changed(ObservableValue<? extends Pezzo> arg0,
-                                Pezzo arg1, Pezzo arg2) {
+            public void changed(ObservableValue<? extends DescrizionePezzo> arg0,
+                                DescrizionePezzo arg1, DescrizionePezzo arg2) {
 
                 aggiungiPezzo.setDisable(false);
 
@@ -224,12 +226,12 @@ public class AggiungiRigaRdaController implements Initializable {
 
     }
 
-    static class PezzoCell extends ListCell<Pezzo> {
+    static class PezzoCell extends ListCell<DescrizionePezzo> {
         @Override
-        public void updateItem(Pezzo item, boolean empty) {
+        public void updateItem(DescrizionePezzo item, boolean empty) {
             super.updateItem(item, empty);
             if(item != null){
-                setText(item.getDescrizionePezzo().getNome());
+                setText(item.getNome());
             }
         }
     }

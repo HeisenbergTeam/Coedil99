@@ -99,7 +99,7 @@ public class VisualizzaOrdiniController implements Initializable {
 				//btnEditOrdine.setDisable(false);
 				btnDeleteOrdine.setDisable(false);
 				Ordine ao = getOrdini().get(index);
-				//System.out.print(ao.getID());
+
 				VisualizzaOrdiniController.this.ordineCorrente = ao;
 				VisualizzaOrdiniController.this.loadTablePane(ao);
 			}
@@ -108,9 +108,6 @@ public class VisualizzaOrdiniController implements Initializable {
 
 	private void refreshListaOrdini() {
 
-		//final ArrayList<Ordine> ordiniEmpty = new ArrayList<Ordine>();
-		//this.loadOrdiniTable(ordiniEmpty);
-		//tableOrdini.setItems(ordini);
 
 		UtilitaManager gsp = UtilitaManagerPrototipo.getGestoreServizi();
 		log = (Log) gsp.getServizio("LogStdout");
@@ -135,14 +132,7 @@ public class VisualizzaOrdiniController implements Initializable {
 		refreshListaOrdini();
 		tableOrdini.getSelectionModel().selectLast();
 		tableOrdini.scrollTo(ordine);
-		//tableOrdini.requestFocus();
-		//System.out.print(tableOrdini.getSelectionModel().getTableView().refresh();//.getSelectedItem(ordine));
-		//tableOrdini.getSelectionModel().getTableView().refresh();
-		//tableOrdini.refresh();
-		//tableOrdini.getSelectionModel().clearSelection();
-		//tableOrdini.getSelectionModel().selectLast();
-		//tableOrdini.getSelectionModel().select( tableOrdini.getSelectionModel().getSelectedIndices().size()-1);
-		//tableOrdini.getFocusModel().fo.focus(0);
+
 		btnNewOrdine.setDisable(false);
 		//btnEditOrdine.setDisable(false);
 		btnDeleteOrdine.setDisable(false);
@@ -212,7 +202,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
 
 					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
-						System.out.print(t.getNewValue());
+						log.i(t.getNewValue());
 
 						Ordine ordineCorrenet = ((Ordine) t.getTableView().getItems().get(
 								t.getTablePosition().getRow())
@@ -261,7 +251,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
 
 					public void handle(TableColumn.CellEditEvent<Ordine, String> t) {
-						System.out.print(t.getNewValue());
+						log.i(t.getNewValue());
 
 						Ordine ordineCorrenet = ((Ordine) t.getTableView().getItems().get(
 								t.getTablePosition().getRow())
@@ -423,7 +413,7 @@ public class VisualizzaOrdiniController implements Initializable {
 
 			Distinta[] arrayDistinta = DAOFactory.getDAOFactory().getDistintaDAO().listDistintaByQuery("CommessaID = "+currentCommessaId,null);
 			for (int i = 0; i < arrayDistinta.length; i++) {
-				System.out.print(currentCommessaId+" "+arrayDistinta[i].getCommessa().getID()+"\n");
+				log.i(currentCommessaId+" "+arrayDistinta[i].getCommessa().getID()+"\n");
 				if (arrayDistinta[i].getCommessa().getID() == currentCommessaId) {
 					MainApplication.getInstance().loadPage("visualizza_distinta", "com.coedil99.controller.ui.VisualizzaDistintaController", (arrayDistinta[i].getID()));
 				}
@@ -446,13 +436,13 @@ public class VisualizzaOrdiniController implements Initializable {
 		Ordine ordine = tableOrdini.getSelectionModel().getSelectedItem();
 		try {
 			Commessa commessa = DAOFactory.getDAOFactory().getCommessaDAO().getCommessaByORMID(currentCommessaId);
-			System.out.print(currentCommessaId);
+
 
 			Distinta[] arrayDistinta = DAOFactory.getDAOFactory().getDistintaDAO().listDistintaByQuery("CommessaID = "+currentCommessaId,null);
-			System.out.print(arrayDistinta.length);
+
 			for (int i = 0; i < arrayDistinta.length; i++) {
 				if (arrayDistinta[i].getCommessa().getID() == currentCommessaId) {
-					System.out.print("deleting distinta " + arrayDistinta[i].getID());
+					log.i("deleting distinta " + arrayDistinta[i].getID());
 					DAOFactory.getDAOFactory().getDistintaDAO().deleteAndDissociate(arrayDistinta[i]);
 				}
 			}
